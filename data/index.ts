@@ -4,6 +4,9 @@ export interface Product {
   title: string;
   description: string;
   price: number;
+  size: string;
+  color: string;
+  inStock: boolean;
 }
 
 export interface CartItem extends Product {
@@ -23,20 +26,26 @@ export const generateId = () => {
 export const products: Product[] = [
   {
     image:
-      'https://assets.ellosgroup.com/i/ellos/b?$eg$&$em$&$ep$&$ed$&n=ell_1032228-02_Fm_M0013527&mw=1500&fmt=webp',
-    title: 'Jolly',
+      '../public/images/tophat.jpeg',
+    title: 'Top Hat',
     description:
-      'Stool with comfortable, shaped seat. Made of solid wood, in the Toon Wood type. Height 61 cm. Seat 40x32 cm. Seat height: 61 cm Width at the bottom 47 cm. Mounted.',
+      'Top Hat. The top is reinforced with a plywood board under the rattan. Dimensions: Width 41 cm, height 71 cm, depth 31 cm.',
     price: 1599,
+    size: 'M',
+    color: "Black",
+    inStock: true,
     id: 'e1',
   },
   {
     image:
       'https://assets.ellosgroup.com/i/ellos/b?$eg$&$em$&$ep$&$ed$&n=ell_1595558-01_Fm_M0037129&mw=1500&fmt=webp',
-    title: 'Chardonne',
+    title: 'Derby Hat',
     description:
-      'Armchair with pine and plywood frame with nozag suspension and foam filling. Brushed metal legs. Dimensions: Width 89 cm, height 77 cm, depth 83 cm. Seat height 43 cm, seat depth 62 cm, seat width 54 cm.',
+      'Derby Hat, description',
     price: 3919,
+    size: 'M',
+    color: "Black",
+    inStock: true,
     id: 'd2',
   },
   {
@@ -44,8 +53,11 @@ export const products: Product[] = [
       'https://assets.ellosgroup.com/i/ellos/b?$eg$&$em$&$ep$&$ed$&n=hom_1663846-02_Fs&mw=1500&fmt=webp',
     title: 'Xander',
     description:
-      'Lounge armchair with upholstery in bouquet fabric and passpoalk edge along the top edge. Legs and frame in powder-coated metal. Foam filling. Easier installation.',
+      'Xander, description',
     price: 2299,
+    size: 'M',
+    color: "Black",
+    inStock: true,
     id: 'c1',
   },
   {
@@ -55,6 +67,9 @@ export const products: Product[] = [
     description:
       'Rattan bedside table with shelf underneath. The top is reinforced with a plywood board under the rattan. Dimensions: Width 41 cm, height 71 cm, depth 31 cm. Leg height 22 cm. Height to the upper edge of the lower shelf 25 cm. Dimensions between the shelves 42.5 cm.',
     price: 1299,
+    size: 'M',
+    color: "Black",
+    inStock: true,
     id: 'f4',
   },
   {
@@ -64,6 +79,9 @@ export const products: Product[] = [
     description:
       'Upholstered headboard attached to the wall (two hooks on the back). Wooden frame (pine). Upholstery in velvet of polyester and filling of polyether. Width 95 cm. Height 61.5 cm. Depth 7.5 cm.',
     price: 999,
+    size: 'M',
+    color: "Black",
+    inStock: true,
     id: 'e6',
   },
   {
@@ -73,6 +91,9 @@ export const products: Product[] = [
     description:
       'Side table / cabinet in solid mango wood with wax-treated surface. Two doors with wooden handles and soft closing. The cabinet is divided inside and has a fixed shelf. Dimensions between shelves approx. 27 cm. Clear height under furniture 14 cm. Delivered assembled.',
     price: 5499,
+    size: 'M',
+    color: "Black",
+    inStock: true,
     id: 'a3',
   },
 ];
