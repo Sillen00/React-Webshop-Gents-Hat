@@ -1,5 +1,5 @@
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart'
-import { AppBar, IconButton, SxProps, Theme, Typography } from '@mui/material'
+import { AppBar, SxProps, Theme, Typography } from '@mui/material'
 import { NavLink } from 'react-router-dom'
 
 function Header() {
@@ -11,12 +11,7 @@ function Header() {
       </NavLink>
 
       <NavLink to='/cart'>
-        <p>Cart</p>
-      </NavLink>
-      <NavLink to='/cart'>
-        <IconButton color='inherit'>
-          <ShoppingCartIcon />
-        </IconButton>
+        <ShoppingCartIcon />
       </NavLink>
     </AppBar>
   )
