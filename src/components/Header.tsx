@@ -1,9 +1,10 @@
 import { NavLink } from 'react-router-dom'
+import { Typography } from '@mui/material'
 
 function Header() {
   return (
     <header style={{ background: 'lightgray' }}>
-      <h1>Gents Hats</h1>
+      <Typography variant="h3">Gents Hats</Typography>
       <NavLink to='./'>
         <p>Home</p>
       </NavLink>
