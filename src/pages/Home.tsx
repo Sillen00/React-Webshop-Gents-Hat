@@ -1,24 +1,27 @@
-import { Box, SxProps, Theme, Typography } from '@mui/material'
+import { Box, Grid, SxProps, Theme, Typography } from '@mui/material'
 import { products } from '../../data'
 import ProductCard from '../components/ProductCard'
 
 function Home() {
   return (
-    <Box sx={theme => ({ padding: theme.spacing(10) })}>
+    <Box>
       <Typography variant='h2'>Home</Typography>
       <Typography>Here is home page with out products</Typography>
-      <Box sx={cardListSx}>
+      <Grid container rowSpacing={2}>
         {products.map(product => (
-          <ProductCard product={product} key={product.id} />
+          <Grid sx={cardListSx} item xs={12} sm={6} md={4} lg={3}>
+            <ProductCard product={product} key={product.id} />
+          </Grid>
         ))}
-      </Box>
+      </Grid>
     </Box>
   )
 }
 
 const cardListSx: SxProps<Theme> = theme => ({
-  borderRadius: theme.spacing(2),
   background: 'red',
+  display: 'flex',
+  justifyContent: 'center',
 })
 
 export default Home
