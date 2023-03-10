@@ -1,20 +1,24 @@
-import { CSSProperties } from 'react'
-import { Link } from 'react-router-dom'
+import { Box, SxProps, Theme, Typography } from '@mui/material'
+import { products } from '../../data'
+import ProductCard from '../components/ProductCard'
 
 function Home() {
   return (
-    <>
-      <h2>Home</h2>
-      <p>Here is home page with out products</p>
-      <Link to='./product-description'>
-        <img style={hatStyle} src='../public/images/bowler.jpeg' />
-      </Link>
-    </>
+    <Box sx={theme => ({ padding: theme.spacing(10) })}>
+      <Typography variant='h2'>Home</Typography>
+      <Typography>Here is home page with out products</Typography>
+      <Box sx={cardListSx}>
+        {products.map(product => (
+          <ProductCard product={product} key={product.id} />
+        ))}
+      </Box>
+    </Box>
   )
 }
 
-const hatStyle: CSSProperties = {
-  width: '10rem',
-}
+const cardListSx: SxProps<Theme> = theme => ({
+  borderRadius: theme.spacing(2),
+  background: 'red',
+})
 
 export default Home

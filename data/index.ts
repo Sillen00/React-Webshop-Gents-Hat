@@ -13,15 +13,7 @@ export interface CartItem extends Product {
   quantity: number
 }
 
-/**
- * function that returns a unique Id, both numbers and letters
- */
-export const generateId = () => {
-  const newId = Math.floor(1 + Math.random() * 0x1000)
-    .toString(16)
-    .substring(1)
-  return newId
-}
+export const test = 22;
 
 export const products: Product[] = [
   {
@@ -67,7 +59,7 @@ export const products: Product[] = [
     id: 'f4',
   },
   {
-    image: '../public/images/stockman.png',
+    image: '../public/images/stockman.jpeg',
     title: 'Stockman',
     description:
       'Stockman. Upholstered headboard attached to the wall (two hooks on the back). Wooden frame (pine). Upholstery in velvet of polyester and filling of polyether. Width 95 cm. Height 61.5 cm. Depth 7.5 cm.',
@@ -97,7 +89,7 @@ export const products: Product[] = [
     size: 'M',
     color: 'Black',
     inStock: false,
-    id: 'a3',
+    id: 'a1',
   },
   {
     image: '../public/images/traveller.jpeg',
@@ -108,10 +100,10 @@ export const products: Product[] = [
     size: 'M',
     color: 'Black',
     inStock: true,
-    id: 'a3',
+    id: 'a2',
   },
   {
-    image: '../public/images/woolfelt.jpeg',
+    image: '../public/images/woolfelt.jpg',
     title: 'Woolfelt Hat',
     description:
       'Woolfelt hat. Side table / cabinet in solid mango wood with wax-treated surface. Two doors with wooden handles and soft closing. The cabinet is divided inside and has a fixed shelf. Dimensions between shelves approx. 27 cm. Clear height under furniture 14 cm. Delivered assembled.',
@@ -119,6 +111,6 @@ export const products: Product[] = [
     size: 'M',
     color: 'Black',
     inStock: true,
-    id: 'a3',
+    id: 'a4',
   },
 ]
