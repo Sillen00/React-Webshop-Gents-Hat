@@ -7,7 +7,7 @@ function Header() {
     <AppBar sx={headerStyleSx} position='fixed'>
       <Typography variant='h3'>Gents Hats</Typography>
       <NavLink to='./'>
-        <p>Home</p>
+        <Typography color='red'>Home</Typography>
       </NavLink>
 
       <NavLink to='/cart'>
