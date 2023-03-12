@@ -1,15 +1,16 @@
-import { CSSProperties } from 'react'
+import { Box, SxProps, Theme, Typography } from '@mui/material'
 
 function Footer() {
-  return <footer style={rootStyle}></footer>
+  return (
+    <Box sx={footerStyle}>
+      <Typography variant="h3">Gents Hats</Typography>
+    </Box>
+  )
 }
 
-const rootStyle: CSSProperties = {
-  height: '8rem',
+const footerStyle: SxProps<Theme> = {
+  height: '18rem',
   width: '100%',
-  position: 'fixed',
-  bottom: 0,
-  left: 0,
   color: 'white',
   background: 'black',
   borderTop: '5px solid #DAB90C',

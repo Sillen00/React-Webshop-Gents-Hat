@@ -10,3 +10,8 @@ body {
   /* font-family: 'Lora', sans-serif; */
   background-color: #f8f8f8;
 }
+
+main {
+  /* Lägg till variabel för längd på header och footer så detta ändras automatiskt */
+  min-height: calc(100vh - 23.75rem)
+}
