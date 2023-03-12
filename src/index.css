@@ -1,5 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&family=Lora&display=swap');
 
+:root {
+  /* Lägg till header-variabeln i Header-filen */
+  --header-height: 5.75rem;
+  --footer-height: 24rem;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -12,6 +18,5 @@ body {
 }
 
 main {
-  /* Lägg till variabel för längd på header och footer så detta ändras automatiskt */
-  min-height: calc(100vh - 23.75rem)
+  min-height: calc(100vh - var(--header-height) - var(--footer-height))
 }
