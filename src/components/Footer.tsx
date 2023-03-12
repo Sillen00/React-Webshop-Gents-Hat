@@ -15,8 +15,8 @@ function Footer() {
   )
 }
 
-const footerStyle: SxProps<Theme> = {
-  height: 'var(--footer-height)',
+const footerStyle: SxProps<Theme> = theme => ({
+  height: 'var(--footer-height-xl)',
   width: '100%',
   color: 'white',
   background: 'black',
@@ -25,6 +25,15 @@ const footerStyle: SxProps<Theme> = {
   overflow: 'hidden',
   boxShadow:
     '0px -2px 4px -1px rgba(0,0,0,0.2), 0px -4px 5px 0px rgba(0,0,0,0.14), 0px -1px 10px 0px rgba(0,0,0,0.12)',
-}
+  [theme.breakpoints.down('lg')]: {
+    height: 'var(--footer-height-lg)',
+  },
+  [theme.breakpoints.down('md')]: {
+    height: 'var(--footer-height-md)',
+  },
+  [theme.breakpoints.down('sm')]: {
+    height: 'var(--footer-height-sm)',
+  },
+})
 
 export default Footer

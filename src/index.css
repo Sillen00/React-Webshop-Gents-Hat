@@ -3,7 +3,10 @@
 :root {
   /* Lägg till header-variabeln i Header-filen */
   --header-height: 5.75rem;
-  --footer-height: 24rem;
+  --footer-height-xl: 12rem;
+  --footer-height-lg: 14rem;
+  --footer-height-md: 18rem;
+  --footer-height-sm: 30rem;
 }
 
 * {
@@ -18,5 +21,23 @@ body {
 }
 
 main {
-  min-height: calc(100vh - var(--header-height) - var(--footer-height))
+  min-height: calc(100vh - var(--header-height) - var(--footer-height-xl));
+}
+
+@media screen and (max-width: 1200px) {
+  main {
+    min-height: calc(100vh - var(--header-height) - var(--footer-height-lg));
+  }
+}
+
+@media screen and (max-width: 900px) {
+  main {
+    min-height: calc(100vh - var(--header-height) - var(--footer-height-md));
+  }
+}
+
+@media screen and (max-width: 600px) {
+  main {
+    min-height: calc(100vh - var(--header-height) - var(--footer-height-sm));
+  }
 }
