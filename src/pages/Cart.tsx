@@ -5,7 +5,7 @@ import CartCardSubheaders from '../components/CartCardSubheaders'
 import CartTotalPrice from '../components/CartTotalPrice'
 
 function Cart() {
-  const isMediumScreen = useMediaQuery('(min-width:768px)')
+  const isMediumScreen = useMediaQuery('(min-width:900px)')
   return (
     <Container>
       <Box sx={{ display: 'flex', justifyContent: 'space-between', py: 1 }}>
