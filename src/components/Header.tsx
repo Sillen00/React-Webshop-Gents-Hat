@@ -17,8 +17,14 @@ function Header() {
           <img src={adminIcon} />
         </NavLink>
         <NavLink to='/cart'>
-          <Badge sx={badgeStylesSX} badgeContent={itemCount} color='success'>
-            <ShoppingCartIcon sx={iconStylesSX} />
+          <Badge
+            sx={badgeStylesSX}
+            badgeContent={<Typography variant='body2'>{itemCount}</Typography>}
+            showZero
+            color='success'
+            data-cy='cart-items-count-badge'
+          >
+            <ShoppingCartIcon sx={iconStylesSX} data-cy='cart-link' />
           </Badge>
         </NavLink>
       </Box>
