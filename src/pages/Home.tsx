@@ -35,7 +35,7 @@ const logoStyleSx: SxProps<Theme> = theme => ({
   display: 'flex',
   justifyContent: 'center',
   margin: ' 2rem 0rem',
-  '@media (min-width: 900px)': {
+  [theme.breakpoints.up('md')]: {
     margin: ' 6rem 0rem',
   },
 })
@@ -43,7 +43,7 @@ const logoStyleSx: SxProps<Theme> = theme => ({
 const h4StyleSx: SxProps<Theme> = theme => ({
   display: 'none',
   margin: '1rem',
-  '@media (min-width: 600px)': {
+  [theme.breakpoints.up('sm')]: {
     display: 'flex',
   },
 })
