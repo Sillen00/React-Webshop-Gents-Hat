@@ -1,8 +1,10 @@
 import KeyboardDoubleArrowDownIcon from '@mui/icons-material/KeyboardDoubleArrowDown'
-import { Box, Button, Container, Paper, Stack, Typography } from '@mui/material'
+import { Box, Button, Container, Stack, Typography, useMediaQuery } from '@mui/material'
 import CartCard from '../components/CartCard'
+import CartTotalPrice from '../components/CartTotalPrice'
 
 function Cart() {
+  const isMediumScreen = useMediaQuery('(min-width:768px)')
   return (
     <Container>
       <Box sx={{ display: 'flex', justifyContent: 'space-between', py: 1 }}>
@@ -12,23 +14,28 @@ function Cart() {
         </Button>
       </Box>
 
-      <Paper elevation={3} sx={{ borderRadius: '0.8rem' }}>
-        <Stack spacing={{ xs: 1, sm: 2, md: 4 }}>
-          <CartCard />
-        </Stack>
-      </Paper>
-
-      <Box sx={{ display: 'flex', justifyContent: 'flex-end', width: '100%', mt: 1 }}>
-        <Paper elevation={3} sx={{ borderRadius: '0.8rem' }}>
-          <Typography
-            variant='body2'
-            color='common.black'
-            sx={{ fontWeight: '800', background: 'white', p: 1 }}
-          >
-            Total: $ 60
+      {isMediumScreen && (
+        <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
+          <Typography variant='h3' color='secondary.dark' sx={{ fontSize: '1.4rem' }}>
+            Product
           </Typography>
-        </Paper>
-      </Box>
+          <Box sx={{ display: 'flex' }}>
+            <Typography variant='h3' color='secondary.dark' sx={{ mr: 20, fontSize: '1.4rem' }}>
+              Quantity
+            </Typography>
+            <Typography variant='h3' color='secondary.dark' sx={{ fontSize: '1.4rem' }}>
+              Delete
+            </Typography>
+          </Box>
+        </Box>
+      )}
+
+      <Stack spacing={{ xs: 1, sm: 2, md: 4 }}>
+        <CartCard />
+        <CartCard />
+      </Stack>
+
+      <CartTotalPrice />
     </Container>
   )
 }
