@@ -6,12 +6,12 @@ import { products } from '../../data'
 function CartCard() {
   return (
     <Box data-cy='cart-item' sx={{ display: 'flex', maxHeight:"107px" }}>
-      <Box sx={{ width: '30%' }}>
+      <Box sx={{width:"107px"}}>
         <img style={cardImgStyle} src={products[0].image} alt={products[0].description} />
       </Box>
       <Box
         sx={{
-          width: '70%',
+          width: '100%',
           display: 'flex',
           flexDirection: 'column',
           py: 1,
@@ -84,7 +84,7 @@ function CartCard() {
 }
 
 const cardImgStyle: CSSProperties = {
-  width: '100%',
+  // width: '100%',
   height: '100%',
   borderRadius: '0.8rem',
 }
