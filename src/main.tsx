@@ -44,6 +44,9 @@ const theme = createTheme({
     h1: {
       fontWeight: 900,
     },
+    h2: {
+      fontWeight: 700,
+    },
     h3: {
       fontWeight: 600,
     },
@@ -51,6 +54,9 @@ const theme = createTheme({
       fontWeight: 600,
     },
     body2: {
+      fontFamily: 'Lora',
+    },
+    caption: {
       fontFamily: 'Lora',
     },
   },
