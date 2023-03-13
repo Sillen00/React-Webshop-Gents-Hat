@@ -2,11 +2,13 @@ import { Facebook, Instagram, Twitter } from '@mui/icons-material'
 import {
   Alert,
   Box,
-  Button, Snackbar,
+  Button,
+  Link,
+  Snackbar,
   SxProps,
   TextField,
   Theme,
-  Typography
+  Typography,
 } from '@mui/material'
 import { useState } from 'react'
 import '../index.css'
@@ -32,9 +34,15 @@ function Footer() {
             Gents' Hat
           </Typography>
           <Box sx={socialMediaIcons}>
-            <Facebook fontSize='large' />
-            <Instagram fontSize='large' />
-            <Twitter fontSize='large' />
+            <Link href='#'>
+              <Facebook fontSize='large' />
+            </Link>
+            <Link href='#'>
+              <Instagram fontSize='large' />
+            </Link>
+            <Link href='#'>
+              <Twitter fontSize='large' />
+            </Link>
           </Box>
         </Box>
         <Box sx={newsletterContainer}>
@@ -134,7 +142,7 @@ const footerContent: SxProps<Theme> = theme => ({
 })
 
 const socialMediaIcons: SxProps<Theme> = theme => ({
-  '& > *': {
+  '& > * > *': {
     marginRight: '1rem',
   },
   [theme.breakpoints.down('lg')]: {
