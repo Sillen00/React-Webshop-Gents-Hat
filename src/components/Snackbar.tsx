@@ -3,12 +3,17 @@ import { Box, SxProps } from '@mui/material'
 import Button from '@mui/material/Button'
 import { SnackbarProvider, useSnackbar, VariantType } from 'notistack'
 import * as React from 'react'
+import { CartContext } from '../contexts/CartContext'
 
 function Snackbar() {
+  const { incrementItemCount } = React.useContext(CartContext)
   const { enqueueSnackbar } = useSnackbar()
 
   const handleClickVariant = (variant: VariantType) => () => {
-    enqueueSnackbar(`Added your product to the cart!`, { variant: 'success' })
+    enqueueSnackbar(`Added your product to the cart!`, {
+      variant: 'success',
+    })
+    incrementItemCount() // increment cart count
   }
 
   return (
