@@ -1,8 +1,15 @@
 import { Facebook, Instagram, Twitter } from '@mui/icons-material'
-import { Box, Button, SxProps, TextField, Theme, Typography } from '@mui/material'
+import { Box, Button, Snackbar, SxProps, TextField, Theme, Typography } from '@mui/material'
+import { useState } from 'react'
 import '../index.css'
 
 function Footer() {
+  const [inputValue, setInputValue] = useState('')
+
+  const handleJoin = () => {
+    setInputValue('')
+  }
+
   return (
     <Box sx={footerStyle}>
       <Box sx={footerContent}>
@@ -26,10 +33,12 @@ function Footer() {
               InputProps={{ style: { fontFamily: 'Lora' } }}
               fullWidth={true}
               id='outlined-basic'
-              label=''
+              placeholder='E-mail'
               variant='outlined'
+              value={inputValue}
+              onChange={e => setInputValue(e.target.value)}
             />
-            <Button sx={joinButton} variant='contained'>
+            <Button sx={joinButton} variant='contained' onClick={handleJoin}>
               Join
             </Button>
           </Box>
