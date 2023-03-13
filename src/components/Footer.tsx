@@ -1,13 +1,27 @@
 import { Facebook, Instagram, Twitter } from '@mui/icons-material'
-import { Box, Button, Snackbar, SxProps, TextField, Theme, Typography } from '@mui/material'
+import {
+  Alert,
+  Box,
+  Button, Snackbar,
+  SxProps,
+  TextField,
+  Theme,
+  Typography
+} from '@mui/material'
 import { useState } from 'react'
 import '../index.css'
 
 function Footer() {
   const [inputValue, setInputValue] = useState('')
+  const [open, setOpen] = useState(false)
 
   const handleJoin = () => {
+    inputValue == '' ? {} : setOpen(true)
     setInputValue('')
+  }
+
+  const handleClose = () => {
+    setOpen(false)
   }
 
   return (
@@ -41,6 +55,16 @@ function Footer() {
             <Button sx={joinButton} variant='contained' onClick={handleJoin}>
               Join
             </Button>
+            <Snackbar
+              open={open}
+              onClose={handleClose}
+              autoHideDuration={5000}
+              sx={{ color: 'blue' }}
+            >
+              <Alert onClose={handleClose} severity='success'>
+                Thank you for joining our newsletter!
+              </Alert>
+            </Snackbar>
           </Box>
           <Typography sx={{ color: '#AAA', margin: '1rem' }} align='center' variant='caption'>
             This form is protected by reCAPTCHA and the Google Privacy Policy and Terms of Service
