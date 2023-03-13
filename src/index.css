@@ -4,9 +4,9 @@
   /* Lägg till header-variabeln i Header-filen */
   --header-height: 5.75rem;
   --footer-height-xl: 18rem;
-  --footer-height-lg: 14rem;
-  --footer-height-md: 18rem;
-  --footer-height-sm: 30rem;
+  --footer-height-lg: 43rem;
+  --footer-height-md: 43rem;
+  --footer-height-sm: 49rem;
 }
 
 * {
