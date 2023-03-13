@@ -6,11 +6,11 @@ function Footer() {
   return (
     <Box sx={footerStyle}>
       <Box sx={socialMediaContainer}>
-        <Typography variant='h3'>Gents Hats</Typography>
+        <Typography gutterBottom={true} variant='h3'>Gents Hats</Typography>
         <Box sx={socialMediaIcons}>
-          <Facebook fontSize='large'/>
-          <Instagram fontSize='large'/>
-          <Twitter fontSize='large'/>
+          <Facebook fontSize='large' />
+          <Instagram fontSize='large' />
+          <Twitter fontSize='large' />
         </Box>
       </Box>
       <Box sx={newsletterContainer}>
@@ -18,8 +18,19 @@ function Footer() {
         <Typography variant='body2'>Input field</Typography>
       </Box>
       <Box sx={contactContainer}>
-        <Typography variant='h3'>Contact</Typography>
-        <Typography variant='body2'>Information</Typography>
+        <Typography gutterBottom={true} variant='h3'>Contact</Typography>
+        <Typography variant='body2'>
+          shop@gentshat.com
+          <br />
+          <br />
+        </Typography>
+        <Typography sx={smallText} variant='body2'>
+          The Gents hat Company
+          <br />
+          720 Ninth Avenue
+          <br />
+          New York, NY 10028
+        </Typography>
       </Box>
     </Box>
   )
@@ -48,16 +59,16 @@ const footerStyle: SxProps<Theme> = theme => ({
   },
 })
 
-const socialMediaContainer: SxProps<Theme> = theme => ({
+const socialMediaContainer: SxProps<Theme> = theme => ({})
+
+const smallText: SxProps<Theme> = theme => ({
+  color: '#AAA'
 })
 
 const socialMediaIcons: SxProps<Theme> = theme => ({
-  display: 'flex',
-  width: '17rem',
-  paddingTop: '0.5rem',
   '& > *': {
-    marginRight: '1rem'
-  }
+    marginRight: '1rem',
+  },
 })
 
 const newsletterContainer: SxProps<Theme> = theme => ({
