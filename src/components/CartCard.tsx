@@ -6,15 +6,8 @@ import { products } from '../../data'
 function CartCard() {
   return (
     <Paper elevation={3} sx={{ borderRadius: '0.8rem' }}>
-      <Box
-        data-cy='cart-item'
-        sx={{
-          display: 'flex',
-          maxHeight: '100px',
-          '@media (min-width: 900px)': { maxHeight: '150px' },
-        }}
-      >
-        <Box sx={{ width: '100px', '@media (min-width: 900px)': { width: '150px' } }}>
+      <Box data-cy='cart-item' sx={productCardStyleSx}>
+        <Box sx={imageBoxStyleSx}>
           <img style={cardImgStyle} src={products[0].image} alt={products[0].description} />
         </Box>
         <Box sx={cartCardRightBoxStyleSx}>
@@ -24,19 +17,11 @@ function CartCard() {
               justifyContent: 'space-between',
             }}
           >
-            <Typography
-              variant='h3'
-              sx={{ fontSize: '1.5rem', '@media (min-width: 900px)': { fontSize: '2rem' } }}
-            >
+            <Typography variant='h3' sx={mediaFontSizeStyleSx}>
               {products[0].title}
             </Typography>
-            <Typography
-              sx={{ position: 'relative', top: '0', '@media (min-width: 900px)': { top: '50px' } }}
-            >
-              <DeleteOutlineIcon
-                color='error'
-                sx={{ '@media (min-width: 900px)': { fontSize: '2rem' } }}
-              />
+            <Typography sx={mediaTopStyleSx}>
+              <DeleteOutlineIcon color='error' sx={mediaFontSizeStyleSx} />
             </Typography>
           </Box>
           <Box sx={{ flexGrow: '4', display: 'flex', justifyContent: 'space-between' }}>
@@ -81,6 +66,24 @@ function CartCard() {
   )
 }
 
+const productCardStyleSx: SxProps<Theme> = theme => ({
+  display: 'flex',
+  maxHeight: '100px',
+  [theme.breakpoints.up('md')]: { maxHeight: '150px' },
+})
+const imageBoxStyleSx: SxProps<Theme> = theme => ({
+  width: '100px',
+  [theme.breakpoints.up('md')]: { width: '150px' },
+})
+const mediaTopStyleSx: SxProps<Theme> = theme => ({
+  position: 'relative',
+  top: '0',
+  [theme.breakpoints.up('md')]: { top: '50px' },
+})
+const mediaFontSizeStyleSx: SxProps<Theme> = theme => ({
+  fontSize: '1.5rem',
+  [theme.breakpoints.up('md')]: { fontSize: '2rem' },
+})
 const cartCardRightBoxStyleSx: SxProps<Theme> = theme => ({
   width: '100%',
   display: 'flex',
@@ -92,19 +95,19 @@ const cartCardRightBoxStyleSx: SxProps<Theme> = theme => ({
 const descriptionTextStyleSx: SxProps<Theme> = theme => ({
   fontWeight: '700',
   fontSize: '0.8rem',
-  '@media (min-width: 900px)': { fontSize: '1rem' },
+  [theme.breakpoints.up('md')]: { fontSize: '1rem' },
 })
 const quantityBoxStyleSx: SxProps<Theme> = theme => ({
   display: 'flex',
   gap: '5px',
   position: 'relative',
   top: '28px',
-  '@media (min-width: 900px)': { top: '10px', right: '245px', gap: '10px' },
+  [theme.breakpoints.up('md')]: { top: '10px', right: '245px', gap: '10px' },
 })
 const quantityStyleSx: SxProps<Theme> = theme => ({
   fontWeight: '800',
   fontSize: '1.2rem',
-  '@media (min-width: 900px)': { fontSize: '1.4rem' },
+  [theme.breakpoints.up('md')]: { fontSize: '1.4rem' },
 })
 const changeQuantityBtnStyleSx: SxProps<Theme> = theme => ({
   width: '1.4rem',
@@ -113,7 +116,7 @@ const changeQuantityBtnStyleSx: SxProps<Theme> = theme => ({
   minWidth: 0,
   position: 'relative',
   top: '2px',
-  '@media (min-width: 900px)': {
+  [theme.breakpoints.up('md')]: {
     width: '1.6rem',
     height: '1.6rem',
     top: '4px',
@@ -122,7 +125,7 @@ const changeQuantityBtnStyleSx: SxProps<Theme> = theme => ({
 const productTotalStyleSx: SxProps<Theme> = theme => ({
   fontSize: '1rem',
   fontWeight: '800',
-  '@media (min-width: 900px)': { fontSize: '1.2rem' },
+  [theme.breakpoints.up('md')]: { fontSize: '1.2rem' },
 })
 
 const cardImgStyle: CSSProperties = {
