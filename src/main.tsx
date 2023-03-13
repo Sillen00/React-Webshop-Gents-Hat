@@ -8,6 +8,7 @@ import {
   RouterProvider,
 } from 'react-router-dom'
 import App from './App'
+import { CartProvider } from './contexts/CartContext'
 import './index.css'
 import Cart from './pages/Cart'
 import Confirm from './pages/Confirm'
@@ -72,7 +73,9 @@ const router = createBrowserRouter(
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
-      <RouterProvider router={router} />
+      <CartProvider>
+        <RouterProvider router={router} />
+      </CartProvider>
     </ThemeProvider>
   </React.StrictMode>
 )

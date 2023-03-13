@@ -1,20 +1,23 @@
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart'
 import { AppBar, Badge, Box, SxProps, Theme, Typography } from '@mui/material'
+import React, { useContext } from 'react'
 import { NavLink } from 'react-router-dom'
 import adminIcon from '../../public/icons/adminIcon.png'
+import { CartContext } from '../contexts/CartContext'
 
 function Header() {
+  const { itemCount } = useContext(CartContext)
   return (
     <AppBar sx={headerStyleSx}>
       <Typography sx={typographyStylesSX} variant='h4'>
-        Gent's Hats
+        Gent's Hat
       </Typography>
       <Box sx={iconWrapperStylesSX}>
         <NavLink to=''>
           <img src={adminIcon} />
         </NavLink>
         <NavLink to='/cart'>
-          <Badge sx={badgeStylesSX} badgeContent={2} color='success'>
+          <Badge sx={badgeStylesSX} badgeContent={itemCount} color='success'>
             <ShoppingCartIcon sx={iconStylesSX} />
           </Badge>
         </NavLink>
