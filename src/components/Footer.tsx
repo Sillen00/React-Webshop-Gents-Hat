@@ -29,8 +29,8 @@ function Footer() {
   return (
     <Box sx={footerStyle}>
       <Box sx={footerContent}>
-        <Box>
-          <Typography gutterBottom={true} variant='h3'>
+        <Box sx={socialMediaContainer}>
+          <Typography align='center' gutterBottom={true} variant='h2'>
             Gents' Hat
           </Typography>
           <Box sx={socialMediaIcons}>
@@ -46,7 +46,7 @@ function Footer() {
           </Box>
         </Box>
         <Box sx={newsletterContainer}>
-          <Typography sx={{ margin: '1rem' }} align='center' gutterBottom={true} variant='h4'>
+          <Typography align='center' gutterBottom={true} variant='h4'>
             Join our newsletter
           </Typography>
           <Box sx={inputContainer}>
@@ -114,7 +114,6 @@ const footerStyle: SxProps<Theme> = theme => ({
   color: 'white',
   background: 'black',
   borderTop: '5px solid #DAB90C',
-  paddingTop: '1.5rem',
   boxShadow:
     '0px -2px 4px -1px rgba(0,0,0,0.2), 0px -4px 5px 0px rgba(0,0,0,0.14), 0px -1px 10px 0px rgba(0,0,0,0.12)',
   [theme.breakpoints.down('lg')]: {
@@ -141,6 +140,11 @@ const footerContent: SxProps<Theme> = theme => ({
   },
 })
 
+const socialMediaContainer: SxProps<Theme> = theme => ({
+  marginTop: '1.6rem',
+  [theme.breakpoints.down('lg')]: {},
+})
+
 const socialMediaIcons: SxProps<Theme> = theme => ({
   '& > * > *': {
     marginRight: '1rem',
@@ -148,7 +152,7 @@ const socialMediaIcons: SxProps<Theme> = theme => ({
   [theme.breakpoints.down('lg')]: {
     display: 'flex',
     justifyContent: 'center',
-    '& > *': {
+    '& > * > *': {
       marginLeft: '1rem',
     },
   },
@@ -159,9 +163,9 @@ const newsletterContainer: SxProps<Theme> = theme => ({
   flexDirection: 'column',
   alignItems: 'center',
   justifyContent: 'center',
-  paddingBottom: '2.1rem',
   [theme.breakpoints.down('lg')]: {
-    paddingBottom: '0rem',
+    marginTop: '3rem',
+    marginBottom: '1.6rem',
     order: 3,
   },
 })
@@ -210,8 +214,10 @@ const joinButton: SxProps<Theme> = theme => ({
 const contactContainer: SxProps<Theme> = theme => ({
   display: 'flex',
   flexDirection: 'column',
+  marginTop: '3.9rem',
   [theme.breakpoints.down('lg')]: {
     alignItems: 'center',
+    marginTop: '3rem',
   },
 })
 
