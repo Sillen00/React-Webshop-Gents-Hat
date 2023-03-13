@@ -1,4 +1,4 @@
-import { CardActionArea, SxProps, Theme } from '@mui/material'
+import { Box, CardActionArea, SxProps, Theme } from '@mui/material'
 import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
 import CardMedia from '@mui/material/CardMedia'
@@ -35,9 +35,9 @@ export default function ProductCard({ product }: Props) {
           </CardContent>
         </CardActionArea>
       </Link>
-      <div onClick={handleSnackbarClick}>
+      <Box onClick={handleSnackbarClick}>
         <Snackbar />
-      </div>
+      </Box>
     </Card>
   )
 }

@@ -1,5 +1,5 @@
 import { Theme } from '@emotion/react'
-import { SxProps } from '@mui/material'
+import { Box, SxProps } from '@mui/material'
 import Button from '@mui/material/Button'
 import { SnackbarProvider, useSnackbar, VariantType } from 'notistack'
 import * as React from 'react'
@@ -13,14 +13,16 @@ function Snackbar() {
 
   return (
     <React.Fragment>
-      <Button
-        sx={cartButtonStyle}
-        variant='contained'
-        onClick={handleClickVariant('success')}
-        data-cy='product-buy-button'
-      >
-        Add to Cart
-      </Button>
+      <Box sx={buttonPosition}>
+        <Button
+          sx={cartButtonStyle}
+          variant='contained'
+          onClick={handleClickVariant('success')}
+          data-cy='product-buy-button'
+        >
+          Add to Cart
+        </Button>
+      </Box>
     </React.Fragment>
   )
 }
@@ -35,5 +37,10 @@ export default function IntegrationNotistack() {
 
 const cartButtonStyle: SxProps<Theme> = theme => ({
   width: '100%',
-  marginTop: '1rem',
+  margin: '1rem',
+})
+
+const buttonPosition: SxProps<Theme> = theme => ({
+  display: 'flex',
+  justifyContent: 'center',
 })
