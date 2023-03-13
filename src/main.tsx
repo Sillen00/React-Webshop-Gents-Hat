@@ -50,6 +50,9 @@ const theme = createTheme({
     body2: {
       fontFamily: 'Lora',
     },
+    caption: {
+      fontFamily: 'Lora',
+    },
   },
 })
 // X [ERROR] Two output files share the same path but have different contents: node_modules\.vite\deps_temp\@mui_material_Styles.js
