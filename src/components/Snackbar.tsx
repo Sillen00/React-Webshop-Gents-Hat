@@ -28,7 +28,7 @@ function Snackbar() {
 export default function IntegrationNotistack() {
   return (
     <SnackbarProvider maxSnack={3}>
-      <Snackbar />
+      <Snackbar data-cy='added-to-cart-toast' />
     </SnackbarProvider>
   )
 }
