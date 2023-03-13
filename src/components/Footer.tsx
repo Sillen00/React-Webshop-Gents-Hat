@@ -30,8 +30,8 @@ function Footer() {
     <Box sx={footerStyle}>
       <Box sx={footerContent}>
         <Box sx={socialMediaContainer}>
-          <Typography align='center' gutterBottom={true} variant='h2'>
-            Gents' Hat
+          <Typography gutterBottom={true} variant='h2'>
+            Gent's Hat
           </Typography>
           <Box sx={socialMediaIcons}>
             <Link href='#'>
@@ -131,9 +131,9 @@ const footerStyle: SxProps<Theme> = theme => ({
 const footerContent: SxProps<Theme> = theme => ({
   display: 'flex',
   justifyContent: 'space-around',
-  width: '100rem',
+  width: '120rem',
   [theme.breakpoints.down('xl')]: {
-    width: '70rem',
+    width: '90rem',
   },
   [theme.breakpoints.down('lg')]: {
     flexDirection: 'column',
@@ -143,7 +143,12 @@ const footerContent: SxProps<Theme> = theme => ({
 
 const socialMediaContainer: SxProps<Theme> = theme => ({
   marginTop: '1.6rem',
-  [theme.breakpoints.down('lg')]: {},
+  width: '25%',
+
+  [theme.breakpoints.down('lg')]: {
+    width: '100%',
+    textAlign: 'center'
+  },
 })
 
 const socialMediaIcons: SxProps<Theme> = theme => ({
@@ -161,6 +166,7 @@ const socialMediaIcons: SxProps<Theme> = theme => ({
 
 const newsletterContainer: SxProps<Theme> = theme => ({
   display: 'flex',
+  width: '33%',
   flexDirection: 'column',
   alignItems: 'center',
   justifyContent: 'center',
@@ -168,6 +174,7 @@ const newsletterContainer: SxProps<Theme> = theme => ({
     marginTop: '3rem',
     marginBottom: '1.6rem',
     order: 3,
+    width: '100%',
   },
 })
 
@@ -183,8 +190,8 @@ const inputContainer: SxProps<Theme> = theme => ({
 const inputField: SxProps<Theme> = theme => ({
   backgroundColor: '#DCDCDC',
   borderRadius: '5px',
-  width: '30rem',
   fontFamily: 'Arial',
+  width: '30rem',
   [theme.breakpoints.down('xl')]: {
     width: '20rem',
   },
@@ -214,11 +221,14 @@ const joinButton: SxProps<Theme> = theme => ({
 
 const contactContainer: SxProps<Theme> = theme => ({
   display: 'flex',
+  width: '25%',
   flexDirection: 'column',
+  alignItems: 'center',
   marginTop: '3.9rem',
   [theme.breakpoints.down('lg')]: {
     alignItems: 'center',
     marginTop: '3rem',
+    width: '100%',
   },
 })
 
