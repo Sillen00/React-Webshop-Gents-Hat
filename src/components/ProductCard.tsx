@@ -21,10 +21,10 @@ export default function ProductCard({ product }: Props) {
     <Card sx={cardStyle} data-cy='product'>
       <Link style={{ textDecoration: 'none' }} to={`/product/${product.id}`}>
         <CardActionArea>
-          <CardMedia component='img' height='150' image={product.image} alt={product.title} />
+          <CardMedia sx={imageStyle} component='img' height='150' image={product.image} alt={product.title} />
           <CardContent>
             <Typography sx={priceTagStyle} variant='body2' data-cy='product-price'>
-              $ {product.price}
+              ${product.price}
             </Typography>
             <Typography gutterBottom variant='h5' component='div' data-cy='product-title'>
               {product.title}
@@ -42,6 +42,9 @@ export default function ProductCard({ product }: Props) {
   )
 }
 
+const imageStyle: SxProps<Theme> = theme => ({
+  objectFit:"contain",
+})
 const cardStyle: SxProps<Theme> = theme => ({
   minWidth: 240,
   borderRadius: 2,

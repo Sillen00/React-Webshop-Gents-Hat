@@ -16,7 +16,7 @@ function Header() {
         <NavLink to=''>
           <img src={adminIcon} />
         </NavLink>
-        <NavLink to='/cart'>
+        <NavLink to='/checkout'>
           <Badge
             sx={badgeStylesSX}
             badgeContent={<Typography variant='body2'>{itemCount}</Typography>}

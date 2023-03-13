@@ -17,7 +17,7 @@ export const test = 22
 
 export const products: Product[] = [
   {
-    image: '../public/images/aberdeen.png',
+    image: '../images/aberdeen.png',
     title: 'Aberdeen',
     description: 'Aberdeen. description',
     price: 69,
@@ -27,7 +27,7 @@ export const products: Product[] = [
     id: 'e1',
   },
   {
-    image: '../public/images/bowler.jpeg',
+    image: '../images/bowler.jpeg',
     title: 'Bowler Hat',
     description: 'Bowler Hat, description',
     price: 129,
@@ -37,7 +37,7 @@ export const products: Product[] = [
     id: 'd2',
   },
   {
-    image: '../public/images/panama.png',
+    image: '../images/panama.png',
     title: 'Panama',
     description: 'Panama. description',
     price: 119,
@@ -47,7 +47,7 @@ export const products: Product[] = [
     id: 'f4',
   },
   {
-    image: '../public/images/outback.jpeg',
+    image: '../images/outback.jpeg',
     title: 'Outback',
     description: 'Outback, description',
     price: 139,
@@ -57,7 +57,7 @@ export const products: Product[] = [
     id: 'c1',
   },
   {
-    image: '../public/images/stockman.jpeg',
+    image: '../images/stockman.jpeg',
     title: 'Stockman',
     description: 'Stockman. description',
     price: 95,
@@ -67,7 +67,7 @@ export const products: Product[] = [
     id: 'e6',
   },
   {
-    image: '../public/images/straw.jpeg',
+    image: '../images/straw.jpeg',
     title: 'Straw Hat',
     description: 'Straw hat. description',
     price: 79,
@@ -77,7 +77,7 @@ export const products: Product[] = [
     id: 'a3',
   },
   {
-    image: '../public/images/western.jpg',
+    image: '../images/western.jpg',
     title: 'Western Hat',
     description: 'Western hat. description',
     price: 119,
@@ -87,7 +87,7 @@ export const products: Product[] = [
     id: 'a2',
   },
   {
-    image: '../public/images/tophat.jpeg',
+    image: '../images/tophat.jpeg',
     title: 'Top Hat',
     description: 'Top hat. description',
     price: 129,
@@ -97,7 +97,7 @@ export const products: Product[] = [
     id: 'a1',
   },
   {
-    image: '../public/images/trilby.jpeg',
+    image: '../images/trilby.jpeg',
     title: 'Trilby Hat',
     description: 'Trilby hat. description',
     price: 109,
@@ -107,7 +107,7 @@ export const products: Product[] = [
     id: 'a8',
   },
   {
-    image: '../public/images/woolfelt.jpg',
+    image: '../images/woolfelt.jpg',
     title: 'Woolfelt Hat',
     description: 'Woolfelt hat. description',
     price: 109,
@@ -117,7 +117,7 @@ export const products: Product[] = [
     id: 'a4',
   },
   {
-    image: '../public/images/fedora.jpeg',
+    image: '../images/fedora.jpeg',
     title: 'Fedora Hat',
     description: 'Fedora hat. description',
     price: 59,
@@ -127,7 +127,7 @@ export const products: Product[] = [
     id: 'a7',
   },
   {
-    image: '../public/images/stoutmoss.jpeg',
+    image: '../images/stoutmoss.jpeg',
     title: 'Stout Hat',
     description: 'Stout hat. description',
     price: 69,
