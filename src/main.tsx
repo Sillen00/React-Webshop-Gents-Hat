@@ -70,8 +70,8 @@ const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path='/' element={<App />}>
       <Route index element={<Home />} />
-      <Route path='/product/:id' element={<ProductDescription />} />
-      <Route path='cart' element={<Cart />} />
+      <Route path='product-description' element={<ProductDescription />} />
+      <Route path='checkout' element={<Cart />} />
       <Route path='confirm' element={<Confirm />} />
       <Route path='*' element={<h2>404 not found</h2>} />
     </Route>
