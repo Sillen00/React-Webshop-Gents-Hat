@@ -9,9 +9,11 @@ function Header() {
   const { itemCount } = useContext(CartContext)
   return (
     <AppBar sx={headerStyleSx}>
-      <Typography sx={typographyStylesSX} variant='h4'>
-        Gent's Hat
-      </Typography>
+      <NavLink style={{marginTop: "5px", color: "white", textDecoration: "none"}} to="/">
+        <Typography sx={typographyStylesSX} variant='h4'>
+          Gents Hats
+        </Typography>
+      </NavLink>
       <Box sx={iconWrapperStylesSX}>
         <NavLink to=''>
           <img src={adminIcon} />
@@ -34,6 +36,8 @@ function Header() {
 
 const typographyStylesSX: SxProps<Theme> = theme => ({
   fontSize: '40px',
+  justifyContent: 'center',
+  marginLeft: "10px",
   [theme.breakpoints.down('md')]: {
     fontSize: '30px',
   },
@@ -48,11 +52,10 @@ const headerStyleSx: SxProps<Theme> = theme => ({
   display: 'flex',
   flexDirection: 'row',
   justifyContent: 'space-between',
-  alignItems: 'baseline',
-  padding: '0 10px',
+  alignItems: 'center',
+  // padding: '0 10px',
   position: 'static',
   borderBottom: '5px solid #DAB90C',
-  // boxShadow: 'none',
   [theme.breakpoints.down('md')]: {
     padding: '0 5px',
     [theme.breakpoints.down('sm')]: {
@@ -60,10 +63,10 @@ const headerStyleSx: SxProps<Theme> = theme => ({
     },
   },
 })
-
+// Todo, länka till home när man klickar på Loggan
 const iconWrapperStylesSX: SxProps<Theme> = theme => ({
   display: 'flex',
-  padding: '10px',
+  margin: "10px",
   alignItems: 'baseline',
   gap: '10px',
   '& img': {
@@ -71,6 +74,7 @@ const iconWrapperStylesSX: SxProps<Theme> = theme => ({
   },
   [theme.breakpoints.down('md')]: {
     '& img': {
+      marginLeft: "20px",
       width: '30px',
       [theme.breakpoints.down('sm')]: {
         width: '25px',
@@ -83,7 +87,6 @@ const iconStylesSX: SxProps<Theme> = theme => ({
   fontSize: '40px',
   color: 'white',
   position: 'relative',
-
   [theme.breakpoints.down('md')]: {
     fontSize: '30px',
     top: '3px',
@@ -97,12 +100,15 @@ const iconStylesSX: SxProps<Theme> = theme => ({
 const badgeStylesSX: SxProps<Theme> = theme => ({
   '& .MuiBadge-badge': {
     color: 'white',
-    height: '22px',
-    fontSize: '18px',
+    right: '10px',
+    top: '10px',
+    fontSize: '15px',
     [theme.breakpoints.down('md')]: {
       scale: '0.8',
+      right: "5px",
       [theme.breakpoints.down('sm')]: {
         scale: '0.6',
+        right: "5px",
       },
     },
   },
