@@ -1,4 +1,4 @@
-import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline'
+import * as Icon from '@mui/icons-material'
 import { Box, Button, Paper, SxProps, Theme, Typography } from '@mui/material'
 import { CSSProperties } from 'react'
 import { products } from '../../data'
@@ -21,7 +21,7 @@ function CheckoutCard() {
               {products[0].title}
             </Typography>
             <Typography sx={mediaTopStyleSx}>
-              <DeleteOutlineIcon color='error' sx={mediaFontSizeStyleSx} />
+              <Icon.DeleteOutline color='error' sx={mediaFontSizeStyleSx} />
             </Typography>
           </Box>
           <Box sx={{ flexGrow: '4', display: 'flex', justifyContent: 'space-between' }}>

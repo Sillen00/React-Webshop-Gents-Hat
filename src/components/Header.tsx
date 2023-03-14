@@ -1,6 +1,6 @@
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart'
+import * as Icon from '@mui/icons-material'
 import { AppBar, Badge, Box, SxProps, Theme, Typography } from '@mui/material'
-import React, { useContext } from 'react'
+import { useContext } from 'react'
 import { NavLink } from 'react-router-dom'
 import adminIcon from '../../public/icons/adminIcon.png'
 import { CartContext } from '../contexts/CartContext'
@@ -24,7 +24,7 @@ function Header() {
             color='success'
             data-cy='cart-items-count-badge'
           >
-            <ShoppingCartIcon sx={iconStylesSX} data-cy='cart-link' />
+            <Icon.ShoppingCart sx={iconStylesSX} data-cy='cart-link' />
           </Badge>
         </NavLink>
       </Box>
