@@ -21,7 +21,17 @@ export default function ProductCard({ product }: Props) {
     <Card sx={cardStyle} data-cy='product'>
       <Link style={{ textDecoration: 'none' }} to={`/product/${product.id}`}>
         <CardActionArea>
-          <CardMedia component='img' height='150' image={product.image} alt={product.title} />
+          <Box sx={{ position: 'relative' }}>
+            <Box sx={hatHoverStyle} />
+            <Typography sx={viewProductStyle}>View Product</Typography>
+            <CardMedia
+              sx={imageStyle}
+              component='img'
+              height='150'
+              image={product.image}
+              alt={product.title}
+            />
+          </Box>
           <CardContent>
             <Typography sx={priceTagStyle} variant='body2' data-cy='product-price'>
               $ {product.price}
@@ -41,6 +51,34 @@ export default function ProductCard({ product }: Props) {
     </Card>
   )
 }
+
+const viewProductStyle: SxProps<Theme> = theme => ({
+  position: 'absolute',
+  top: '50%',
+  left: '50%',
+  color: 'transparent',
+  transform: 'translate(-50%, -50%)',
+  '&:hover': {
+    color: 'green',
+  },
+})
+
+const hatHoverStyle: SxProps<Theme> = theme => ({
+  position: 'absolute',
+  top: 0,
+  left: 0,
+  width: '100%',
+  height: '100%',
+  background: 'transparent',
+
+  '&:hover': {
+    background: '#d9d9d977',
+  },
+})
+
+const imageStyle: SxProps<Theme> = theme => ({
+  objectFit: 'contain',
+})
 
 const cardStyle: SxProps<Theme> = theme => ({
   minWidth: 240,
