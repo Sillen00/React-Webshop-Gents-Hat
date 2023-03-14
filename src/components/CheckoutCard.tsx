@@ -1,9 +1,9 @@
-import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline'
+import * as Icon from '@mui/icons-material'
 import { Box, Button, Paper, SxProps, Theme, Typography } from '@mui/material'
 import { CSSProperties } from 'react'
 import { products } from '../../data'
 
-function CartCard() {
+function CheckoutCard() {
   return (
     <Paper elevation={3} sx={{ borderRadius: '0.8rem' }}>
       <Box data-cy='cart-item' sx={productCardStyleSx}>
@@ -21,7 +21,7 @@ function CartCard() {
               {products[0].title}
             </Typography>
             <Typography sx={mediaTopStyleSx}>
-              <DeleteOutlineIcon color='error' sx={mediaFontSizeStyleSx} />
+              <Icon.DeleteOutline color='error' sx={mediaFontSizeStyleSx} />
             </Typography>
           </Box>
           <Box sx={{ flexGrow: '4', display: 'flex', justifyContent: 'space-between' }}>
@@ -71,17 +71,13 @@ const productCardStyleSx: SxProps<Theme> = theme => ({
   maxHeight: '100px',
   [theme.breakpoints.up('md')]: { maxHeight: '150px' },
 })
-const imageBoxStyleSx: SxProps<Theme> = theme => ({
-  width: '100px',
-  [theme.breakpoints.up('md')]: { width: '150px' },
-})
 const mediaTopStyleSx: SxProps<Theme> = theme => ({
   position: 'relative',
   top: '0',
   [theme.breakpoints.up('md')]: { top: '50px' },
 })
 const mediaFontSizeStyleSx: SxProps<Theme> = theme => ({
-  fontSize: '1.5rem',
+  fontSize: '1.4rem',
   [theme.breakpoints.up('md')]: { fontSize: '2rem' },
 })
 const cartCardRightBoxStyleSx: SxProps<Theme> = theme => ({
@@ -127,10 +123,17 @@ const productTotalStyleSx: SxProps<Theme> = theme => ({
   fontWeight: '800',
   [theme.breakpoints.up('md')]: { fontSize: '1.2rem' },
 })
+const imageBoxStyleSx: SxProps<Theme> = theme => ({
+  width: '100px',
+  mx:"10px",
+  [theme.breakpoints.up('md')]: { width: '150px' },
+})
 
 const cardImgStyle: CSSProperties = {
   height: '100%',
+  width:"100%",
+  objectFit:"contain",
   borderRadius: '0.8rem',
 }
 
-export default CartCard
+export default CheckoutCard

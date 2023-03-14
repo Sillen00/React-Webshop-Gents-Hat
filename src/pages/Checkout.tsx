@@ -1,10 +1,10 @@
 import KeyboardDoubleArrowDownIcon from '@mui/icons-material/KeyboardDoubleArrowDown'
 import { Box, Button, Container, Stack, Typography, useMediaQuery } from '@mui/material'
-import CartCard from '../components/CartCard'
-import CartCardSubheaders from '../components/CartCardSubheaders'
-import CartTotalPrice from '../components/CartTotalPrice'
+import CheckoutCard from '../components/CheckoutCard'
+import CheckoutCardSubheaders from '../components/CheckoutCardSubheaders'
+import CheckoutTotalPrice from '../components/CheckoutTotalPrice'
 
-function Cart() {
+function Checkout() {
   const isMediumScreen = useMediaQuery('(min-width:900px)')
   return (
     <Container>
@@ -15,16 +15,16 @@ function Cart() {
         </Button>
       </Box>
 
-      {isMediumScreen && <CartCardSubheaders />}
+      {isMediumScreen && <CheckoutCardSubheaders />}
 
       <Stack spacing={{ xs: 1, sm: 2, md: 4 }}>
-        <CartCard />
-        <CartCard />
+        <CheckoutCard />
+        <CheckoutCard />
       </Stack>
 
-      <CartTotalPrice />
+      <CheckoutTotalPrice />
     </Container>
   )
 }
 
-export default Cart
+export default Checkout

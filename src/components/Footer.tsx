@@ -1,4 +1,4 @@
-import { Facebook, Instagram, Twitter } from '@mui/icons-material'
+import * as Icon from '@mui/icons-material'
 import {
   Alert,
   Box,
@@ -35,13 +35,13 @@ function Footer() {
           </Typography>
           <Box sx={socialMediaIcons}>
             <Link href='#'>
-              <Facebook fontSize='large' />
+              <Icon.Facebook fontSize='large' />
             </Link>
             <Link href='#'>
-              <Instagram fontSize='large' />
+              <Icon.Instagram fontSize='large' />
             </Link>
             <Link href='#'>
-              <Twitter fontSize='large' />
+              <Icon.Twitter fontSize='large' />
             </Link>
           </Box>
         </Box>

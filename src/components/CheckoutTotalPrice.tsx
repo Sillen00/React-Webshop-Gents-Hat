@@ -1,11 +1,16 @@
 import { Paper, Typography } from '@mui/material'
 import { Box, SxProps, Theme } from '@mui/system'
 
-function CartTotalPrice() {
+function CheckoutTotalPrice() {
   return (
     <Box sx={totalPriceBoxStyleSx}>
       <Paper elevation={3} sx={{ borderRadius: '0.8rem' }}>
-        <Typography data-cy="total-price" variant='body2' color='common.black' sx={totalPriceTextStyleSx}>
+        <Typography
+          data-cy='total-price'
+          variant='body2'
+          color='common.black'
+          sx={totalPriceTextStyleSx}
+        >
           Total: $ 60
         </Typography>
       </Paper>
@@ -29,4 +34,4 @@ const totalPriceBoxStyleSx: SxProps<Theme> = theme => ({
   // [theme.breakpoints.up('md')]: {},
 })
 
-export default CartTotalPrice
+export default CheckoutTotalPrice

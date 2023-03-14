@@ -10,7 +10,7 @@ import {
 import App from './App'
 import { CartProvider } from './contexts/CartContext'
 import './index.css'
-import Cart from './pages/Cart'
+import Checkout from './pages/Checkout'
 import Confirm from './pages/Confirm'
 import Home from './pages/Home'
 import ProductDescription from './pages/ProductDescription'
@@ -38,7 +38,7 @@ const theme = createTheme({
     },
     secondary: {
       main: '#DCDCDC',
-      dark: "#505050"
+      dark: '#505050',
     },
   },
   typography: {
@@ -70,8 +70,8 @@ const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path='/' element={<App />}>
       <Route index element={<Home />} />
-      <Route path='product-description' element={<ProductDescription />} />
-      <Route path='checkout' element={<Cart />} />
+      <Route path='/product/:id' element={<ProductDescription />} />
+      <Route path='checkout' element={<Checkout />} />
       <Route path='confirm' element={<Confirm />} />
       <Route path='*' element={<h2>404 not found</h2>} />
     </Route>
