@@ -1,9 +1,12 @@
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart'
 import { AppBar, Badge, Box, SxProps, Theme, Typography } from '@mui/material'
+import React, { useContext } from 'react'
 import { NavLink } from 'react-router-dom'
 import adminIcon from '../../public/icons/adminIcon.png'
+import { CartContext } from '../contexts/CartContext'
 
 function Header() {
+  const { itemCount } = useContext(CartContext)
   return (
     <AppBar sx={headerStyleSx}>
       <NavLink style={{marginTop: "5px", color: "white", textDecoration: "none"}} to="/">
@@ -16,15 +19,20 @@ function Header() {
           <img src={adminIcon} />
         </NavLink>
         <NavLink to='/checkout'>
-          <Badge sx={badgeStylesSX} badgeContent={2} color='success'>
-            <ShoppingCartIcon sx={iconStylesSX} />
+          <Badge
+            sx={badgeStylesSX}
+            badgeContent={<Typography variant='body2'>{itemCount}</Typography>}
+            showZero
+            color='success'
+            data-cy='cart-items-count-badge'
+          >
+            <ShoppingCartIcon sx={iconStylesSX} data-cy='cart-link' />
           </Badge>
         </NavLink>
       </Box>
     </AppBar>
   )
 }
-
 
 const typographyStylesSX: SxProps<Theme> = theme => ({
   fontSize: '40px',
@@ -79,8 +87,6 @@ const iconStylesSX: SxProps<Theme> = theme => ({
   fontSize: '40px',
   color: 'white',
   position: 'relative',
-  // margin: '10px',
-
   [theme.breakpoints.down('md')]: {
     fontSize: '30px',
     top: '3px',

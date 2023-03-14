@@ -1,5 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&family=Lora&display=swap');
 
+:root {
+  /* Lägg till header-variabeln i Header-filen */
+  --header-height: 5.75rem;
+  --footer-height-xl: 22rem;
+  --footer-height-lg: 43rem;
+  --footer-height-md: 43rem;
+  --footer-height-sm: 52rem;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -9,4 +18,31 @@
 body {
   /* font-family: 'Lora', sans-serif; */
   background-color: #f8f8f8;
+}
+
+main {
+  min-height: calc(100vh - var(--header-height) - var(--footer-height-xl));
+}
+
+@media screen and (max-width: 1200px) {
+  main {
+    min-height: calc(100vh - var(--header-height) - var(--footer-height-lg));
+  }
+}
+
+@media screen and (max-width: 900px) {
+  main {
+    min-height: calc(100vh - var(--header-height) - var(--footer-height-md));
+  }
+}
+
+@media screen and (max-width: 600px) {
+  main {
+    min-height: calc(100vh - var(--header-height) - var(--footer-height-sm));
+  }
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
 }

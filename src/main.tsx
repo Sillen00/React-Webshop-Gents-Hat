@@ -8,6 +8,7 @@ import {
   RouterProvider,
 } from 'react-router-dom'
 import App from './App'
+import { CartProvider } from './contexts/CartContext'
 import './index.css'
 import Cart from './pages/Cart'
 import Confirm from './pages/Confirm'
@@ -37,6 +38,7 @@ const theme = createTheme({
     },
     secondary: {
       main: '#DCDCDC',
+      dark: "#505050"
     },
   },
   typography: {
@@ -44,13 +46,20 @@ const theme = createTheme({
     h1: {
       fontWeight: 900,
     },
+    h2: {
+      fontWeight: 700,
+    },
     h3: {
       fontWeight: 600,
     },
-      h4: {
-        fontWeight: 600,
+
+    h4: {
+      fontWeight: 600,
     },
     body2: {
+      fontFamily: 'Lora',
+    },
+    caption: {
       fontFamily: 'Lora',
     },
   },
@@ -71,7 +80,9 @@ const router = createBrowserRouter(
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
-      <RouterProvider router={router} />
+      <CartProvider>
+        <RouterProvider router={router} />
+      </CartProvider>
     </ThemeProvider>
   </React.StrictMode>
 )
