@@ -1,6 +1,6 @@
 import * as Icon from '@mui/icons-material'
 import { Box, Button, SxProps, Theme, Typography } from '@mui/material'
-import { useParams } from 'react-router-dom'
+import { NavLink, useParams } from 'react-router-dom'
 import { Product, products } from '../../data'
 import Snackbar from '../components/Snackbar'
 
@@ -14,10 +14,12 @@ function ProductDescription() {
 
   return (
     <Box sx={mainBoxStyle}>
-      <Typography sx={flexAlignStyle} variant='h6'>
-        <Icon.ArrowBack />
-        Back To Products
-      </Typography>
+      <NavLink to='/'>
+        <Typography sx={flexAlignStyle} variant='h6'>
+          <Icon.ArrowBack />
+          Back To Products
+        </Typography>
+      </NavLink>
       <Box sx={imgWrapperStyle}>
         <img width={'150px'} src={product.image} alt={product.title} />
       </Box>
@@ -54,17 +56,22 @@ function ProductDescription() {
           </>
         )}
       </Typography>
+
+      {/* Bryt ut till komponent */}
       <Box sx={flexAlignStyle}>
         <Typography sx={quantityBoxStyle}>1</Typography>
         <Box sx={{ flexGrow: 1 }}>
           <Snackbar />
         </Box>
       </Box>
-      <Box sx={{ flexGrow: 1 }}>
-        <Button variant='contained' sx={checkOutBtnStyle}>
-          Checkout
-        </Button>
-      </Box>
+      <NavLink to='/checkout'>
+        <Box sx={{ flexGrow: 1 }}>
+          <Button variant='contained' sx={checkOutBtnStyle}>
+            Checkout
+          </Button>
+        </Box>
+      </NavLink>
+      {/* Bryt ut till komponent */}
     </Box>
   )
 }
