@@ -20,7 +20,6 @@ export default function ProductCard({ product }: Props) {
   return (
     <Card sx={cardStyle} data-cy='product'>
       <Link style={{ textDecoration: 'none' }} to={`/product/${product.id}`}>
-
         <StyledCardActionArea>
           <Box sx={{ position: 'relative' }}>
             <Box sx={hatHoverStyle}>View Product</Box>
@@ -54,7 +53,7 @@ export default function ProductCard({ product }: Props) {
 }
 
 const imageStyle: SxProps<Theme> = theme => ({
-  objectFit:"contain",
+  objectFit: 'contain',
 })
 const cardStyle: SxProps<Theme> = theme => ({
   minWidth: 240,
@@ -87,10 +86,6 @@ const hatHoverStyle: SxProps<Theme> = theme => ({
     background: '#d9d9d977',
     color: 'black',
   },
-})
-
-const imageStyle: SxProps<Theme> = theme => ({
-  objectFit: 'contain',
 })
 
 const priceTagStyle: SxProps<Theme> = theme => ({
