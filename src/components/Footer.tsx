@@ -92,7 +92,7 @@ function Footer() {
             <br />
           </Typography>
           <Typography sx={{ color: '#AAA' }} variant='body2'>
-            The Gents' Hat Company
+            The Gent's Hat Company
           </Typography>
           <Typography sx={{ color: '#AAA' }} variant='body2'>
             720 Ninth Avenue
