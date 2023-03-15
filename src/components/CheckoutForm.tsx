@@ -1,6 +1,10 @@
-import { Button, TextField } from '@mui/material'
+import { Button, FormHelperTextProps, TextField } from '@mui/material'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
+
+interface CustomFormHelperTextProps extends Partial<FormHelperTextProps<'p', {}>> {
+  'data-cy'?: string
+}
 
 const checkoutFormSchema = Yup.object().shape({
   fullName: Yup.string()
@@ -11,6 +15,10 @@ const checkoutFormSchema = Yup.object().shape({
     ),
   email: Yup.string()
     .email("Your e-mail seems to be incorrectly formatted. Please make sure it's correct.")
+    .matches(
+      /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+      "Your e-mail seems to be incorrectly formatted. Please make sure it's correct."
+    )
     .required('Please tell us your email.')
     .min(
       7,
@@ -40,19 +48,19 @@ const checkoutFormSchema = Yup.object().shape({
       15,
       'The address you have given us it too long. Please give us an address of maximum 60 characters.'
     ),
-  postalCode: Yup.string()
-    .required('Please tell us your postal code.')
+  zipcode: Yup.string()
+    .required('Please tell us your zip code.')
     .matches(
       /^[0-9]*$/,
-      'Your postal code must be numeric. Please give us a correctly formatted postal code.'
+      'Your zip code must be numeric. Please give us a correctly formatted zip code.'
     )
     .min(
       5,
-      'The postal code should be 5 characters long. Please make sure you have given us a correct postal code.'
+      'The zip code should be 5 characters long. Please make sure you have given us a correct zip code.'
     )
     .max(
       5,
-      'The postal code should be 5 characters long. Please make sure you have given us a correct postal code.'
+      'The zip code should be 5 characters long. Please make sure you have given us a correct zip code.'
     ),
   city: Yup.string().required('Please tell us in which city you reside.'),
 })
@@ -66,18 +74,16 @@ export default function CheckoutForm() {
       email: '',
       phoneNumber: '',
       address: '',
-      postalCode: '',
+      zipcode: '',
       city: '',
     },
     validationSchema: checkoutFormSchema,
-    onSubmit: values => {
-      alert('Yay')
-    },
+    onSubmit: values => {},
   })
 
   return (
     <div>
-      <form onSubmit={formik.handleSubmit}>
+      <form onSubmit={formik.handleSubmit} data-cy='customer-form'>
         <TextField
           fullWidth
           id='fullName'
@@ -87,6 +93,8 @@ export default function CheckoutForm() {
           error={formik.touched.fullName && Boolean(formik.errors.fullName)}
           helperText={formik.touched.fullName && formik.errors.fullName}
           margin='normal'
+          inputProps={{ 'data-cy': 'customer-name' }}
+          FormHelperTextProps={{ 'data-cy': 'customer-name-error' } as CustomFormHelperTextProps}
         />
         <TextField
           fullWidth
@@ -97,6 +105,8 @@ export default function CheckoutForm() {
           error={formik.touched.email && Boolean(formik.errors.email)}
           helperText={formik.touched.email && formik.errors.email}
           margin='normal'
+          inputProps={{ 'data-cy': 'customer-email' }}
+          FormHelperTextProps={{ 'data-cy': 'customer-email-error' } as CustomFormHelperTextProps}
         />
         <TextField
           fullWidth
@@ -108,6 +118,8 @@ export default function CheckoutForm() {
           error={formik.touched.phoneNumber && Boolean(formik.errors.phoneNumber)}
           helperText={formik.touched.phoneNumber && formik.errors.phoneNumber}
           margin='normal'
+          inputProps={{ 'data-cy': 'customer-phone' }}
+          FormHelperTextProps={{ 'data-cy': 'customer-phone-error' } as CustomFormHelperTextProps}
         />
         <TextField
           fullWidth
@@ -118,16 +130,20 @@ export default function CheckoutForm() {
           error={formik.touched.address && Boolean(formik.errors.address)}
           helperText={formik.touched.address && formik.errors.address}
           margin='normal'
+          inputProps={{ 'data-cy': 'customer-address' }}
+          FormHelperTextProps={{ 'data-cy': 'customer-address-error' } as CustomFormHelperTextProps}
         />
         <TextField
           fullWidth
-          id='postalCode'
-          label='Postal code'
-          value={formik.values.postalCode}
+          id='zipcode'
+          label='Zip code'
+          value={formik.values.zipcode}
           onChange={formik.handleChange}
-          error={formik.touched.postalCode && Boolean(formik.errors.postalCode)}
-          helperText={formik.touched.postalCode && formik.errors.postalCode}
+          error={formik.touched.zipcode && Boolean(formik.errors.zipcode)}
+          helperText={formik.touched.zipcode && formik.errors.zipcode}
           margin='normal'
+          inputProps={{ 'data-cy': 'customer-zipcode' }}
+          FormHelperTextProps={{ 'data-cy': 'customer-zipcode-error' } as CustomFormHelperTextProps}
         />
         <TextField
           fullWidth
@@ -138,6 +154,8 @@ export default function CheckoutForm() {
           error={formik.touched.city && Boolean(formik.errors.city)}
           helperText={formik.touched.city && formik.errors.city}
           margin='normal'
+          inputProps={{ 'data-cy': 'customer-city' }}
+          FormHelperTextProps={{ 'data-cy': 'customer-city-error' } as CustomFormHelperTextProps}
         />
         <Button color='primary' variant='contained' fullWidth type='submit'>
           Place order
