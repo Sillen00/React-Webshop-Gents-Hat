@@ -1,4 +1,4 @@
-import { Box, CardActionArea, SxProps, Theme } from '@mui/material'
+import { Box, CardActionArea, styled, SxProps, Theme } from '@mui/material'
 import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
 import CardMedia from '@mui/material/CardMedia'
@@ -20,10 +20,9 @@ export default function ProductCard({ product }: Props) {
   return (
     <Card sx={cardStyle} data-cy='product'>
       <Link style={{ textDecoration: 'none' }} to={`/product/${product.id}`}>
-        <CardActionArea>
+        <StyledCardActionArea>
           <Box sx={{ position: 'relative' }}>
-            <Box sx={hatHoverStyle} />
-            <Typography sx={viewProductStyle}>View Product</Typography>
+            <Box sx={hatHoverStyle}>View Product</Box>
             <CardMedia
               sx={imageStyle}
               component='img'
@@ -43,7 +42,7 @@ export default function ProductCard({ product }: Props) {
               {product.description}
             </Typography>
           </CardContent>
-        </CardActionArea>
+        </StyledCardActionArea>
       </Link>
       <Box onClick={handleSnackbarClick}>
         <Snackbar />
@@ -52,16 +51,19 @@ export default function ProductCard({ product }: Props) {
   )
 }
 
-const viewProductStyle: SxProps<Theme> = theme => ({
-  position: 'absolute',
-  top: '50%',
-  left: '50%',
-  color: 'transparent',
-  transform: 'translate(-50%, -50%)',
+const cardStyle: SxProps<Theme> = theme => ({
+  minWidth: 240,
+  borderRadius: 2,
   '&:hover': {
-    color: 'green',
+    backgroundColor: 'transparent',
   },
 })
+
+const StyledCardActionArea = styled(CardActionArea)(({ theme }) => ({
+  '& .MuiCardActionArea-focusHighlight': {
+    backgroundColor: 'transparent',
+  },
+}))
 
 const hatHoverStyle: SxProps<Theme> = theme => ({
   position: 'absolute',
@@ -70,19 +72,20 @@ const hatHoverStyle: SxProps<Theme> = theme => ({
   width: '100%',
   height: '100%',
   background: 'transparent',
+  color: 'transparent',
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  fontFamily: theme.typography.body2.fontFamily,
 
   '&:hover': {
     background: '#d9d9d977',
+    color: 'black',
   },
 })
 
 const imageStyle: SxProps<Theme> = theme => ({
   objectFit: 'contain',
-})
-
-const cardStyle: SxProps<Theme> = theme => ({
-  minWidth: 240,
-  borderRadius: 2,
 })
 
 const priceTagStyle: SxProps<Theme> = theme => ({
