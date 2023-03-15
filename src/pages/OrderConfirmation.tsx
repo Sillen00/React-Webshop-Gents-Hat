@@ -4,39 +4,37 @@ import { Container } from '@mui/system'
 
 function OrderConfirmation() {
   return (
-   <Container  >
-
-    <Paper
-      elevation={3}
-      sx={{
-        // mx: '2rem',
-        mt: '4rem',
-        // py: '2rem',
-        // px: '1rem',
-        borderRadius: '1rem',
-        
-      }}
-    >
-      <Box sx={confirmStyleBoxSX}>
-        <Typography variant='h6' sx={typographyStylesSX}>
-          Your order has been recived!
-        </Typography>
-        <Icon.CheckCircleOutline sx={iconStylesSX} color='success' />
-        <Typography variant='body2' sx={typographyStylesSX}>
-          Thank you for your purchase
-        </Typography>
-        <Typography variant='body2' sx={typographyStylesSX}>
-          Your order number is
-        </Typography>
-        <Typography sx={typographyStylesSX}>
-          <b>#{Math.floor(Math.random() * 100000) + 100000}</b>
-        </Typography>
-        <Button sx={buttonStyleSX} href='/' variant='contained'>
-          Continue Shooping
-        </Button>
-      </Box>
-    </Paper>
-   </Container>
+    <Container>
+      <Paper
+        elevation={3}
+        sx={{
+          // mx: '2rem',
+          mt: '4rem',
+          // py: '2rem',
+          // px: '1rem',
+          borderRadius: '1rem',
+        }}
+      >
+        <Box sx={confirmStyleBoxSX}>
+          <Typography variant='h6' sx={typographyStylesSX}>
+            Your order has been recived
+          </Typography>
+          <Icon.CheckCircleOutline sx={iconStylesSX} color='success' />
+          <Typography variant='body2' sx={typographyStylesSX}>
+            Thank you for your purchase
+          </Typography>
+          <Typography variant='body2' sx={typographyStylesSX}>
+            Your order number is
+          </Typography>
+          <Typography sx={typographyStylesSX}>
+            <b>#{Math.floor(Math.random() * 100000) + 100000}</b>
+          </Typography>
+          <Button sx={buttonStyleSX} href='/' variant='contained'>
+            Continue Shopping
+          </Button>
+        </Box>
+      </Paper>
+    </Container>
   )
 }
 
@@ -50,11 +48,16 @@ const confirmStyleBoxSX: SxProps<Theme> = theme => ({
   gap: '1rem',
   borderRadius: '1rem',
   backgroundColor: 'white',
-  [theme.breakpoints.up('md')]: {
+  [theme.breakpoints.up('sm')]: {
     py: '4rem',
-
     h6: {
-      fontSize: '1.9rem',
+      fontSize: '1.5rem',
+    },
+  },
+  [theme.breakpoints.up('md')]: {
+    py: '6rem',
+    h6: {
+      fontSize: '2rem',
     },
   },
 })
@@ -62,14 +65,11 @@ const confirmStyleBoxSX: SxProps<Theme> = theme => ({
 const typographyStylesSX: SxProps<Theme> = theme => ({
   textAlign: 'center',
   fontWeight: '600',
-  [theme.breakpoints.between('sm', 'md')]: {
-    fontSize: '1.3rem',
-    variant: 'h1',
-    [theme.breakpoints.between('md', 'lg')]: {
-      fontSize: '3rem',
-      color: 'red',
-      // Fix breakpoints!!!
-    },
+  [theme.breakpoints.up('sm')]: {
+    fontSize: '1.2rem',
+  },
+  [theme.breakpoints.up('md')]: {
+    fontSize: '1.5rem',
   },
 })
 
@@ -87,6 +87,9 @@ const buttonStyleSX: SxProps<Theme> = theme => ({
   fontWeight: '600',
   [theme.breakpoints.between('sm', 'md')]: {
     scale: '1.2',
+  },
+  [theme.breakpoints.up('md')]: {
+    scale: '1.5',
   },
 })
 
