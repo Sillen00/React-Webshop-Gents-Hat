@@ -71,7 +71,7 @@ export default function CheckoutForm() {
     },
     validationSchema: checkoutFormSchema,
     onSubmit: values => {
-      alert(JSON.stringify(values, null, 2))
+      alert('Yay')
     },
   })
 
@@ -92,7 +92,6 @@ export default function CheckoutForm() {
           fullWidth
           id='email'
           label='E-mail'
-          type='email'
           value={formik.values.email}
           onChange={formik.handleChange}
           error={formik.touched.email && Boolean(formik.errors.email)}
