@@ -42,7 +42,6 @@ export default function IntegrationNotistack() {
 
 const cartButtonStyle: SxProps<Theme> = theme => ({
   width: '100%',
-  margin: '1rem',
 })
 
 const buttonPosition: SxProps<Theme> = theme => ({
