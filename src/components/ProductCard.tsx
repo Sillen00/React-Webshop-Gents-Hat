@@ -12,10 +12,10 @@ interface Props {
 }
 
 export default function ProductCard({ product }: Props) {
-  const handleSnackbarClick = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-    event.preventDefault()
-    event.stopPropagation()
-  }
+  // const handleSnackbarClick = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+  //   event.preventDefault()
+  //   event.stopPropagation()
+  // }
 
   return (
     <Card sx={cardStyle} data-cy='product'>
@@ -45,7 +45,7 @@ export default function ProductCard({ product }: Props) {
           </CardContent>
         </StyledCardActionArea>
       </Link>
-      <Box onClick={handleSnackbarClick}>
+      <Box>
         <Snackbar />
       </Box>
     </Card>

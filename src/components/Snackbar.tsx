@@ -1,7 +1,7 @@
 import { Theme } from '@emotion/react'
 import { Box, SxProps } from '@mui/material'
 import Button from '@mui/material/Button'
-import { SnackbarProvider, useSnackbar, VariantType } from 'notistack'
+import { SnackbarProvider, useSnackbar } from 'notistack'
 import * as React from 'react'
 import { CartContext } from '../contexts/CartContext'
 
@@ -9,11 +9,11 @@ function Snackbar() {
   const { incrementItemCount } = React.useContext(CartContext)
   const { enqueueSnackbar } = useSnackbar()
 
-  const handleClickVariant = (variant: VariantType) => () => {
+  const handleClickVariant = () => () => {
     enqueueSnackbar(`Added your product to the cart!`, {
       variant: 'success',
     })
-    incrementItemCount() // increment cart count
+    incrementItemCount ()  // increment cart count
   }
 
   return (
@@ -22,7 +22,7 @@ function Snackbar() {
         <Button
           sx={cartButtonStyle}
           variant='contained'
-          onClick={handleClickVariant('success')}
+          onClick={handleClickVariant()}
           data-cy='product-buy-button'
         >
           Add to Cart
