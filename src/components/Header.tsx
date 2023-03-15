@@ -9,9 +9,9 @@ function Header() {
   const { itemCount } = useContext(CartContext)
   return (
     <AppBar sx={headerStyleSx}>
-      <NavLink style={{marginTop: "5px", color: "white", textDecoration: "none"}} to="/">
+      <NavLink style={{ marginTop: '5px', color: 'white', textDecoration: 'none' }} to='/'>
         <Typography sx={typographyStylesSX} variant='h4'>
-          Gents Hats
+          Gent's Hats
         </Typography>
       </NavLink>
       <Box sx={iconWrapperStylesSX}>
@@ -37,7 +37,7 @@ function Header() {
 const typographyStylesSX: SxProps<Theme> = theme => ({
   fontSize: '40px',
   justifyContent: 'center',
-  marginLeft: "10px",
+  marginLeft: '10px',
   [theme.breakpoints.down('md')]: {
     fontSize: '30px',
   },
@@ -66,7 +66,7 @@ const headerStyleSx: SxProps<Theme> = theme => ({
 // Todo, länka till home när man klickar på Loggan
 const iconWrapperStylesSX: SxProps<Theme> = theme => ({
   display: 'flex',
-  margin: "10px",
+  margin: '10px',
   alignItems: 'baseline',
   gap: '10px',
   '& img': {
@@ -74,7 +74,7 @@ const iconWrapperStylesSX: SxProps<Theme> = theme => ({
   },
   [theme.breakpoints.down('md')]: {
     '& img': {
-      marginLeft: "20px",
+      marginLeft: '20px',
       width: '30px',
       [theme.breakpoints.down('sm')]: {
         width: '25px',
@@ -105,10 +105,10 @@ const badgeStylesSX: SxProps<Theme> = theme => ({
     fontSize: '15px',
     [theme.breakpoints.down('md')]: {
       scale: '0.8',
-      right: "5px",
+      right: '5px',
       [theme.breakpoints.down('sm')]: {
         scale: '0.6',
-        right: "5px",
+        right: '5px',
       },
     },
   },

@@ -79,7 +79,7 @@ function Footer() {
             apply
           </Typography>
           <Typography sx={{ paddingTop: '1rem' }} variant='body2'>
-            Copyright 2023. Design by Gent’s Hat{' '}
+            Copyright 2023. Design by Gent's Hat{' '}
           </Typography>
         </Box>
         <Box sx={contactContainer}>
@@ -92,7 +92,7 @@ function Footer() {
             <br />
           </Typography>
           <Typography sx={{ color: '#AAA' }} variant='body2'>
-            The Gents' Hat Company
+            The Gent's Hat Company
           </Typography>
           <Typography sx={{ color: '#AAA' }} variant='body2'>
             720 Ninth Avenue
@@ -147,7 +147,7 @@ const socialMediaContainer: SxProps<Theme> = theme => ({
 
   [theme.breakpoints.down('lg')]: {
     width: '100%',
-    textAlign: 'center'
+    textAlign: 'center',
   },
 })
 
