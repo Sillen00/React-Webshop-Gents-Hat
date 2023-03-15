@@ -20,6 +20,7 @@ export default function ProductCard({ product }: Props) {
   return (
     <Card sx={cardStyle} data-cy='product'>
       <Link style={{ textDecoration: 'none' }} to={`/product/${product.id}`}>
+
         <StyledCardActionArea>
           <Box sx={{ position: 'relative' }}>
             <Box sx={hatHoverStyle}>View Product</Box>
@@ -31,9 +32,10 @@ export default function ProductCard({ product }: Props) {
               alt={product.title}
             />
           </Box>
+
           <CardContent>
             <Typography sx={priceTagStyle} variant='body2' data-cy='product-price'>
-              $ {product.price}
+              ${product.price}
             </Typography>
             <Typography gutterBottom variant='h5' component='div' data-cy='product-title'>
               {product.title}
@@ -51,6 +53,9 @@ export default function ProductCard({ product }: Props) {
   )
 }
 
+const imageStyle: SxProps<Theme> = theme => ({
+  objectFit:"contain",
+})
 const cardStyle: SxProps<Theme> = theme => ({
   minWidth: 240,
   borderRadius: 2,
