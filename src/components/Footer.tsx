@@ -102,7 +102,7 @@ function Footer() {
             apply
           </Typography>
           <Typography sx={{ paddingTop: '1rem' }} variant='body2'>
-            Copyright 2023. Design by Gent’s Hat{' '}
+            Copyright 2023. Design by Gent's Hat{' '}
           </Typography>
         </Box>
         <Box sx={contactContainer}>
