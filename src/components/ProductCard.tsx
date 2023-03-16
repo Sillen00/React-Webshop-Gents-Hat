@@ -40,12 +40,12 @@ export default function ProductCard({ product }: Props) {
               {product.title}
             </Typography>
             <Typography variant='body2' data-cy='product-description'>
-              {product.description}
+              {product.shortDescription}
             </Typography>
           </CardContent>
         </StyledCardActionArea>
       </Link>
-      <Box onClick={handleSnackbarClick}>
+      <Box sx={{ margin: '1rem' }} onClick={handleSnackbarClick}>
         <Snackbar />
       </Box>
     </Card>
