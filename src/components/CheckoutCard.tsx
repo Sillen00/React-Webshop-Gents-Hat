@@ -66,7 +66,7 @@ function CheckoutCard() {
   )
 }
 
-const productCardStyleSx: SxProps<Theme> = theme => ({
+export const productCardStyleSx: SxProps<Theme> = theme => ({
   display: 'flex',
   maxHeight: '100px',
   [theme.breakpoints.up('md')]: { maxHeight: '150px' },
@@ -76,11 +76,11 @@ const mediaTopStyleSx: SxProps<Theme> = theme => ({
   top: '0',
   [theme.breakpoints.up('md')]: { top: '50px' },
 })
-const mediaFontSizeStyleSx: SxProps<Theme> = theme => ({
+export const mediaFontSizeStyleSx: SxProps<Theme> = theme => ({
   fontSize: '1.4rem',
   [theme.breakpoints.up('md')]: { fontSize: '2rem' },
 })
-const cartCardRightBoxStyleSx: SxProps<Theme> = theme => ({
+export const cartCardRightBoxStyleSx: SxProps<Theme> = theme => ({
   width: '100%',
   display: 'flex',
   flexDirection: 'column',
@@ -88,19 +88,19 @@ const cartCardRightBoxStyleSx: SxProps<Theme> = theme => ({
   pr: 2,
   pl: 1,
 })
-const descriptionTextStyleSx: SxProps<Theme> = theme => ({
+export const descriptionTextStyleSx: SxProps<Theme> = theme => ({
   fontWeight: '700',
   fontSize: '0.8rem',
   [theme.breakpoints.up('md')]: { fontSize: '1rem' },
 })
-const quantityBoxStyleSx: SxProps<Theme> = theme => ({
+export const quantityBoxStyleSx: SxProps<Theme> = theme => ({
   display: 'flex',
   gap: '5px',
   position: 'relative',
   top: '28px',
   [theme.breakpoints.up('md')]: { top: '10px', right: '245px', gap: '10px' },
 })
-const quantityStyleSx: SxProps<Theme> = theme => ({
+export const quantityStyleSx: SxProps<Theme> = theme => ({
   fontWeight: '800',
   fontSize: '1.2rem',
   [theme.breakpoints.up('md')]: { fontSize: '1.4rem' },
@@ -123,13 +123,13 @@ const productTotalStyleSx: SxProps<Theme> = theme => ({
   fontWeight: '800',
   [theme.breakpoints.up('md')]: { fontSize: '1.2rem' },
 })
-const imageBoxStyleSx: SxProps<Theme> = theme => ({
+export const imageBoxStyleSx: SxProps<Theme> = theme => ({
   width: '100px',
   mx:"10px",
   [theme.breakpoints.up('md')]: { width: '150px' },
 })
 
-const cardImgStyle: CSSProperties = {
+export const cardImgStyle: CSSProperties = {
   height: '100%',
   width:"100%",
   objectFit:"contain",
