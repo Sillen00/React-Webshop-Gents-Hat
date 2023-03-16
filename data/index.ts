@@ -2,8 +2,10 @@ export interface Product {
   id: string
   image: string
   title: string
-  description: string
+  shortDescription: string
+  longDescription: string
   price: number
+  details: { id: number; detail: string }[]
   size: string
   color: string
   inStock: boolean
@@ -19,8 +21,16 @@ export const products: Product[] = [
   {
     image: '../images/aberdeen.png',
     title: 'Aberdeen',
-    description: 'Aberdeen. description',
+    shortDescription: 'Aberdeen. description',
+    longDescription:
+      'suspendisse ultrices gravida dictum fusce ut placerat orci nulla pellentesque dignissim enim sit amet venenatis urna cursus eget nunc scelerisque viverra mauris in aliquam sem fringilla ut morbi tincidunt augue interdum velit euismod in pellentesque massa placerat duis ultricies lacus sed turpis tincidunt id aliquet risus feugiat in ante metus dictum at tempor commodo ullamcorper a lacus vestibulum sed arcu non odio euismod lacinia at quis risus sed vulputate odio ut enim blandit volutpat maecenas volutpat blandit aliquam etiam erat velit scelerisque in dictum non consectetur a erat nam at lectus urna duis convallis convallis tellus id interdum velit laoreet',
     price: 69,
+    details: [
+      { id: 1, detail: 'Lorem ipsum' },
+      { id: 2, detail: 'Lorem ipsum' },
+      { id: 3, detail: 'Lorem ipsum' },
+      { id: 4, detail: 'Lorem ipsum' },
+    ],
     size: 'M',
     color: 'Black',
     inStock: true,
@@ -29,8 +39,14 @@ export const products: Product[] = [
   {
     image: '../images/bowler.jpeg',
     title: 'Bowler Hat',
-    description: 'Bowler Hat, description',
+    shortDescription: 'Bowler Hat, description',
+    longDescription:
+      'suspendisse ultrices gravida dictum fusce ut placerat orci nulla pellentesque dignissim enim sit amet venenatis urna cursus eget nunc scelerisque viverra mauris in aliquam sem fringilla ut morbi tincidunt augue interdum velit euismod in pellentesque massa placerat duis ultricies lacus sed turpis tincidunt id aliquet risus feugiat in ante metus dictum at tempor commodo ullamcorper a lacus vestibulum sed arcu non odio euismod lacinia at quis risus sed vulputate odio ut enim blandit volutpat maecenas volutpat blandit aliquam etiam erat velit scelerisque in dictum non consectetur a erat nam at lectus urna duis convallis convallis tellus id interdum velit laoreet',
     price: 129,
+    details: [
+      { id: 1, detail: 'Lorem ipsum' },
+      { id: 2, detail: 'Lorem ipsum' },
+    ],
     size: 'M',
     color: 'Black',
     inStock: true,
@@ -39,8 +55,17 @@ export const products: Product[] = [
   {
     image: '../images/panama.png',
     title: 'Panama',
-    description: 'Panama. description',
+    shortDescription: 'Panama. description',
+    longDescription:
+      'suspendisse ultrices gravida dictum fusce ut placerat orci nulla pellentesque dignissim enim sit amet venenatis urna cursus eget nunc scelerisque viverra mauris in aliquam sem fringilla ut morbi tincidunt augue interdum velit euismod in pellentesque massa placerat duis ultricies lacus sed turpis tincidunt id aliquet risus feugiat in ante metus dictum at tempor commodo ullamcorper a lacus vestibulum sed arcu non odio euismod lacinia at quis risus sed vulputate odio ut enim blandit volutpat maecenas volutpat blandit aliquam etiam erat velit scelerisque in dictum non consectetur a erat nam at lectus urna duis convallis convallis tellus id interdum velit laoreet',
     price: 119,
+    details: [
+      { id: 1, detail: 'Lorem ipsum' },
+      { id: 2, detail: 'Lorem ipsum' },
+      { id: 3, detail: 'Lorem ipsum' },
+      { id: 4, detail: 'Lorem ipsum' },
+      { id: 5, detail: 'Lorem ipsum' },
+    ],
     size: 'M',
     color: 'Black',
     inStock: false,
@@ -49,8 +74,15 @@ export const products: Product[] = [
   {
     image: '../images/outback.jpeg',
     title: 'Outback',
-    description: 'Outback, description',
+    shortDescription: 'Outback, description',
+    longDescription:
+      'suspendisse ultrices gravida dictum fusce ut placerat orci nulla pellentesque dignissim enim sit amet venenatis urna cursus eget nunc scelerisque viverra mauris in aliquam sem fringilla ut morbi tincidunt augue interdum velit euismod in pellentesque massa placerat duis ultricies lacus sed turpis tincidunt id aliquet risus feugiat in ante metus dictum at tempor commodo ullamcorper a lacus vestibulum sed arcu non odio euismod lacinia at quis risus sed vulputate odio ut enim blandit volutpat maecenas volutpat blandit aliquam etiam erat velit scelerisque in dictum non consectetur a erat nam at lectus urna duis convallis convallis tellus id interdum velit laoreet',
     price: 139,
+    details: [
+      { id: 1, detail: 'Lorem ipsum' },
+      { id: 2, detail: 'Lorem ipsum' },
+      { id: 3, detail: 'Lorem ipsum' },
+    ],
     size: 'M',
     color: 'Black',
     inStock: true,
@@ -59,8 +91,14 @@ export const products: Product[] = [
   {
     image: '../images/stockman.jpeg',
     title: 'Stockman',
-    description: 'Stockman. description',
+    shortDescription: 'Stockman. description',
+    longDescription:
+      'suspendisse ultrices gravida dictum fusce ut placerat orci nulla pellentesque dignissim enim sit amet venenatis urna cursus eget nunc scelerisque viverra mauris in aliquam sem fringilla ut morbi tincidunt augue interdum velit euismod in pellentesque massa placerat duis ultricies lacus sed turpis tincidunt id aliquet risus feugiat in ante metus dictum at tempor commodo ullamcorper a lacus vestibulum sed arcu non odio euismod lacinia at quis risus sed vulputate odio ut enim blandit volutpat maecenas volutpat blandit aliquam etiam erat velit scelerisque in dictum non consectetur a erat nam at lectus urna duis convallis convallis tellus id interdum velit laoreet',
     price: 95,
+    details: [
+      { id: 1, detail: 'Lorem ipsum' },
+      { id: 2, detail: 'Lorem ipsum' },
+    ],
     size: 'M',
     color: 'Black',
     inStock: true,
@@ -69,8 +107,15 @@ export const products: Product[] = [
   {
     image: '../images/straw.jpeg',
     title: 'Straw Hat',
-    description: 'Straw hat. description',
+    shortDescription: 'Straw hat. description',
+    longDescription:
+      'suspendisse ultrices gravida dictum fusce ut placerat orci nulla pellentesque dignissim enim sit amet venenatis urna cursus eget nunc scelerisque viverra mauris in aliquam sem fringilla ut morbi tincidunt augue interdum velit euismod in pellentesque massa placerat duis ultricies lacus sed turpis tincidunt id aliquet risus feugiat in ante metus dictum at tempor commodo ullamcorper a lacus vestibulum sed arcu non odio euismod lacinia at quis risus sed vulputate odio ut enim blandit volutpat maecenas volutpat blandit aliquam etiam erat velit scelerisque in dictum non consectetur a erat nam at lectus urna duis convallis convallis tellus id interdum velit laoreet',
     price: 79,
+    details: [
+      { id: 1, detail: 'Lorem ipsum' },
+      { id: 2, detail: 'Lorem ipsum' },
+      { id: 3, detail: 'Lorem ipsum' },
+    ],
     size: 'M',
     color: 'Black',
     inStock: true,
@@ -79,8 +124,14 @@ export const products: Product[] = [
   {
     image: '../images/western.jpg',
     title: 'Western Hat',
-    description: 'Western hat. description',
+    shortDescription: 'Western hat. description',
+    longDescription:
+      'suspendisse ultrices gravida dictum fusce ut placerat orci nulla pellentesque dignissim enim sit amet venenatis urna cursus eget nunc scelerisque viverra mauris in aliquam sem fringilla ut morbi tincidunt augue interdum velit euismod in pellentesque massa placerat duis ultricies lacus sed turpis tincidunt id aliquet risus feugiat in ante metus dictum at tempor commodo ullamcorper a lacus vestibulum sed arcu non odio euismod lacinia at quis risus sed vulputate odio ut enim blandit volutpat maecenas volutpat blandit aliquam etiam erat velit scelerisque in dictum non consectetur a erat nam at lectus urna duis convallis convallis tellus id interdum velit laoreet',
     price: 119,
+    details: [
+      { id: 1, detail: 'Lorem ipsum' },
+      { id: 2, detail: 'Lorem ipsum' },
+    ],
     size: 'M',
     color: 'Black',
     inStock: true,
@@ -89,8 +140,16 @@ export const products: Product[] = [
   {
     image: '../images/tophat.jpeg',
     title: 'Top Hat',
-    description: 'Top hat. description',
+    shortDescription: 'Top hat. description',
+    longDescription:
+      'suspendisse ultrices gravida dictum fusce ut placerat orci nulla pellentesque dignissim enim sit amet venenatis urna cursus eget nunc scelerisque viverra mauris in aliquam sem fringilla ut morbi tincidunt augue interdum velit euismod in pellentesque massa placerat duis ultricies lacus sed turpis tincidunt id aliquet risus feugiat in ante metus dictum at tempor commodo ullamcorper a lacus vestibulum sed arcu non odio euismod lacinia at quis risus sed vulputate odio ut enim blandit volutpat maecenas volutpat blandit aliquam etiam erat velit scelerisque in dictum non consectetur a erat nam at lectus urna duis convallis convallis tellus id interdum velit laoreet',
     price: 129,
+    details: [
+      { id: 1, detail: 'Lorem ipsum' },
+      { id: 2, detail: 'Lorem ipsum' },
+      { id: 3, detail: 'Lorem ipsum' },
+      { id: 4, detail: 'Lorem ipsum' },
+    ],
     size: 'M',
     color: 'Black',
     inStock: false,
@@ -99,8 +158,17 @@ export const products: Product[] = [
   {
     image: '../images/trilby.jpeg',
     title: 'Trilby Hat',
-    description: 'Trilby hat. description',
+    shortDescription: 'Trilby hat. description',
+    longDescription:
+      'suspendisse ultrices gravida dictum fusce ut placerat orci nulla pellentesque dignissim enim sit amet venenatis urna cursus eget nunc scelerisque viverra mauris in aliquam sem fringilla ut morbi tincidunt augue interdum velit euismod in pellentesque massa placerat duis ultricies lacus sed turpis tincidunt id aliquet risus feugiat in ante metus dictum at tempor commodo ullamcorper a lacus vestibulum sed arcu non odio euismod lacinia at quis risus sed vulputate odio ut enim blandit volutpat maecenas volutpat blandit aliquam etiam erat velit scelerisque in dictum non consectetur a erat nam at lectus urna duis convallis convallis tellus id interdum velit laoreet',
     price: 109,
+    details: [
+      { id: 1, detail: 'Lorem ipsum' },
+      { id: 2, detail: 'Lorem ipsum' },
+      { id: 3, detail: 'Lorem ipsum' },
+      { id: 4, detail: 'Lorem ipsum' },
+      { id: 5, detail: 'Lorem ipsum' },
+    ],
     size: 'M',
     color: 'Black',
     inStock: true,
@@ -109,8 +177,15 @@ export const products: Product[] = [
   {
     image: '../images/woolfelt.jpg',
     title: 'Woolfelt Hat',
-    description: 'Woolfelt hat. description',
+    shortDescription: 'Woolfelt hat. description',
+    longDescription:
+      'suspendisse ultrices gravida dictum fusce ut placerat orci nulla pellentesque dignissim enim sit amet venenatis urna cursus eget nunc scelerisque viverra mauris in aliquam sem fringilla ut morbi tincidunt augue interdum velit euismod in pellentesque massa placerat duis ultricies lacus sed turpis tincidunt id aliquet risus feugiat in ante metus dictum at tempor commodo ullamcorper a lacus vestibulum sed arcu non odio euismod lacinia at quis risus sed vulputate odio ut enim blandit volutpat maecenas volutpat blandit aliquam etiam erat velit scelerisque in dictum non consectetur a erat nam at lectus urna duis convallis convallis tellus id interdum velit laoreet',
     price: 109,
+    details: [
+      { id: 1, detail: 'Lorem ipsum' },
+      { id: 2, detail: 'Lorem ipsum' },
+      { id: 3, detail: 'Lorem ipsum' },
+    ],
     size: 'M',
     color: 'Black',
     inStock: true,
@@ -119,8 +194,15 @@ export const products: Product[] = [
   {
     image: '../images/fedora.jpeg',
     title: 'Fedora Hat',
-    description: 'Fedora hat. description',
+    shortDescription: 'Fedora hat. description',
+    longDescription:
+      'suspendisse ultrices gravida dictum fusce ut placerat orci nulla pellentesque dignissim enim sit amet venenatis urna cursus eget nunc scelerisque viverra mauris in aliquam sem fringilla ut morbi tincidunt augue interdum velit euismod in pellentesque massa placerat duis ultricies lacus sed turpis tincidunt id aliquet risus feugiat in ante metus dictum at tempor commodo ullamcorper a lacus vestibulum sed arcu non odio euismod lacinia at quis risus sed vulputate odio ut enim blandit volutpat maecenas volutpat blandit aliquam etiam erat velit scelerisque in dictum non consectetur a erat nam at lectus urna duis convallis convallis tellus id interdum velit laoreet',
     price: 59,
+    details: [
+      { id: 1, detail: 'Lorem ipsum' },
+      { id: 2, detail: 'Lorem ipsum' },
+      { id: 3, detail: 'Lorem ipsum' },
+    ],
     size: 'M',
     color: 'Black',
     inStock: true,
@@ -129,8 +211,16 @@ export const products: Product[] = [
   {
     image: '../images/stoutmoss.jpeg',
     title: 'Stout Hat',
-    description: 'Stout hat. description',
+    shortDescription: 'Stout hat. description',
+    longDescription:
+      'suspendisse ultrices gravida dictum fusce ut placerat orci nulla pellentesque dignissim enim sit amet venenatis urna cursus eget nunc scelerisque viverra mauris in aliquam sem fringilla ut morbi tincidunt augue interdum velit euismod in pellentesque massa placerat duis ultricies lacus sed turpis tincidunt id aliquet risus feugiat in ante metus dictum at tempor commodo ullamcorper a lacus vestibulum sed arcu non odio euismod lacinia at quis risus sed vulputate odio ut enim blandit volutpat maecenas volutpat blandit aliquam etiam erat velit scelerisque in dictum non consectetur a erat nam at lectus urna duis convallis convallis tellus id interdum velit laoreet',
     price: 69,
+    details: [
+      { id: 1, detail: 'Lorem ipsum' },
+      { id: 2, detail: 'Lorem ipsum' },
+      { id: 3, detail: 'Lorem ipsum' },
+      { id: 4, detail: 'Lorem ipsum' },
+    ],
     size: 'M',
     color: 'Black',
     inStock: true,
