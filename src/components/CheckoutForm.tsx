@@ -12,9 +12,9 @@ import { SxProps } from '@mui/system'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
 
-interface CustomFormHelperTextProps extends Partial<FormHelperTextProps<'p', {}>> {
-  'data-cy'?: string
-}
+/* ----------------------
+        YUP VALIDATION
+  ---------------------- */
 
 const checkoutFormSchema = Yup.object().shape({
   fullName: Yup.string()
@@ -75,6 +75,10 @@ const checkoutFormSchema = Yup.object().shape({
   city: Yup.string().required('Please tell us in which city you reside.'),
 })
 
+/* ----------------------
+         FORMIK
+---------------------- */
+
 type checkoutFormValues = Yup.InferType<typeof checkoutFormSchema>
 
 export default function CheckoutForm() {
@@ -90,6 +94,14 @@ export default function CheckoutForm() {
     validationSchema: checkoutFormSchema,
     onSubmit: values => {},
   })
+
+  interface CustomFormHelperTextProps extends Partial<FormHelperTextProps<'p', {}>> {
+    'data-cy'?: string
+  }
+
+  /* ----------------------
+       FORM COMPONENT
+  ---------------------- */
 
   return (
     <Paper elevation={3}>
@@ -207,6 +219,10 @@ export default function CheckoutForm() {
     </Paper>
   )
 }
+
+/* ----------------------
+        CSS STYLING
+  ---------------------- */
 
 const fontStyle: SxProps<Theme> = theme => ({
   [theme.breakpoints.down('md')]: {
