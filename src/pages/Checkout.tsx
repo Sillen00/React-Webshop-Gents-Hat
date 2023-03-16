@@ -26,7 +26,9 @@ function Checkout() {
 
         <CheckoutTotalPrice />
       </Container>
-
+      
+      {/* Lägg till en if-sats — visa bara formuläret om kundvagnen har produkter */}
+       
       <Container>
         <CheckoutForm />
       </Container>
