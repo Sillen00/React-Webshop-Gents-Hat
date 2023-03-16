@@ -1,5 +1,5 @@
 import * as Icon from '@mui/icons-material'
-import { Box, Button, Container, SxProps, Theme, Typography } from '@mui/material'
+import { Box, Button, Container, Paper, SxProps, Theme, Typography } from '@mui/material'
 import { NavLink, useParams } from 'react-router-dom'
 import { Product, products } from '../../data'
 import Snackbar from '../components/Snackbar'
@@ -14,7 +14,7 @@ function ProductDescription() {
 
   return (
     <Container>
-      <Box sx={mainBoxStyle}>
+      <Paper elevation={3} sx={mainBoxStyle}>
         <NavLink to='/'>
           <Typography sx={flexAlignStyle} variant='h6'>
             <Icon.ArrowBack />
@@ -81,7 +81,7 @@ function ProductDescription() {
             {/* Bryt ut till komponent */}
           </Box>
         </Box>
-      </Box>
+      </Paper>
     </Container>
   )
 }
