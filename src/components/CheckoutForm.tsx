@@ -6,10 +6,11 @@ import {
   Paper,
   TextField,
   Theme,
-  Typography,
+  Typography
 } from '@mui/material'
 import { SxProps } from '@mui/system'
 import { useFormik } from 'formik'
+import { useNavigate } from 'react-router-dom'
 import * as Yup from 'yup'
 
 /* ----------------------
@@ -82,6 +83,8 @@ const checkoutFormSchema = Yup.object().shape({
 type checkoutFormValues = Yup.InferType<typeof checkoutFormSchema>
 
 export default function CheckoutForm() {
+  const navigate = useNavigate();
+
   const formik = useFormik<checkoutFormValues>({
     initialValues: {
       fullName: '',
@@ -92,7 +95,9 @@ export default function CheckoutForm() {
       city: '',
     },
     validationSchema: checkoutFormSchema,
-    onSubmit: values => {},
+    onSubmit: values => {
+      navigate("/confirmation")
+    },
   })
 
   interface CustomFormHelperTextProps extends Partial<FormHelperTextProps<'p', {}>> {
