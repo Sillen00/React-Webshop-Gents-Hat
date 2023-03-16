@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState } from 'react'
+import { createContext, PropsWithChildren, useContext, useState } from 'react'
 import { CartItem, Product } from '../../data'
 
 // Bestämmer vad som ska skickas över kontexten
@@ -12,11 +12,15 @@ interface CartContextValue {
 const CartContext = createContext<CartContextValue>(null as any)
 
 // Skapar en smidigt liten hook för att konsumera innehållet i kontexten
-export const useCart = () => useContext(CartContext);
+export const useCart = () => useContext(CartContext)
+
+
+
+
 
 // Skapar en behållare för state och funktionalitet bundet till state
 // Samt lägger till kontexten i appen
-export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+export function CartProvider(props: PropsWithChildren) {
   const [cartItems, setCartItems] = useState<CartItem[]>([])
 
   const addProductToCart = (product: Product) => {
@@ -33,7 +37,7 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   return (
     <CartContext.Provider value={{ cartItems, addProductToCart, removeProductFromCart }}>
-      {children}
+      {props.children}
     </CartContext.Provider>
   )
 }

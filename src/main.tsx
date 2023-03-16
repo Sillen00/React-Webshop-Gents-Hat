@@ -74,7 +74,7 @@ const router = createBrowserRouter(
       <Route path='/product/:id' element={<ProductDescription />} />
       <Route path='checkout' element={<Checkout />} />
       <Route path='confirm' element={<Confirm />} />
-      <Route path='*' element={<h2>404 not found</h2>} />
+      <Route path='*' element={<div>404 not found</div>} />
     </Route>
   )
 )
