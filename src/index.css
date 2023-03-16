@@ -1,8 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&family=Lora&display=swap');
 
 :root {
-  /* Lägg till header-variabeln i Header-filen */
-  --header-height: 5.75rem;
+  --header-height-xl: 5.75rem;
+  --header-height-md: 5rem;
+  --header-height-sm: 4rem;
   --footer-height-xl: 22rem;
   --footer-height-lg: 43rem;
   --footer-height-md: 43rem;
@@ -16,29 +17,30 @@
 }
 
 body {
-  /* font-family: 'Lora', sans-serif; */
   background-color: #f8f8f8;
 }
 
 main {
-  min-height: calc(100vh - var(--header-height) - var(--footer-height-xl));
+  min-height: calc(100vh - var(--header-height-xl) - var(--footer-height-xl) - 2rem - 5rem);
+  margin-top: 2rem;
+  margin-bottom: 5rem;
 }
 
 @media screen and (max-width: 1200px) {
   main {
-    min-height: calc(100vh - var(--header-height) - var(--footer-height-lg));
+    min-height: calc(100vh - var(--header-height-xl) - var(--footer-height-lg) - 2rem - 5rem);
   }
 }
 
 @media screen and (max-width: 900px) {
   main {
-    min-height: calc(100vh - var(--header-height) - var(--footer-height-md));
+    min-height: calc(100vh - var(--header-height-md) - var(--footer-height-md) - 2rem - 5rem);
   }
 }
 
 @media screen and (max-width: 600px) {
   main {
-    min-height: calc(100vh - var(--header-height) - var(--footer-height-sm));
+    min-height: calc(100vh - var(--header-height-sm) - var(--footer-height-sm) - 2rem - 5rem);
   }
 }
 
