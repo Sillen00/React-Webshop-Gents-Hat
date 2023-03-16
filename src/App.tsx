@@ -7,7 +7,7 @@ function App() {
     <>
       <Header />
 
-      <main>
+      <main style={{marginTop: "5rem"}}>
         <Outlet />
       </main>
       <footer>

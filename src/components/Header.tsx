@@ -54,7 +54,7 @@ const headerStyleSx: SxProps<Theme> = theme => ({
   justifyContent: 'space-between',
   alignItems: 'center',
   // padding: '0 10px',
-  position: 'static',
+  position: 'fixed',
   borderBottom: '5px solid #DAB90C',
   [theme.breakpoints.down('md')]: {
     padding: '0 5px',
