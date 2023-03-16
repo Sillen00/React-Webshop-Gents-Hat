@@ -1,8 +1,8 @@
 import * as Icon from '@mui/icons-material'
-import { Box, Button, Container, Paper, SxProps, Theme, Typography } from '@mui/material'
+import { Box, Container, Paper, SxProps, Theme, Typography } from '@mui/material'
 import { NavLink, useParams } from 'react-router-dom'
 import { Product, products } from '../../data'
-import Snackbar from '../components/Snackbar'
+import ProductBtnSection from '../components/ProductBtnSection'
 
 function ProductDescription() {
   const { id } = useParams<{ id: string }>()
@@ -63,22 +63,7 @@ function ProductDescription() {
                 </>
               )}
             </Typography>
-
-            {/* Bryt ut till komponent */}
-            <Box sx={flexAlignStyle}>
-              <Typography sx={quantityBoxStyle}>1</Typography>
-              <Box sx={{ flexGrow: 1 }}>
-                <Snackbar />
-              </Box>
-            </Box>
-            <NavLink to='/checkout'>
-              <Box sx={{ flexGrow: 1 }}>
-                <Button variant='contained' sx={checkOutBtnStyle}>
-                  Checkout
-                </Button>
-              </Box>
-            </NavLink>
-            {/* Bryt ut till komponent */}
+            <ProductBtnSection />
           </Box>
         </Box>
       </Paper>
@@ -130,25 +115,6 @@ const flexAlignStyle: SxProps<Theme> = theme => ({
   display: 'flex',
   alignItems: 'center',
   margin: '1rem 0',
-})
-
-const quantityBoxStyle: SxProps<Theme> = theme => ({
-  border: '1px solid black',
-  padding: '0.3rem 1rem',
-  marginRight: '1rem',
-  display: 'flex',
-  justifyContent: 'center',
-  alignItems: 'center',
-})
-
-const checkOutBtnStyle: SxProps<Theme> = theme => ({
-  background: 'black',
-  color: 'white',
-  width: '100%',
-  '&:hover': {
-    background: theme.palette.secondary.main,
-    color: 'black',
-  },
 })
 
 export default ProductDescription
