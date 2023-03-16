@@ -8,10 +8,7 @@ function OrderConfirmation() {
       <Paper
         elevation={3}
         sx={{
-          // mx: '2rem',
           mt: '4rem',
-          // py: '2rem',
-          // px: '1rem',
           borderRadius: '1rem',
         }}
       >
