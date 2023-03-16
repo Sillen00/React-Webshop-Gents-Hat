@@ -3,9 +3,12 @@ import { Box, Button, Container, Stack, Typography, useMediaQuery } from '@mui/m
 import CheckoutCard from '../components/CheckoutCard'
 import CheckoutCardSubheaders from '../components/CheckoutCardSubheaders'
 import CheckoutTotalPrice from '../components/CheckoutTotalPrice'
+import { useCart } from '../contexts/CartContext'
 
 function Checkout() {
   const isMediumScreen = useMediaQuery('(min-width:900px)')
+  const { cartItems } = useCart()
+
   return (
     <Container>
       <Box sx={{ display: 'flex', justifyContent: 'space-between', py: 1 }}>
@@ -18,8 +21,10 @@ function Checkout() {
       {isMediumScreen && <CheckoutCardSubheaders />}
 
       <Stack spacing={{ xs: 1, sm: 2, md: 4 }}>
-        <CheckoutCard />
-        <CheckoutCard />
+        {cartItems.map((cartItem) => (
+          <CheckoutCard cartItem={cartItem} key={cartItem.id} />
+        ))}
+        {/* <CheckoutCard /> */}
       </Stack>
 
       <CheckoutTotalPrice />

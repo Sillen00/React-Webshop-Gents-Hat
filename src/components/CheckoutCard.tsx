@@ -1,17 +1,21 @@
 import * as Icon from '@mui/icons-material'
 import { Box, Button, Paper, SxProps, Theme, Typography } from '@mui/material'
-import { CSSProperties, useContext } from 'react'
-import { products } from '../../data'
+import { CSSProperties } from 'react'
+import { Product, CartItem } from '../../data'
 import { useCart } from '../contexts/CartContext'
 
-function CheckoutCard() {
-  const { cartItems, addProductToCart, removeProductFromCart } = useCart();
+interface Props {
+  cartItem: Product
+}
+
+function CheckoutCard({ cartItem }: Props) {
+  const { cartItems, addProductToCart, removeProductFromCart } = useCart()
 
   return (
     <Paper elevation={3} sx={{ borderRadius: '0.8rem' }}>
       <Box data-cy='cart-item' sx={productCardStyleSx}>
         <Box sx={imageBoxStyleSx}>
-          <img style={cardImgStyle} src={products[0].image} alt={products[0].description} />
+          <img style={cardImgStyle} src={cartItem.image} alt={cartItem.description} />
         </Box>
         <Box sx={cartCardRightBoxStyleSx}>
           <Box
@@ -21,7 +25,7 @@ function CheckoutCard() {
             }}
           >
             <Typography variant='h3' sx={mediaFontSizeStyleSx}>
-              {products[0].title}
+              {cartItem.title}
             </Typography>
             <Typography sx={mediaTopStyleSx}>
               <Icon.DeleteOutline color='error' sx={mediaFontSizeStyleSx} />
@@ -39,7 +43,7 @@ function CheckoutCard() {
                 color='secondary'
                 sx={changeQuantityBtnStyleSx}
                 onClick={() => {
-                  removeProductFromCart(products[0])
+                  removeProductFromCart(cartItem)
                 }}
               >
                 <Typography variant='body2' sx={{ fontWeight: '800' }}>
@@ -55,7 +59,7 @@ function CheckoutCard() {
                 color='secondary'
                 sx={changeQuantityBtnStyleSx}
                 onClick={() => {
-                  addProductToCart(products[0])
+                  addProductToCart(cartItem)
                 }}
               >
                 <Typography variant='body2' sx={{ fontWeight: '800' }}>
