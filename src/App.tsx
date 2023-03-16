@@ -1,11 +1,13 @@
-import { Outlet } from "react-router-dom";
-import Footer from "./components/Footer";
-import Header from "./components/Header";
+import { Snackbar } from '@mui/material'
+import { Outlet } from 'react-router-dom'
+import Footer from './components/Footer'
+import Header from './components/Header'
 
 function App() {
   return (
     <>
       <Header />
+      <Snackbar data-cy='added-to-cart-toast' />
 
       <main>
         <Outlet />
@@ -14,7 +16,7 @@ function App() {
         <Footer />
       </footer>
     </>
-  );
+  )
 }
 
-export default App;
+export default App

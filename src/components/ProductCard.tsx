@@ -5,7 +5,7 @@ import CardMedia from '@mui/material/CardMedia'
 import Typography from '@mui/material/Typography'
 import { Link } from 'react-router-dom'
 import { Product } from '../../data'
-import Snackbar from '../components/Snackbar'
+import AddToCartButton from './Snackbar'
 
 interface Props {
   product: Product
@@ -46,7 +46,7 @@ export default function ProductCard({ product }: Props) {
         </StyledCardActionArea>
       </Link>
       <Box>
-        <Snackbar />
+        <AddToCartButton product={product} />
       </Box>
     </Card>
   )

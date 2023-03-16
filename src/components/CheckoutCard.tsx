@@ -1,9 +1,12 @@
 import * as Icon from '@mui/icons-material'
 import { Box, Button, Paper, SxProps, Theme, Typography } from '@mui/material'
-import { CSSProperties } from 'react'
+import { CSSProperties, useContext } from 'react'
 import { products } from '../../data'
+import { useCart } from '../contexts/CartContext'
 
 function CheckoutCard() {
+  const { cartItems, addProductToCart, removeProductFromCart } = useCart();
+
   return (
     <Paper elevation={3} sx={{ borderRadius: '0.8rem' }}>
       <Box data-cy='cart-item' sx={productCardStyleSx}>
@@ -35,19 +38,25 @@ function CheckoutCard() {
                 variant='contained'
                 color='secondary'
                 sx={changeQuantityBtnStyleSx}
+                onClick={() => {
+                  removeProductFromCart(products[0])
+                }}
               >
                 <Typography variant='body2' sx={{ fontWeight: '800' }}>
                   -
                 </Typography>
               </Button>
               <Typography data-cy='product-quantity' variant='body2' sx={quantityStyleSx}>
-                2
+                {cartItems.length}
               </Typography>
               <Button
                 data-cy='increase-quantity-button'
                 variant='contained'
                 color='secondary'
                 sx={changeQuantityBtnStyleSx}
+                onClick={() => {
+                  addProductToCart(products[0])
+                }}
               >
                 <Typography variant='body2' sx={{ fontWeight: '800' }}>
                   +
@@ -125,14 +134,14 @@ const productTotalStyleSx: SxProps<Theme> = theme => ({
 })
 const imageBoxStyleSx: SxProps<Theme> = theme => ({
   width: '100px',
-  mx:"10px",
+  mx: '10px',
   [theme.breakpoints.up('md')]: { width: '150px' },
 })
 
 const cardImgStyle: CSSProperties = {
   height: '100%',
-  width:"100%",
-  objectFit:"contain",
+  width: '100%',
+  objectFit: 'contain',
   borderRadius: '0.8rem',
 }
 
