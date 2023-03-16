@@ -145,6 +145,10 @@ const checkOutBtnStyle: SxProps<Theme> = theme => ({
   background: 'black',
   color: 'white',
   width: '100%',
+  '&:hover': {
+    background: theme.palette.secondary.main,
+    color: 'black',
+  },
 })
 
 export default ProductDescription

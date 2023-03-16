@@ -42,6 +42,10 @@ export default function IntegrationNotistack() {
 
 const cartButtonStyle: SxProps<Theme> = theme => ({
   width: '100%',
+  '&:hover': {
+    background: 'green',
+    color: 'white',
+  },
 })
 
 const buttonPosition: SxProps<Theme> = theme => ({
