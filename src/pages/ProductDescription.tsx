@@ -1,5 +1,5 @@
 import * as Icon from '@mui/icons-material'
-import { Box, Button, SxProps, Theme, Typography } from '@mui/material'
+import { Box, Button, Container, SxProps, Theme, Typography } from '@mui/material'
 import { NavLink, useParams } from 'react-router-dom'
 import { Product, products } from '../../data'
 import Snackbar from '../components/Snackbar'
@@ -13,7 +13,7 @@ function ProductDescription() {
   }
 
   return (
-    <Box sx={centerMainBoxStyle}>
+    <Container>
       <Box sx={mainBoxStyle}>
         <NavLink to='/'>
           <Typography sx={flexAlignStyle} variant='h6'>
@@ -82,21 +82,14 @@ function ProductDescription() {
           </Box>
         </Box>
       </Box>
-    </Box>
+    </Container>
   )
 }
 
-const centerMainBoxStyle: SxProps<Theme> = theme => ({
-  display: 'flex',
-  justifyContent: 'center',
-  alignItems: 'center',
-})
-
 const mainBoxStyle: SxProps<Theme> = theme => ({
-  background: 'lightgrey',
+  background: 'white',
   margin: '0 1rem',
   padding: '1.5rem',
-  border: '2px solid black',
   maxWidth: 'lg',
 })
 
