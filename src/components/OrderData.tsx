@@ -1,4 +1,6 @@
 import { Box, Typography } from '@mui/material'
+import { useTheme } from '@mui/material/styles';
+import useMediaQuery from '@mui/material/useMediaQuery';
 import { products } from '../../data'
 import {
   cardImgStyle,
@@ -12,6 +14,8 @@ import {
 } from './CheckoutCard'
 
 export default function OrderData() {
+    const theme = useTheme();
+    const isUpMd = useMediaQuery(theme.breakpoints.up('md'));
     return (
 
 
