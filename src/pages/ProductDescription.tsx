@@ -13,80 +13,124 @@ function ProductDescription() {
   }
 
   return (
-    <Box sx={mainBoxStyle}>
-      <NavLink to='/'>
-        <Typography sx={flexAlignStyle} variant='h6'>
-          <Icon.ArrowBack />
-          Back To Products
-        </Typography>
-      </NavLink>
-      <Box sx={imgWrapperStyle}>
-        <img width={'150px'} src={product.image} alt={product.title} />
-      </Box>
-      <Typography variant='h4'>{product.title}</Typography>
-      <Typography variant='h6'>${product.price}</Typography>
-      <Typography variant='h6' sx={{ fontSize: '1rem' }}>
-        Product Description
-      </Typography>
-      <Typography variant='body2'>{product.longDescription}</Typography>
-      <Typography variant='h6' sx={{ fontSize: '1rem' }}>
-        Product Details
-      </Typography>
-      <Box>
-        <ul>
-          {product.details.map(({ detail, id }) => (
-            <li style={{ listStyleType: 'none' }} key={id}>
-              <Typography component='span' sx={{ '::before': { content: "'- '" } }} variant='body2'>
-                {detail}
-              </Typography>
-            </li>
-          ))}
-        </ul>
-      </Box>
-      <Typography sx={flexAlignStyle} variant='body1'>
-        {product.inStock ? (
-          <>
-            <Icon.CheckCircleOutline sx={{ color: 'green' }} />
-            In stock
-          </>
-        ) : (
-          <>
-            <Icon.HighlightOff sx={{ color: 'red' }} />
-            Out of stock
-          </>
-        )}
-      </Typography>
+    <Box sx={centerMainBoxStyle}>
+      <Box sx={mainBoxStyle}>
+        <NavLink to='/'>
+          <Typography sx={flexAlignStyle} variant='h6'>
+            <Icon.ArrowBack />
+            Back To Products
+          </Typography>
+        </NavLink>
+        <Box sx={contentStyle}>
+          <Box sx={imgWrapperStyle}>
+            <img src={product.image} alt={product.title} />
+          </Box>
+          <Box sx={textAndBtnWrapperStyle}>
+            <Typography variant='h4'>{product.title}</Typography>
+            <Typography variant='h6'>${product.price}</Typography>
+            <Typography variant='h6' sx={{ fontSize: '1rem' }}>
+              Product Description
+            </Typography>
+            <Typography variant='body2'>{product.longDescription}</Typography>
+            <Typography variant='h6' sx={{ fontSize: '1rem' }}>
+              Product Details
+            </Typography>
+            <Box>
+              <ul>
+                {product.details.map(({ detail, id }) => (
+                  <li style={{ listStyleType: 'none' }} key={id}>
+                    <Typography
+                      component='span'
+                      sx={{ '::before': { content: "'- '" } }}
+                      variant='body2'
+                    >
+                      {detail}
+                    </Typography>
+                  </li>
+                ))}
+              </ul>
+            </Box>
+            <Typography sx={flexAlignStyle} variant='body1'>
+              {product.inStock ? (
+                <>
+                  <Icon.CheckCircleOutline sx={{ color: 'green' }} />
+                  In stock
+                </>
+              ) : (
+                <>
+                  <Icon.HighlightOff sx={{ color: 'red' }} />
+                  Out of stock
+                </>
+              )}
+            </Typography>
 
-      {/* Bryt ut till komponent */}
-      <Box sx={flexAlignStyle}>
-        <Typography sx={quantityBoxStyle}>1</Typography>
-        <Box sx={{ flexGrow: 1 }}>
-          <Snackbar />
+            {/* Bryt ut till komponent */}
+            <Box sx={flexAlignStyle}>
+              <Typography sx={quantityBoxStyle}>1</Typography>
+              <Box sx={{ flexGrow: 1 }}>
+                <Snackbar />
+              </Box>
+            </Box>
+            <NavLink to='/checkout'>
+              <Box sx={{ flexGrow: 1 }}>
+                <Button variant='contained' sx={checkOutBtnStyle}>
+                  Checkout
+                </Button>
+              </Box>
+            </NavLink>
+            {/* Bryt ut till komponent */}
+          </Box>
         </Box>
       </Box>
-      <NavLink to='/checkout'>
-        <Box sx={{ flexGrow: 1 }}>
-          <Button variant='contained' sx={checkOutBtnStyle}>
-            Checkout
-          </Button>
-        </Box>
-      </NavLink>
-      {/* Bryt ut till komponent */}
     </Box>
   )
 }
+
+const centerMainBoxStyle: SxProps<Theme> = theme => ({
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+})
 
 const mainBoxStyle: SxProps<Theme> = theme => ({
   background: 'lightgrey',
   margin: '0 1rem',
   padding: '1.5rem',
   border: '2px solid black',
+  maxWidth: 'lg',
+})
+
+const contentStyle: SxProps<Theme> = theme => ({
+  display: 'flex',
+  flexDirection: 'column',
+  [theme.breakpoints.up('md')]: {
+    flexDirection: 'row',
+  },
+})
+
+const imgStyle: SxProps<Theme> = theme => ({
+  maxWidth: '100%',
 })
 
 const imgWrapperStyle: SxProps<Theme> = theme => ({
+  flex: 1,
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',
+  '& img': imgStyle(theme),
+  [theme.breakpoints.up('sm')]: {
+    '& img': {
+      maxWidth: '80%',
+    },
+  },
+})
+
+const textAndBtnWrapperStyle: SxProps<Theme> = theme => ({
+  flex: 1,
+  display: 'flex',
+  flexDirection: 'column',
+  justifyContent: 'space-between',
+  padding: '0 1rem',
 })
 
 const flexAlignStyle: SxProps<Theme> = theme => ({
