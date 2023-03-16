@@ -213,7 +213,6 @@ const inputContainer: SxProps<Theme> = theme => ({
 const inputField: SxProps<Theme> = theme => ({
   backgroundColor: '#DCDCDC',
   borderRadius: '5px',
-  fontFamily: 'Arial',
   width: '30rem',
   [theme.breakpoints.down('xl')]: {
     width: '20rem',
