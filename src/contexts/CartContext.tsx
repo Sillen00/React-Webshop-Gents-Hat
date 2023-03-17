@@ -39,8 +39,26 @@ export function CartProvider(props: PropsWithChildren) {
       setCartItems(updatedCartItems)
     }
   }
+
   const removeProductFromCart = (product: Product) => {
-    console.log('Tar bort produkten...')
+    
+    
+    const updatedCartItems = cartItems.filter(cartItem => cartItem.id === product.id)
+    
+    if(true) {
+      console.log(updatedCartItems)
+      setCartItems([...cartItems]) // Hur ska jag få produkten till att vara en cardItem??
+    } else {
+      // const updatedCartItems = cartItems.map(cartItem => {
+      //   if (cartItem.id === product.id) {
+      //     return { ...cartItem, quantity: cartItem.quantity + 1 }
+      //   }
+      //   return cartItem
+      // })
+      // setCartItems(updatedCartItems)
+    }
+
+
   }
 
   const totalProductsInCart = cartItems.reduce((accumulator, cartItem) => accumulator + cartItem.quantity, 0)
