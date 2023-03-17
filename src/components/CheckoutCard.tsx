@@ -71,7 +71,7 @@ function CheckoutCard({ cartItem }: Props) {
           </Box>
           <Box>
             <Typography variant='body2' sx={productTotalStyleSx}>
-              Total: ${cartItems.length * cartItem.price}
+              Total: ${cartItem.price * cartItem.quantity}
             </Typography>
           </Box>
         </Box>
