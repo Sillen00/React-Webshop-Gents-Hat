@@ -10,13 +10,13 @@ interface Props {
   product: Product
 }
 
-export default function AddToCartButton(props: Props) {
+export default function AddToCartButton({product}: Props) {
   const { addProductToCart } = useCart()
   const { enqueueSnackbar } = useSnackbar()
 
   const handleClickVariant = () => {
-    addProductToCart(props.product)
-    enqueueSnackbar(`Added ${props.product.title} to the cart!`, {
+    addProductToCart(product)
+    enqueueSnackbar(`Added ${product.title} to the cart!`, {
       variant: 'success',
     })
   }

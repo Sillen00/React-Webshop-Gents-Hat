@@ -5,7 +5,7 @@ import adminIcon from '../../public/icons/adminIcon.png'
 import { useCart } from '../contexts/CartContext'
 
 function Header() {
-  const { cartItems } = useCart()
+  const { totalProductsInCart } = useCart()
   return (
     <AppBar sx={headerStyleSx}>
       <NavLink style={{ marginTop: '5px', color: 'white', textDecoration: 'none' }} to='/'>
@@ -20,7 +20,7 @@ function Header() {
         <NavLink to='/checkout'>
           <Badge
             sx={badgeStylesSX}
-            badgeContent={<Typography variant='body2'>{cartItems.length}</Typography>}
+            badgeContent={<Typography variant='body2'>{totalProductsInCart}</Typography>}
             showZero
             color='success'
             data-cy='cart-items-count-badge'

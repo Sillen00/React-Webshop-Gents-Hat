@@ -7,7 +7,7 @@ import { useCart } from '../contexts/CartContext'
 
 function Checkout() {
   const isMediumScreen = useMediaQuery('(min-width:900px)')
-  const { cartItems } = useCart()
+  const { cartItems, totalPrice } = useCart()
 
   return (
     <Container>
@@ -21,13 +21,13 @@ function Checkout() {
       {isMediumScreen && <CheckoutCardSubheaders />}
 
       <Stack spacing={{ xs: 1, sm: 2, md: 4 }}>
-        {cartItems.map((cartItem) => (
+        {cartItems.map(cartItem => (
           <CheckoutCard cartItem={cartItem} key={cartItem.id} />
         ))}
         {/* <CheckoutCard /> */}
       </Stack>
 
-      <CheckoutTotalPrice />
+      <CheckoutTotalPrice totalPrice={totalPrice} />
     </Container>
   )
 }

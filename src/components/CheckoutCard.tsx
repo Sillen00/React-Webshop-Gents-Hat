@@ -1,15 +1,15 @@
 import * as Icon from '@mui/icons-material'
 import { Box, Button, Paper, SxProps, Theme, Typography } from '@mui/material'
 import { CSSProperties } from 'react'
-import { Product, CartItem } from '../../data'
+import { CartItem } from '../../data'
 import { useCart } from '../contexts/CartContext'
 
 interface Props {
-  cartItem: Product
+  cartItem: CartItem
 }
 
 function CheckoutCard({ cartItem }: Props) {
-  const { cartItems, addProductToCart, removeProductFromCart } = useCart()
+  const { cartItems, addProductToCart, removeProductFromCart, totalProductsInCart } = useCart()
 
   return (
     <Paper elevation={3} sx={{ borderRadius: '0.8rem' }}>
@@ -33,8 +33,9 @@ function CheckoutCard({ cartItem }: Props) {
           </Box>
           <Box sx={{ flexGrow: '4', display: 'flex', justifyContent: 'space-between' }}>
             <Typography variant='body2' color='secondary.dark' sx={descriptionTextStyleSx}>
-              {'$30'} &nbsp;&nbsp; {'|'} &nbsp;&nbsp; {'Black'} &nbsp;&nbsp; {'|'} &nbsp;&nbsp;
-              {'M'}
+              ${cartItem.price} &nbsp;&nbsp; {'|'} &nbsp;&nbsp; {cartItem.color} &nbsp;&nbsp; {'|'}{' '}
+              &nbsp;&nbsp;
+              {cartItem.size}
             </Typography>
             <Box sx={quantityBoxStyleSx}>
               <Button
@@ -51,7 +52,7 @@ function CheckoutCard({ cartItem }: Props) {
                 </Typography>
               </Button>
               <Typography data-cy='product-quantity' variant='body2' sx={quantityStyleSx}>
-                {cartItems.length}
+                {cartItem.quantity}
               </Typography>
               <Button
                 data-cy='increase-quantity-button'
@@ -70,7 +71,7 @@ function CheckoutCard({ cartItem }: Props) {
           </Box>
           <Box>
             <Typography variant='body2' sx={productTotalStyleSx}>
-              Total $60
+              Total: ${cartItems.length * cartItem.price}
             </Typography>
           </Box>
         </Box>
