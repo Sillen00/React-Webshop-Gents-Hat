@@ -15,7 +15,7 @@ function CheckoutCard({ cartItem }: Props) {
     <Paper elevation={3} sx={{ borderRadius: '0.8rem' }}>
       <Box data-cy='cart-item' sx={productCardStyleSx}>
         <Box sx={imageBoxStyleSx}>
-          <img style={cardImgStyle} src={cartItem.image} alt={cartItem.description} />
+          <img style={cardImgStyle} src={cartItem.image} alt={cartItem.shortDescription} />
         </Box>
         <Box sx={cartCardRightBoxStyleSx}>
           <Box

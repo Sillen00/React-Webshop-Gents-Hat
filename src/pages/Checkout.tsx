@@ -12,15 +12,14 @@ function Checkout() {
 
   return (
     <Container>
-      <Container>
-        <Box sx={{ display: 'flex', justifyContent: 'space-between', py: 1 }}>
-          <Typography variant='h3'>Cart</Typography>
-          <Button variant='contained' sx={{ fontWeight: '800', color: 'common.black' }}>
-            Checkout <KeyboardDoubleArrowDownIcon />
-          </Button>
-        </Box>
+      <Box sx={{ display: 'flex', justifyContent: 'space-between', py: 1 }}>
+        <Typography variant='h3'>Cart</Typography>
+        <Button variant='contained' sx={{ fontWeight: '800', color: 'common.black' }}>
+          Checkout <KeyboardDoubleArrowDownIcon />
+        </Button>
+      </Box>
 
-        {isMediumScreen && <CheckoutCardSubheaders />}
+      {isMediumScreen && <CheckoutCardSubheaders />}
 
       <Stack spacing={{ xs: 1, sm: 2, md: 4 }}>
         {cartItems.map(cartItem => (
@@ -29,10 +28,9 @@ function Checkout() {
       </Stack>
 
       <CheckoutTotalPrice totalPrice={totalPrice} />
-      
-      
+
       {/* Lägg till en if-sats — visa bara formuläret om kundvagnen har produkter */}
-       
+
       <Container>
         <CheckoutForm />
       </Container>
