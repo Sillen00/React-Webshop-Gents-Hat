@@ -1,13 +1,13 @@
 import * as Icon from '@mui/icons-material'
 import { AppBar, Badge, Box, SxProps, Theme, Typography } from '@mui/material'
-import { useContext } from 'react'
 import { NavLink } from 'react-router-dom'
 import adminIcon from '../../public/icons/adminIcon.png'
+import { useCart } from '../contexts/CartContext'
 import { CartContext } from '../contexts/CartContext'
 import '../index.css'
 
 function Header() {
-  const { itemCount } = useContext(CartContext)
+  const { totalProductsInCart } = useCart()
   return (
     <AppBar sx={headerStyleSx}>
       <NavLink style={{ marginTop: '5px', color: 'white', textDecoration: 'none' }} to='/'>
@@ -22,7 +22,7 @@ function Header() {
         <NavLink to='/checkout'>
           <Badge
             sx={badgeStylesSX}
-            badgeContent={<Typography variant='body2'>{itemCount}</Typography>}
+            badgeContent={<Typography variant='body2'>{totalProductsInCart}</Typography>}
             showZero
             color='success'
             data-cy='cart-items-count-badge'

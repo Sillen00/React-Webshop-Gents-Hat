@@ -1,19 +1,24 @@
 import { Theme } from '@emotion/react'
 import { Box, SxProps } from '@mui/material'
 import Button from '@mui/material/Button'
-import { SnackbarProvider, useSnackbar, VariantType } from 'notistack'
+import { useSnackbar } from 'notistack'
 import * as React from 'react'
-import { CartContext } from '../contexts/CartContext'
+import { Product } from '../../data'
+import { useCart } from '../contexts/CartContext'
 
-function Snackbar() {
-  const { incrementItemCount } = React.useContext(CartContext)
+interface Props {
+  product: Product
+}
+
+export default function AddToCartButton({product}: Props) {
+  const { addProductToCart } = useCart()
   const { enqueueSnackbar } = useSnackbar()
 
-  const handleClickVariant = (variant: VariantType) => () => {
-    enqueueSnackbar(`Added your product to the cart!`, {
+  const handleClickVariant = () => {
+    addProductToCart(product)
+    enqueueSnackbar(`Added ${product.title} to the cart!`, {
       variant: 'success',
     })
-    incrementItemCount() // increment cart count
   }
 
   return (
@@ -22,21 +27,13 @@ function Snackbar() {
         <Button
           sx={cartButtonStyle}
           variant='contained'
-          onClick={handleClickVariant('success')}
+          onClick={handleClickVariant}
           data-cy='product-buy-button'
         >
           Add to Cart
         </Button>
       </Box>
     </React.Fragment>
-  )
-}
-
-export default function IntegrationNotistack() {
-  return (
-    <SnackbarProvider maxSnack={3}>
-      <Snackbar data-cy='added-to-cart-toast' />
-    </SnackbarProvider>
   )
 }
 

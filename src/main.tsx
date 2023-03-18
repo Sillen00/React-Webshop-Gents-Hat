@@ -1,4 +1,5 @@
 import { createTheme, ThemeProvider } from '@mui/material/styles'
+import { SnackbarProvider } from 'notistack'
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import {
@@ -94,7 +95,9 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
       <CartProvider>
-        <RouterProvider router={router} />
+        <SnackbarProvider maxSnack={3}>
+          <RouterProvider router={router} />
+        </SnackbarProvider>
       </CartProvider>
     </ThemeProvider>
   </React.StrictMode>

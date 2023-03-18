@@ -1,25 +1,85 @@
-import React, { createContext, useState } from 'react'
+import { createContext, PropsWithChildren, useContext, useState } from 'react'
+import { CartItem, Product } from '../../data'
 
-interface CartContextType {
-  itemCount: number
-  incrementItemCount: () => void
+// Bestämmer vad som ska skickas över kontexten
+interface CartContextValue {
+  cartItems: CartItem[]
+  addProductToCart: (product: Product) => void
+  removeProductFromCart: (product: Product) => void
+  totalPrice: number
+  totalProductsInCart: number
 }
 
-export const CartContext = createContext<CartContextType>({
-  itemCount: 0,
-  incrementItemCount: () => {},
-})
+// Skapar kontexten, alternativ till props och inte state
+const CartContext = createContext<CartContextValue>(null as any)
 
-export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [itemCount, setItemCount] = useState(0)
+// Skapar en smidigt liten hook för att konsumera innehållet i kontexten
+export const useCart = () => useContext(CartContext)
 
-  const incrementItemCount = () => {
-    setItemCount(count => count + 1)
+// Skapar en behållare för state och funktionalitet bundet till state
+// Samt lägger till kontexten i appen
+export function CartProvider(props: PropsWithChildren) {
+  const [cartItems, setCartItems] = useState<CartItem[]>([])
+
+  const addProductToCart = (product: Product) => {
+    // kolla om produkten redan finns i cart Items
+    // isf öka antalet
+    // annars lägg till ny
+    // console.log(CartItem.)
+
+    if (!cartItems.some(cartItem => cartItem.id === product.id)) {
+      setCartItems([...cartItems, { ...product, quantity: 1 }]) // Hur ska jag få produkten till att vara en cardItem??
+    } else {
+      const updatedCartItems = cartItems.map(cartItem => {
+        if (cartItem.id === product.id) {
+          return { ...cartItem, quantity: cartItem.quantity + 1 }
+        }
+        return cartItem
+      })
+      setCartItems(updatedCartItems)
+    }
   }
 
+  const removeProductFromCart = (product: Product) => {
+    const existingCartItem = cartItems.find(cartItem => cartItem.id === product.id)
+    if (!existingCartItem) {
+      return
+    }
+    if (existingCartItem.quantity === 1) {
+      const updatedCartItems = cartItems.filter(cartItem => cartItem.id !== product.id)
+      setCartItems(updatedCartItems)
+    } else {
+      const updatedCartItems = cartItems.map(cartItem => {
+        if (cartItem.id === product.id) {
+          return { ...cartItem, quantity: cartItem.quantity - 1 }
+        }
+        return cartItem
+      })
+      setCartItems(updatedCartItems)
+    }
+  }
+
+  const totalProductsInCart = cartItems.reduce(
+    (accumulator, cartItem) => accumulator + cartItem.quantity,
+    0
+  )
+
+  const totalPrice = cartItems.reduce(
+    (accumulator, cartItem) => accumulator + cartItem.price * cartItem.quantity,
+    0
+  )
+
   return (
-    <CartContext.Provider value={{ itemCount, incrementItemCount }}>
-      {children}
+    <CartContext.Provider
+      value={{
+        cartItems,
+        addProductToCart,
+        removeProductFromCart,
+        totalPrice,
+        totalProductsInCart,
+      }}
+    >
+      {props.children}
     </CartContext.Provider>
   )
 }

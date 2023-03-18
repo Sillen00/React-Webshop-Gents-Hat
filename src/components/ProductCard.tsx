@@ -5,17 +5,17 @@ import CardMedia from '@mui/material/CardMedia'
 import Typography from '@mui/material/Typography'
 import { Link } from 'react-router-dom'
 import { Product } from '../../data'
-import Snackbar from '../components/Snackbar'
+import AddToCartButton from './Snackbar'
 
 interface Props {
   product: Product
 }
 
 export default function ProductCard({ product }: Props) {
-  const handleSnackbarClick = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-    event.preventDefault()
-    event.stopPropagation()
-  }
+  // const handleSnackbarClick = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+  //   event.preventDefault()
+  //   event.stopPropagation()
+  // }
 
   return (
     <Card sx={cardStyle} data-cy='product'>
@@ -45,8 +45,8 @@ export default function ProductCard({ product }: Props) {
           </CardContent>
         </StyledCardActionArea>
       </Link>
-      <Box sx={{ margin: '1rem' }} onClick={handleSnackbarClick}>
-        <Snackbar />
+      <Box>
+        <AddToCartButton product={product} />
       </Box>
     </Card>
   )

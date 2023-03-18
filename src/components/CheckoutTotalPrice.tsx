@@ -1,7 +1,11 @@
 import { Paper, Typography } from '@mui/material'
 import { Box, SxProps, Theme } from '@mui/system'
 
-function CheckoutTotalPrice() {
+interface Props {
+  totalPrice: number
+}
+
+function CheckoutTotalPrice({ totalPrice }: Props) {
   return (
     <Box sx={totalPriceBoxStyleSx}>
       <Paper elevation={3} sx={{ borderRadius: '0.8rem' }}>
@@ -11,7 +15,7 @@ function CheckoutTotalPrice() {
           color='common.black'
           sx={totalPriceTextStyleSx}
         >
-          Total: $ 60
+          Total: ${totalPrice}
         </Typography>
       </Paper>
     </Box>
