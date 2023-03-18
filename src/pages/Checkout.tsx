@@ -1,10 +1,10 @@
 import KeyboardDoubleArrowDownIcon from '@mui/icons-material/KeyboardDoubleArrowDown'
 import { Box, Button, Container, Stack, Typography, useMediaQuery } from '@mui/material'
-import CheckoutCard from '../components/CheckoutCard'
-import CheckoutCardSubheaders from '../components/CheckoutCardSubheaders'
-import CheckoutEmpty from '../components/CheckoutEmpty'
-import CheckoutForm from '../components/CheckoutForm'
-import CheckoutTotalPrice from '../components/CheckoutTotalPrice'
+import CheckoutCardSubheaders from '../components/CheckoutComponents/CheckoutCardSubheaders'
+import CheckoutCard from '../components/CheckoutComponents/CheckoutCard'
+import CheckoutEmpty from '../components/CheckoutComponents/CheckoutEmpty'
+import CheckoutForm from '../components/CheckoutComponents/CheckoutForm'
+import CheckoutTotalPrice from '../components/CheckoutComponents/CheckoutTotalPrice'
 import { useCart } from '../contexts/CartContext'
 
 function Checkout() {
