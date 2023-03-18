@@ -40,7 +40,7 @@ export default function ProductCard({ product }: Props) {
               {product.title}
             </Typography>
             <Typography variant='body2' data-cy='product-description'>
-              {product.description}
+              {product.shortDescription}
             </Typography>
           </CardContent>
         </StyledCardActionArea>

@@ -25,6 +25,10 @@ declare module '@mui/material/styles' {
       fontSize?: string
       fontFamily?: string
     }
+    body1?: {
+      fontFamily?: string
+      fontSize?: string
+    }
     body2?: {
       fontFamily?: string
       fontSize?: string
@@ -57,6 +61,15 @@ const theme = createTheme({
     h4: {
       fontWeight: 600,
     },
+    h5: {
+      fontWeight: 600,
+    },
+    h6: {
+      fontWeight: 600,
+    },
+    body1: {
+      fontFamily: 'Lora',
+    },
     body2: {
       fontFamily: 'Lora',
     },
@@ -73,8 +86,8 @@ const router = createBrowserRouter(
       <Route index element={<Home />} />
       <Route path='/product/:id' element={<ProductDescription />} />
       <Route path='checkout' element={<Checkout />} />
-      <Route path='confirm' element={<Confirm />} />
-      <Route path='*' element={<div>404 not found</div>} />
+      <Route path='confirmation' element={<Confirm />} />
+      <Route path='*' element={<h2>404 not found</h2>} />
     </Route>
   )
 )

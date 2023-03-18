@@ -39,7 +39,10 @@ export default function AddToCartButton({product}: Props) {
 
 const cartButtonStyle: SxProps<Theme> = theme => ({
   width: '100%',
-  margin: '1rem',
+  '&:hover': {
+    background: 'green',
+    color: 'white',
+  },
 })
 
 const buttonPosition: SxProps<Theme> = theme => ({
