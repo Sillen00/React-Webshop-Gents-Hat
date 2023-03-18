@@ -10,7 +10,7 @@ interface Props {
   product: Product
 }
 
-export default function AddToCartButton({product}: Props) {
+export default function AddToCartButton({ product }: Props) {
   const { addProductToCart } = useCart()
   const { enqueueSnackbar } = useSnackbar()
 

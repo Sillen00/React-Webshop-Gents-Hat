@@ -6,7 +6,7 @@ import {
   Paper,
   TextField,
   Theme,
-  Typography
+  Typography,
 } from '@mui/material'
 import { SxProps } from '@mui/system'
 import { useFormik } from 'formik'
@@ -83,7 +83,7 @@ const checkoutFormSchema = Yup.object().shape({
 type checkoutFormValues = Yup.InferType<typeof checkoutFormSchema>
 
 export default function CheckoutForm() {
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
   const formik = useFormik<checkoutFormValues>({
     initialValues: {
@@ -96,7 +96,7 @@ export default function CheckoutForm() {
     },
     validationSchema: checkoutFormSchema,
     onSubmit: values => {
-      navigate("/confirmation")
+      navigate('/confirmation')
     },
   })
 

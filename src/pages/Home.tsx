@@ -13,16 +13,16 @@ function Home() {
         />
       </Box>
       <Container>
-      <Typography sx={h3StyleSx} variant='h3' gutterBottom>
-        Our Products
-      </Typography>
-      <Grid sx={cardListSx} container rowSpacing={5}>
-        {products.map(product => (
-          <Grid sx={cardListSx} item xs={12} sm={6} md={4} lg={3} xl={3}>
-            <ProductCard product={product} key={product.id} />
-          </Grid>
-        ))}
-      </Grid>
+        <Typography sx={h3StyleSx} variant='h3' gutterBottom>
+          Our Products
+        </Typography>
+        <Grid sx={cardListSx} container rowSpacing={5}>
+          {products.map(product => (
+            <Grid sx={cardListSx} item xs={12} sm={6} md={4} lg={3} xl={3}>
+              <ProductCard product={product} key={product.id} />
+            </Grid>
+          ))}
+        </Grid>
       </Container>
     </Box>
   )

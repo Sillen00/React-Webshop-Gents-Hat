@@ -10,10 +10,10 @@ import {
   Theme,
   Typography,
 } from '@mui/material'
-import { useState } from 'react'
-import '../index.css'
 import { useFormik } from 'formik'
+import { useState } from 'react'
 import * as Yup from 'yup'
+import '../index.css'
 
 const newsletterSchema = Yup.object().shape({
   email: Yup.string()

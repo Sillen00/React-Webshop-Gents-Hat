@@ -3,7 +3,6 @@ import { AppBar, Badge, Box, SxProps, Theme, Typography } from '@mui/material'
 import { NavLink } from 'react-router-dom'
 import adminIcon from '../../public/icons/adminIcon.png'
 import { useCart } from '../contexts/CartContext'
-import { CartContext } from '../contexts/CartContext'
 import '../index.css'
 
 function Header() {
@@ -27,7 +26,7 @@ function Header() {
             color='success'
             data-cy='cart-items-count-badge'
           >
-            <Icon.ShoppingCart sx={iconStylesSX} data-cy='cart-link'/>
+            <Icon.ShoppingCart sx={iconStylesSX} data-cy='cart-link' />
           </Badge>
         </NavLink>
       </Box>
@@ -102,8 +101,8 @@ const iconStylesSX: SxProps<Theme> = theme => ({
 const badgeStylesSX: SxProps<Theme> = theme => ({
   '& .MuiBadge-badge': {
     color: 'white',
-      right: '10px',
-      top: '10px',
+    right: '10px',
+    top: '10px',
     [theme.breakpoints.down('md')]: {
       scale: '0.8',
       right: '5px',
