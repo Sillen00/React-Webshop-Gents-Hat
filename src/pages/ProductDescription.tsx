@@ -7,6 +7,7 @@ import ProductBtnSection from '../components/ProductBtnSection'
 function ProductDescription() {
   const { id } = useParams<{ id: string }>()
   const product: Product | undefined = products.find(p => p.id === id)
+  console.log(product)
 
   if (!product) {
     return <div>Product not found</div>
@@ -26,12 +27,18 @@ function ProductDescription() {
             <img src={product.image} alt={product.title} />
           </Box>
           <Box sx={textAndBtnWrapperStyle}>
-            <Typography variant='h4'>{product.title}</Typography>
-            <Typography variant='h6'>${product.price}</Typography>
+            <Typography variant='h4' data-cy='product-title'>
+              {product.title}
+            </Typography>
+            <Typography variant='h6' data-cy='product-price'>
+              ${product.price}
+            </Typography>
             <Typography variant='h6' sx={{ fontSize: '1rem' }}>
               Product Description
             </Typography>
-            <Typography variant='body2'>{product.longDescription}</Typography>
+            <Typography variant='body2' data-cy='product-description'>
+              {product.longDescription}
+            </Typography>
             <Typography variant='h6' sx={{ fontSize: '1rem' }}>
               Product Details
             </Typography>
@@ -63,7 +70,7 @@ function ProductDescription() {
                 </>
               )}
             </Typography>
-            <ProductBtnSection />
+            <ProductBtnSection product={product} />
           </Box>
         </Box>
       </Paper>
