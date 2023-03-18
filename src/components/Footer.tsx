@@ -12,18 +12,37 @@ import {
 } from '@mui/material'
 import { useState } from 'react'
 import '../index.css'
+import { useFormik } from 'formik'
+import * as Yup from 'yup'
+
+const newsletterSchema = Yup.object().shape({
+  email: Yup.string()
+    .email("Your e-mail seems to be incorrectly formatted. Please make sure it's correct.")
+    .required('Please tell us your email.')
+    .min(
+      7,
+      'The e-mail you have given us it too short. Please give us an e-mail of minimum 7 characters.'
+    ),
+})
+
+type newsletterValues = Yup.InferType<typeof newsletterSchema>
 
 function Footer() {
-  const [inputValue, setInputValue] = useState('')
-  const [open, setOpen] = useState(false)
+  const [openSnack, setOpenSnack] = useState(false)
 
-  const handleJoin = () => {
-    inputValue == '' ? {} : setOpen(true)
-    setInputValue('')
-  }
+  const formik = useFormik<newsletterValues>({
+    initialValues: {
+      email: '',
+    },
+    validationSchema: newsletterSchema,
+    onSubmit: values => {
+      setOpenSnack(true)
+      values.email = ''
+    },
+  })
 
   const handleClose = () => {
-    setOpen(false)
+    setOpenSnack(false)
   }
 
   return (
@@ -49,31 +68,35 @@ function Footer() {
           <Typography align='center' gutterBottom={true} variant='h4'>
             Join our newsletter
           </Typography>
-          <Box sx={inputContainer}>
-            <TextField
-              sx={inputField}
-              InputProps={{ style: { fontFamily: 'Lora' } }}
-              fullWidth={true}
-              id='outlined-basic'
-              placeholder='E-mail'
-              variant='outlined'
-              value={inputValue}
-              onChange={e => setInputValue(e.target.value)}
-            />
-            <Button sx={joinButton} variant='contained' onClick={handleJoin}>
-              Join
-            </Button>
-            <Snackbar
-              open={open}
-              onClose={handleClose}
-              autoHideDuration={5000}
-              sx={{ color: 'blue' }}
-            >
-              <Alert onClose={handleClose} severity='success'>
-                Thank you for joining our newsletter!
-              </Alert>
-            </Snackbar>
-          </Box>
+          <form onSubmit={formik.handleSubmit}>
+            <Box sx={inputContainer}>
+              <TextField
+                sx={inputField}
+                id='email'
+                InputProps={{ style: { fontFamily: 'Lora' } }}
+                fullWidth={true}
+                placeholder='E-mail'
+                variant='outlined'
+                value={formik.values.email}
+                onChange={formik.handleChange}
+                error={formik.touched.email && Boolean(formik.errors.email)}
+                helperText={formik.touched.email && formik.errors.email}
+              />
+              <Button sx={joinButton} variant='contained' type='submit'>
+                Join
+              </Button>
+            </Box>
+          </form>
+          <Snackbar
+            open={openSnack}
+            onClose={handleClose}
+            autoHideDuration={5000}
+            sx={{ color: 'blue' }}
+          >
+            <Alert onClose={handleClose} severity='success'>
+              Thank you for joining our newsletter!
+            </Alert>
+          </Snackbar>
           <Typography sx={{ color: '#AAA', margin: '1rem' }} align='center' variant='caption'>
             This form is protected by reCAPTCHA and the Google Privacy Policy and Terms of Service
             apply
@@ -189,7 +212,6 @@ const inputContainer: SxProps<Theme> = theme => ({
 const inputField: SxProps<Theme> = theme => ({
   backgroundColor: '#DCDCDC',
   borderRadius: '5px',
-  fontFamily: 'Arial',
   width: '30rem',
   [theme.breakpoints.down('xl')]: {
     width: '20rem',
