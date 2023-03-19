@@ -233,6 +233,10 @@ const joinButton: SxProps<Theme> = theme => ({
   fontFamily: 'Lora',
   fontWeight: 'bold',
   fontSize: '1.3rem',
+  '&:hover': {
+    background: 'green',
+    color: 'white',
+  },
   [theme.breakpoints.down('sm')]: {
     alignSelf: 'center',
     marginLeft: '0rem',
