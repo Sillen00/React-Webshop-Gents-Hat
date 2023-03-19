@@ -56,7 +56,7 @@ const checkoutFormSchema = Yup.object().shape({
       'The address you have given us it too short. Please give us an address of minimum 6 characters.'
     )
     .max(
-      15,
+      60,
       'The address you have given us it too long. Please give us an address of maximum 60 characters.'
     ),
   zipcode: Yup.string()
