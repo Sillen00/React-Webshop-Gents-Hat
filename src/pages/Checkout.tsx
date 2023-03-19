@@ -1,10 +1,11 @@
 import KeyboardDoubleArrowDownIcon from '@mui/icons-material/KeyboardDoubleArrowDown'
 import { Box, Button, Container, Stack, Typography, useMediaQuery } from '@mui/material'
 import { useRef } from 'react'
-import CheckoutCard from '../components/CheckoutCard'
-import CheckoutCardSubheaders from '../components/CheckoutCardSubheaders'
-import CheckoutForm from '../components/CheckoutForm'
-import CheckoutTotalPrice from '../components/CheckoutTotalPrice'
+import CheckoutCard from '../components/CheckoutComponents/CheckoutCard'
+import CheckoutCardSubheaders from '../components/CheckoutComponents/CheckoutCardSubheaders'
+import CheckoutEmpty from '../components/CheckoutComponents/CheckoutEmpty'
+import CheckoutForm from '../components/CheckoutComponents/CheckoutForm'
+import CheckoutTotalPrice from '../components/CheckoutComponents/CheckoutTotalPrice'
 import { useCart } from '../contexts/CartContext'
 
 function Checkout() {
@@ -41,7 +42,7 @@ function Checkout() {
           )}
         </Box>
 
-        {isMediumScreen && <CheckoutCardSubheaders />}
+        {cartItems.length > 0 && isMediumScreen && <CheckoutCardSubheaders />}
 
         <Stack spacing={{ xs: 1, sm: 2, md: 4 }}>
           {cartItems.map(cartItem => (
@@ -49,14 +50,14 @@ function Checkout() {
           ))}
         </Stack>
 
-        <CheckoutTotalPrice totalPrice={totalPrice} />
+        {cartItems.length > 0 ? <CheckoutTotalPrice totalPrice={totalPrice} /> : <CheckoutEmpty />}
       </Box>
 
-      {cartItems.length > 0 && (
-        <Box ref={formRef} sx={{ paddingTop: '1rem' }}>
-          <CheckoutForm />
-        </Box>
-      )}
+      {/* Lägg till en if-sats — visa bara formuläret om kundvagnen har produkter */}
+
+      <Container>
+        <CheckoutForm />
+      </Container>
     </Container>
   )
 }

@@ -1,8 +1,8 @@
 import * as Icon from '@mui/icons-material'
 import { Box, Button, Paper, SxProps, Theme, Typography } from '@mui/material'
 import { CSSProperties } from 'react'
-import { CartItem } from '../../data'
-import { useCart } from '../contexts/CartContext'
+import { CartItem } from '../../../data'
+import { useCart } from '../../contexts/CartContext'
 
 interface Props {
   cartItem: CartItem
