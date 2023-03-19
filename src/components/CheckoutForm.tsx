@@ -56,7 +56,7 @@ const checkoutFormSchema = Yup.object().shape({
       'The address you have given us it too short. Please give us an address of minimum 6 characters.'
     )
     .max(
-      15,
+      60,
       'The address you have given us it too long. Please give us an address of maximum 60 characters.'
     ),
   zipcode: Yup.string()
@@ -113,7 +113,7 @@ export default function CheckoutForm() {
       <form onSubmit={formik.handleSubmit} data-cy='customer-form'>
         <Container sx={formContainer}>
           <Typography sx={fontStyle} variant='h3' gutterBottom>
-            Contact information
+            Checkout
           </Typography>
           <Grid display='flex' alignItems='center' container rowSpacing={1} columnSpacing={5}>
             <Grid sx={formStyle} item md={6} display='flex' alignSelf='flex-start'>
@@ -169,7 +169,7 @@ export default function CheckoutForm() {
               <TextField
                 fullWidth
                 id='address'
-                label='address'
+                label='Address'
                 value={formik.values.address}
                 onChange={formik.handleChange}
                 error={formik.touched.address && Boolean(formik.errors.address)}
@@ -240,7 +240,6 @@ const fontStyle: SxProps<Theme> = theme => ({
 
 const formContainer: SxProps<Theme> = theme => ({
   width: '70%',
-  marginTop: '10rem',
   paddingTop: '5rem',
   paddingBottom: '4rem',
 })
