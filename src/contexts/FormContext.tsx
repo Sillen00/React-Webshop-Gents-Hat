@@ -1,4 +1,4 @@
-import { createContext, useState } from 'react'
+import { createContext, PropsWithChildren, useState } from 'react'
 
 interface FormData {
   address: string
@@ -14,7 +14,7 @@ interface FormContextTypes {
   setFormValues: (values: FormData) => void
 }
 
-const defaultFormValue: FormContextTypes = {
+const defaultFormData: FormContextTypes = {
   formValues: {
     address: '',
     fullName: '',
@@ -26,19 +26,10 @@ const defaultFormValue: FormContextTypes = {
   setFormValues: () => {},
 }
 
-export const FormContext = createContext<FormContextTypes>(defaultFormValue)
+export const FormContext = createContext<FormContextTypes>(defaultFormData)
 
-interface FormContextProviderProps {
-  children: React.ReactNode
-}
+export const FormProvider = (props: PropsWithChildren) => {
+  const [formValues, setFormValues] = useState(defaultFormData.formValues)
 
-export const FormProvider: React.FC<FormContextProviderProps> = ({ children }) => {
-  const [formValues, setFormValues] = useState<FormData>(defaultFormValue.formValues)
-
-  const contextValue: FormContextTypes = {
-    formValues,
-    setFormValues,
-  }
-
-  return <FormContext.Provider value={contextValue}>{children}</FormContext.Provider>
+  return <FormContext.Provider value={{formValues, setFormValues}}>{props.children}</FormContext.Provider>
 }

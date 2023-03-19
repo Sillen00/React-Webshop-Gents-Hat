@@ -6,7 +6,7 @@ function Confirm() {
   return (
     <>
       <h2>Confirm</h2>
-      {console.log(formValues.phoneNumber)}
+      {console.log(formValues.fullName)}
     </>
   )
 }
