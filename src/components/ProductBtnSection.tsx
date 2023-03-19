@@ -1,15 +1,20 @@
 import { Button, Theme, Typography } from '@mui/material'
 import { Box, SxProps } from '@mui/system'
 import { NavLink } from 'react-router-dom'
-import Snackbar from '../components/Snackbar'
+import { Product } from '../../data'
+import AddToCartButton from './Snackbar'
 
-function ProductBtnSection() {
+interface Props {
+  product: Product
+}
+
+function ProductBtnSection({ product }: Props) {
   return (
     <Box>
       <Box sx={{ display: 'flex', alignItems: 'center', margin: '1rem 0' }}>
         <Typography sx={quantityBoxStyle}>1</Typography>
         <Box sx={{ flexGrow: 1 }}>
-          <Snackbar />
+          <AddToCartButton product={product} />
         </Box>
       </Box>
       <NavLink to='/checkout'>

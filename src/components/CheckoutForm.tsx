@@ -254,6 +254,10 @@ const buttonStyle: SxProps<Theme> = theme => ({
   height: '3rem',
   fontFamily: 'Lora',
   fontWeight: 900,
+  '&:hover': {
+    background: 'green',
+    color: 'white',
+  },
 })
 
 const buttonContainer: SxProps<Theme> = theme => ({

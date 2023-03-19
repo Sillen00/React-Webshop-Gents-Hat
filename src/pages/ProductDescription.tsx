@@ -31,7 +31,7 @@ function ProductDescription() {
             <Typography variant='h6' sx={{ fontSize: '1rem' }}>
               Product Description
             </Typography>
-            <Typography variant='body2'>{product.longDescription}</Typography>
+            <Typography variant='body2'>{product.description}</Typography>
             <Typography variant='h6' sx={{ fontSize: '1rem' }}>
               Product Details
             </Typography>
@@ -63,7 +63,7 @@ function ProductDescription() {
                 </>
               )}
             </Typography>
-            <ProductBtnSection />
+            <ProductBtnSection product={product} />
           </Box>
         </Box>
       </Paper>
