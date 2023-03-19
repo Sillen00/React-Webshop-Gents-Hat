@@ -169,7 +169,7 @@ export default function CheckoutForm() {
               <TextField
                 fullWidth
                 id='address'
-                label='address'
+                label='Address'
                 value={formik.values.address}
                 onChange={formik.handleChange}
                 error={formik.touched.address && Boolean(formik.errors.address)}
@@ -240,7 +240,6 @@ const fontStyle: SxProps<Theme> = theme => ({
 
 const formContainer: SxProps<Theme> = theme => ({
   width: '70%',
-  marginTop: '10rem',
   paddingTop: '5rem',
   paddingBottom: '4rem',
 })
