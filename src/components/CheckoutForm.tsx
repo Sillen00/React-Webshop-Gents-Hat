@@ -113,7 +113,7 @@ export default function CheckoutForm() {
       <form onSubmit={formik.handleSubmit} data-cy='customer-form'>
         <Container sx={formContainer}>
           <Typography sx={fontStyle} variant='h3' gutterBottom>
-            Contact information
+            Checkout
           </Typography>
           <Grid display='flex' alignItems='center' container rowSpacing={1} columnSpacing={5}>
             <Grid sx={formStyle} item md={6} display='flex' alignSelf='flex-start'>
