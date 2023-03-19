@@ -8,10 +8,10 @@ function App() {
   return (
     <div>
       <ScrollToTop />
-      <header>
+
         <Header />
         <Snackbar data-cy='added-to-cart-toast' />
-      </header>
+
 
       <main>
         <Outlet />
