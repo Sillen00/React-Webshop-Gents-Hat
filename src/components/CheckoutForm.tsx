@@ -130,6 +130,7 @@ export default function CheckoutForm() {
                 FormHelperTextProps={
                   { 'data-cy': 'customer-name-error' } as CustomFormHelperTextProps
                 }
+                autoComplete='name'
               />
             </Grid>
             <Grid sx={formStyle} item md={6} display='flex' alignSelf='flex-start'>
@@ -146,6 +147,7 @@ export default function CheckoutForm() {
                 FormHelperTextProps={
                   { 'data-cy': 'customer-email-error' } as CustomFormHelperTextProps
                 }
+                autoComplete='email'
               />
             </Grid>
             <Grid sx={formStyle} item md={6} display='flex' alignSelf='flex-start'>
@@ -163,6 +165,7 @@ export default function CheckoutForm() {
                 FormHelperTextProps={
                   { 'data-cy': 'customer-phone-error' } as CustomFormHelperTextProps
                 }
+                autoComplete='tel'
               />
             </Grid>
             <Grid sx={formStyle} item md={6} display='flex' alignSelf='flex-start'>
@@ -179,6 +182,7 @@ export default function CheckoutForm() {
                 FormHelperTextProps={
                   { 'data-cy': 'customer-address-error' } as CustomFormHelperTextProps
                 }
+                autoComplete='street-address'
               />
             </Grid>
             <Grid sx={formStyle} item md={6} display='flex' alignSelf='flex-start'>
@@ -195,6 +199,7 @@ export default function CheckoutForm() {
                 FormHelperTextProps={
                   { 'data-cy': 'customer-zipcode-error' } as CustomFormHelperTextProps
                 }
+                autoComplete='postal-code'
               />
             </Grid>
             <Grid sx={formStyle} item md={6} display='flex' alignSelf='flex-start'>
@@ -211,6 +216,7 @@ export default function CheckoutForm() {
                 FormHelperTextProps={
                   { 'data-cy': 'customer-city-error' } as CustomFormHelperTextProps
                 }
+                autoComplete='city'
               />
             </Grid>
           </Grid>
