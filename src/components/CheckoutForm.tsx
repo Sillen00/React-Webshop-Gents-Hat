@@ -6,12 +6,14 @@ import {
   Paper,
   TextField,
   Theme,
-  Typography,
+  Typography
 } from '@mui/material'
 import { SxProps } from '@mui/system'
 import { useFormik } from 'formik'
+import { useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
 import * as Yup from 'yup'
+import { FormContext } from '../contexts/FormContext'
 
 /* ----------------------
         YUP VALIDATION
@@ -84,6 +86,7 @@ type checkoutFormValues = Yup.InferType<typeof checkoutFormSchema>
 
 export default function CheckoutForm() {
   const navigate = useNavigate()
+  const { setFormValues } = useContext(FormContext);
 
   const formik = useFormik<checkoutFormValues>({
     initialValues: {
@@ -96,6 +99,7 @@ export default function CheckoutForm() {
     },
     validationSchema: checkoutFormSchema,
     onSubmit: values => {
+      setFormValues(values)
       navigate('/confirmation')
     },
   })

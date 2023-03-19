@@ -1,8 +1,12 @@
+import { useContext } from "react";
+import { FormContext } from "../contexts/FormContext";
+
 function Confirm() {
+  const { formValues } = useContext(FormContext);
   return (
     <>
       <h2>Confirm</h2>
-      <p>Here is your comfirmation on your pursace</p>
+      {console.log(formValues.phoneNumber)}
     </>
   )
 }
