@@ -159,18 +159,18 @@ const ItemStyleSX: SxProps<Theme> = theme => ({
 })
 
 const subHeaderStyleSX: SxProps<Theme> = theme => ({
-  fontSize: '1.2rem',
-  mr: '0.7rem',
-  ml: '1rem',
-  [theme.breakpoints.between('sm', 'md')]: {
+  paddingTop: '3rem',
+  fontSize: '1.8rem',
+  mr: '2.4rem',
+  ml: '3.0rem',
+  [theme.breakpoints.down('md')]: {
     fontSize: '1.2rem',
-    ml: '2rem',
-    mr: '1.5rem',
+    ml: '2.2rem',
+    mr: '2.9rem',
   },
-  [theme.breakpoints.up('md')]: {
-    fontSize: '1.5rem',
-    ml: '2.8rem',
-    mr: '2rem',
+  [theme.breakpoints.down('sm')]: {
+    ml: '1.6rem',
+    mr: '1.6rem',
   },
 })
 

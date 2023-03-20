@@ -1,13 +1,11 @@
 import { Box, SxProps, Theme, Typography } from '@mui/material'
 import { useTheme } from '@mui/material/styles'
 import useMediaQuery from '@mui/material/useMediaQuery'
-import { products } from '../../data'
 import {
   cardImgStyle,
   cartCardRightBoxStyleSx,
   descriptionTextStyleSx,
-  imageBoxStyleSx,
-  mediaFontSizeStyleSx, quantityBoxStyleSx,
+  imageBoxStyleSx, quantityBoxStyleSx,
   quantityStyleSx
 } from './CheckoutCard'
 
@@ -62,13 +60,16 @@ export default function OrderData(props: Props) {
   )
 }
 
-const displayOrderItem: SxProps<Theme> = {
+const displayOrderItem: SxProps<Theme> = theme => ({
   display: 'flex',
   maxHeight: '200px',
   alignItems: 'center',
   width: '100%',
   paddingRight: '2rem',
-}
+  [theme.breakpoints.down('sm')]: {
+    paddingRight: '1rem',
+  },
+})
 
 const headingStyleSx: SxProps<Theme> = {
   fontSize: '1.6rem',
