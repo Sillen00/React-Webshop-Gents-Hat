@@ -33,14 +33,14 @@ const orderItems = cartItems.map(item => (
       >
         <Box sx={confirmStyleBoxSX}>
           <Typography variant='h6' sx={typographyStylesSX}>
-            Your order has been recived
+            Your order has been received
           </Typography>
           <Icon.CheckCircleOutline sx={iconStylesSX} color='success' />
           <Typography variant='body2' sx={typographyStylesSX}>
-            Thank you for your purchase
+            Thank you for your purchase!
           </Typography>
           <Typography variant='body2' sx={typographyStylesSX}>
-            Your order number is
+            Your order number is:
           </Typography>
           <Typography sx={typographyStylesSX}>
             <b>#{Math.floor(Math.random() * 100000) + 100000}</b>
