@@ -4,8 +4,9 @@ import { CartItem, Product } from '../../data'
 // Bestämmer vad som ska skickas över kontexten
 interface CartContextValue {
   cartItems: CartItem[]
-  addProductToCart: (product: Product) => void
-  removeProductFromCart: (product: Product) => void
+  increaseProductToCart: (product: Product) => void
+  decreaseProductFromCart: (product: Product) => void
+  deleteProductFromCart: (product: Product) => void
   totalPrice: number
   totalProductsInCart: number
 }
@@ -21,7 +22,7 @@ export const useCart = () => useContext(CartContext)
 export function CartProvider(props: PropsWithChildren) {
   const [cartItems, setCartItems] = useState<CartItem[]>([])
 
-  const addProductToCart = (product: Product) => {
+  const increaseProductToCart = (product: Product) => {
     // kolla om produkten redan finns i cart Items
     // isf öka antalet
     // annars lägg till ny
@@ -40,7 +41,18 @@ export function CartProvider(props: PropsWithChildren) {
     }
   }
 
-  const removeProductFromCart = (product: Product) => {
+  const deleteProductFromCart = (product: Product) => {
+    const existingCartItem = cartItems.find(cartItem => cartItem.id === product.id)
+    if (!existingCartItem) {
+      return
+    }
+    if (existingCartItem.quantity >= 1) {
+      const updatedCartItems = cartItems.filter(cartItem => cartItem.id !== product.id)
+      setCartItems(updatedCartItems)
+    }
+  }
+
+  const decreaseProductFromCart = (product: Product) => {
     const existingCartItem = cartItems.find(cartItem => cartItem.id === product.id)
     if (!existingCartItem) {
       return
@@ -73,8 +85,9 @@ export function CartProvider(props: PropsWithChildren) {
     <CartContext.Provider
       value={{
         cartItems,
-        addProductToCart,
-        removeProductFromCart,
+        increaseProductToCart,
+        decreaseProductFromCart,
+        deleteProductFromCart,
         totalPrice,
         totalProductsInCart,
       }}
