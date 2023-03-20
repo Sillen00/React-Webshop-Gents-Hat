@@ -47,14 +47,18 @@ function OrderConfirmation() {
             Continue Shopping
           </Button>
         </Box>
-
+        <Box sx={{ paddingBottom: '0.5rem' }}>
+          <Typography variant='h3' color='secondary.dark' sx={subHeaderStyleSX}>
+            Shipping Details
+          </Typography>
+        </Box>
         <Box>
-          <Typography>{formValues.fullName}</Typography>
-          <Typography>{formValues.email}</Typography>
-          <Typography>{formValues.address}</Typography>
-          <Typography>{formValues.phoneNumber}</Typography>
-          <Typography>{formValues.city}</Typography>
-          <Typography>{formValues.zipcode}</Typography>
+          <Typography sx={formDataStyleSX}>{formValues.fullName}</Typography>
+          <Typography sx={formDataStyleSX}>{formValues.address}</Typography>
+          <Typography sx={formDataStyleSX}>{formValues.email}</Typography>
+          <Typography sx={formDataStyleSX}>{formValues.phoneNumber}</Typography>
+          <Typography sx={formDataStyleSX}>{formValues.city}</Typography>
+          <Typography sx={formDataStyleSX}>{formValues.zipcode}</Typography>
         </Box>
 
         <Box sx={{ display: 'flex', justifyContent: 'space-between', paddingBottom: '1rem' }}>
@@ -71,7 +75,7 @@ function OrderConfirmation() {
         <Box>
           <Typography sx={ItemStyleSX}>{orderItems}</Typography>
         </Box>
-        <Typography sx={priceStyleSX}>{totalPrice}</Typography>
+        <Typography sx={priceStyleSX}>Total: ${totalPrice}</Typography>
       </Paper>
     </Container>
   )
@@ -135,13 +139,15 @@ const buttonStyleSX: SxProps<Theme> = theme => ({
 const priceStyleSX: SxProps<Theme> = theme => ({
   textAlign: 'end',
   pt: '1rem',
-  px: '3.5rem',
+  mr: '2rem',
   fontWeight: '600',
   [theme.breakpoints.between('sm', 'md')]: {
     fontSize: '1.2rem',
+    mr: '5rem',
   },
   [theme.breakpoints.up('md')]: {
     fontSize: '1.5rem',
+    mr: '6rem',
   },
 })
 
@@ -150,7 +156,7 @@ const ItemStyleSX: SxProps<Theme> = theme => ({
   marginRight: '0.5rem',
   [theme.breakpoints.up('sm')]: {
     marginLeft: '2rem',
-    marginRight: '2rem'
+    marginRight: '2rem',
   },
   [theme.breakpoints.up('md')]: {
     marginLeft: '2.8rem',
@@ -174,5 +180,18 @@ const subHeaderStyleSX: SxProps<Theme> = theme => ({
   },
 })
 
+const formDataStyleSX: SxProps<Theme> = theme => ({
+  fontStyle: 'italic',
+  ml: '1.6rem',
+  fontSize: '0.8rem',
+  [theme.breakpoints.up('sm')]: {
+    ml: '2.2rem',
+    fontSize: '1rem',
+  },
+  [theme.breakpoints.up('md')]: {
+    ml: '3rem',
+    fontSize: '1.2rem',
+  },
+})
 
 export default OrderConfirmation
