@@ -5,8 +5,8 @@ import {
   cardImgStyle,
   cartCardRightBoxStyleSx,
   descriptionTextStyleSx,
-  imageBoxStyleSx, quantityBoxStyleSx,
-  quantityStyleSx
+  quantityBoxStyleSx,
+  quantityStyleSx,
 } from './CheckoutCard'
 
 interface Props {
@@ -23,9 +23,9 @@ export default function OrderData(props: Props) {
   const isUpMd = useMediaQuery(theme.breakpoints.up('md'))
 
   return (
-    <Box sx={{pt: 2, pb: 2, borderBottom: "solid black 1px", display: 'flex'}}>
+    <Box sx={{ pt: 2, pb: 2, borderBottom: 'solid black 1px', display: 'flex' }}>
       <Box data-cy='cart-item' sx={displayOrderItem}>
-        <Box sx={{ ...imageBoxStyleSx, width: '100px', mx: '10px' }}>
+        <Box sx={imageBoxStyleSx}>
           <img style={cardImgStyle} src={props.image} />
         </Box>
         <Box sx={cartCardRightBoxStyleSx}>
@@ -49,7 +49,12 @@ export default function OrderData(props: Props) {
           </Box>
         </Box>
         <Box
-          sx={{ ...quantityBoxStyleSx, alignItems: 'center', justifyContent: 'flex-end', display: 'flex' }}
+          sx={{
+            ...quantityBoxStyleSx,
+            alignItems: 'center',
+            justifyContent: 'flex-end',
+            display: 'flex',
+          }}
         >
           <Typography data-cy='product-quantity' variant='body2' sx={quantityStyleSx}>
             {props.quantity}
@@ -67,11 +72,27 @@ const displayOrderItem: SxProps<Theme> = theme => ({
   width: '100%',
   paddingRight: '2rem',
   [theme.breakpoints.down('sm')]: {
-    paddingRight: '1rem',
+    paddingRight: '0rem',
   },
 })
 
-const headingStyleSx: SxProps<Theme> = {
+const headingStyleSx: SxProps<Theme> = theme => ({
   fontSize: '1.6rem',
-}
+  [theme.breakpoints.down('sm')]: {
+    fontSize: '1.4rem',
+  },
+})
 
+const imageBoxStyleSx: SxProps<Theme> = theme => ({
+  maxWidth: '100px',
+  minWidth: '100px',
+  mx: '10px',
+  [theme.breakpoints.down('md')]: {
+    maxWidth: '80px',
+    minWidth: '80px',
+  },
+  [theme.breakpoints.down('sm')]: {
+    maxWidth: '50px',
+    minWidth: '50px',
+  },
+})

@@ -157,9 +157,10 @@ const changeQuantityBtnStyleSx: SxProps<Theme> = theme => ({
   [theme.breakpoints.up('md')]: { fontSize: '1.2rem' },
 })
 export const imageBoxStyleSx: SxProps<Theme> = theme => ({
-  width: '100px',
+  width: '150px',
   mx: '10px',
-  [theme.breakpoints.up('md')]: { width: '150px' },
+  [theme.breakpoints.down('md')]: { width: '150px' },
+  [theme.breakpoints.down('sm')]: { width: '60px' },
 })
 
 export const cardImgStyle: CSSProperties = {
