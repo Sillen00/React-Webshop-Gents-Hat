@@ -15,7 +15,7 @@ function Header() {
         </Typography>
       </NavLink>
       <Box sx={iconWrapperStylesSX}>
-        <NavLink to='/confirm'>
+        <NavLink to='/confirmation'>
           <img src={adminIcon} />
         </NavLink>
         <NavLink to='/checkout'>
