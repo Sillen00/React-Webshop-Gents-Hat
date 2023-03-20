@@ -7,11 +7,10 @@ import { useCart } from '../contexts/CartContext'
 import { FormContext } from '../contexts/FormContext'
 
 function OrderConfirmation() {
-const { formValues } = useContext(FormContext)
-const { cartItems, totalPrice } = useCart()
-const orderItems = cartItems.map(item => (
-  <Typography>
-    <OrderData 
+  const { formValues } = useContext(FormContext)
+  const { cartItems, totalPrice } = useCart()
+  const orderItems = cartItems.map(item => (
+    <OrderData
       title={item.title}
       price={item.price}
       quantity={item.quantity}
@@ -19,8 +18,7 @@ const orderItems = cartItems.map(item => (
       image={item.image}
       color={item.color}
     />
-  </Typography>
-))
+  ))
 
   return (
     <Container>
@@ -49,15 +47,31 @@ const orderItems = cartItems.map(item => (
             Continue Shopping
           </Button>
         </Box>
-        <Typography>{formValues.fullName}</Typography>
-        <Typography>{formValues.fullName}</Typography>
-        <Typography>{formValues.fullName}</Typography>
-        <Typography>{formValues.fullName}</Typography>
-        <Typography>{formValues.fullName}</Typography>
-        <Typography>{orderItems}</Typography>
-        <Typography>{totalPrice}</Typography>
-        
 
+        <Box>
+          <Typography>{formValues.fullName}</Typography>
+          <Typography>{formValues.email}</Typography>
+          <Typography>{formValues.address}</Typography>
+          <Typography>{formValues.phoneNumber}</Typography>
+          <Typography>{formValues.city}</Typography>
+          <Typography>{formValues.zipcode}</Typography>
+        </Box>
+
+        <Box sx={{ display: 'flex', justifyContent: 'space-between', paddingBottom: '1rem' }}>
+          <Typography variant='h3' color='secondary.dark' sx={subHeaderStyleSX}>
+            Product
+          </Typography>
+          <Box sx={{ display: 'flex' }}>
+            <Typography variant='h3' color='secondary.dark' sx={subHeaderStyleSX}>
+              Quantity
+            </Typography>
+          </Box>
+        </Box>
+
+        <Box>
+          <Typography sx={ItemStyleSX}>{orderItems}</Typography>
+        </Box>
+        <Typography sx={priceStyleSX}>{totalPrice}</Typography>
       </Paper>
     </Container>
   )
@@ -94,7 +108,7 @@ const typographyStylesSX: SxProps<Theme> = theme => ({
     fontSize: '1.2rem',
   },
   [theme.breakpoints.up('md')]: {
-    fontSize: '1.5rem',
+    fontSize: '1rem',
   },
 })
 
@@ -115,6 +129,48 @@ const buttonStyleSX: SxProps<Theme> = theme => ({
   },
   [theme.breakpoints.up('md')]: {
     scale: '1.5',
+  },
+})
+
+const priceStyleSX: SxProps<Theme> = theme => ({
+  textAlign: 'end',
+  pt: '1rem',
+  px: '3.5rem',
+  fontWeight: '600',
+  [theme.breakpoints.between('sm', 'md')]: {
+    fontSize: '1.2rem',
+  },
+  [theme.breakpoints.up('md')]: {
+    fontSize: '1.5rem',
+  },
+})
+
+const ItemStyleSX: SxProps<Theme> = theme => ({
+  marginLeft: '0.5rem',
+  marginRight: '0.5rem',
+  [theme.breakpoints.up('sm')]: {
+    marginLeft: '2rem',
+    marginRight: '2rem'
+  },
+  [theme.breakpoints.up('md')]: {
+    marginLeft: '2.8rem',
+    marginRight: '2.8rem',
+  },
+})
+
+const subHeaderStyleSX: SxProps<Theme> = theme => ({
+  fontSize: '1.2rem',
+  mr: '0.7rem',
+  ml: '1rem',
+  [theme.breakpoints.between('sm', 'md')]: {
+    fontSize: '1.2rem',
+    ml: '2rem',
+    mr: '1.5rem',
+  },
+  [theme.breakpoints.up('md')]: {
+    fontSize: '1.5rem',
+    ml: '2.8rem',
+    mr: '2rem',
   },
 })
 

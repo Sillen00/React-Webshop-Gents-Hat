@@ -104,7 +104,7 @@ export const cartCardRightBoxStyleSx: SxProps<Theme> = theme => ({
 })
 export const descriptionTextStyleSx: SxProps<Theme> = theme => ({
   fontWeight: '700',
-  fontSize: '0.8rem',
+  fontSize: '0.7rem',
   [theme.breakpoints.up('md')]: { fontSize: '1rem' },
 })
 export const quantityBoxStyleSx: SxProps<Theme> = theme => ({
