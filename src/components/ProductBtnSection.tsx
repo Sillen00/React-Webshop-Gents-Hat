@@ -1,5 +1,6 @@
 import { Button, Input, Theme } from '@mui/material'
 import { Box, SxProps } from '@mui/system'
+import { useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import { Product } from '../../data'
 import AddToCartButton from '../components/Snackbar'
@@ -9,12 +10,23 @@ interface Props {
 }
 
 function ProductBtnSection({ product }: Props) {
+  const [quantity, setQuantity] = useState<number>(1)
   return (
     <Box>
       <Box sx={{ display: 'flex', alignItems: 'center', margin: '1rem 0' }}>
-        <Input type='number' defaultValue={1} sx={quantityBoxStyle} />
+        <Input
+          type='number'
+          value={quantity}
+          onChange={e => setQuantity(parseInt(e.target.value))}
+          sx={quantityBoxStyle}
+        />
         <Box sx={{ flexGrow: 1 }}>
-          <AddToCartButton product={product} data-cy='added-to-cart-toast' />
+          <AddToCartButton
+            product={product}
+            quantity={quantity}
+            onAddToCart={() => setQuantity(1)}
+            data-cy='added-to-cart-toast'
+          />
         </Box>
       </Box>
       <NavLink to='/checkout'>
