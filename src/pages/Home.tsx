@@ -7,7 +7,7 @@ function Home() {
     <Box>
       <Box sx={logoStyleSx}>
         <img
-          style={{ width: '100%', maxWidth: '30rem' }}
+          style={{ width: '100%', maxWidth: '50rem' }}
           src='../images/logo-gents-hat.png'
           alt='Logotype'
         />

@@ -13,7 +13,7 @@ function App() {
         <Snackbar data-cy='added-to-cart-toast' />
 
 
-      <main>
+      <main style={{marginTop: "8rem"}}>
         <Outlet />
       </main>
 
