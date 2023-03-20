@@ -1,5 +1,6 @@
-import { Button, Theme, Typography } from '@mui/material'
+import { Button, Input, Theme } from '@mui/material'
 import { Box, SxProps } from '@mui/system'
+import { useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import { Product } from '../../data'
 import AddToCartButton from '../components/Snackbar'
@@ -9,12 +10,23 @@ interface Props {
 }
 
 function ProductBtnSection({ product }: Props) {
+  const [quantity, setQuantity] = useState<number>(1)
   return (
     <Box>
       <Box sx={{ display: 'flex', alignItems: 'center', margin: '1rem 0' }}>
-        <Typography sx={quantityBoxStyle}>1</Typography>
+        <Input
+          type='number'
+          value={quantity}
+          onChange={e => setQuantity(parseInt(e.target.value))}
+          sx={quantityBoxStyle}
+        />
         <Box sx={{ flexGrow: 1 }}>
-          <AddToCartButton product={product} />
+          <AddToCartButton
+            product={product}
+            quantity={quantity}
+            onAddToCart={() => setQuantity(1)}
+            data-cy='added-to-cart-toast'
+          />
         </Box>
       </Box>
       <NavLink to='/checkout'>
@@ -29,12 +41,15 @@ function ProductBtnSection({ product }: Props) {
 }
 
 const quantityBoxStyle: SxProps<Theme> = theme => ({
+  width: '3.5rem',
   border: '1px solid black',
-  padding: '0.3rem 1rem',
+  padding: '0.3rem',
   marginRight: '1rem',
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',
+  textAlign: 'right',
+  direction: 'rtl',
 })
 
 const checkOutBtnStyle: SxProps<Theme> = theme => ({

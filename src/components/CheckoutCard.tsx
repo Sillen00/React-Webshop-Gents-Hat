@@ -54,7 +54,7 @@ function CheckoutCard({ cartItem }: Props) {
                 color='secondary'
                 sx={changeQuantityBtnStyleSx}
                 onClick={() => {
-                  decreaseProductFromCart(cartItem)
+                  decreaseProductFromCart(cartItem.id, cartItem.quantity - 1)
                 }}
               >
                 <Typography variant='body2' sx={{ fontWeight: '800' }}>
@@ -76,7 +76,7 @@ function CheckoutCard({ cartItem }: Props) {
                 color='secondary'
                 sx={changeQuantityBtnStyleSx}
                 onClick={() => {
-                  increaseProductToCart(cartItem)
+                  increaseProductToCart(cartItem, 1)
                 }}
               >
                 <Typography variant='body2' sx={{ fontWeight: '800' }}>

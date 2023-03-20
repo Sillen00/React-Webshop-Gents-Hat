@@ -19,9 +19,21 @@ function Checkout() {
 
   return (
     <Container>
+      <Box sx={{ marginBottom: '10rem' }}>
       <Box sx={{ display: 'flex', justifyContent: 'space-between', py: 1 }}>
         <Typography variant='h3'>Cart</Typography>
-        <Button variant='contained' sx={{ fontWeight: '800', color: 'common.black' }} onClick={scrollToForm}>
+        <Button
+          variant='contained'
+          sx={{
+            fontWeight: '800',
+            color: 'common.black',
+            '&:hover': {
+              background: 'green',
+              color: 'white',
+            },
+          }}
+          onClick={scrollToForm}
+        >
           Checkout <KeyboardDoubleArrowDownIcon />
         </Button>
       </Box>
@@ -43,6 +55,7 @@ function Checkout() {
           <CheckoutForm />
         </Box>
       )}
+      </Box>
     </Container>
   )
 }
