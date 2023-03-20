@@ -1,6 +1,7 @@
 import { Box, SxProps, Theme, Typography } from '@mui/material'
 import { useTheme } from '@mui/material/styles'
 import useMediaQuery from '@mui/material/useMediaQuery'
+import { products } from '../../data'
 import {
   cardImgStyle,
   cartCardRightBoxStyleSx,

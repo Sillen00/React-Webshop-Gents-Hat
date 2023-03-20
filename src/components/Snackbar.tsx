@@ -8,17 +8,20 @@ import { useCart } from '../contexts/CartContext'
 
 interface Props {
   product: Product
+  quantity: number
+  onAddToCart: () => void
 }
 
-export default function AddToCartButton({ product }: Props) {
-  const { addProductToCart } = useCart()
+export default function AddToCartButton({ product, quantity, onAddToCart }: Props) {
+  const { increaseProductToCart } = useCart()
   const { enqueueSnackbar } = useSnackbar()
 
   const handleClickVariant = () => {
-    addProductToCart(product)
+    increaseProductToCart(product, quantity)
     enqueueSnackbar(`Added ${product.title} to the cart!`, {
       variant: 'success',
     })
+    onAddToCart()
   }
 
   return (
