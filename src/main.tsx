@@ -12,8 +12,8 @@ import App from './App'
 import { CartProvider } from './contexts/CartContext'
 import './index.css'
 import Checkout from './pages/Checkout'
-import Confirm from './pages/Confirm'
 import Home from './pages/Home'
+import OrderConfirmation from './pages/OrderConfirmation'
 import ProductDescription from './pages/ProductDescription'
 
 declare module '@mui/material/styles' {
@@ -86,7 +86,7 @@ const router = createBrowserRouter(
       <Route index element={<Home />} />
       <Route path='/product/:id' element={<ProductDescription />} />
       <Route path='checkout' element={<Checkout />} />
-      <Route path='confirmation' element={<Confirm />} />
+      <Route path='confirmation' element={<OrderConfirmation />} />
       <Route path='*' element={<h2>404 not found</h2>} />
     </Route>
   )
