@@ -1,5 +1,5 @@
 import * as Icon from '@mui/icons-material'
-import { Box, Button, Paper, SxProps, Theme, Typography } from '@mui/material'
+import { Box, Button, Input, Paper, SxProps, Theme, Typography } from '@mui/material'
 import { CSSProperties } from 'react'
 import { CartItem } from '../../data'
 import { useCart } from '../contexts/CartContext'
@@ -9,7 +9,7 @@ interface Props {
 }
 
 function CheckoutCard({ cartItem }: Props) {
-  const { cartItems, addProductToCart, removeProductFromCart, totalProductsInCart } = useCart()
+  const { increaseProductToCart, decreaseProductFromCart, deleteProductFromCart } = useCart()
 
   return (
     <Paper elevation={3} sx={{ borderRadius: '0.8rem' }}>
@@ -28,14 +28,24 @@ function CheckoutCard({ cartItem }: Props) {
               {cartItem.title}
             </Typography>
             <Typography sx={mediaTopStyleSx}>
-              <Icon.DeleteOutline color='error' sx={mediaFontSizeStyleSx} />
+              <Icon.DeleteOutline
+                onClick={() => {
+                  deleteProductFromCart(cartItem)
+                }}
+                color='error'
+                sx={mediaFontSizeStyleSx}
+              />
             </Typography>
           </Box>
           <Box sx={{ flexGrow: '4', display: 'flex', justifyContent: 'space-between' }}>
-            <Typography variant='body2' color='secondary.dark' sx={descriptionTextStyleSx}>
+            <Typography
+              variant='body2'
+              color='secondary.dark'
+              data-cy='product-price'
+              sx={descriptionTextStyleSx}
+            >
               ${cartItem.price} &nbsp;&nbsp; {'|'} &nbsp;&nbsp; {cartItem.color} &nbsp;&nbsp; {'|'}{' '}
-              &nbsp;&nbsp;
-              {cartItem.size}
+              &nbsp;&nbsp;{cartItem.size}
             </Typography>
             <Box sx={quantityBoxStyleSx}>
               <Button
@@ -44,23 +54,29 @@ function CheckoutCard({ cartItem }: Props) {
                 color='secondary'
                 sx={changeQuantityBtnStyleSx}
                 onClick={() => {
-                  removeProductFromCart(cartItem)
+                  decreaseProductFromCart(cartItem)
                 }}
               >
                 <Typography variant='body2' sx={{ fontWeight: '800' }}>
                   -
                 </Typography>
               </Button>
-              <Typography data-cy='product-quantity' variant='body2' sx={quantityStyleSx}>
-                {cartItem.quantity}
-              </Typography>
+              <Input
+                color='primary'
+                disabled
+                type='number'
+                data-cy='product-quantity'
+                sx={quantityStyleSx}
+                value={cartItem.quantity}
+              />
+
               <Button
                 data-cy='increase-quantity-button'
                 variant='contained'
                 color='secondary'
                 sx={changeQuantityBtnStyleSx}
                 onClick={() => {
-                  addProductToCart(cartItem)
+                  increaseProductToCart(cartItem)
                 }}
               >
                 <Typography variant='body2' sx={{ fontWeight: '800' }}>
@@ -88,7 +104,7 @@ export const productCardStyleSx: SxProps<Theme> = theme => ({
 const mediaTopStyleSx: SxProps<Theme> = theme => ({
   position: 'relative',
   top: '0',
-  [theme.breakpoints.up('md')]: { top: '50px' },
+  [theme.breakpoints.up('md')]: { top: '39px' },
 })
 export const mediaFontSizeStyleSx: SxProps<Theme> = theme => ({
   fontSize: '1.4rem',
@@ -109,14 +125,18 @@ export const descriptionTextStyleSx: SxProps<Theme> = theme => ({
 })
 export const quantityBoxStyleSx: SxProps<Theme> = theme => ({
   display: 'flex',
+  alignItems: 'center',
   gap: '5px',
   position: 'relative',
   top: '28px',
-  [theme.breakpoints.up('md')]: { top: '10px', right: '245px', gap: '10px' },
+  [theme.breakpoints.up('md')]: { top: '-6px', right: '245px', gap: '10px' },
 })
 export const quantityStyleSx: SxProps<Theme> = theme => ({
   fontWeight: '800',
   fontSize: '1.2rem',
+  width: '37px',
+  padding: 0,
+  // height: '1.6rem',
   [theme.breakpoints.up('md')]: { fontSize: '1.4rem' },
 })
 const changeQuantityBtnStyleSx: SxProps<Theme> = theme => ({
@@ -129,7 +149,6 @@ const changeQuantityBtnStyleSx: SxProps<Theme> = theme => ({
   [theme.breakpoints.up('md')]: {
     width: '1.6rem',
     height: '1.6rem',
-    top: '4px',
   },
 })
 const productTotalStyleSx: SxProps<Theme> = theme => ({
