@@ -63,7 +63,7 @@ function ProductDescription() {
                 </>
               )}
             </Typography>
-            <ProductBtnSection />
+            <ProductBtnSection product={product} />
           </Box>
         </Box>
       </Paper>
