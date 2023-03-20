@@ -1,7 +1,6 @@
 import * as Icon from '@mui/icons-material'
 import { Box, Button, Paper, SxProps, Theme, Typography } from '@mui/material'
 import { Container } from '@mui/system'
-import OrderData from '../components/OrderData'
 
 function OrderConfirmation() {
   return (
@@ -31,7 +30,6 @@ function OrderConfirmation() {
             Continue Shopping
           </Button>
         </Box>
-        <OrderData />
       </Paper>
     </Container>
   )
@@ -91,5 +89,6 @@ const buttonStyleSX: SxProps<Theme> = theme => ({
     scale: '1.5',
   },
 })
+
 
 export default OrderConfirmation
