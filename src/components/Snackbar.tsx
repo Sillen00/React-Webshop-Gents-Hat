@@ -13,11 +13,11 @@ interface Props {
 }
 
 export default function AddToCartButton({ product, quantity, onAddToCart }: Props) {
-  const { addProductToCart } = useCart()
+  const { increaseProductToCart } = useCart()
   const { enqueueSnackbar } = useSnackbar()
 
   const handleClickVariant = () => {
-    addProductToCart(product, quantity)
+    increaseProductToCart(product, quantity)
     enqueueSnackbar(`Added ${product.title} to the cart!`, {
       variant: 'success',
     })

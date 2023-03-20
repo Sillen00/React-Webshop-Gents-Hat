@@ -3,8 +3,9 @@ import { CartItem, Product } from '../../data'
 
 interface CartContextValue {
   cartItems: CartItem[]
-  addProductToCart: (product: Product, quantity: number) => void
-  removeProductFromCart: (productId: string, newQuantity: number) => void
+  increaseProductToCart: (product: Product, quantity: number) => void
+  decreaseProductFromCart: (productId: string, newQuantity: number) => void
+  deleteProductFromCart: (product: Product) => void
   totalPrice: number
   totalProductsInCart: number
 }
@@ -16,7 +17,7 @@ export const useCart = () => useContext(CartContext)
 export function CartProvider(props: PropsWithChildren) {
   const [cartItems, setCartItems] = useState<CartItem[]>([])
 
-  const addProductToCart = (product: Product, quantity: number) => {
+  const increaseProductToCart = (product: Product, quantity: number) => {
     if (!cartItems.some(cartItem => cartItem.id === product.id)) {
       setCartItems([...cartItems, { ...product, quantity }])
     } else {
@@ -30,7 +31,7 @@ export function CartProvider(props: PropsWithChildren) {
     }
   }
 
-  const removeProductFromCart = (productId: string, newQuantity: number) => {
+  const decreaseProductFromCart = (productId: string, newQuantity: number) => {
     const existingCartItem = cartItems.find(cartItem => cartItem.id === productId)
     if (!existingCartItem) {
       return
@@ -49,6 +50,17 @@ export function CartProvider(props: PropsWithChildren) {
     }
   }
 
+  const deleteProductFromCart = (product: Product) => {
+    const existingCartItem = cartItems.find(cartItem => cartItem.id === product.id)
+    if (!existingCartItem) {
+      return
+    }
+    if (existingCartItem.quantity >= 1) {
+      const updatedCartItems = cartItems.filter(cartItem => cartItem.id !== product.id)
+      setCartItems(updatedCartItems)
+    }
+  }
+
   const totalProductsInCart = cartItems.reduce(
     (accumulator, cartItem) => accumulator + cartItem.quantity,
     0
@@ -63,8 +75,9 @@ export function CartProvider(props: PropsWithChildren) {
     <CartContext.Provider
       value={{
         cartItems,
-        addProductToCart,
-        removeProductFromCart,
+        increaseProductToCart,
+        decreaseProductFromCart,
+        deleteProductFromCart,
         totalPrice,
         totalProductsInCart,
       }}

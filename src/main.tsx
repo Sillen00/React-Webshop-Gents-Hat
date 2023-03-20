@@ -10,10 +10,11 @@ import {
 } from 'react-router-dom'
 import App from './App'
 import { CartProvider } from './contexts/CartContext'
+import { FormProvider } from './contexts/FormContext'
 import './index.css'
 import Checkout from './pages/Checkout'
-import Confirm from './pages/Confirm'
 import Home from './pages/Home'
+import OrderConfirmation from './pages/OrderConfirmation'
 import ProductDescription from './pages/ProductDescription'
 
 declare module '@mui/material/styles' {
@@ -78,7 +79,6 @@ const theme = createTheme({
     },
   },
 })
-// X [ERROR] Two output files share the same path but have different contents: node_modules\.vite\deps_temp\@mui_material_Styles.js
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -86,7 +86,7 @@ const router = createBrowserRouter(
       <Route index element={<Home />} />
       <Route path='/product/:id' element={<ProductDescription />} />
       <Route path='checkout' element={<Checkout />} />
-      <Route path='confirmation' element={<Confirm />} />
+      <Route path='confirmation' element={<OrderConfirmation />} />
       <Route path='*' element={<h2>404 not found</h2>} />
     </Route>
   )
@@ -94,11 +94,13 @@ const router = createBrowserRouter(
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
-      <CartProvider>
-        <SnackbarProvider maxSnack={3}>
-          <RouterProvider router={router} />
-        </SnackbarProvider>
-      </CartProvider>
+      <FormProvider>
+        <CartProvider>
+          <SnackbarProvider maxSnack={3}>
+            <RouterProvider router={router} />
+          </SnackbarProvider>
+        </CartProvider>
+      </FormProvider>
     </ThemeProvider>
   </React.StrictMode>
 )
