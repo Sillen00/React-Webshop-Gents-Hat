@@ -41,13 +41,15 @@ function ProductBtnSection({ product }: Props) {
 }
 
 const quantityBoxStyle: SxProps<Theme> = theme => ({
-  width: '25%',
+  width: '3.5rem',
   border: '1px solid black',
-  padding: '0.3rem 1rem',
+  padding: '0.3rem',
   marginRight: '1rem',
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',
+  textAlign: 'right',
+  direction: 'rtl',
 })
 
 const checkOutBtnStyle: SxProps<Theme> = theme => ({
