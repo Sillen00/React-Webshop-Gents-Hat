@@ -10,6 +10,7 @@ import {
 } from 'react-router-dom'
 import App from './App'
 import { CartProvider } from './contexts/CartContext'
+import { FormProvider } from './contexts/FormContext'
 import './index.css'
 import Checkout from './pages/Checkout'
 import Home from './pages/Home'
@@ -78,7 +79,6 @@ const theme = createTheme({
     },
   },
 })
-// X [ERROR] Two output files share the same path but have different contents: node_modules\.vite\deps_temp\@mui_material_Styles.js
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -94,11 +94,13 @@ const router = createBrowserRouter(
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
-      <CartProvider>
-        <SnackbarProvider maxSnack={3}>
-          <RouterProvider router={router} />
-        </SnackbarProvider>
-      </CartProvider>
+      <FormProvider>
+        <CartProvider>
+          <SnackbarProvider maxSnack={3}>
+            <RouterProvider router={router} />
+          </SnackbarProvider>
+        </CartProvider>
+      </FormProvider>
     </ThemeProvider>
   </React.StrictMode>
 )

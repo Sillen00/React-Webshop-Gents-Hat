@@ -6,12 +6,14 @@ import {
   Paper,
   TextField,
   Theme,
-  Typography,
+  Typography
 } from '@mui/material'
 import { SxProps } from '@mui/system'
 import { useFormik } from 'formik'
+import { useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
 import * as Yup from 'yup'
+import { FormContext } from '../contexts/FormContext'
 
 /* ----------------------
         YUP VALIDATION
@@ -84,6 +86,7 @@ type checkoutFormValues = Yup.InferType<typeof checkoutFormSchema>
 
 export default function CheckoutForm() {
   const navigate = useNavigate()
+  const { setFormValues } = useContext(FormContext);
 
   const formik = useFormik<checkoutFormValues>({
     initialValues: {
@@ -96,6 +99,7 @@ export default function CheckoutForm() {
     },
     validationSchema: checkoutFormSchema,
     onSubmit: values => {
+      setFormValues(values)
       navigate('/confirmation')
     },
   })
@@ -130,6 +134,7 @@ export default function CheckoutForm() {
                 FormHelperTextProps={
                   { 'data-cy': 'customer-name-error' } as CustomFormHelperTextProps
                 }
+                autoComplete='name'
               />
             </Grid>
             <Grid sx={formStyle} item md={6} display='flex' alignSelf='flex-start'>
@@ -146,6 +151,7 @@ export default function CheckoutForm() {
                 FormHelperTextProps={
                   { 'data-cy': 'customer-email-error' } as CustomFormHelperTextProps
                 }
+                autoComplete='email'
               />
             </Grid>
             <Grid sx={formStyle} item md={6} display='flex' alignSelf='flex-start'>
@@ -163,6 +169,7 @@ export default function CheckoutForm() {
                 FormHelperTextProps={
                   { 'data-cy': 'customer-phone-error' } as CustomFormHelperTextProps
                 }
+                autoComplete='tel'
               />
             </Grid>
             <Grid sx={formStyle} item md={6} display='flex' alignSelf='flex-start'>
@@ -179,6 +186,7 @@ export default function CheckoutForm() {
                 FormHelperTextProps={
                   { 'data-cy': 'customer-address-error' } as CustomFormHelperTextProps
                 }
+                autoComplete='street-address'
               />
             </Grid>
             <Grid sx={formStyle} item md={6} display='flex' alignSelf='flex-start'>
@@ -195,6 +203,7 @@ export default function CheckoutForm() {
                 FormHelperTextProps={
                   { 'data-cy': 'customer-zipcode-error' } as CustomFormHelperTextProps
                 }
+                autoComplete='postal-code'
               />
             </Grid>
             <Grid sx={formStyle} item md={6} display='flex' alignSelf='flex-start'>
@@ -211,6 +220,7 @@ export default function CheckoutForm() {
                 FormHelperTextProps={
                   { 'data-cy': 'customer-city-error' } as CustomFormHelperTextProps
                 }
+                autoComplete='city'
               />
             </Grid>
           </Grid>
