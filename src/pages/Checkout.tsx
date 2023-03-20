@@ -1,11 +1,12 @@
 import KeyboardDoubleArrowDownIcon from '@mui/icons-material/KeyboardDoubleArrowDown'
-import { Box, Button, Container, Stack, Typography, useMediaQuery } from '@mui/material'
+import { Box, Button, Container, Stack, SxProps, Theme, Typography, useMediaQuery } from '@mui/material'
 import { useRef } from 'react'
 import CheckoutCard from '../components/CheckoutCard'
 import CheckoutCardSubheaders from '../components/CheckoutCardSubheaders'
 import CheckoutForm from '../components/CheckoutForm'
 import CheckoutTotalPrice from '../components/CheckoutTotalPrice'
 import { useCart } from '../contexts/CartContext'
+import '../index.css'
 
 function Checkout() {
   const isMediumScreen = useMediaQuery('(min-width:900px)')
@@ -46,12 +47,22 @@ function Checkout() {
       </Box>
 
       {cartItems.length > 0 && (
-        <Box ref={formRef} sx={{ paddingTop: '1rem' }}>
+        <Box ref={formRef} sx={formMediaQueries}>
           <CheckoutForm />
         </Box>
       )}
     </Container>
   )
 }
+
+const formMediaQueries: SxProps<Theme> = theme => ({
+  paddingTop: `calc(var(--header-height-xl) + 1rem)`,
+  [theme.breakpoints.down('md')]: {
+    paddingTop: `calc(var(--header-height-md) + 1rem)`,
+  },
+  [theme.breakpoints.down('sm')]: {
+    paddingTop: `calc(var(--header-height-sm) + 1rem)`,
+  },
+})
 
 export default Checkout

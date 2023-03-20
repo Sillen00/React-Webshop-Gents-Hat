@@ -8,12 +8,10 @@ function App() {
   return (
     <div>
       <ScrollToTop />
+      <Header />
+      <Snackbar data-cy='added-to-cart-toast' />
 
-        <Header />
-        <Snackbar data-cy='added-to-cart-toast' />
-
-
-      <main style={{marginTop: "8rem"}}>
+      <main>
         <Outlet />
       </main>
 
