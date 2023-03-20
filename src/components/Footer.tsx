@@ -10,20 +10,39 @@ import {
   Theme,
   Typography,
 } from '@mui/material'
+import { useFormik } from 'formik'
 import { useState } from 'react'
+import * as Yup from 'yup'
 import '../index.css'
 
-function Footer() {
-  const [inputValue, setInputValue] = useState('')
-  const [open, setOpen] = useState(false)
+const newsletterSchema = Yup.object().shape({
+  email: Yup.string()
+    .email("Your e-mail seems to be incorrectly formatted. Please make sure it's correct.")
+    .required('Please tell us your email.')
+    .min(
+      7,
+      'The e-mail you have given us it too short. Please give us an e-mail of minimum 7 characters.'
+    ),
+})
 
-  const handleJoin = () => {
-    inputValue == '' ? {} : setOpen(true)
-    setInputValue('')
-  }
+type newsletterValues = Yup.InferType<typeof newsletterSchema>
+
+function Footer() {
+  const [openSnack, setOpenSnack] = useState(false)
+
+  const formik = useFormik<newsletterValues>({
+    initialValues: {
+      email: '',
+    },
+    validationSchema: newsletterSchema,
+    onSubmit: values => {
+      setOpenSnack(true)
+      values.email = ''
+    },
+  })
 
   const handleClose = () => {
-    setOpen(false)
+    setOpenSnack(false)
   }
 
   return (
@@ -49,37 +68,41 @@ function Footer() {
           <Typography align='center' gutterBottom={true} variant='h4'>
             Join our newsletter
           </Typography>
-          <Box sx={inputContainer}>
-            <TextField
-              sx={inputField}
-              InputProps={{ style: { fontFamily: 'Lora' } }}
-              fullWidth={true}
-              id='outlined-basic'
-              placeholder='E-mail'
-              variant='outlined'
-              value={inputValue}
-              onChange={e => setInputValue(e.target.value)}
-            />
-            <Button sx={joinButton} variant='contained' onClick={handleJoin}>
-              Join
-            </Button>
-            <Snackbar
-              open={open}
-              onClose={handleClose}
-              autoHideDuration={5000}
-              sx={{ color: 'blue' }}
-            >
-              <Alert onClose={handleClose} severity='success'>
-                Thank you for joining our newsletter!
-              </Alert>
-            </Snackbar>
-          </Box>
+          <form onSubmit={formik.handleSubmit}>
+            <Box sx={inputContainer}>
+              <TextField
+                sx={inputField}
+                id='email'
+                InputProps={{ style: { fontFamily: 'Lora' } }}
+                fullWidth={true}
+                placeholder='E-mail'
+                variant='outlined'
+                value={formik.values.email}
+                onChange={formik.handleChange}
+                error={formik.touched.email && Boolean(formik.errors.email)}
+                helperText={formik.touched.email && formik.errors.email}
+              />
+              <Button sx={joinButton} variant='contained' type='submit'>
+                Join
+              </Button>
+            </Box>
+          </form>
+          <Snackbar
+            open={openSnack}
+            onClose={handleClose}
+            autoHideDuration={5000}
+            sx={{ color: 'blue' }}
+          >
+            <Alert onClose={handleClose} severity='success'>
+              Thank you for joining our newsletter!
+            </Alert>
+          </Snackbar>
           <Typography sx={{ color: '#AAA', margin: '1rem' }} align='center' variant='caption'>
             This form is protected by reCAPTCHA and the Google Privacy Policy and Terms of Service
             apply
           </Typography>
           <Typography sx={{ paddingTop: '1rem' }} variant='body2'>
-            Copyright 2023. Design by Gent’s Hat{' '}
+            Copyright 2023. Design by Gent's Hat{' '}
           </Typography>
         </Box>
         <Box sx={contactContainer}>
@@ -92,7 +115,7 @@ function Footer() {
             <br />
           </Typography>
           <Typography sx={{ color: '#AAA' }} variant='body2'>
-            The Gents' Hat Company
+            The Gent's Hat Company
           </Typography>
           <Typography sx={{ color: '#AAA' }} variant='body2'>
             720 Ninth Avenue
@@ -114,7 +137,6 @@ const footerStyle: SxProps<Theme> = theme => ({
   color: 'white',
   background: 'black',
   borderTop: '5px solid #DAB90C',
-  marginTop: '4rem',
   boxShadow:
     '0px -2px 4px -1px rgba(0,0,0,0.2), 0px -4px 5px 0px rgba(0,0,0,0.14), 0px -1px 10px 0px rgba(0,0,0,0.12)',
   [theme.breakpoints.down('lg')]: {
@@ -147,7 +169,7 @@ const socialMediaContainer: SxProps<Theme> = theme => ({
 
   [theme.breakpoints.down('lg')]: {
     width: '100%',
-    textAlign: 'center'
+    textAlign: 'center',
   },
 })
 
@@ -190,7 +212,6 @@ const inputContainer: SxProps<Theme> = theme => ({
 const inputField: SxProps<Theme> = theme => ({
   backgroundColor: '#DCDCDC',
   borderRadius: '5px',
-  fontFamily: 'Arial',
   width: '30rem',
   [theme.breakpoints.down('xl')]: {
     width: '20rem',

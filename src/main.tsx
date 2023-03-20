@@ -1,4 +1,5 @@
 import { createTheme, ThemeProvider } from '@mui/material/styles'
+import { SnackbarProvider } from 'notistack'
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import {
@@ -23,6 +24,10 @@ declare module '@mui/material/styles' {
     h3?: {
       fontSize?: string
       fontFamily?: string
+    }
+    body1?: {
+      fontFamily?: string
+      fontSize?: string
     }
     body2?: {
       fontFamily?: string
@@ -56,6 +61,15 @@ const theme = createTheme({
     h4: {
       fontWeight: 600,
     },
+    h5: {
+      fontWeight: 600,
+    },
+    h6: {
+      fontWeight: 600,
+    },
+    body1: {
+      fontFamily: 'Lora',
+    },
     body2: {
       fontFamily: 'Lora',
     },
@@ -72,7 +86,7 @@ const router = createBrowserRouter(
       <Route index element={<Home />} />
       <Route path='/product/:id' element={<ProductDescription />} />
       <Route path='checkout' element={<Checkout />} />
-      <Route path='confirm' element={<OrderConfirmation />} />
+      <Route path='confirmation' element={<OrderConfirmation />} />
       <Route path='*' element={<h2>404 not found</h2>} />
     </Route>
   )
@@ -81,7 +95,9 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
       <CartProvider>
-        <RouterProvider router={router} />
+        <SnackbarProvider maxSnack={3}>
+          <RouterProvider router={router} />
+        </SnackbarProvider>
       </CartProvider>
     </ThemeProvider>
   </React.StrictMode>

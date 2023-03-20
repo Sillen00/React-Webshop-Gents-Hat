@@ -1,17 +1,17 @@
 import * as Icon from '@mui/icons-material'
 import { AppBar, Badge, Box, SxProps, Theme, Typography } from '@mui/material'
-import { useContext } from 'react'
 import { NavLink } from 'react-router-dom'
 import adminIcon from '../../public/icons/adminIcon.png'
-import { CartContext } from '../contexts/CartContext'
+import { useCart } from '../contexts/CartContext'
+import '../index.css'
 
 function Header() {
-  const { itemCount } = useContext(CartContext)
+  const { totalProductsInCart } = useCart()
   return (
     <AppBar sx={headerStyleSx}>
-      <NavLink style={{marginTop: "5px", color: "white", textDecoration: "none"}} to="/">
+      <NavLink style={{ marginTop: '5px', color: 'white', textDecoration: 'none' }} to='/'>
         <Typography sx={typographyStylesSX} variant='h4'>
-          Gents Hats
+          Gent's Hat
         </Typography>
       </NavLink>
       <Box sx={iconWrapperStylesSX}>
@@ -21,7 +21,7 @@ function Header() {
         <NavLink to='/checkout'>
           <Badge
             sx={badgeStylesSX}
-            badgeContent={<Typography variant='body2'>{itemCount}</Typography>}
+            badgeContent={<Typography variant='body2'>{totalProductsInCart}</Typography>}
             showZero
             color='success'
             data-cy='cart-items-count-badge'
@@ -37,7 +37,7 @@ function Header() {
 const typographyStylesSX: SxProps<Theme> = theme => ({
   fontSize: '40px',
   justifyContent: 'center',
-  marginLeft: "10px",
+  marginLeft: '2rem',
   [theme.breakpoints.down('md')]: {
     fontSize: '30px',
   },
@@ -50,50 +50,51 @@ const headerStyleSx: SxProps<Theme> = theme => ({
   backgroundColor: 'black',
   color: 'white',
   display: 'flex',
+  height: 'var(--header-height-xl)',
   flexDirection: 'row',
   justifyContent: 'space-between',
   alignItems: 'center',
-  // padding: '0 10px',
-  position: 'fixed',
+  position: 'sticky',
   borderBottom: '5px solid #DAB90C',
   [theme.breakpoints.down('md')]: {
-    padding: '0 5px',
-    [theme.breakpoints.down('sm')]: {
-      padding: '0 2px',
-    },
+    height: 'var(--header-height-md)',
+  },
+  [theme.breakpoints.down('sm')]: {
+    height: 'var(--header-height-sm)',
   },
 })
 // Todo, länka till home när man klickar på Loggan
 const iconWrapperStylesSX: SxProps<Theme> = theme => ({
   display: 'flex',
-  margin: "10px",
-  alignItems: 'baseline',
+  margin: '1rem',
+  alignItems: 'center',
   gap: '10px',
-  '& img': {
-    margin: '0 0 -15px 0',
-  },
   [theme.breakpoints.down('md')]: {
     '& img': {
-      marginLeft: "20px",
-      width: '30px',
-      [theme.breakpoints.down('sm')]: {
-        width: '25px',
-      },
+      width: '46px',
+      paddingTop: '2px',
+    },
+  },
+  [theme.breakpoints.down('sm')]: {
+    '& img': {
+      width: '40px',
+      paddingTop: '3px',
     },
   },
 })
 
 const iconStylesSX: SxProps<Theme> = theme => ({
-  fontSize: '40px',
+  fontSize: '46px',
   color: 'white',
   position: 'relative',
+  top: '2px',
   [theme.breakpoints.down('md')]: {
-    fontSize: '30px',
+    fontSize: '40px',
     top: '3px',
-    [theme.breakpoints.down('sm')]: {
-      fontSize: '25px',
-      top: '5px',
-    },
+  },
+  [theme.breakpoints.down('sm')]: {
+    fontSize: '35px',
+    top: '3px',
   },
 })
 
@@ -102,14 +103,9 @@ const badgeStylesSX: SxProps<Theme> = theme => ({
     color: 'white',
     right: '10px',
     top: '10px',
-    fontSize: '15px',
     [theme.breakpoints.down('md')]: {
       scale: '0.8',
-      right: "5px",
-      [theme.breakpoints.down('sm')]: {
-        scale: '0.6',
-        right: "5px",
-      },
+      right: '5px',
     },
   },
 })

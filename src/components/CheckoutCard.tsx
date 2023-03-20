@@ -1,14 +1,21 @@
 import * as Icon from '@mui/icons-material'
 import { Box, Button, Paper, SxProps, Theme, Typography } from '@mui/material'
 import { CSSProperties } from 'react'
-import { products } from '../../data'
+import { CartItem } from '../../data'
+import { useCart } from '../contexts/CartContext'
 
-function CheckoutCard() {
+interface Props {
+  cartItem: CartItem
+}
+
+function CheckoutCard({ cartItem }: Props) {
+  const { cartItems, addProductToCart, removeProductFromCart, totalProductsInCart } = useCart()
+
   return (
     <Paper elevation={3} sx={{ borderRadius: '0.8rem' }}>
       <Box data-cy='cart-item' sx={productCardStyleSx}>
         <Box sx={imageBoxStyleSx}>
-          <img style={cardImgStyle} src={products[0].image} alt={products[0].description} />
+          <img style={cardImgStyle} src={cartItem.image} alt={cartItem.shortDescription} />
         </Box>
         <Box sx={cartCardRightBoxStyleSx}>
           <Box
@@ -18,7 +25,7 @@ function CheckoutCard() {
             }}
           >
             <Typography variant='h3' sx={mediaFontSizeStyleSx}>
-              {products[0].title}
+              {cartItem.title}
             </Typography>
             <Typography sx={mediaTopStyleSx}>
               <Icon.DeleteOutline color='error' sx={mediaFontSizeStyleSx} />
@@ -26,8 +33,9 @@ function CheckoutCard() {
           </Box>
           <Box sx={{ flexGrow: '4', display: 'flex', justifyContent: 'space-between' }}>
             <Typography variant='body2' color='secondary.dark' sx={descriptionTextStyleSx}>
-              {'$30'} &nbsp;&nbsp; {'|'} &nbsp;&nbsp; {'Black'} &nbsp;&nbsp; {'|'} &nbsp;&nbsp;
-              {'M'}
+              ${cartItem.price} &nbsp;&nbsp; {'|'} &nbsp;&nbsp; {cartItem.color} &nbsp;&nbsp; {'|'}{' '}
+              &nbsp;&nbsp;
+              {cartItem.size}
             </Typography>
             <Box sx={quantityBoxStyleSx}>
               <Button
@@ -35,19 +43,25 @@ function CheckoutCard() {
                 variant='contained'
                 color='secondary'
                 sx={changeQuantityBtnStyleSx}
+                onClick={() => {
+                  removeProductFromCart(cartItem)
+                }}
               >
                 <Typography variant='body2' sx={{ fontWeight: '800' }}>
                   -
                 </Typography>
               </Button>
               <Typography data-cy='product-quantity' variant='body2' sx={quantityStyleSx}>
-                2
+                {cartItem.quantity}
               </Typography>
               <Button
                 data-cy='increase-quantity-button'
                 variant='contained'
                 color='secondary'
                 sx={changeQuantityBtnStyleSx}
+                onClick={() => {
+                  addProductToCart(cartItem)
+                }}
               >
                 <Typography variant='body2' sx={{ fontWeight: '800' }}>
                   +
@@ -57,7 +71,7 @@ function CheckoutCard() {
           </Box>
           <Box>
             <Typography variant='body2' sx={productTotalStyleSx}>
-              Total $60
+              Total: ${cartItem.price * cartItem.quantity}
             </Typography>
           </Box>
         </Box>
@@ -125,14 +139,14 @@ const productTotalStyleSx: SxProps<Theme> = theme => ({
 })
 export const imageBoxStyleSx: SxProps<Theme> = theme => ({
   width: '100px',
-  mx:"10px",
+  mx: '10px',
   [theme.breakpoints.up('md')]: { width: '150px' },
 })
 
 export const cardImgStyle: CSSProperties = {
   height: '100%',
-  width:"100%",
-  objectFit:"contain",
+  width: '100%',
+  objectFit: 'contain',
   borderRadius: '0.8rem',
 }
 
