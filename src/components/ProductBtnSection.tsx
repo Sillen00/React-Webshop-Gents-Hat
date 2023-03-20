@@ -1,4 +1,4 @@
-import { Button, Theme, Typography } from '@mui/material'
+import { Button, Input, Theme } from '@mui/material'
 import { Box, SxProps } from '@mui/system'
 import { NavLink } from 'react-router-dom'
 import { Product } from '../../data'
@@ -12,7 +12,7 @@ function ProductBtnSection({ product }: Props) {
   return (
     <Box>
       <Box sx={{ display: 'flex', alignItems: 'center', margin: '1rem 0' }}>
-        <Typography sx={quantityBoxStyle}>1</Typography>
+        <Input type='number' defaultValue={1} sx={quantityBoxStyle} />
         <Box sx={{ flexGrow: 1 }}>
           <AddToCartButton product={product} data-cy='added-to-cart-toast' />
         </Box>
@@ -29,6 +29,7 @@ function ProductBtnSection({ product }: Props) {
 }
 
 const quantityBoxStyle: SxProps<Theme> = theme => ({
+  width: '25%',
   border: '1px solid black',
   padding: '0.3rem 1rem',
   marginRight: '1rem',
