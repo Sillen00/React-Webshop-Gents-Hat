@@ -13,15 +13,25 @@ import {
   quantityStyleSx,
 } from './CheckoutCard'
 
-export default function OrderData() {
+interface Props {
+  title: string
+  price: number
+  quantity: number
+  size: string
+  image: string
+  color: string
+}
+
+export default function OrderData(props: Props) {
     const theme = useTheme();
     const isUpMd = useMediaQuery(theme.breakpoints.up('md'));
+
     return (
 
 
 <Box data-cy='cart-item' sx={productCardStyleSx}>
   <Box sx={{ ...imageBoxStyleSx, width: '100px', mx: '10px' }}>
-    <img style={cardImgStyle} src={products[0].image} alt={products[0].description} />
+    <img style={cardImgStyle} src={props.image}/>
   </Box>
   <Box sx={cartCardRightBoxStyleSx}>
     <Box
@@ -31,18 +41,18 @@ export default function OrderData() {
       }}
     >
       <Typography variant='h3' sx={mediaFontSizeStyleSx}>
-        {products[0].title}
+        {props.title}
       </Typography>
       {/* deletebutton */}
     </Box>
     <Box sx={{ flexGrow: '4', display: 'flex', justifyContent: 'space-between' }}>
       <Typography variant='body2' color='secondary.dark' sx={descriptionTextStyleSx}>
-        {'$30'} &nbsp;&nbsp; {'|'} &nbsp;&nbsp; {'Black'} &nbsp;&nbsp; {'|'} &nbsp;&nbsp;
-        {'M'}
+        {'$' + props.price} &nbsp;&nbsp; {'|'} &nbsp;&nbsp; {props.color} &nbsp;&nbsp; {'|'} &nbsp;&nbsp;
+        {props.size}
       </Typography>
       <Box sx={quantityBoxStyleSx}>
         <Typography data-cy='product-quantity' variant='body2' sx={quantityStyleSx}>
-          2
+          {props.quantity}
         </Typography>
       </Box>
     </Box>

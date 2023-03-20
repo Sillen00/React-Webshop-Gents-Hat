@@ -132,7 +132,7 @@ const changeQuantityBtnStyleSx: SxProps<Theme> = theme => ({
     top: '4px',
   },
 })
-const productTotalStyleSx: SxProps<Theme> = theme => ({
+ const productTotalStyleSx: SxProps<Theme> = theme => ({
   fontSize: '1rem',
   fontWeight: '800',
   [theme.breakpoints.up('md')]: { fontSize: '1.2rem' },

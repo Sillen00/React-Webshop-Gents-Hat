@@ -1,8 +1,27 @@
 import * as Icon from '@mui/icons-material'
 import { Box, Button, Paper, SxProps, Theme, Typography } from '@mui/material'
 import { Container } from '@mui/system'
+import { useContext } from 'react'
+import OrderData from '../components/OrderData'
+import { useCart } from '../contexts/CartContext'
+import { FormContext } from '../contexts/FormContext'
 
 function OrderConfirmation() {
+const { formValues } = useContext(FormContext)
+const { cartItems, totalPrice } = useCart()
+const orderItems = cartItems.map(item => (
+  <Typography>
+    <OrderData 
+      title={item.title}
+      price={item.price}
+      quantity={item.quantity}
+      size={item.size}
+      image={item.image}
+      color={item.color}
+    />
+  </Typography>
+))
+
   return (
     <Container>
       <Paper
@@ -30,6 +49,15 @@ function OrderConfirmation() {
             Continue Shopping
           </Button>
         </Box>
+        <Typography>{formValues.fullName}</Typography>
+        <Typography>{formValues.fullName}</Typography>
+        <Typography>{formValues.fullName}</Typography>
+        <Typography>{formValues.fullName}</Typography>
+        <Typography>{formValues.fullName}</Typography>
+        <Typography>{orderItems}</Typography>
+        <Typography>{totalPrice}</Typography>
+        
+
       </Paper>
     </Container>
   )
