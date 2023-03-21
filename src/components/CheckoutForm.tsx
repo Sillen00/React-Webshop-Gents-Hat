@@ -6,7 +6,7 @@ import {
   Paper,
   TextField,
   Theme,
-  Typography
+  Typography,
 } from '@mui/material'
 import { SxProps } from '@mui/system'
 import { useFormik } from 'formik'
@@ -16,8 +16,8 @@ import * as Yup from 'yup'
 import { FormContext } from '../contexts/FormContext'
 
 /* ----------------------
-        YUP VALIDATION
-  ---------------------- */
+      YUP VALIDATION
+----------------------- */
 
 const checkoutFormSchema = Yup.object().shape({
   fullName: Yup.string()
@@ -86,7 +86,7 @@ type checkoutFormValues = Yup.InferType<typeof checkoutFormSchema>
 
 export default function CheckoutForm() {
   const navigate = useNavigate()
-  const { setFormValues } = useContext(FormContext);
+  const { setFormValues } = useContext(FormContext)
 
   const formik = useFormik<checkoutFormValues>({
     initialValues: {
@@ -119,6 +119,9 @@ export default function CheckoutForm() {
           <Typography sx={fontStyle} variant='h3' gutterBottom>
             Checkout
           </Typography>
+
+          {/* NAME INPUT */}
+
           <Grid display='flex' alignItems='center' container rowSpacing={1} columnSpacing={5}>
             <Grid sx={formStyle} item md={6} display='flex' alignSelf='flex-start'>
               <TextField
@@ -137,6 +140,9 @@ export default function CheckoutForm() {
                 autoComplete='name'
               />
             </Grid>
+
+            {/* EMAIL INPUT */}
+
             <Grid sx={formStyle} item md={6} display='flex' alignSelf='flex-start'>
               <TextField
                 fullWidth
@@ -154,6 +160,9 @@ export default function CheckoutForm() {
                 autoComplete='email'
               />
             </Grid>
+
+            {/* PHONE NUMBER INPUT */}
+
             <Grid sx={formStyle} item md={6} display='flex' alignSelf='flex-start'>
               <TextField
                 fullWidth
@@ -172,6 +181,9 @@ export default function CheckoutForm() {
                 autoComplete='tel'
               />
             </Grid>
+
+            {/* ADDRESS INPUT */}
+
             <Grid sx={formStyle} item md={6} display='flex' alignSelf='flex-start'>
               <TextField
                 fullWidth
@@ -189,6 +201,9 @@ export default function CheckoutForm() {
                 autoComplete='street-address'
               />
             </Grid>
+
+            {/* POSTAL CODE INPUT */}
+
             <Grid sx={formStyle} item md={6} display='flex' alignSelf='flex-start'>
               <TextField
                 fullWidth
@@ -206,6 +221,9 @@ export default function CheckoutForm() {
                 autoComplete='postal-code'
               />
             </Grid>
+
+            {/* CITY INPUT */}
+
             <Grid sx={formStyle} item md={6} display='flex' alignSelf='flex-start'>
               <TextField
                 fullWidth
@@ -224,6 +242,9 @@ export default function CheckoutForm() {
               />
             </Grid>
           </Grid>
+
+          {/* SUBMIT FORM BUTTON */}
+
           <Container sx={buttonContainer}>
             <Button sx={buttonStyle} color='primary' variant='contained' type='submit'>
               Place order
@@ -236,8 +257,8 @@ export default function CheckoutForm() {
 }
 
 /* ----------------------
-        CSS STYLING
-  ---------------------- */
+       CSS STYLING
+---------------------- */
 
 const fontStyle: SxProps<Theme> = theme => ({
   [theme.breakpoints.down('md')]: {

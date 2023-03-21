@@ -8,6 +8,13 @@ import { FormContext } from '../contexts/FormContext'
 import { Link } from 'react-router-dom'
 
 function OrderConfirmation() {
+
+  /* ---------------------------
+        PROPS AND STATES
+  --------------------------- */
+
+  // PROPS //
+
   const { formValues, clearForm } = useContext(FormContext)
   const { fullName, email, phoneNumber, address, city, zipcode } = formValues
   const { cartItems, totalPrice, clearProductsFromCart } = useCart()
@@ -22,6 +29,8 @@ function OrderConfirmation() {
     />
   ))
 
+  // STATES //
+
   const [newOrderItems, setNewOrderItems] = useState(orderItems)
   const [newTotalPrice, setNewTotalPrice] = useState(totalPrice)
   // const [newFormValues, setNewFormValues] = useState(formValues)
@@ -34,8 +43,15 @@ function OrderConfirmation() {
     clearProductsFromCart()
   }, [])
 
+  /* --------------------------------
+        ORDER CONFIRMATION PAGE
+  -------------------------------- */
+
   return (
     <Container>
+
+      {/* CONTENT CONTAINER */}
+
       <Paper
         elevation={3}
         sx={{
@@ -44,6 +60,9 @@ function OrderConfirmation() {
           paddingBottom: '2rem',
         }}
       >
+
+       {/* CONFIRMATION MESSAGE */}
+
         <Box sx={confirmStyleBoxSX}>
           <Typography variant='h6' sx={typographyStylesSX}>
             Your order has been received
@@ -65,6 +84,8 @@ function OrderConfirmation() {
           </Link>
         </Box>
 
+        {/* LIST OF ORDERED PRODUCTS */}
+
         <Box sx={{ display: 'flex', justifyContent: 'space-between', paddingBottom: '1rem' }}>
           <Typography variant='h3' color='secondary.dark' sx={subHeaderStyleSX}>
             Product
@@ -80,6 +101,8 @@ function OrderConfirmation() {
           <Typography sx={ItemStyleSX}>{newOrderItems}</Typography>
         </Box>
         <Typography sx={priceStyleSX}>Total: ${newTotalPrice}</Typography>
+
+        {/* USER AND SHIPPING DETAILS */}   
 
         <Box sx={shippingDetailsStyleSX}>
           <Box sx={{ marginRight: '4rem' }}>
@@ -103,6 +126,10 @@ function OrderConfirmation() {
     </Container>
   )
 }
+
+/* ---------------------
+      CSS STYLING
+--------------------- */
 
 const confirmStyleBoxSX: SxProps<Theme> = theme => ({
   display: 'flex',
