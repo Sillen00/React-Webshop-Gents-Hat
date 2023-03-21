@@ -8,7 +8,7 @@ function CartCardSubheaders() {
         Product
       </Typography>
       <Box sx={{ display: 'flex' }}>
-        <Typography variant='h3' color='secondary.dark' sx={{ mr: 20, fontSize: '1.4rem' }}>
+        <Typography variant='h3' color='secondary.dark' sx={{ mr: 22.5, fontSize: '1.4rem' }}>
           Quantity
         </Typography>
         <Typography variant='h3' color='secondary.dark' sx={{ fontSize: '1.4rem' }}>

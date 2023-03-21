@@ -18,7 +18,7 @@ export default function AddToCartButton({ product, quantity, onAddToCart }: Prop
 
   const handleClickVariant = () => {
     increaseProductToCart(product, quantity)
-    enqueueSnackbar(`Added ${product.title} to the cart!`, {
+    enqueueSnackbar(`${product.title} has been added!`, {
       variant: 'success',
       SnackbarProps: { 'data-cy': 'added-to-cart-toast' } as any,
     })
