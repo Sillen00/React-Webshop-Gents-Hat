@@ -34,7 +34,6 @@ function ProductBtnSection({ product }: Props) {
             product={product}
             quantity={quantity}
             onAddToCart={() => setQuantity(1)}
-            data-cy='added-to-cart-toast'
           />
         </Box>
       </Box>
