@@ -5,7 +5,6 @@ import { useContext } from 'react'
 import OrderData from '../components/OrderData'
 import { useCart } from '../contexts/CartContext'
 import { FormContext } from '../contexts/FormContext'
-
 function OrderConfirmation() {
   const { formValues } = useContext(FormContext)
   const { cartItems, totalPrice } = useCart()
