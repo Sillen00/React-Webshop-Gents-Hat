@@ -39,7 +39,7 @@ function CheckoutCard({ cartItem }: Props) {
               justifyContent: 'space-between',
             }}
           >
-            <Typography variant='h3' sx={mediaFontSizeStyleSx}>
+            <Typography data-cy='product-title' variant='h3' sx={mediaFontSizeStyleSx}>
               {cartItem.title}
             </Typography>
             <Typography sx={mediaTopStyleSx}>
@@ -108,6 +108,11 @@ function CheckoutCard({ cartItem }: Props) {
               </Button>
             </Box>
           </Box>
+          <Box>
+            <Typography data-cy='product-price' variant='body2' sx={productTotalStyleSx}>
+              Total: ${cartItem.price * cartItem.quantity}
+            </Typography>
+          </Box>
         </Box>
       </Box>
     </Paper>
@@ -168,7 +173,7 @@ const changeQuantityBtnStyleSx: SxProps<Theme> = theme => ({
     height: '1.6rem',
   },
 })
- const productTotalStyleSx: SxProps<Theme> = theme => ({
+const productTotalStyleSx: SxProps<Theme> = theme => ({
   fontSize: '1rem',
   fontWeight: '800',
   [theme.breakpoints.up('md')]: { fontSize: '1.2rem' },
