@@ -139,7 +139,7 @@ export const cartCardRightBoxStyleSx: SxProps<Theme> = theme => ({
 })
 export const descriptionTextStyleSx: SxProps<Theme> = theme => ({
   fontWeight: '700',
-  fontSize: '0.8rem',
+  fontSize: '0.7rem',
   [theme.breakpoints.up('md')]: { fontSize: '1rem' },
 })
 export const quantityBoxStyleSx: SxProps<Theme> = theme => ({
@@ -168,15 +168,16 @@ const changeQuantityBtnStyleSx: SxProps<Theme> = theme => ({
     height: '1.6rem',
   },
 })
-const productTotalStyleSx: SxProps<Theme> = theme => ({
+ const productTotalStyleSx: SxProps<Theme> = theme => ({
   fontSize: '1rem',
   fontWeight: '800',
   [theme.breakpoints.up('md')]: { fontSize: '1.2rem' },
 })
 export const imageBoxStyleSx: SxProps<Theme> = theme => ({
-  width: '100px',
+  width: '150px',
   mx: '10px',
-  [theme.breakpoints.up('md')]: { width: '150px' },
+  [theme.breakpoints.down('md')]: { width: '150px' },
+  [theme.breakpoints.down('sm')]: { width: '60px' },
 })
 
 export const cardImgStyle: CSSProperties = {

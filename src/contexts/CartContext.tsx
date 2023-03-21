@@ -1,5 +1,6 @@
-import { createContext, PropsWithChildren, useContext, useState } from 'react'
+import { createContext, PropsWithChildren, useContext } from 'react'
 import { CartItem, Product } from '../../data'
+import { useLocalStorageState } from '../hooks/useLocalStorageState'
 
 interface CartContextValue {
   cartItems: CartItem[]
@@ -15,7 +16,7 @@ const CartContext = createContext<CartContextValue>(null as any)
 export const useCart = () => useContext(CartContext)
 
 export function CartProvider(props: PropsWithChildren) {
-  const [cartItems, setCartItems] = useState<CartItem[]>([])
+  const [cartItems, setCartItems] = useLocalStorageState<CartItem[]>([], 'cart')
 
   const increaseProductToCart = (product: Product, quantity: number) => {
     if (!cartItems.some(cartItem => cartItem.id === product.id)) {
