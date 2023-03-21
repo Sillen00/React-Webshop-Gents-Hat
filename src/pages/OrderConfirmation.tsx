@@ -143,11 +143,11 @@ const priceStyleSX: SxProps<Theme> = theme => ({
   fontWeight: '600',
   [theme.breakpoints.between('sm', 'md')]: {
     fontSize: '1.2rem',
-    mr: '5rem',
+    mr: '3rem',
   },
   [theme.breakpoints.up('md')]: {
     fontSize: '1.5rem',
-    mr: '6rem',
+    mr: '2.5rem',
   },
 })
 
