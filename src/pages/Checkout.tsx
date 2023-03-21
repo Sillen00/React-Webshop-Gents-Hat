@@ -1,3 +1,4 @@
+import { KeyboardDoubleArrowLeft } from '@mui/icons-material'
 import KeyboardDoubleArrowDownIcon from '@mui/icons-material/KeyboardDoubleArrowDown'
 import {
   Box,
@@ -7,9 +8,10 @@ import {
   SxProps,
   Theme,
   Typography,
-  useMediaQuery,
+  useMediaQuery
 } from '@mui/material'
 import { useRef } from 'react'
+import { Link } from 'react-router-dom'
 import CheckoutCard from '../components/CheckoutCard'
 import CheckoutCardSubheaders from '../components/CheckoutCardSubheaders'
 import CheckoutEmpty from '../components/CheckoutEmpty'
@@ -32,14 +34,26 @@ function Checkout() {
   return (
     <Container>
       <Box sx={{ marginBottom: '10rem' }}>
-        <Box sx={{ display: 'flex', justifyContent: 'space-between', py: 1 }}>
-          <Typography variant='h3'>Cart</Typography>
+      <Typography variant='h3' gutterBottom>Cart</Typography>
+        <Box sx={{ display: 'flex', justifyContent: 'space-between', py: 2, pb: 8 }}>
+          
+          <Link to='../'>
+            <Button
+              variant='contained'
+              sx={continueButton}
+            >
+              <KeyboardDoubleArrowLeft /> Continue shopping
+            </Button>
+          </Link>
+
           {cartItems.length > 0 && (
             <Button
               variant='contained'
               sx={{
                 fontWeight: '800',
+                minWidth: '9rem',
                 color: 'common.black',
+                mx: '2',
                 '&:hover': {
                   background: 'green',
                   color: 'white',
@@ -79,6 +93,19 @@ const formMediaQueries: SxProps<Theme> = theme => ({
   },
   [theme.breakpoints.down('sm')]: {
     paddingTop: `calc(var(--header-height-sm) + 1rem)`,
+  },
+})
+
+const continueButton: SxProps<Theme> = theme => ({
+  fontWeight: '800',
+  minHeight: '3rem',
+  color: 'common.black',
+  '&:hover': {
+    background: 'green',
+    color: 'white',
+  },
+  [theme.breakpoints.down('sm')]: {
+    width: '11rem'
   },
 })
 

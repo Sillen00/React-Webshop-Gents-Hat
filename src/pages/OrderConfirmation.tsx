@@ -8,7 +8,7 @@ import { FormContext } from '../contexts/FormContext'
 import { Link } from 'react-router-dom'
 
 function OrderConfirmation() {
-  const { formValues, setFormValues, clearForm } = useContext(FormContext)
+  const { formValues, clearForm } = useContext(FormContext)
   const { cartItems, totalPrice, clearProductsFromCart } = useCart()
   const orderItems = cartItems.map(item => (
     <OrderData
