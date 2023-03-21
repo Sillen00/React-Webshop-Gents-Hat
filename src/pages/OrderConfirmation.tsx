@@ -21,9 +21,11 @@ function OrderConfirmation() {
   ))
 
   const [newOrderItems, setNewOrderItems] = useState(orderItems)
+  const [newTotalPrice, setNewTotalPrice] = useState(totalPrice)
 
   useEffect(() => {
     setNewOrderItems(orderItems)
+    setNewTotalPrice(totalPrice)
     clearProductsFromCart()
   }, [])
 
@@ -70,7 +72,7 @@ function OrderConfirmation() {
         <Box>
           <Typography sx={ItemStyleSX}>{newOrderItems}</Typography>
         </Box>
-        <Typography sx={priceStyleSX}>Total: ${totalPrice}</Typography>
+        <Typography sx={priceStyleSX}>Total: ${newTotalPrice}</Typography>
 
         <Box sx={shippingDetailsStyleSX}>
           <Box sx={{ marginRight: '4rem' }}>
