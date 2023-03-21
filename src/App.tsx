@@ -9,7 +9,7 @@ function App() {
     <div>
       <ScrollToTop />
       <Header />
-      <Snackbar data-cy='added-to-cart-toast' />
+      <Snackbar />
 
       <main>
         <Outlet />
