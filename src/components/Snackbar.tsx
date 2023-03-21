@@ -20,6 +20,7 @@ export default function AddToCartButton({ product, quantity, onAddToCart }: Prop
     increaseProductToCart(product, quantity)
     enqueueSnackbar(`Added ${product.title} to the cart!`, {
       variant: 'success',
+      SnackbarProps: { 'data-cy': 'added-to-cart-toast' } as any,
     })
     onAddToCart()
   }
