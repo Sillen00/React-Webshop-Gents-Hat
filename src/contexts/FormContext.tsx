@@ -12,6 +12,7 @@ interface FormData {
 interface FormContextTypes {
   formValues: FormData
   setFormValues: (values: FormData) => void
+  clearForm: () => void
 }
 
 const defaultFormData: FormContextTypes = {
@@ -24,6 +25,7 @@ const defaultFormData: FormContextTypes = {
     city: '',
   },
   setFormValues: () => {},
+  clearForm: () => {},
 }
 
 export const FormContext = createContext<FormContextTypes>(defaultFormData)
@@ -31,5 +33,9 @@ export const FormContext = createContext<FormContextTypes>(defaultFormData)
 export const FormProvider = (props: PropsWithChildren) => {
   const [formValues, setFormValues] = useState(defaultFormData.formValues)
 
-  return <FormContext.Provider value={{formValues, setFormValues}}>{props.children}</FormContext.Provider>
+  const clearForm = () => {
+    setFormValues(defaultFormData.formValues)
+  }
+
+  return <FormContext.Provider value={{formValues, setFormValues, clearForm}}>{props.children}</FormContext.Provider>
 }
