@@ -11,6 +11,21 @@ interface Props {
 function CheckoutCard({ cartItem }: Props) {
   const { increaseProductToCart, decreaseProductFromCart, deleteProductFromCart } = useCart()
 
+  const handleQuantityChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const inputValue = event.target.value
+
+    if (inputValue === '') return // Ignore empty input
+
+    const newQuantity = Math.max(1, parseInt(inputValue))
+    if (isNaN(newQuantity)) return // Ignore invalid input
+
+    if (newQuantity <= 0) {
+      decreaseProductFromCart(cartItem.id, 0)
+    } else {
+      increaseProductToCart(cartItem, newQuantity - cartItem.quantity)
+    }
+  }
+
   return (
     <Paper elevation={3} sx={{ borderRadius: '0.8rem' }}>
       <Box data-cy='cart-item' sx={productCardStyleSx}>
@@ -63,11 +78,12 @@ function CheckoutCard({ cartItem }: Props) {
               </Button>
               <Input
                 color='primary'
-                disabled
                 type='number'
                 data-cy='product-quantity'
                 sx={quantityStyleSx}
                 value={cartItem.quantity}
+                onChange={handleQuantityChange}
+                inputProps={{ min: 1 }}
               />
 
               <Button
