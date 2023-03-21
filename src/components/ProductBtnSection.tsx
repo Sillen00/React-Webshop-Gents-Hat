@@ -11,14 +11,23 @@ interface Props {
 
 function ProductBtnSection({ product }: Props) {
   const [quantity, setQuantity] = useState<number>(1)
+
+  const handleQuantityChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newQuantity = parseInt(e.target.value)
+    if (isNaN(newQuantity) || newQuantity < 1) {
+      return
+    }
+    setQuantity(newQuantity)
+  }
   return (
     <Box>
       <Box sx={{ display: 'flex', alignItems: 'center', margin: '1rem 0' }}>
         <Input
           type='number'
           value={quantity}
-          onChange={e => setQuantity(parseInt(e.target.value))}
+          onChange={handleQuantityChange}
           sx={quantityBoxStyle}
+          inputProps={{ min: 1 }}
         />
         <Box sx={{ flexGrow: 1 }}>
           <AddToCartButton
@@ -48,8 +57,6 @@ const quantityBoxStyle: SxProps<Theme> = theme => ({
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',
-  textAlign: 'right',
-  direction: 'rtl',
 })
 
 const checkOutBtnStyle: SxProps<Theme> = theme => ({

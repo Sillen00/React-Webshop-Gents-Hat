@@ -59,8 +59,8 @@ function CheckoutCard({ cartItem }: Props) {
               data-cy='product-price'
               sx={descriptionTextStyleSx}
             >
-              ${cartItem.price} &nbsp;&nbsp; {'|'} &nbsp;&nbsp; {cartItem.color} &nbsp;&nbsp; {'|'}{' '}
-              &nbsp;&nbsp;{cartItem.size}
+              ${cartItem.price} &nbsp; {'|'} &nbsp; {cartItem.color} &nbsp; {'|'} &nbsp;{' '}
+              {cartItem.size}
             </Typography>
             <Box sx={quantityBoxStyleSx}>
               <Button
@@ -83,7 +83,9 @@ function CheckoutCard({ cartItem }: Props) {
                 sx={quantityStyleSx}
                 value={cartItem.quantity}
                 onChange={handleQuantityChange}
-                inputProps={{ min: 1 }}
+                inputProps={{
+                  min: 1,
+                }}
               />
 
               <Button
@@ -150,9 +152,8 @@ export const quantityBoxStyleSx: SxProps<Theme> = theme => ({
 export const quantityStyleSx: SxProps<Theme> = theme => ({
   fontWeight: '800',
   fontSize: '1.2rem',
-  width: '37px',
+  width: '2.8rem',
   padding: 0,
-  // height: '1.6rem',
   [theme.breakpoints.up('md')]: { fontSize: '1.4rem' },
 })
 const changeQuantityBtnStyleSx: SxProps<Theme> = theme => ({
@@ -161,7 +162,7 @@ const changeQuantityBtnStyleSx: SxProps<Theme> = theme => ({
   p: 0,
   minWidth: 0,
   position: 'relative',
-  top: '2px',
+  top: 0,
   [theme.breakpoints.up('md')]: {
     width: '1.6rem',
     height: '1.6rem',

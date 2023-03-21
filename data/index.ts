@@ -32,7 +32,7 @@ export const products: Product[] = [
       { id: 4, detail: 'Lorem ipsum' },
     ],
     size: 'M',
-    color: 'Black',
+    color: 'Dark Brown',
     inStock: true,
     id: 'e1',
   },
