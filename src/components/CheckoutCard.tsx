@@ -11,6 +11,21 @@ interface Props {
 function CheckoutCard({ cartItem }: Props) {
   const { increaseProductToCart, decreaseProductFromCart, deleteProductFromCart } = useCart()
 
+  const handleQuantityChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const inputValue = event.target.value
+
+    if (inputValue === '') return // Ignore empty input
+
+    const newQuantity = Math.max(1, parseInt(inputValue))
+    if (isNaN(newQuantity)) return // Ignore invalid input
+
+    if (newQuantity <= 0) {
+      decreaseProductFromCart(cartItem.id, 0)
+    } else {
+      increaseProductToCart(cartItem, newQuantity - cartItem.quantity)
+    }
+  }
+
   return (
     <Paper elevation={3} sx={{ borderRadius: '0.8rem' }}>
       <Box data-cy='cart-item' sx={productCardStyleSx}>
@@ -44,8 +59,13 @@ function CheckoutCard({ cartItem }: Props) {
               data-cy='product-price'
               sx={descriptionTextStyleSx}
             >
-              ${cartItem.price} &nbsp;&nbsp; {'|'} &nbsp;&nbsp; {cartItem.color} &nbsp;&nbsp; {'|'}{' '}
-              &nbsp;&nbsp;{cartItem.size}
+              ${cartItem.price} &nbsp; {'|'} &nbsp; {cartItem.color} &nbsp; {'|'} &nbsp;{' '}
+              {cartItem.size}
+            </Typography>
+          </Box>
+          <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            <Typography variant='body2' sx={productTotalStyleSx}>
+              Total: ${cartItem.price * cartItem.quantity}
             </Typography>
             <Box sx={quantityBoxStyleSx}>
               <Button
@@ -63,11 +83,14 @@ function CheckoutCard({ cartItem }: Props) {
               </Button>
               <Input
                 color='primary'
-                disabled
                 type='number'
                 data-cy='product-quantity'
                 sx={quantityStyleSx}
                 value={cartItem.quantity}
+                onChange={handleQuantityChange}
+                inputProps={{
+                  min: 1,
+                }}
               />
 
               <Button
@@ -85,11 +108,6 @@ function CheckoutCard({ cartItem }: Props) {
               </Button>
             </Box>
           </Box>
-          <Box>
-            <Typography variant='body2' sx={productTotalStyleSx}>
-              Total: ${cartItem.price * cartItem.quantity}
-            </Typography>
-          </Box>
         </Box>
       </Box>
     </Paper>
@@ -104,6 +122,7 @@ export const productCardStyleSx: SxProps<Theme> = theme => ({
 const mediaTopStyleSx: SxProps<Theme> = theme => ({
   position: 'relative',
   top: '0',
+  cursor: 'pointer',
   [theme.breakpoints.up('md')]: { top: '39px' },
 })
 export const mediaFontSizeStyleSx: SxProps<Theme> = theme => ({
@@ -128,15 +147,13 @@ export const quantityBoxStyleSx: SxProps<Theme> = theme => ({
   alignItems: 'center',
   gap: '5px',
   position: 'relative',
-  top: '28px',
-  [theme.breakpoints.up('md')]: { top: '-6px', right: '245px', gap: '10px' },
+  [theme.breakpoints.up('md')]: { bottom: '40px', right: '245px', gap: '10px' },
 })
 export const quantityStyleSx: SxProps<Theme> = theme => ({
   fontWeight: '800',
   fontSize: '1.2rem',
-  width: '37px',
+  width: '2.8rem',
   padding: 0,
-  // height: '1.6rem',
   [theme.breakpoints.up('md')]: { fontSize: '1.4rem' },
 })
 const changeQuantityBtnStyleSx: SxProps<Theme> = theme => ({
@@ -145,7 +162,7 @@ const changeQuantityBtnStyleSx: SxProps<Theme> = theme => ({
   p: 0,
   minWidth: 0,
   position: 'relative',
-  top: '2px',
+  top: 0,
   [theme.breakpoints.up('md')]: {
     width: '1.6rem',
     height: '1.6rem',
