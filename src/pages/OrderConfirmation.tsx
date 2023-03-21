@@ -146,15 +146,15 @@ const buttonStyleSX: SxProps<Theme> = theme => ({
 const priceStyleSX: SxProps<Theme> = theme => ({
   textAlign: 'end',
   pt: '1rem',
-  mr: '2rem',
+  mr: '1.2rem',
   fontWeight: '600',
   [theme.breakpoints.between('sm', 'md')]: {
     fontSize: '1.2rem',
-    mr: '3rem',
+    mr: '2rem',
   },
   [theme.breakpoints.up('md')]: {
     fontSize: '1.5rem',
-    mr: '2.5rem',
+    mr: '2.8rem',
   },
 })
 
