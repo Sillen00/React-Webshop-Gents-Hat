@@ -37,18 +37,10 @@ function Checkout() {
       <Typography variant='h3' gutterBottom>Cart</Typography>
         <Box sx={{ display: 'flex', justifyContent: 'space-between', py: 2, pb: 8 }}>
           
-          <Link to='../' style={{marginRight: '1.9rem'}}>
+          <Link to='../'>
             <Button
               variant='contained'
-              sx={{
-                fontWeight: '800',
-                minHeight: '3rem',
-                color: 'common.black',
-                '&:hover': {
-                  background: 'green',
-                  color: 'white',
-                },
-              }}
+              sx={continueButton}
             >
               <KeyboardDoubleArrowLeft /> Continue shopping
             </Button>
@@ -101,6 +93,19 @@ const formMediaQueries: SxProps<Theme> = theme => ({
   },
   [theme.breakpoints.down('sm')]: {
     paddingTop: `calc(var(--header-height-sm) + 1rem)`,
+  },
+})
+
+const continueButton: SxProps<Theme> = theme => ({
+  fontWeight: '800',
+  minHeight: '3rem',
+  color: 'common.black',
+  '&:hover': {
+    background: 'green',
+    color: 'white',
+  },
+  [theme.breakpoints.down('sm')]: {
+    width: '11rem'
   },
 })
 
