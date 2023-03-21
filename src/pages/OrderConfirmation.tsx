@@ -5,6 +5,7 @@ import { useContext, useEffect, useState } from 'react'
 import OrderData from '../components/OrderData'
 import { useCart } from '../contexts/CartContext'
 import { FormContext } from '../contexts/FormContext'
+import { Link } from 'react-router-dom'
 
 function OrderConfirmation() {
   const { formValues, setFormValues, clearForm } = useContext(FormContext)
@@ -56,10 +57,11 @@ function OrderConfirmation() {
           <Typography gutterBottom sx={typographyStylesSX}>
             <b>#{Math.floor(Math.random() * 100000) + 100000}</b>
           </Typography>
-          
-          <Button sx={buttonStyleSX} href='/' variant='contained'>
-            Continue Shopping
-          </Button>
+          <Link to='../'>
+            <Button sx={buttonStyleSX} variant='contained'>
+              Continue Shopping
+            </Button>
+          </Link>
         </Box>
 
         <Box sx={{ display: 'flex', justifyContent: 'space-between', paddingBottom: '1rem' }}>
