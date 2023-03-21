@@ -24,7 +24,7 @@ function CheckoutCard({ cartItem }: Props) {
               justifyContent: 'space-between',
             }}
           >
-            <Typography variant='h3' sx={mediaFontSizeStyleSx}>
+            <Typography data-cy='product-title' variant='h3' sx={mediaFontSizeStyleSx}>
               {cartItem.title}
             </Typography>
             <Typography sx={mediaTopStyleSx}>
@@ -38,12 +38,7 @@ function CheckoutCard({ cartItem }: Props) {
             </Typography>
           </Box>
           <Box sx={{ flexGrow: '4', display: 'flex', justifyContent: 'space-between' }}>
-            <Typography
-              variant='body2'
-              color='secondary.dark'
-              data-cy='product-price'
-              sx={descriptionTextStyleSx}
-            >
+            <Typography variant='body2' color='secondary.dark' sx={descriptionTextStyleSx}>
               ${cartItem.price} &nbsp;&nbsp; {'|'} &nbsp;&nbsp; {cartItem.color} &nbsp;&nbsp; {'|'}{' '}
               &nbsp;&nbsp;{cartItem.size}
             </Typography>
@@ -86,7 +81,7 @@ function CheckoutCard({ cartItem }: Props) {
             </Box>
           </Box>
           <Box>
-            <Typography variant='body2' sx={productTotalStyleSx}>
+            <Typography data-cy='product-price' variant='body2' sx={productTotalStyleSx}>
               Total: ${cartItem.price * cartItem.quantity}
             </Typography>
           </Box>
@@ -151,7 +146,7 @@ const changeQuantityBtnStyleSx: SxProps<Theme> = theme => ({
     height: '1.6rem',
   },
 })
- const productTotalStyleSx: SxProps<Theme> = theme => ({
+const productTotalStyleSx: SxProps<Theme> = theme => ({
   fontSize: '1rem',
   fontWeight: '800',
   [theme.breakpoints.up('md')]: { fontSize: '1.2rem' },
