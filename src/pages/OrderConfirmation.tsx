@@ -1,14 +1,14 @@
 import * as Icon from '@mui/icons-material'
 import { Box, Button, Paper, SxProps, Theme, Typography } from '@mui/material'
 import { Container } from '@mui/system'
-import { useContext } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import OrderData from '../components/OrderData'
 import { useCart } from '../contexts/CartContext'
 import { FormContext } from '../contexts/FormContext'
 
 function OrderConfirmation() {
   const { formValues } = useContext(FormContext)
-  const { cartItems, totalPrice } = useCart()
+  const { cartItems, totalPrice, clearProductsFromCart } = useCart()
   const orderItems = cartItems.map(item => (
     <OrderData
       title={item.title}
@@ -19,6 +19,13 @@ function OrderConfirmation() {
       color={item.color}
     />
   ))
+
+  const [newOrderItems, setNewOrderItems] = useState(orderItems)
+
+  useEffect(() => {
+    setNewOrderItems(orderItems)
+    clearProductsFromCart()
+  }, [])
 
   return (
     <Container>
@@ -61,12 +68,12 @@ function OrderConfirmation() {
         </Box>
 
         <Box>
-          <Typography sx={ItemStyleSX}>{orderItems}</Typography>
+          <Typography sx={ItemStyleSX}>{newOrderItems}</Typography>
         </Box>
         <Typography sx={priceStyleSX}>Total: ${totalPrice}</Typography>
 
         <Box sx={shippingDetailsStyleSX}>
-          <Box sx={{marginRight: '4rem'}}>
+          <Box sx={{ marginRight: '4rem' }}>
             <Typography gutterBottom variant='h3' color='secondary.dark' sx={subHeaderStyleSX}>
               User Details
             </Typography>
@@ -206,7 +213,7 @@ const shippingDetailsStyleSX: SxProps<Theme> = theme => ({
   pt: 3,
   pb: 3,
   [theme.breakpoints.down('sm')]: {
-    flexDirection: 'column'
+    flexDirection: 'column',
   },
 })
 

@@ -7,6 +7,7 @@ interface CartContextValue {
   increaseProductToCart: (product: Product, quantity: number) => void
   decreaseProductFromCart: (productId: string, newQuantity: number) => void
   deleteProductFromCart: (product: Product) => void
+  clearProductsFromCart: () => void
   totalPrice: number
   totalProductsInCart: number
 }
@@ -62,6 +63,10 @@ export function CartProvider(props: PropsWithChildren) {
     }
   }
 
+  const clearProductsFromCart = () => {
+    setCartItems([])
+  }
+
   const totalProductsInCart = cartItems.reduce(
     (accumulator, cartItem) => accumulator + cartItem.quantity,
     0
@@ -79,6 +84,7 @@ export function CartProvider(props: PropsWithChildren) {
         increaseProductToCart,
         decreaseProductFromCart,
         deleteProductFromCart,
+        clearProductsFromCart,
         totalPrice,
         totalProductsInCart,
       }}
