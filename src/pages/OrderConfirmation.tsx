@@ -9,6 +9,7 @@ import { Link } from 'react-router-dom'
 
 function OrderConfirmation() {
   const { formValues, clearForm } = useContext(FormContext)
+  const { fullName, email, phoneNumber, address, city, zipcode } = formValues
   const { cartItems, totalPrice, clearProductsFromCart } = useCart()
   const orderItems = cartItems.map(item => (
     <OrderData
@@ -23,13 +24,13 @@ function OrderConfirmation() {
 
   const [newOrderItems, setNewOrderItems] = useState(orderItems)
   const [newTotalPrice, setNewTotalPrice] = useState(totalPrice)
-  const [newFormValues, setNewFormValues] = useState(formValues)
+  // const [newFormValues, setNewFormValues] = useState(formValues)
 
   useEffect(() => {
     setNewOrderItems(orderItems)
     setNewTotalPrice(totalPrice)
-    setNewFormValues(formValues)
-    clearForm()
+    // setNewFormValues(formValues)
+    // clearForm()
     clearProductsFromCart()
   }, [])
 
@@ -85,17 +86,17 @@ function OrderConfirmation() {
             <Typography gutterBottom variant='h3' color='secondary.dark' sx={subHeaderStyleSX}>
               User Details
             </Typography>
-            <Typography sx={formDataStyleSX}>{newFormValues.fullName}</Typography>
-            <Typography sx={formDataStyleSX}>{newFormValues.email}</Typography>
-            <Typography sx={formDataStyleSX}>{newFormValues.phoneNumber}</Typography>
+            <Typography sx={formDataStyleSX}>{fullName}</Typography>
+            <Typography sx={formDataStyleSX}>{email}</Typography>
+            <Typography sx={formDataStyleSX}>{phoneNumber}</Typography>
           </Box>
           <Box>
             <Typography gutterBottom variant='h3' color='secondary.dark' sx={subHeaderStyleSX}>
               Shipping Details
             </Typography>
-            <Typography sx={formDataStyleSX}>{newFormValues.address}</Typography>
-            <Typography sx={formDataStyleSX}>{newFormValues.city}</Typography>
-            <Typography sx={formDataStyleSX}>{newFormValues.zipcode}</Typography>
+            <Typography sx={formDataStyleSX}>{address}</Typography>
+            <Typography sx={formDataStyleSX}>{city}</Typography>
+            <Typography sx={formDataStyleSX}>{zipcode}</Typography>
           </Box>
         </Box>
       </Paper>
