@@ -1,14 +1,15 @@
 import * as Icon from '@mui/icons-material'
 import { Box, Button, Paper, SxProps, Theme, Typography } from '@mui/material'
 import { Container } from '@mui/system'
-import { useContext } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import OrderData from '../components/OrderData'
 import { useCart } from '../contexts/CartContext'
 import { FormContext } from '../contexts/FormContext'
+import { Link } from 'react-router-dom'
 
 function OrderConfirmation() {
-  const { formValues } = useContext(FormContext)
-  const { cartItems, totalPrice } = useCart()
+  const { formValues, setFormValues, clearForm } = useContext(FormContext)
+  const { cartItems, totalPrice, clearProductsFromCart } = useCart()
   const orderItems = cartItems.map(item => (
     <OrderData
       title={item.title}
@@ -19,6 +20,18 @@ function OrderConfirmation() {
       color={item.color}
     />
   ))
+
+  const [newOrderItems, setNewOrderItems] = useState(orderItems)
+  const [newTotalPrice, setNewTotalPrice] = useState(totalPrice)
+  const [newFormValues, setNewFormValues] = useState(formValues)
+
+  useEffect(() => {
+    setNewOrderItems(orderItems)
+    setNewTotalPrice(totalPrice)
+    setNewFormValues(formValues)
+    clearForm()
+    clearProductsFromCart()
+  }, [])
 
   return (
     <Container>
@@ -44,9 +57,11 @@ function OrderConfirmation() {
           <Typography gutterBottom sx={typographyStylesSX}>
             <b>#{Math.floor(Math.random() * 100000) + 100000}</b>
           </Typography>
-          <Button sx={buttonStyleSX} href='/' variant='contained'>
-            Continue Shopping
-          </Button>
+          <Link to='../'>
+            <Button sx={buttonStyleSX} variant='contained'>
+              Continue Shopping
+            </Button>
+          </Link>
         </Box>
 
         <Box sx={{ display: 'flex', justifyContent: 'space-between', paddingBottom: '1rem' }}>
@@ -61,26 +76,26 @@ function OrderConfirmation() {
         </Box>
 
         <Box>
-          <Typography sx={ItemStyleSX}>{orderItems}</Typography>
+          <Typography sx={ItemStyleSX}>{newOrderItems}</Typography>
         </Box>
-        <Typography sx={priceStyleSX}>Total: ${totalPrice}</Typography>
+        <Typography sx={priceStyleSX}>Total: ${newTotalPrice}</Typography>
 
         <Box sx={shippingDetailsStyleSX}>
-          <Box sx={{marginRight: '4rem'}}>
+          <Box sx={{ marginRight: '4rem' }}>
             <Typography gutterBottom variant='h3' color='secondary.dark' sx={subHeaderStyleSX}>
               User Details
             </Typography>
-            <Typography sx={formDataStyleSX}>{formValues.fullName}</Typography>
-            <Typography sx={formDataStyleSX}>{formValues.email}</Typography>
-            <Typography sx={formDataStyleSX}>{formValues.phoneNumber}</Typography>
+            <Typography sx={formDataStyleSX}>{newFormValues.fullName}</Typography>
+            <Typography sx={formDataStyleSX}>{newFormValues.email}</Typography>
+            <Typography sx={formDataStyleSX}>{newFormValues.phoneNumber}</Typography>
           </Box>
           <Box>
             <Typography gutterBottom variant='h3' color='secondary.dark' sx={subHeaderStyleSX}>
               Shipping Details
             </Typography>
-            <Typography sx={formDataStyleSX}>{formValues.address}</Typography>
-            <Typography sx={formDataStyleSX}>{formValues.city}</Typography>
-            <Typography sx={formDataStyleSX}>{formValues.zipcode}</Typography>
+            <Typography sx={formDataStyleSX}>{newFormValues.address}</Typography>
+            <Typography sx={formDataStyleSX}>{newFormValues.city}</Typography>
+            <Typography sx={formDataStyleSX}>{newFormValues.zipcode}</Typography>
           </Box>
         </Box>
       </Paper>
@@ -206,7 +221,7 @@ const shippingDetailsStyleSX: SxProps<Theme> = theme => ({
   pt: 3,
   pb: 3,
   [theme.breakpoints.down('sm')]: {
-    flexDirection: 'column'
+    flexDirection: 'column',
   },
 })
 
