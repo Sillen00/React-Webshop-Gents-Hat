@@ -27,6 +27,7 @@ function OrderConfirmation() {
         sx={{
           mt: '4rem',
           borderRadius: '1rem',
+          paddingBottom: '2rem',
         }}
       >
         <Box sx={confirmStyleBoxSX}>
@@ -40,25 +41,12 @@ function OrderConfirmation() {
           <Typography variant='body2' sx={typographyStylesSX}>
             Your order number is:
           </Typography>
-          <Typography sx={typographyStylesSX}>
+          <Typography gutterBottom sx={typographyStylesSX}>
             <b>#{Math.floor(Math.random() * 100000) + 100000}</b>
           </Typography>
           <Button sx={buttonStyleSX} href='/' variant='contained'>
             Continue Shopping
           </Button>
-        </Box>
-        <Box sx={{ paddingBottom: '0.5rem' }}>
-          <Typography variant='h3' color='secondary.dark' sx={subHeaderStyleSX}>
-            Shipping Details
-          </Typography>
-        </Box>
-        <Box>
-          <Typography sx={formDataStyleSX}>{formValues.fullName}</Typography>
-          <Typography sx={formDataStyleSX}>{formValues.address}</Typography>
-          <Typography sx={formDataStyleSX}>{formValues.email}</Typography>
-          <Typography sx={formDataStyleSX}>{formValues.phoneNumber}</Typography>
-          <Typography sx={formDataStyleSX}>{formValues.city}</Typography>
-          <Typography sx={formDataStyleSX}>{formValues.zipcode}</Typography>
         </Box>
 
         <Box sx={{ display: 'flex', justifyContent: 'space-between', paddingBottom: '1rem' }}>
@@ -76,6 +64,25 @@ function OrderConfirmation() {
           <Typography sx={ItemStyleSX}>{orderItems}</Typography>
         </Box>
         <Typography sx={priceStyleSX}>Total: ${totalPrice}</Typography>
+
+        <Box sx={shippingDetailsStyleSX}>
+          <Box sx={{marginRight: '4rem'}}>
+            <Typography gutterBottom variant='h3' color='secondary.dark' sx={subHeaderStyleSX}>
+              User Details
+            </Typography>
+            <Typography sx={formDataStyleSX}>{formValues.fullName}</Typography>
+            <Typography sx={formDataStyleSX}>{formValues.email}</Typography>
+            <Typography sx={formDataStyleSX}>{formValues.phoneNumber}</Typography>
+          </Box>
+          <Box>
+            <Typography gutterBottom variant='h3' color='secondary.dark' sx={subHeaderStyleSX}>
+              Shipping Details
+            </Typography>
+            <Typography sx={formDataStyleSX}>{formValues.address}</Typography>
+            <Typography sx={formDataStyleSX}>{formValues.city}</Typography>
+            <Typography sx={formDataStyleSX}>{formValues.zipcode}</Typography>
+          </Box>
+        </Box>
       </Paper>
     </Container>
   )
@@ -191,6 +198,15 @@ const formDataStyleSX: SxProps<Theme> = theme => ({
   [theme.breakpoints.up('md')]: {
     ml: '3rem',
     fontSize: '1.2rem',
+  },
+})
+
+const shippingDetailsStyleSX: SxProps<Theme> = theme => ({
+  display: 'flex',
+  pt: 3,
+  pb: 3,
+  [theme.breakpoints.down('sm')]: {
+    flexDirection: 'column'
   },
 })
 
