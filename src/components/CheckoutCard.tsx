@@ -62,6 +62,11 @@ function CheckoutCard({ cartItem }: Props) {
               ${cartItem.price} &nbsp; {'|'} &nbsp; {cartItem.color} &nbsp; {'|'} &nbsp;{' '}
               {cartItem.size}
             </Typography>
+          </Box>
+          <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            <Typography variant='body2' sx={productTotalStyleSx}>
+              Total: ${cartItem.price * cartItem.quantity}
+            </Typography>
             <Box sx={quantityBoxStyleSx}>
               <Button
                 data-cy='decrease-quantity-button'
@@ -103,11 +108,6 @@ function CheckoutCard({ cartItem }: Props) {
               </Button>
             </Box>
           </Box>
-          <Box>
-            <Typography variant='body2' sx={productTotalStyleSx}>
-              Total: ${cartItem.price * cartItem.quantity}
-            </Typography>
-          </Box>
         </Box>
       </Box>
     </Paper>
@@ -122,6 +122,7 @@ export const productCardStyleSx: SxProps<Theme> = theme => ({
 const mediaTopStyleSx: SxProps<Theme> = theme => ({
   position: 'relative',
   top: '0',
+  cursor: 'pointer',
   [theme.breakpoints.up('md')]: { top: '39px' },
 })
 export const mediaFontSizeStyleSx: SxProps<Theme> = theme => ({
@@ -146,8 +147,7 @@ export const quantityBoxStyleSx: SxProps<Theme> = theme => ({
   alignItems: 'center',
   gap: '5px',
   position: 'relative',
-  top: '28px',
-  [theme.breakpoints.up('md')]: { top: '-6px', right: '245px', gap: '10px' },
+  [theme.breakpoints.up('md')]: { bottom: '40px', right: '245px', gap: '10px' },
 })
 export const quantityStyleSx: SxProps<Theme> = theme => ({
   fontWeight: '800',
