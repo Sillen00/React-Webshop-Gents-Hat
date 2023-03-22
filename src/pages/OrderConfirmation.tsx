@@ -8,7 +8,15 @@ import { FormContext } from '../contexts/FormContext'
 import { Link } from 'react-router-dom'
 
 function OrderConfirmation() {
+
+  /* ---------------------------
+        PROPS AND STATES
+  --------------------------- */
+
+  // PROPS //
+
   const { formValues, clearForm } = useContext(FormContext)
+  const { fullName, email, phoneNumber, address, city, zipcode } = formValues
   const { cartItems, totalPrice, clearProductsFromCart } = useCart()
   const orderItems = cartItems.map(item => (
     <OrderData
@@ -21,20 +29,29 @@ function OrderConfirmation() {
     />
   ))
 
+  // STATES //
+
   const [newOrderItems, setNewOrderItems] = useState(orderItems)
   const [newTotalPrice, setNewTotalPrice] = useState(totalPrice)
-  const [newFormValues, setNewFormValues] = useState(formValues)
+  // const [newFormValues, setNewFormValues] = useState(formValues)
 
   useEffect(() => {
     setNewOrderItems(orderItems)
     setNewTotalPrice(totalPrice)
-    setNewFormValues(formValues)
-    clearForm()
+    // setNewFormValues(formValues)
+    // clearForm()
     clearProductsFromCart()
   }, [])
 
+  /* --------------------------------
+        ORDER CONFIRMATION PAGE
+  -------------------------------- */
+
   return (
     <Container>
+
+      {/* CONTENT CONTAINER */}
+
       <Paper
         elevation={3}
         sx={{
@@ -43,6 +60,9 @@ function OrderConfirmation() {
           paddingBottom: '2rem',
         }}
       >
+
+       {/* CONFIRMATION MESSAGE */}
+
         <Box sx={confirmStyleBoxSX}>
           <Typography variant='h6' sx={typographyStylesSX}>
             Your order has been received
@@ -64,6 +84,8 @@ function OrderConfirmation() {
           </Link>
         </Box>
 
+        {/* LIST OF ORDERED PRODUCTS */}
+
         <Box sx={{ display: 'flex', justifyContent: 'space-between', paddingBottom: '1rem' }}>
           <Typography variant='h3' color='secondary.dark' sx={subHeaderStyleSX}>
             Product
@@ -80,28 +102,34 @@ function OrderConfirmation() {
         </Box>
         <Typography sx={priceStyleSX}>Total: ${newTotalPrice}</Typography>
 
+        {/* USER AND SHIPPING DETAILS */}   
+
         <Box sx={shippingDetailsStyleSX}>
           <Box sx={{ marginRight: '4rem' }}>
             <Typography gutterBottom variant='h3' color='secondary.dark' sx={subHeaderStyleSX}>
               User Details
             </Typography>
-            <Typography sx={formDataStyleSX}>{newFormValues.fullName}</Typography>
-            <Typography sx={formDataStyleSX}>{newFormValues.email}</Typography>
-            <Typography sx={formDataStyleSX}>{newFormValues.phoneNumber}</Typography>
+            <Typography sx={formDataStyleSX}>{fullName}</Typography>
+            <Typography sx={formDataStyleSX}>{email}</Typography>
+            <Typography sx={formDataStyleSX}>{phoneNumber}</Typography>
           </Box>
           <Box>
             <Typography gutterBottom variant='h3' color='secondary.dark' sx={subHeaderStyleSX}>
               Shipping Details
             </Typography>
-            <Typography sx={formDataStyleSX}>{newFormValues.address}</Typography>
-            <Typography sx={formDataStyleSX}>{newFormValues.city}</Typography>
-            <Typography sx={formDataStyleSX}>{newFormValues.zipcode}</Typography>
+            <Typography sx={formDataStyleSX}>{address}</Typography>
+            <Typography sx={formDataStyleSX}>{city}</Typography>
+            <Typography sx={formDataStyleSX}>{zipcode}</Typography>
           </Box>
         </Box>
       </Paper>
     </Container>
   )
 }
+
+/* ---------------------
+      CSS STYLING
+--------------------- */
 
 const confirmStyleBoxSX: SxProps<Theme> = theme => ({
   display: 'flex',

@@ -8,7 +8,7 @@ import {
   SxProps,
   Theme,
   Typography,
-  useMediaQuery
+  useMediaQuery,
 } from '@mui/material'
 import { useRef } from 'react'
 import { Link } from 'react-router-dom'
@@ -19,6 +19,10 @@ import CheckoutForm from '../components/CheckoutForm'
 import CheckoutTotalPrice from '../components/CheckoutTotalPrice'
 import { useCart } from '../contexts/CartContext'
 import '../index.css'
+
+/* ---------------------------
+      PROPS AND VARIABLES
+--------------------------- */
 
 function Checkout() {
   const isMediumScreen = useMediaQuery('(min-width:900px)')
@@ -31,20 +35,27 @@ function Checkout() {
     }
   }
 
+  /* ----------------------
+        CHECKOUT PAGE
+  ---------------------- */
+
   return (
     <Container>
       <Box sx={{ marginBottom: '10rem' }}>
-      <Typography variant='h3' gutterBottom>Cart</Typography>
+        <Typography variant='h3' gutterBottom>
+          Cart
+        </Typography>
         <Box sx={{ display: 'flex', justifyContent: 'space-between', py: 2, pb: 8 }}>
           
+          {/* CONTINUE SHOPPING BUTTON */}
+
           <Link to='../'>
-            <Button
-              variant='contained'
-              sx={continueButton}
-            >
+            <Button variant='contained' sx={continueButton}>
               <KeyboardDoubleArrowLeft /> Continue shopping
             </Button>
           </Link>
+
+          {/* CHECKOUT BUTTON */}
 
           {cartItems.length > 0 && (
             <Button
@@ -66,6 +77,8 @@ function Checkout() {
           )}
         </Box>
 
+        {/* LIST OF CART ITEMS */}
+
         {cartItems.length > 0 && isMediumScreen && <CheckoutCardSubheaders />}
 
         <Stack spacing={{ xs: 1, sm: 2, md: 4 }}>
@@ -76,6 +89,8 @@ function Checkout() {
 
         {cartItems.length > 0 ? <CheckoutTotalPrice totalPrice={totalPrice} /> : <CheckoutEmpty />}
 
+        {/* FORM COMPONENT */}
+
         {cartItems.length > 0 && (
           <Box ref={formRef} sx={formMediaQueries}>
             <CheckoutForm />
@@ -85,6 +100,10 @@ function Checkout() {
     </Container>
   )
 }
+
+/* ----------------------
+       CSS STYLING
+---------------------- */
 
 const formMediaQueries: SxProps<Theme> = theme => ({
   paddingTop: `calc(var(--header-height-xl) + 1rem)`,
@@ -105,7 +124,7 @@ const continueButton: SxProps<Theme> = theme => ({
     color: 'white',
   },
   [theme.breakpoints.down('sm')]: {
-    width: '11rem'
+    width: '11rem',
   },
 })
 
