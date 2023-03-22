@@ -1,6 +1,6 @@
 import * as Icon from '@mui/icons-material'
 import { Box, Button, Input, Paper, SxProps, Theme, Typography } from '@mui/material'
-import { CSSProperties } from 'react'
+import { CSSProperties, useEffect, useState } from 'react'
 import { CartItem } from '../../data'
 import { useCart } from '../contexts/CartContext'
 
@@ -11,16 +11,26 @@ interface Props {
 function CheckoutCard({ cartItem }: Props) {
   const { increaseProductToCart, decreaseProductFromCart, deleteProductFromCart } = useCart()
 
+  // inputValue state stores the value of the input field.
+  const [inputValue, setInputValue] = useState<string>(cartItem.quantity.toString())
+
+  // useEffect syncs inputValue with cartItem.quantity.
+  useEffect(() => {
+    setInputValue(cartItem.quantity.toString())
+  }, [cartItem.quantity])
+
+  // Added handleQuantityChange to update inputValue when the user types in the input field
   const handleQuantityChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const inputValue = event.target.value
+    const newInputValue = event.target.value
+    setInputValue(newInputValue)
+  }
 
-    if (inputValue === '') return // Ignore empty input
-
-    const newQuantity = Math.max(1, parseInt(inputValue))
-    if (isNaN(newQuantity)) return // Ignore invalid input
-
-    if (newQuantity <= 0) {
-      decreaseProductFromCart(cartItem.id, 0)
+  // Added handleQuantityBlur to update the cart when the input field loses focus
+  const handleQuantityBlur = () => {
+    const newQuantity = parseInt(inputValue)
+    if (isNaN(newQuantity) || newQuantity < 1) {
+      setInputValue('1')
+      increaseProductToCart(cartItem, 1 - cartItem.quantity)
     } else {
       increaseProductToCart(cartItem, newQuantity - cartItem.quantity)
     }
@@ -86,9 +96,13 @@ function CheckoutCard({ cartItem }: Props) {
                 type='number'
                 data-cy='product-quantity'
                 sx={quantityStyleSx}
-                value={cartItem.quantity}
+                value={inputValue}
                 onChange={handleQuantityChange}
+                onBlur={handleQuantityBlur}
                 inputProps={{
+                  style: {
+                    textAlign: 'center',
+                  },
                   min: 1,
                 }}
               />
@@ -108,7 +122,6 @@ function CheckoutCard({ cartItem }: Props) {
               </Button>
             </Box>
           </Box>
-       
         </Box>
       </Box>
     </Paper>
@@ -155,8 +168,12 @@ export const quantityStyleSx: SxProps<Theme> = theme => ({
   fontSize: '1.2rem',
   width: '2.8rem',
   padding: 0,
+  '& input::-webkit-outer-spin-button, & input::-webkit-inner-spin-button': {
+    '-webkit-appearance': 'none',
+  },
   [theme.breakpoints.up('md')]: { fontSize: '1.4rem' },
 })
+
 const changeQuantityBtnStyleSx: SxProps<Theme> = theme => ({
   width: '1.4rem',
   height: '1.4rem',

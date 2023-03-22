@@ -12,13 +12,31 @@ interface Props {
 function ProductBtnSection({ product }: Props) {
   const [quantity, setQuantity] = useState<number>(1)
 
+  // Define an event handler function that is called when the user changes the value of the input field associated with the component.
+  // The function takes an event object as its argument and extracts the current value of the input field.
   const handleQuantityChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const newQuantity = parseInt(e.target.value)
-    if (isNaN(newQuantity) || newQuantity < 1) {
-      return
+    const inputValue = e.target.value
+
+    // Updates the quantity state based on the user input in the input field,
+    // making sure that the new value is valid and greater than or equal to 1.
+    if (inputValue === '') {
+      setQuantity(NaN)
+    } else {
+      const newQuantity = parseInt(inputValue)
+      if (isNaN(newQuantity) || newQuantity < 1) {
+        return
+      }
+      setQuantity(newQuantity)
     }
-    setQuantity(newQuantity)
   }
+
+  // Define an event handler function that is called when the input field associated with the component loses focus.
+  const handleQuantityBlur = () => {
+    if (isNaN(quantity)) {
+      setQuantity(1)
+    }
+  }
+
   return (
     <Box>
       <Box sx={{ display: 'flex', alignItems: 'center', margin: '1rem 0' }}>
@@ -26,8 +44,14 @@ function ProductBtnSection({ product }: Props) {
           type='number'
           value={quantity}
           onChange={handleQuantityChange}
+          onBlur={handleQuantityBlur}
           sx={quantityBoxStyle}
-          inputProps={{ min: 1 }}
+          inputProps={{
+            style: {
+              textAlign: 'center',
+            },
+            min: 1,
+          }}
         />
         <Box sx={{ flexGrow: 1 }}>
           <AddToCartButton
