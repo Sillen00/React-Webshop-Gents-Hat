@@ -32,12 +32,9 @@ function Admin() {
         <DialogTitle>EDIT / ADD PRODUCT</DialogTitle>
         <DialogContent>
           <DialogContentText>Id</DialogContentText>
-          <AdminProductForm />
+          <AdminProductForm handleClose={handleClose} />
         </DialogContent>
-        <DialogActions>
-          <Button variant='contained' onClick={handleClose} color="error">Close</Button>
-          <Button variant='contained' onClick={handleClose}>Done</Button>
-        </DialogActions>
+        <DialogActions></DialogActions>
       </Dialog>
 
       <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: '2rem' }}>
