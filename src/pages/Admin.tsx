@@ -1,34 +1,48 @@
-import { Box, Button, Grid, Modal, SxProps, Theme, Typography } from '@mui/material'
-import { useState } from 'react'
+import {
+  Box,
+  Button,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  DialogTitle,
+  Grid,
+  SxProps,
+  Theme,
+  Typography,
+} from '@mui/material'
+import React from 'react'
 import { products } from '../../data'
 import AdminCardProduct from '../components/AdminCardProduct'
-import AdminTextFields from '../components/AdminTextFields'
+import AdminProductForm from '../components/AdminProductForm'
 
 function Admin() {
-  const [open, setOpen] = useState(false)
-  const handleOpen = () => setOpen(true)
-  const handleClose = () => setOpen(false)
+  const [open, setOpen] = React.useState(false)
 
+  const handleClickOpen = () => {
+    setOpen(true)
+  }
+
+  const handleClose = () => {
+    setOpen(false)
+  }
   return (
     <>
-      <Modal
-        open={open}
-        onClose={handleClose}
-        aria-labelledby='modal-modal-title'
-        aria-describedby='modal-modal-description'
-      >
-        <Box sx={style}>
-          <Grid sx={AdminCardListSx} container rowSpacing={5}>
-            <Grid sx={AdminCardListSx} item xs={12} sm={6} md={4} lg={3} xl={3}>
-              <AdminTextFields />
-            </Grid>
-          </Grid>
-        </Box>
-      </Modal>
-      
+      <Dialog fullWidth open={open} onClose={handleClose}>
+        <DialogTitle>EDIT / ADD PRODUCT</DialogTitle>
+        <DialogContent>
+          <DialogContentText>Id</DialogContentText>
+          <AdminProductForm />
+        </DialogContent>
+        <DialogActions>
+          <Button variant='contained' onClick={handleClose} color="error">Close</Button>
+          <Button variant='contained' onClick={handleClose}>Done</Button>
+        </DialogActions>
+      </Dialog>
+
       <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: '2rem' }}>
         <Typography variant={'h3'}>Admin</Typography>
-        <Button onClick={handleOpen} variant='contained'>
+        <Button onClick={handleClickOpen} variant='contained'>
           <Typography variant={'body2'}>Add New Product</Typography>
         </Button>
       </Box>
@@ -46,7 +60,7 @@ function Admin() {
   )
 }
 
-const style = {
+const ModalBoxStyleSx: SxProps<Theme> = theme => ({
   position: 'absolute' as 'absolute',
   top: '50%',
   left: '50%',
@@ -56,7 +70,7 @@ const style = {
   border: '2px solid #000',
   boxShadow: 24,
   p: 4,
-}
+})
 
 const AdminCardListSx: SxProps<Theme> = theme => ({
   display: 'flex',
