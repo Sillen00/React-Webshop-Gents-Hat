@@ -12,13 +12,29 @@ interface Props {
 function ProductBtnSection({ product }: Props) {
   const [quantity, setQuantity] = useState<number>(1)
 
+  // When the input field is left empty, and the user either clicks outside the field or tabs to another position,
+  // the quantity will be set to 1.
   const handleQuantityChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const newQuantity = parseInt(e.target.value)
-    if (isNaN(newQuantity) || newQuantity < 1) {
-      return
+    const inputValue = e.target.value
+
+    // Allow empty input
+    if (inputValue === '') {
+      setQuantity(NaN)
+    } else {
+      const newQuantity = parseInt(inputValue)
+      if (isNaN(newQuantity) || newQuantity < 1) {
+        return
+      }
+      setQuantity(newQuantity)
     }
-    setQuantity(newQuantity)
   }
+
+  const handleQuantityBlur = () => {
+    if (isNaN(quantity)) {
+      setQuantity(1)
+    }
+  }
+
   return (
     <Box>
       <Box sx={{ display: 'flex', alignItems: 'center', margin: '1rem 0' }}>
@@ -26,6 +42,7 @@ function ProductBtnSection({ product }: Props) {
           type='number'
           value={quantity}
           onChange={handleQuantityChange}
+          onBlur={handleQuantityBlur}
           sx={quantityBoxStyle}
           inputProps={{ min: 1 }}
         />
