@@ -7,7 +7,6 @@ import ProductBtnSection from '../components/ProductBtnSection'
 function ProductDescription() {
   const { id } = useParams<{ id: string }>()
   const product: Product | undefined = products.find(p => p.id === id)
-  console.log(product)
 
   if (!product) {
     return <div>Product not found</div>
