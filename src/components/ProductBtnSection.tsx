@@ -12,12 +12,13 @@ interface Props {
 function ProductBtnSection({ product }: Props) {
   const [quantity, setQuantity] = useState<number>(1)
 
-  // When the input field is left empty, and the user either clicks outside the field or tabs to another position,
-  // the quantity will be set to 1.
+  // Define an event handler function that is called when the user changes the value of the input field associated with the component.
+  // The function takes an event object as its argument and extracts the current value of the input field.
   const handleQuantityChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const inputValue = e.target.value
 
-    // Allow empty input
+    // Updates the quantity state based on the user input in the input field,
+    // making sure that the new value is valid and greater than or equal to 1.
     if (inputValue === '') {
       setQuantity(NaN)
     } else {
@@ -29,6 +30,7 @@ function ProductBtnSection({ product }: Props) {
     }
   }
 
+  // Define an event handler function that is called when the input field associated with the component loses focus.
   const handleQuantityBlur = () => {
     if (isNaN(quantity)) {
       setQuantity(1)

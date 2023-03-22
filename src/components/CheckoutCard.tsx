@@ -10,17 +10,22 @@ interface Props {
 
 function CheckoutCard({ cartItem }: Props) {
   const { increaseProductToCart, decreaseProductFromCart, deleteProductFromCart } = useCart()
+
+  // inputValue state stores the value of the input field.
   const [inputValue, setInputValue] = useState<string>(cartItem.quantity.toString())
 
+  // useEffect syncs inputValue with cartItem.quantity.
   useEffect(() => {
     setInputValue(cartItem.quantity.toString())
   }, [cartItem.quantity])
 
+  // Added handleQuantityChange to update inputValue when the user types in the input field
   const handleQuantityChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const newInputValue = event.target.value
     setInputValue(newInputValue)
   }
 
+  // Added handleQuantityBlur to update the cart when the input field loses focus
   const handleQuantityBlur = () => {
     const newQuantity = parseInt(inputValue)
     if (isNaN(newQuantity) || newQuantity < 1) {
@@ -93,7 +98,7 @@ function CheckoutCard({ cartItem }: Props) {
                 sx={quantityStyleSx}
                 value={inputValue}
                 onChange={handleQuantityChange}
-                onBlur={handleQuantityBlur} // Add onBlur event here
+                onBlur={handleQuantityBlur}
                 inputProps={{
                   min: 1,
                 }}
