@@ -11,13 +11,14 @@ import {
   Theme,
   Typography,
 } from '@mui/material'
-import React from 'react'
+import { useState } from 'react'
 import { products } from '../../data'
 import AdminCardProduct from '../components/AdminCardProduct'
 import AdminProductForm from '../components/AdminProductForm'
 
 function Admin() {
-  const [open, setOpen] = React.useState(false)
+  const [open, setOpen] = useState(false)
+  const [dataProducts, setDataProducts] = useState(products)
 
   const handleClickOpen = () => {
     setOpen(true)
@@ -32,7 +33,11 @@ function Admin() {
         <DialogTitle>EDIT / ADD PRODUCT</DialogTitle>
         <DialogContent>
           <DialogContentText>Id</DialogContentText>
-          <AdminProductForm handleClose={handleClose} />
+          <AdminProductForm
+            dataProducts={dataProducts}
+            setDataProducts={setDataProducts}
+            handleClose={handleClose}
+          />
         </DialogContent>
         <DialogActions></DialogActions>
       </Dialog>
@@ -45,12 +50,10 @@ function Admin() {
       </Box>
 
       <Grid sx={AdminCardListSx} container rowSpacing={5}>
-        {products.map(product => (
-          <>
-            <Grid sx={AdminCardListSx} item xs={12} sm={6} md={4} lg={3} xl={3}>
-              <AdminCardProduct product={product} key={product.id} />
-            </Grid>
-          </>
+        {dataProducts.map(dataProduct => (
+          <Grid key={dataProduct.id} sx={AdminCardListSx} item xs={12} sm={6} md={4} lg={3} xl={3}>
+            <AdminCardProduct dataProduct={dataProduct} />
+          </Grid>
         ))}
       </Grid>
     </>

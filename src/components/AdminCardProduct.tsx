@@ -7,14 +7,14 @@ import { Link } from 'react-router-dom'
 import { Product } from '../../data'
 
 interface Props {
-  product: Product
+  dataProduct: Product
 }
 
-export default function ProductCard({ product }: Props) {
+export default function ProductCard({ dataProduct }: Props) {
 
   return (
     <Card sx={cardStyle} data-cy='product'>
-      <Link style={{ textDecoration: 'none' }} to={`/product/${product.id}`}>
+      <Link style={{ textDecoration: 'none' }} to={`/product/${dataProduct.id}`}>
         <StyledCardActionArea>
           <Box sx={{ position: 'relative' }}>
             <Box sx={hatHoverStyle}>View Product</Box>
@@ -22,20 +22,20 @@ export default function ProductCard({ product }: Props) {
               sx={imageStyle}
               component='img'
               height='150'
-              image={product.image}
-              alt={product.title}
+              image={dataProduct.image}
+              alt={dataProduct.title}
             />
           </Box>
 
           <CardContent>
             <Typography sx={priceTagStyle} variant='body2' data-cy='product-price'>
-              ${product.price}
+              ${dataProduct.price}
             </Typography>
             <Typography gutterBottom variant='h5' component='div' data-cy='product-title'>
-              {product.title}
+              {dataProduct.title}
             </Typography>
             <Typography variant='body2' data-cy='product-description'>
-              {product.shortDescription}
+              {dataProduct.shortDescription}
             </Typography>
           </CardContent>
         </StyledCardActionArea>
