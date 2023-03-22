@@ -1,6 +1,6 @@
 import * as Icon from '@mui/icons-material'
 import { Box, Button, Input, Paper, SxProps, Theme, Typography } from '@mui/material'
-import { CSSProperties } from 'react'
+import { CSSProperties, useEffect, useState } from 'react'
 import { CartItem } from '../../data'
 import { useCart } from '../contexts/CartContext'
 
@@ -10,17 +10,22 @@ interface Props {
 
 function CheckoutCard({ cartItem }: Props) {
   const { increaseProductToCart, decreaseProductFromCart, deleteProductFromCart } = useCart()
+  const [inputValue, setInputValue] = useState<string>(cartItem.quantity.toString())
+
+  useEffect(() => {
+    setInputValue(cartItem.quantity.toString())
+  }, [cartItem.quantity])
 
   const handleQuantityChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const inputValue = event.target.value
+    const newInputValue = event.target.value
+    setInputValue(newInputValue)
+  }
 
-    if (inputValue === '') return // Ignore empty input
-
-    const newQuantity = Math.max(1, parseInt(inputValue))
-    if (isNaN(newQuantity)) return // Ignore invalid input
-
-    if (newQuantity <= 0) {
-      decreaseProductFromCart(cartItem.id, 0)
+  const handleQuantityBlur = () => {
+    const newQuantity = parseInt(inputValue)
+    if (isNaN(newQuantity) || newQuantity < 1) {
+      setInputValue('1')
+      increaseProductToCart(cartItem, 1 - cartItem.quantity)
     } else {
       increaseProductToCart(cartItem, newQuantity - cartItem.quantity)
     }
@@ -86,8 +91,9 @@ function CheckoutCard({ cartItem }: Props) {
                 type='number'
                 data-cy='product-quantity'
                 sx={quantityStyleSx}
-                value={cartItem.quantity}
+                value={inputValue}
                 onChange={handleQuantityChange}
+                onBlur={handleQuantityBlur} // Add onBlur event here
                 inputProps={{
                   min: 1,
                 }}
@@ -108,7 +114,6 @@ function CheckoutCard({ cartItem }: Props) {
               </Button>
             </Box>
           </Box>
-       
         </Box>
       </Box>
     </Paper>
