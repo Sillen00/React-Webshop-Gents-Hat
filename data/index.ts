@@ -37,7 +37,7 @@ export const products: Product[] = [
     id: 'e1',
   },
   {
-    image: '../images/bowler.jpeg',
+    image: '../images/bowler.png',
     title: 'Bowler Hat',
     shortDescription: 'Bowler Hat, description',
     description:
@@ -72,7 +72,7 @@ export const products: Product[] = [
     id: 'f4',
   },
   {
-    image: '../images/outback.jpeg',
+    image: '../images/outback.png',
     title: 'Outback',
     shortDescription: 'Outback, description',
     description:
@@ -89,7 +89,7 @@ export const products: Product[] = [
     id: 'c1',
   },
   {
-    image: '../images/stockman.jpeg',
+    image: '../images/stockman.png',
     title: 'Stockman',
     shortDescription: 'Stockman. description',
     description:
@@ -105,7 +105,7 @@ export const products: Product[] = [
     id: 'e6',
   },
   {
-    image: '../images/straw.jpeg',
+    image: '../images/straw.png',
     title: 'Straw Hat',
     shortDescription: 'Straw hat. description',
     description:
@@ -122,7 +122,7 @@ export const products: Product[] = [
     id: 'a3',
   },
   {
-    image: '../images/western.jpg',
+    image: '../images/western.png',
     title: 'Western Hat',
     shortDescription: 'Western hat. description',
     description:
@@ -138,7 +138,7 @@ export const products: Product[] = [
     id: 'a2',
   },
   {
-    image: '../images/tophat.jpeg',
+    image: '../images/tophat.png',
     title: 'Top Hat',
     shortDescription: 'Top hat. description',
     description:
@@ -156,7 +156,7 @@ export const products: Product[] = [
     id: 'a1',
   },
   {
-    image: '../images/trilby.jpeg',
+    image: '../images/trilby.png',
     title: 'Trilby Hat',
     shortDescription: 'Trilby hat. description',
     description:
@@ -175,7 +175,7 @@ export const products: Product[] = [
     id: 'a8',
   },
   {
-    image: '../images/woolfelt.jpg',
+    image: '../images/woolfelt.png',
     title: 'Woolfelt Hat',
     shortDescription: 'Woolfelt hat. description',
     description:
@@ -192,7 +192,7 @@ export const products: Product[] = [
     id: 'a4',
   },
   {
-    image: '../images/fedora.jpeg',
+    image: '../images/fedora.png',
     title: 'Fedora Hat',
     shortDescription: 'Fedora hat. description',
     description:
@@ -209,7 +209,7 @@ export const products: Product[] = [
     id: 'a7',
   },
   {
-    image: '../images/stoutmoss.jpeg',
+    image: '../images/stoutmoss.png',
     title: 'Stout Hat',
     shortDescription: 'Stout hat. description',
     description:
