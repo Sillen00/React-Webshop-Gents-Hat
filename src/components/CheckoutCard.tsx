@@ -64,7 +64,7 @@ function CheckoutCard({ cartItem }: Props) {
             </Typography>
           </Box>
           <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-            <Typography variant='body2' sx={productTotalStyleSx}>
+            <Typography data-cy='product-price' variant='body2' sx={productTotalStyleSx}>
               Total: ${cartItem.price * cartItem.quantity}
             </Typography>
             <Box sx={quantityBoxStyleSx}>
@@ -108,11 +108,7 @@ function CheckoutCard({ cartItem }: Props) {
               </Button>
             </Box>
           </Box>
-          <Box>
-            <Typography data-cy='product-price' variant='body2' sx={productTotalStyleSx}>
-              Total: ${cartItem.price * cartItem.quantity}
-            </Typography>
-          </Box>
+       
         </Box>
       </Box>
     </Paper>
