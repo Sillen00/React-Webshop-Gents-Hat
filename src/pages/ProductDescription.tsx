@@ -4,16 +4,17 @@ import { NavLink, useParams } from 'react-router-dom'
 import { Product, products } from '../../data'
 import ProductBtnSection from '../components/ProductBtnSection'
 
+// get the product id from the url and find the product to display
 function ProductDescription() {
   const { id } = useParams<{ id: string }>()
   const product: Product | undefined = products.find(p => p.id === id)
-  console.log(product)
 
   if (!product) {
     return <div>Product not found</div>
   }
 
   return (
+    // Show all the product details
     <Container>
       <Paper elevation={3} sx={mainBoxStyle}>
         <NavLink to='/'>
@@ -80,6 +81,7 @@ function ProductDescription() {
   )
 }
 
+// Styles
 const mainBoxStyle: SxProps<Theme> = theme => ({
   background: 'white',
   margin: '0 1rem',

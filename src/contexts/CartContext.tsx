@@ -16,9 +16,11 @@ const CartContext = createContext<CartContextValue>(null as any)
 
 export const useCart = () => useContext(CartContext)
 
+// CartProvider is a component that wraps the entire app so that all components can access the cart
 export function CartProvider(props: PropsWithChildren) {
   const [cartItems, setCartItems] = useLocalStorageState<CartItem[]>([], 'cart')
 
+  // add a product to the cart
   const increaseProductToCart = (product: Product, quantity: number) => {
     if (!cartItems.some(cartItem => cartItem.id === product.id)) {
       setCartItems([...cartItems, { ...product, quantity }])
@@ -33,6 +35,7 @@ export function CartProvider(props: PropsWithChildren) {
     }
   }
 
+  // remove a product from the cart
   const decreaseProductFromCart = (productId: string, newQuantity: number) => {
     const existingCartItem = cartItems.find(cartItem => cartItem.id === productId)
     if (!existingCartItem) {
@@ -51,7 +54,7 @@ export function CartProvider(props: PropsWithChildren) {
       setCartItems(updatedCartItems)
     }
   }
-
+  // Delete a product from the cart (remove all of the product from the cart)
   const deleteProductFromCart = (product: Product) => {
     const existingCartItem = cartItems.find(cartItem => cartItem.id === product.id)
     if (!existingCartItem) {
@@ -77,6 +80,7 @@ export function CartProvider(props: PropsWithChildren) {
     0
   )
 
+  // States and functions are passed to the CartContext.Provider
   return (
     <CartContext.Provider
       value={{

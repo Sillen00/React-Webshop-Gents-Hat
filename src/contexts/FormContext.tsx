@@ -28,6 +28,7 @@ const defaultFormData: FormContextTypes = {
   clearForm: () => {},
 }
 
+// Context to share form data between components
 export const FormContext = createContext<FormContextTypes>(defaultFormData)
 
 export const FormProvider = (props: PropsWithChildren) => {
