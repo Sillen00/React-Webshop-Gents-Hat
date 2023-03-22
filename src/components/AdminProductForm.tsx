@@ -1,7 +1,7 @@
 import { Button, SxProps, TextField, Theme } from '@mui/material'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
-import { Product } from '../../data'
+import { generateId, Product } from '../../data'
 
 /* ----------------------
       YUP VALIDATION
@@ -16,16 +16,9 @@ const adminFormSchema = Yup.object().shape({
     ),
   productPrice: Yup.string()
     .required('Please enter a price for your product.')
-    .matches(
-      /^[0-9]*$/,
-      'The price you have given us is not a number. Please give us a number.'
-    )
-    .min(
-      2,
-      'The price you have given is to low. We need to go profit.'
-    ),
-  productSize: Yup.string()
-    .required('Please enter a size for your product.'),
+    .matches(/^[0-9]*$/, 'The price you have given us is not a number. Please give us a number.')
+    .min(2, 'The price you have given is to low. We need to go profit.'),
+  productSize: Yup.string().required('Please enter a size for your product.'),
   productColor: Yup.string()
     .required('Please enter a color for your product.')
     .min(
@@ -34,10 +27,7 @@ const adminFormSchema = Yup.object().shape({
     ),
   productImage: Yup.string()
     .required('Please enter an image-URL for your product.')
-    .min(
-      1,
-      'The URL you have given us is not valid. Please give us a valid URL.'
-    ),
+    .min(1, 'The URL you have given us is not valid. Please give us a valid URL.'),
   productCardDescrip: Yup.string()
     .required('Please write a short card description.')
     .max(
@@ -50,21 +40,18 @@ const adminFormSchema = Yup.object().shape({
       5,
       'The description you have given us it too short. Please give us a name of minimum 5 characters.'
     ),
-  productDetail1: Yup.string()
-    .min(
-      3,
-      'The detail you have given us it too short. Please give us a detail of minimum 3 characters.'
-    ),
-  productDetail2: Yup.string()
-    .min(
-      3,
-      'The detail you have given us it too short. Please give us a detail of minimum 3 characters.'
-    ),
-  productDetail3: Yup.string()
-    .min(
-      3,
-      'The detail you have given us it too short. Please give us a detail of minimum 3 characters.'
-    ),
+  productDetail1: Yup.string().min(
+    3,
+    'The detail you have given us it too short. Please give us a detail of minimum 3 characters.'
+  ),
+  productDetail2: Yup.string().min(
+    3,
+    'The detail you have given us it too short. Please give us a detail of minimum 3 characters.'
+  ),
+  productDetail3: Yup.string().min(
+    3,
+    'The detail you have given us it too short. Please give us a detail of minimum 3 characters.'
+  ),
 })
 
 /* ----------------------
@@ -95,8 +82,16 @@ function AdminProductForm({ handleClose, setDataProducts, dataProducts }: Props)
     },
     validationSchema: adminFormSchema,
     onSubmit: values => {
+
+      let newId = generateId()
+      dataProducts.forEach(product => {
+        if (product.id === newId) {
+          newId = generateId()
+        }
+      });
+
       const newProduct: Product = {
-        id: 'a1', // objektlängd + 1?
+        id: newId,
         image: values.productImage,
         title: values.productTitle,
         shortDescription: values.productCardDescrip,

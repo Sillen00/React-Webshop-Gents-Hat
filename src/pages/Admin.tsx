@@ -11,6 +11,7 @@ import {
   Theme,
   Typography,
 } from '@mui/material'
+import { Container } from '@mui/system'
 import { useState } from 'react'
 import { products } from '../../data'
 import AdminCardProduct from '../components/AdminCardProduct'
@@ -42,20 +43,31 @@ function Admin() {
         <DialogActions></DialogActions>
       </Dialog>
 
-      <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: '2rem' }}>
-        <Typography variant={'h3'}>Admin</Typography>
-        <Button onClick={handleClickOpen} variant='contained'>
-          <Typography variant={'body2'}>Add New Product</Typography>
-        </Button>
-      </Box>
+      <Container>
+        <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: '2rem' }}>
+          <Typography variant={'h3'}>Admin</Typography>
+          <Button onClick={handleClickOpen} variant='contained'>
+            <Typography variant={'body2'}>Add New Product</Typography>
+          </Button>
+        </Box>
 
-      <Grid sx={AdminCardListSx} container rowSpacing={5}>
-        {dataProducts.map(dataProduct => (
-          <Grid key={dataProduct.id} sx={AdminCardListSx} item xs={12} sm={6} md={4} lg={3} xl={3}>
-            <AdminCardProduct dataProduct={dataProduct} />
-          </Grid>
-        ))}
-      </Grid>
+        <Grid sx={AdminCardListSx} container rowSpacing={5}>
+          {dataProducts.map(dataProduct => (
+            <Grid
+              key={dataProduct.id}
+              sx={AdminCardListSx}
+              item
+              xs={12}
+              sm={6}
+              md={4}
+              lg={3}
+              xl={3}
+            >
+              <AdminCardProduct dataProduct={dataProduct} />
+            </Grid>
+          ))}
+        </Grid>
+      </Container>
     </>
   )
 }
