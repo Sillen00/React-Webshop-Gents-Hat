@@ -46,7 +46,12 @@ function ProductBtnSection({ product }: Props) {
           onChange={handleQuantityChange}
           onBlur={handleQuantityBlur}
           sx={quantityBoxStyle}
-          inputProps={{ min: 1 }}
+          inputProps={{
+            style: {
+              textAlign: 'center',
+            },
+            min: 1,
+          }}
         />
         <Box sx={{ flexGrow: 1 }}>
           <AddToCartButton

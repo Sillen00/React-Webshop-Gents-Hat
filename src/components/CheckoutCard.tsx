@@ -100,6 +100,9 @@ function CheckoutCard({ cartItem }: Props) {
                 onChange={handleQuantityChange}
                 onBlur={handleQuantityBlur}
                 inputProps={{
+                  style: {
+                    textAlign: 'center',
+                  },
                   min: 1,
                 }}
               />
@@ -165,8 +168,12 @@ export const quantityStyleSx: SxProps<Theme> = theme => ({
   fontSize: '1.2rem',
   width: '2.8rem',
   padding: 0,
+  '& input::-webkit-outer-spin-button, & input::-webkit-inner-spin-button': {
+    '-webkit-appearance': 'none',
+  },
   [theme.breakpoints.up('md')]: { fontSize: '1.4rem' },
 })
+
 const changeQuantityBtnStyleSx: SxProps<Theme> = theme => ({
   width: '1.4rem',
   height: '1.4rem',
