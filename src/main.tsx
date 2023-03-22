@@ -9,6 +9,7 @@ import {
   RouterProvider,
 } from 'react-router-dom'
 import App from './App'
+import Admin from './pages/Admin'
 import { CartProvider } from './contexts/CartContext'
 import { FormProvider } from './contexts/FormContext'
 import './index.css'
@@ -86,6 +87,7 @@ const router = createBrowserRouter(
       <Route index element={<Home />} />
       <Route path='/product/:id' element={<ProductDescription />} />
       <Route path='checkout' element={<Checkout />} />
+      <Route path='admin' element={<Admin />} />
       <Route path='confirmation' element={<OrderConfirmation />} />
       <Route path='*' element={<h2>404 not found</h2>} />
     </Route>
