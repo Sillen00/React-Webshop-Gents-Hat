@@ -68,6 +68,7 @@ interface Props {
 
 function AdminProductForm({ handleClose, setDataProducts, dataProducts }: Props) {
   const formik = useFormik<adminFormValues>({
+    validationSchema: adminFormSchema,
     initialValues: {
       productTitle: '',
       productPrice: '',
@@ -80,16 +81,16 @@ function AdminProductForm({ handleClose, setDataProducts, dataProducts }: Props)
       productDetail2: '',
       productDetail3: '',
     },
-    validationSchema: adminFormSchema,
     onSubmit: values => {
-
+      // Generates new ID
       let newId = generateId()
       dataProducts.forEach(product => {
         if (product.id === newId) {
           newId = generateId()
         }
-      });
+      })
 
+      // Adds new product
       const newProduct: Product = {
         id: newId,
         image: values.productImage,
@@ -108,6 +109,8 @@ function AdminProductForm({ handleClose, setDataProducts, dataProducts }: Props)
       }
 
       setDataProducts([...dataProducts, newProduct])
+
+      // Closes form
       handleClose()
     },
   })

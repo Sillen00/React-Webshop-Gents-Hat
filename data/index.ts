@@ -18,8 +18,9 @@ export interface CartItem extends Product {
 export const generateId = () => {
   const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
   const letter = letters.charAt(Math.floor(Math.random() * letters.length))
+  const secondLetter = letters.charAt(Math.floor(Math.random() * letters.length))
   const numbers = Math.floor(10 + Math.random() * 10000)
-  const newId = letter + numbers.toString()
+  const newId = letter + secondLetter + numbers.toString()
   return newId
 }
 
