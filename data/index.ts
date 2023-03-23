@@ -15,7 +15,14 @@ export interface CartItem extends Product {
   quantity: number
 }
 
-export const test = 22
+export const generateId = () => {
+  const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+  const letter = letters.charAt(Math.floor(Math.random() * letters.length))
+  const secondLetter = letters.charAt(Math.floor(Math.random() * letters.length))
+  const numbers = Math.floor(10 + Math.random() * 10000)
+  const newId = letter + secondLetter + numbers.toString()
+  return newId
+}
 
 export const products: Product[] = [
   {
@@ -227,3 +234,4 @@ export const products: Product[] = [
     id: 'a6',
   },
 ]
+
