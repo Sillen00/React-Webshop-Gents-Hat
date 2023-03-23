@@ -19,7 +19,7 @@ function ProductDescription() {
             Back To Products
           </Typography>
         </NavLink>
-        
+
       <Typography variant='h3' sx={{ml: 3, marginBottom: '10rem'}}>
         Product not found
       </Typography>
