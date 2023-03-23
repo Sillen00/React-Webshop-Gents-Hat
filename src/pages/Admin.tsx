@@ -12,13 +12,13 @@ import {
   Typography,
 } from '@mui/material'
 import { useState } from 'react'
-import { products } from '../../data'
 import AdminCardProduct from '../components/AdminCardProduct'
 import AdminProductForm from '../components/AdminProductForm'
+import { useProducts } from '../contexts/ProductsContext'
 
 function Admin() {
   const [open, setOpen] = useState(false)
-  const [dataProducts, setDataProducts] = useState(products)
+  const {consoleLog, databaseProducts, setDatabaseProducts} = useProducts()
 
   const handleClickOpen = () => {
     setOpen(true)
@@ -27,6 +27,7 @@ function Admin() {
   const handleClose = () => {
     setOpen(false)
   }
+
   return (
     <>
       <Dialog fullWidth open={open} onClose={handleClose}>
@@ -34,8 +35,8 @@ function Admin() {
         <DialogContent>
           <DialogContentText>Id</DialogContentText>
           <AdminProductForm
-            dataProducts={dataProducts}
-            setDataProducts={setDataProducts}
+            databaseProducts={databaseProducts}
+            setDatabaseProducts={setDatabaseProducts}
             handleClose={handleClose}
           />
         </DialogContent>
@@ -51,7 +52,7 @@ function Admin() {
             </Button>
           </Box>
           <Grid sx={AdminCardListSx} container rowSpacing={5}>
-            {dataProducts.map(dataProduct => (
+            {databaseProducts.map(dataProduct => (
               <Grid
                 key={dataProduct.id}
                 sx={AdminCardListSx}

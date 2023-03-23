@@ -62,11 +62,11 @@ type adminFormValues = Yup.InferType<typeof adminFormSchema>
 
 interface Props {
   handleClose: () => void
-  setDataProducts: React.Dispatch<React.SetStateAction<Product[]>>
-  dataProducts: Product[]
+  setDatabaseProducts: React.Dispatch<React.SetStateAction<Product[]>>
+  databaseProducts: Product[]
 }
 
-function AdminProductForm({ handleClose, setDataProducts, dataProducts }: Props) {
+function AdminProductForm({ handleClose, setDatabaseProducts, databaseProducts }: Props) {
   const formik = useFormik<adminFormValues>({
     validationSchema: adminFormSchema,
     initialValues: {
@@ -82,9 +82,10 @@ function AdminProductForm({ handleClose, setDataProducts, dataProducts }: Props)
       productDetail3: '',
     },
     onSubmit: values => {
+
       // Generates new ID
       let newId = generateId()
-      dataProducts.forEach(product => {
+      databaseProducts.forEach(product => {
         if (product.id === newId) {
           newId = generateId()
         }
@@ -108,7 +109,7 @@ function AdminProductForm({ handleClose, setDataProducts, dataProducts }: Props)
         inStock: true,
       }
 
-      setDataProducts([...dataProducts, newProduct])
+      setDatabaseProducts([...databaseProducts, newProduct])
 
       // Closes form
       handleClose()
