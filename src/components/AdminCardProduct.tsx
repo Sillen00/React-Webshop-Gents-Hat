@@ -3,6 +3,7 @@ import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
 import CardMedia from '@mui/material/CardMedia'
 import Typography from '@mui/material/Typography'
+import { CSSProperties } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import { Product } from '../../data'
 
@@ -30,8 +31,13 @@ export default function ProductCard({ dataProduct }: Props) {
             <Typography sx={priceTagStyle} variant='body2' data-cy='product-price'>
               ${dataProduct.price}
             </Typography>
-            <Typography data-cy='product-id' variant='body2' component='div'>
-              {dataProduct.id}
+            <Typography variant='body2' component='div'>
+              <span style={{paddingRight: '0.3rem', fontSize: '0.8rem', fontWeight: '900'}}>
+                ID: 
+              </span>
+              <span style={{ fontSize: '0.8rem'}}data-cy='product-id'>
+                {dataProduct.id}
+              </span>
             </Typography>
             <Typography gutterBottom variant='h5' component='div' data-cy='product-title'>
               {dataProduct.title}
@@ -66,6 +72,7 @@ export default function ProductCard({ dataProduct }: Props) {
 const imageStyle: SxProps<Theme> = theme => ({
   objectFit: 'contain',
 })
+
 const cardStyle: SxProps<Theme> = theme => ({
   minWidth: 240,
   borderRadius: 2,
