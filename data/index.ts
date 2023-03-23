@@ -26,6 +26,7 @@ export const generateId = () => {
 
 export const products: Product[] = [
   {
+    id: 'EL1477',
     image: '../images/aberdeen.png',
     title: 'Aberdeen',
     shortDescription: 'Aberdeen. description',
@@ -41,7 +42,6 @@ export const products: Product[] = [
     size: 'L',
     color: 'Dark brown',
     inStock: true,
-    id: 'e1',
   },
   {
     image: '../images/bowler.png',

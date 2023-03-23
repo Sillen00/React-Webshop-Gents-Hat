@@ -1,15 +1,31 @@
 import * as Icon from '@mui/icons-material'
-import { Box, Container, Paper, SxProps, Theme, Typography } from '@mui/material'
+import { Box, Button, Container, Paper, SxProps, Theme, Typography } from '@mui/material'
 import { NavLink, useParams } from 'react-router-dom'
-import { Product, products } from '../../data'
+// import { Product } from '../../data'
 import ProductBtnSection from '../components/ProductBtnSection'
+import { useProducts } from '../contexts/ProductsContext'
 
 function ProductDescription() {
   const { id } = useParams<{ id: string }>()
-  const product: Product | undefined = products.find(p => p.id === id)
+  const {databaseProducts} = useProducts()
+  const product = databaseProducts.find(p => p.id === id)
 
   if (!product) {
-    return <div>Product not found</div>
+    return (     
+      <Box>
+      <NavLink to='/'>
+          <Typography sx={flexAlignStyle} variant='h6'>
+            <Icon.ArrowBack />
+            Back To Products
+          </Typography>
+        </NavLink>
+        
+      <Typography variant='h3' sx={{ml: 3, marginBottom: '10rem'}}>
+        Product not found
+      </Typography>
+
+    </Box>
+    )
   }
 
   return (
