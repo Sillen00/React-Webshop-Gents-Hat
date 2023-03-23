@@ -46,7 +46,7 @@ function Admin() {
         <Box sx={productContainerSx}>
           <Box sx={headerSx}>
             <Typography variant={'h3'}>Admin</Typography>
-            <Button sx={{height: '40px'}} onClick={handleClickOpen} variant='contained'>
+            <Button data-cy="admin-add-product" sx={{height: '40px'}} onClick={handleClickOpen} variant='contained'>
               <Typography variant={'body2'}>Add New Product</Typography>
             </Button>
           </Box>

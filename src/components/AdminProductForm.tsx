@@ -121,7 +121,7 @@ function AdminProductForm({ handleClose, setDataProducts, dataProducts }: Props)
 
   return (
     <>
-      <form onSubmit={formik.handleSubmit}>
+      <form data-cy="product-form" onSubmit={formik.handleSubmit}>
         <TextField
           fullWidth
           id='productTitle'
@@ -131,6 +131,9 @@ function AdminProductForm({ handleClose, setDataProducts, dataProducts }: Props)
           error={formik.touched.productTitle && Boolean(formik.errors.productTitle)}
           helperText={formik.touched.productTitle && formik.errors.productTitle}
           margin='normal'
+          FormHelperTextProps={
+            { 'data-cy': 'product-title-error' } as any
+          }
         />
         <TextField
           fullWidth
@@ -141,6 +144,9 @@ function AdminProductForm({ handleClose, setDataProducts, dataProducts }: Props)
           error={formik.touched.productPrice && Boolean(formik.errors.productPrice)}
           helperText={formik.touched.productPrice && formik.errors.productPrice}
           margin='normal'
+          FormHelperTextProps={
+            { 'data-cy': 'product-price-error' } as any
+          }
         />
         <TextField
           fullWidth
@@ -171,6 +177,9 @@ function AdminProductForm({ handleClose, setDataProducts, dataProducts }: Props)
           error={formik.touched.productImage && Boolean(formik.errors.productImage)}
           helperText={formik.touched.productImage && formik.errors.productImage}
           margin='normal'
+          FormHelperTextProps={
+            { 'data-cy': 'product-image-error' } as any
+          }
         />
         <TextField
           fullWidth
@@ -191,6 +200,9 @@ function AdminProductForm({ handleClose, setDataProducts, dataProducts }: Props)
           error={formik.touched.productDescrip && Boolean(formik.errors.productDescrip)}
           helperText={formik.touched.productDescrip && formik.errors.productDescrip}
           margin='normal'
+          FormHelperTextProps={
+            { 'data-cy': 'product-description-error' } as any
+          }
         />
         <TextField
           fullWidth

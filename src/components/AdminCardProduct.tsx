@@ -41,10 +41,10 @@ export default function ProductCard({ dataProduct }: Props) {
         </StyledCardActionArea>
       </Link>
       <Box sx={{display:"flex", alignItems: 'center', flexDirection:"column"}}>
-        <Button sx={{mb: 2, width: '86%'}} variant='contained'>
+        <Button data-cy="admin-edit-product" sx={{mb: 2, width: '86%'}} variant='contained'>
           <Typography variant='body2'>Edit Product</Typography>
         </Button>
-        <Button sx={{mb: 2, width: '86%'}} variant='contained' color='error'>
+        <Button data-cy="admin-remove-product" sx={{mb: 2, width: '86%'}} variant='contained' color='error'>
           <Typography variant='body2'>Delete Product</Typography>
         </Button>
       </Box>
