@@ -31,6 +31,9 @@ export default function ProductCard({ dataProduct }: Props) {
             <Typography sx={priceTagStyle} variant='body2' data-cy='product-price'>
               ${dataProduct.price}
             </Typography>
+            <Typography data-cy='product-id' variant='body2' component='div'>
+              {dataProduct.id}
+            </Typography>
             <Typography gutterBottom variant='h5' component='div' data-cy='product-title'>
               {dataProduct.title}
             </Typography>
