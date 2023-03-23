@@ -1,24 +1,12 @@
-import {
-  Box,
-  Button,
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogContentText,
-  DialogTitle,
-  Grid,
-  SxProps,
-  Theme,
-  Typography,
-} from '@mui/material'
+import { Box, Button, Grid, SxProps, Theme, Typography } from '@mui/material'
 import { useState } from 'react'
+import { Link, Outlet } from 'react-router-dom'
 import AdminCardProduct from '../components/AdminCardProduct'
-import AdminProductForm from '../components/AdminProductForm'
 import { useProducts } from '../contexts/ProductsContext'
 
 function Admin() {
   const [open, setOpen] = useState(false)
-  const {consoleLog, databaseProducts, setDatabaseProducts} = useProducts()
+  const { consoleLog, databaseProducts, setDatabaseProducts } = useProducts()
 
   const handleClickOpen = () => {
     setOpen(true)
@@ -30,26 +18,22 @@ function Admin() {
 
   return (
     <>
-      <Dialog fullWidth open={open} onClose={handleClose}>
-        <DialogTitle>EDIT / ADD PRODUCT</DialogTitle>
-        <DialogContent>
-          <DialogContentText>Id</DialogContentText>
-          <AdminProductForm
-            databaseProducts={databaseProducts}
-            setDatabaseProducts={setDatabaseProducts}
-            handleClose={handleClose}
-          />
-        </DialogContent>
-        <DialogActions></DialogActions>
-      </Dialog>
+      <Outlet />
 
       <Box sx={adminPageContainerSx}>
         <Box sx={productContainerSx}>
           <Box sx={headerSx}>
             <Typography variant={'h3'}>Admin</Typography>
-            <Button data-cy="admin-add-product" sx={{height: '40px'}} onClick={handleClickOpen} variant='contained'>
-              <Typography variant={'body2'}>Add New Product</Typography>
-            </Button>
+            <Link to='/admin/product/new-product'>
+              <Button
+                data-cy='admin-add-product'
+                sx={{ height: '40px' }}
+                onClick={handleClickOpen}
+                variant='contained'
+              >
+                <Typography variant={'body2'}>Add New Product</Typography>
+              </Button>
+            </Link>
           </Box>
           <Grid sx={AdminCardListSx} container rowSpacing={5}>
             {databaseProducts.map(dataProduct => (

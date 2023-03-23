@@ -5,7 +5,9 @@ export interface Product {
   shortDescription: string
   description: string
   price: number
-  details: { id: number; detail: string }[]
+  details?: {
+    id: number; detail?: string
+  }[]
   size: string
   color: string
   inStock: boolean
@@ -37,7 +39,6 @@ export const products: Product[] = [
       { id: 1, detail: 'Lorem ipsum' },
       { id: 2, detail: 'Lorem ipsum' },
       { id: 3, detail: 'Lorem ipsum' },
-      { id: 4, detail: 'Lorem ipsum' },
     ],
     size: 'L',
     color: 'Dark brown',
@@ -53,6 +54,7 @@ export const products: Product[] = [
     details: [
       { id: 1, detail: 'Lorem ipsum' },
       { id: 2, detail: 'Lorem ipsum' },
+      { id: 3, detail: 'Lorem ipsum' },
     ],
     size: 'M',
     color: 'Black',
@@ -70,8 +72,6 @@ export const products: Product[] = [
       { id: 1, detail: 'Lorem ipsum' },
       { id: 2, detail: 'Lorem ipsum' },
       { id: 3, detail: 'Lorem ipsum' },
-      { id: 4, detail: 'Lorem ipsum' },
-      { id: 5, detail: 'Lorem ipsum' },
     ],
     size: 'M',
     color: 'Beige',
@@ -105,6 +105,7 @@ export const products: Product[] = [
     details: [
       { id: 1, detail: 'Lorem ipsum' },
       { id: 2, detail: 'Lorem ipsum' },
+      { id: 3, detail: 'Lorem ipsum' },
     ],
     size: 'S',
     color: 'Brown',
@@ -138,6 +139,7 @@ export const products: Product[] = [
     details: [
       { id: 1, detail: 'Lorem ipsum' },
       { id: 2, detail: 'Lorem ipsum' },
+      { id: 3, detail: 'Lorem ipsum' },
     ],
     size: 'L',
     color: 'Brown',
@@ -155,7 +157,6 @@ export const products: Product[] = [
       { id: 1, detail: 'Lorem ipsum' },
       { id: 2, detail: 'Lorem ipsum' },
       { id: 3, detail: 'Lorem ipsum' },
-      { id: 4, detail: 'Lorem ipsum' },
     ],
     size: 'L',
     color: 'Black',
@@ -173,8 +174,6 @@ export const products: Product[] = [
       { id: 1, detail: 'Lorem ipsum' },
       { id: 2, detail: 'Lorem ipsum' },
       { id: 3, detail: 'Lorem ipsum' },
-      { id: 4, detail: 'Lorem ipsum' },
-      { id: 5, detail: 'Lorem ipsum' },
     ],
     size: 'S',
     color: 'Black',
@@ -226,7 +225,6 @@ export const products: Product[] = [
       { id: 1, detail: 'Lorem ipsum' },
       { id: 2, detail: 'Lorem ipsum' },
       { id: 3, detail: 'Lorem ipsum' },
-      { id: 4, detail: 'Lorem ipsum' },
     ],
     size: 'L',
     color: 'Gray',

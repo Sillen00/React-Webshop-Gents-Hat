@@ -1,30 +1,29 @@
 import * as Icon from '@mui/icons-material'
-import { Box, Button, Container, Paper, SxProps, Theme, Typography } from '@mui/material'
+import { Box, Container, Paper, SxProps, Theme, Typography } from '@mui/material'
 import { NavLink, useParams } from 'react-router-dom'
-// import { Product } from '../../data'
+import { Product } from '../../data'
 import ProductBtnSection from '../components/ProductBtnSection'
 import { useProducts } from '../contexts/ProductsContext'
 
 function ProductDescription() {
   const { id } = useParams<{ id: string }>()
-  const {databaseProducts} = useProducts()
-  const product = databaseProducts.find(p => p.id === id)
+  const { databaseProducts } = useProducts()
+  const product: Product | undefined = databaseProducts.find(p => p.id === id)
 
   if (!product) {
-    return (     
+    return (
       <Box>
-      <NavLink to='/'>
+        <NavLink to='/'>
           <Typography sx={flexAlignStyle} variant='h6'>
             <Icon.ArrowBack />
             Back To Products
           </Typography>
         </NavLink>
 
-      <Typography variant='h3' sx={{ml: 3, marginBottom: '10rem'}}>
-        Product not found
-      </Typography>
-
-    </Box>
+        <Typography variant='h3' sx={{ ml: 3, marginBottom: '10rem' }}>
+          Product not found
+        </Typography>
+      </Box>
     )
   }
 
@@ -61,7 +60,7 @@ function ProductDescription() {
             </Typography>
             <Box>
               <ul>
-                {product.details.map(({ detail, id }) => (
+                {product.details?.map(({ detail, id }) => (
                   <li style={{ listStyleType: 'none' }} key={id}>
                     <Typography
                       component='span'

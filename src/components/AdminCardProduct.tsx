@@ -3,7 +3,7 @@ import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
 import CardMedia from '@mui/material/CardMedia'
 import Typography from '@mui/material/Typography'
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import { Product } from '../../data'
 
 interface Props {
@@ -11,7 +11,6 @@ interface Props {
 }
 
 export default function ProductCard({ dataProduct }: Props) {
-
   return (
     <Card sx={cardStyle} data-cy='product'>
       <Link style={{ textDecoration: 'none' }} to={`/product/${dataProduct.id}`}>
@@ -43,11 +42,20 @@ export default function ProductCard({ dataProduct }: Props) {
           </CardContent>
         </StyledCardActionArea>
       </Link>
-      <Box sx={{display:"flex", alignItems: 'center', flexDirection:"column"}}>
-        <Button data-cy="admin-edit-product" sx={{mb: 2, width: '86%'}} variant='contained'>
-          <Typography variant='body2'>Edit Product</Typography>
-        </Button>
-        <Button data-cy="admin-remove-product" sx={{mb: 2, width: '86%'}} variant='contained' color='error'>
+      <Box sx={{ display: 'flex', alignItems: 'center', flexDirection: 'column' }}>
+        
+        <NavLink to={`/admin/product/${dataProduct.id}`}>
+          <Button data-cy='admin-edit-product' sx={{ mb: 2, width: '86%' }} variant='contained'>
+            <Typography variant='body2'>Edit Product</Typography>
+          </Button>
+        </NavLink>
+        
+        <Button
+          data-cy='admin-remove-product'
+          sx={{ mb: 2, width: '86%' }}
+          variant='contained'
+          color='error'
+        >
           <Typography variant='body2'>Delete Product</Typography>
         </Button>
       </Box>

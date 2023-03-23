@@ -100,7 +100,7 @@ export default function CheckoutForm() {
     validationSchema: checkoutFormSchema,
     onSubmit: values => {
       setFormValues(values)
-      navigate('/confirmation')
+       
     },
   })
 
