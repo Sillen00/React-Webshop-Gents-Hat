@@ -1,4 +1,4 @@
-import { Button, SxProps, TextField, Theme } from '@mui/material'
+import { Box, Button, SxProps, TextField, Theme } from '@mui/material'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
 import { generateId, Product } from '../../data'
@@ -68,7 +68,6 @@ interface Props {
 }
 
 function AdminProductForm({ onSave, product }: Props) {
-  // const isEdit = Boolean(product)
   const { databaseProducts, setDatabaseProducts } = useProducts()
 
   const formik = useFormik<adminFormValues>({
@@ -90,29 +89,62 @@ function AdminProductForm({ onSave, product }: Props) {
       inStock: false,
     },
     onSubmit: values => {
-      // Generates new ID
-      let newId = generateId()
 
-      // Adds new product
-      const newProduct: Product = {
-        id: newId,
-        image: values.image,
-        title: values.title,
-        shortDescription: values.shortDescription,
-        description: values.description,
-        price: values.price,
-        details: [
-          { id: 1, detail: values.productDetail1 as string },
-          { id: 2, detail: values.productDetail2 as string },
-          { id: 3, detail: values.productDetail3 as string },
-        ],
-        size: values.size,
-        color: values.size,
-        inStock: true,
+      if (product) {
+        const updatedProduct: Product = {
+          id: product.id,
+          image: values.image,
+          title: values.title,
+          shortDescription: values.shortDescription,
+          description: values.description,
+          price: values.price,
+          details: [
+            { id: 1, detail: values.productDetail1 as string },
+            { id: 2, detail: values.productDetail2 as string },
+            { id: 3, detail: values.productDetail3 as string },
+          ],
+          size: values.size,
+          color: values.size,
+          inStock: true,
+        }
+
+        const productIndex = databaseProducts.findIndex(p => p.id === product?.id)
+
+        const updatedDatabaseProducts = [
+          ...databaseProducts.slice(0, productIndex),
+          updatedProduct,
+          ...databaseProducts.slice(productIndex + 1),
+        ]
+
+        setDatabaseProducts(updatedDatabaseProducts)
+
+      } else {
+
+        // Generates new ID
+        let newId = generateId()
+  
+        // Adds new product
+        const newProduct: Product = {
+          id: newId,
+          image: values.image,
+          title: values.title,
+          shortDescription: values.shortDescription,
+          description: values.description,
+          price: values.price,
+          details: [
+            { id: 1, detail: values.productDetail1 as string },
+            { id: 2, detail: values.productDetail2 as string },
+            { id: 3, detail: values.productDetail3 as string },
+          ],
+          size: values.size,
+          color: values.size,
+          inStock: true,
+        }
+  
+        setDatabaseProducts([...databaseProducts, newProduct])
+  
       }
-
-      setDatabaseProducts([...databaseProducts, newProduct])
-
+  
       // Closes form
       onSave()
     },
@@ -229,20 +261,17 @@ function AdminProductForm({ onSave, product }: Props) {
           helperText={formik.touched.productDetail3 && formik.errors.productDetail3}
           margin='normal'
         />
-        <Button color='primary' variant='contained' type='submit'>
-          Place order
-        </Button>
-        <Button variant='contained' onClick={onSave} color='error'>
-          Close
-        </Button>
+        <Box sx={{mt: 3, display: 'flex', justifyContent: 'right'}}>
+          <Button sx={{mr: 3}} color='primary' variant='contained' type='submit'>
+            {product? `Edit "${product.title}"` : "Add product"}
+          </Button>
+          <Button variant='contained' onClick={onSave} color='error'>
+            Close
+          </Button>
+        </Box>
       </form>
     </>
   )
 }
-
-const AdminCardListSx: SxProps<Theme> = theme => ({
-  display: 'flex',
-  justifyContent: 'center',
-})
 
 export default AdminProductForm

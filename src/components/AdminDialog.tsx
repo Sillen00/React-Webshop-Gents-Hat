@@ -6,8 +6,8 @@ import AdminProductForm from './AdminProductForm'
 function AdminDialog() {
   const navigate = useNavigate()
   const params = useParams()
-  const { products } = useProducts()
-  const product = products.find(p => p.id === params.id)
+  const { databaseProducts } = useProducts()
+  const product = databaseProducts.find(p => p.id === params.id)
 
   const handleSave = () => {
     navigate('/admin')
@@ -15,9 +15,14 @@ function AdminDialog() {
 
   return (
     <Dialog fullWidth open>
-      <DialogTitle>EDIT / ADD PRODUCT</DialogTitle>
+      <DialogTitle>
+        {product? `Editing "${product.title}"` : "Add new product"}
+
+      </DialogTitle>
       <DialogContent>
-        <DialogContentText>Id</DialogContentText>
+        <DialogContentText gutterBottom>
+          {product? `Id: "${product.id}"` : ""}
+        </DialogContentText>
         <AdminProductForm product={product} onSave={handleSave} />
       </DialogContent>
       <DialogActions></DialogActions>
