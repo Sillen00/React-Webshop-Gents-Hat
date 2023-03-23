@@ -45,14 +45,14 @@ export default function ProductCard({ dataProduct }: Props) {
       <Box sx={{ display: 'flex', alignItems: 'center', flexDirection: 'column' }}>
         
         <NavLink to={`/admin/product/${dataProduct.id}`}>
-          <Button data-cy='admin-edit-product' sx={{ mb: 2, width: '86%' }} variant='contained'>
+          <Button data-cy='admin-edit-product' sx={{ mb: 2, width: '13rem' }} variant='contained'>
             <Typography variant='body2'>Edit Product</Typography>
           </Button>
         </NavLink>
         
         <Button
           data-cy='admin-remove-product'
-          sx={{ mb: 2, width: '86%' }}
+          sx={{ mb: 2, width: '13rem' }}
           variant='contained'
           color='error'
         >

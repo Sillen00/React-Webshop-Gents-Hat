@@ -1,15 +1,16 @@
 import { Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from '@mui/material'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { useProducts } from '../contexts/ProductsContext'
 import AdminProductForm from './AdminProductForm'
 
 function AdminDialog() {
+  const navigate = useNavigate()
   const params = useParams()
   const { products } = useProducts()
   const product = products.find(p => p.id === params.id)
 
   const handleSave = () => {
-    console.log('gå tillbaka till admin')
+    navigate('/admin')
   }
 
   return (
