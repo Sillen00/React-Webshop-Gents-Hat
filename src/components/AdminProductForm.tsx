@@ -1,12 +1,18 @@
-import { Box, Button, SxProps, TextField, Theme } from '@mui/material'
+import {
+  Box,
+  Button,
+  FormControl,
+  FormControlLabel,
+  FormLabel,
+  Radio,
+  RadioGroup,
+  TextField,
+} from '@mui/material'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
 import { generateId, Product } from '../../data'
 
-import { RadioButton } from './RadioButton'
-
 import { useProducts } from '../contexts/ProductsContext'
-
 
 /* ----------------------
       YUP VALIDATION
@@ -58,6 +64,7 @@ const adminFormSchema = Yup.object().shape({
     3,
     'The detail you have given us it too short. Please give us a detail of minimum 3 characters.'
   ),
+  inStock: Yup.boolean()
 })
 
 /* ----------------------
@@ -90,10 +97,9 @@ function AdminProductForm({ onSave, product }: Props) {
       ],
       size: '',
       color: '',
-      inStock: false,
+      inStock: true,
     },
     onSubmit: values => {
-
       if (product) {
         const updatedProduct: Product = {
           id: product.id,
@@ -109,7 +115,7 @@ function AdminProductForm({ onSave, product }: Props) {
           ],
           size: values.size,
           color: values.size,
-          inStock: true,
+          inStock: values.inStock,
         }
 
         const productIndex = databaseProducts.findIndex(p => p.id === product?.id)
@@ -121,12 +127,10 @@ function AdminProductForm({ onSave, product }: Props) {
         ]
 
         setDatabaseProducts(updatedDatabaseProducts)
-
       } else {
-
         // Generates new ID
         let newId = generateId()
-  
+
         // Adds new product
         const newProduct: Product = {
           id: newId,
@@ -144,11 +148,10 @@ function AdminProductForm({ onSave, product }: Props) {
           color: values.size,
           inStock: true,
         }
-  
+
         setDatabaseProducts([...databaseProducts, newProduct])
-  
       }
-  
+
       // Closes form
       onSave()
     },
@@ -266,19 +269,30 @@ function AdminProductForm({ onSave, product }: Props) {
           margin='normal'
         />
 
-        <Box sx={{mb: "1rem"}}>
-          <RadioButton />
+        <Box sx={{ mb: '1rem' }}>
+          <FormControl>
+            <FormLabel id='demo-radio-buttons-group-label'>In stock</FormLabel>
+            <RadioGroup
+              id='inStock'
+              row
+              aria-labelledby='demo-radio-buttons-group-label'
+              defaultValue='yes'
+              name='radio-buttons-group'
+            >
+              <FormControlLabel value={formik.values.inStock} control={<Radio />} label='Yes' />
+              <FormControlLabel value={formik.values.inStock} control={<Radio />} label='No' />
+            </RadioGroup>
+          </FormControl>
         </Box>
 
-        <Box sx={{mt: 3, display: 'flex', justifyContent: 'right'}}>
-          <Button sx={{mr: 3}} color='primary' variant='contained' type='submit'>
-            {product? `Edit "${product.title}"` : "Add product"}
+        <Box sx={{ mt: 3, display: 'flex', justifyContent: 'right' }}>
+          <Button sx={{ mr: 3 }} color='primary' variant='contained' type='submit'>
+            {product ? `Edit "${product.title}"` : 'Add product'}
           </Button>
           <Button variant='contained' onClick={onSave} color='error'>
             Close
           </Button>
         </Box>
-
       </form>
     </>
   )
