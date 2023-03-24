@@ -1,7 +1,6 @@
-import { Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from '@mui/material'
 import { useNavigate, useParams } from 'react-router-dom'
+import AdminProductForm from '../components/AdminProductForm'
 import { useProducts } from '../contexts/ProductsContext'
-import AdminProductForm from './AdminProductForm'
 
 function AdminDialog() {
   const navigate = useNavigate()

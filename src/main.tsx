@@ -6,15 +6,15 @@ import {
   createBrowserRouter,
   createRoutesFromElements,
   Route,
-  RouterProvider,
+  RouterProvider
 } from 'react-router-dom'
 import App from './App'
-import AdminDialog from './components/AdminDialog'
 import { CartProvider } from './contexts/CartContext'
 import { FormProvider } from './contexts/FormContext'
 import { ProductsProvider } from './contexts/ProductsContext'
 import './index.css'
 import Admin from './pages/Admin'
+import AdminDialog from './pages/AdminUpdateDatabase'
 import Checkout from './pages/Checkout'
 import Home from './pages/Home'
 import OrderConfirmation from './pages/OrderConfirmation'
