@@ -14,7 +14,7 @@ function AdminDialog() {
   }
 
   return (
-    <Dialog fullWidth open>
+    <Dialog disableScrollLock fullWidth open>
       <DialogTitle>
         {product? `Editing "${product.title}"` : "Add new product"}
 
