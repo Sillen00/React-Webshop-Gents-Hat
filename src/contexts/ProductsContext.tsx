@@ -1,0 +1,43 @@
+import { createContext, PropsWithChildren, useContext } from 'react'
+import { Product, products } from '../../data'
+import { useLocalStorageState } from '../hooks/useLocalStorageState'
+
+// Interface
+interface ProductsContextValue {
+  databaseProducts: Product[]
+  setDatabaseProducts: React.Dispatch<React.SetStateAction<Product[]>>
+  products: Product[]
+  consoleLog: () => void
+}
+
+// Context setup
+const ProductsContext = createContext<ProductsContextValue>(null as any)
+
+export const useProducts = () => useContext(ProductsContext)
+
+// Context provider
+export function ProductsProvider(props: PropsWithChildren) {
+
+  // Local storage hook
+  const [databaseProducts, setDatabaseProducts] = useLocalStorageState<Product[]>(products, 'products')
+
+  // Context functions
+  const consoleLog = () => {
+    console.log(databaseProducts)
+  }
+
+  // Variables and functions that the context shares
+  return (
+    <ProductsContext.Provider
+      value={{
+        databaseProducts,
+        setDatabaseProducts,
+        products,
+        consoleLog
+      }}
+    >
+      {props.children}
+    </ProductsContext.Provider>
+  )
+}
+
