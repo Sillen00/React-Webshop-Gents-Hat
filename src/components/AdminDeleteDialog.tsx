@@ -32,12 +32,20 @@ export default function AdminDeleteDialog(props: Props) {
       <DialogTitle id='alert-dialog-title'>{'Delete Product'}</DialogTitle>
       <DialogContent>
         <DialogContentText id='alert-dialog-description'>
-          Are you sure you want to delete this product?
+          Are you sure you want to delete {dataProduct.title} from your assortment?
         </DialogContentText>
       </DialogContent>
       <DialogActions>
-        <Button onClick={handleClose}>Cancel</Button>
-        <Button onClick={handleConfirmDelete} autoFocus data-cy='confirm-delete-button'>
+        <Button variant='contained' onClick={handleClose}>
+          Cancel
+        </Button>
+        <Button
+          variant='contained'
+          color='error'
+          onClick={handleConfirmDelete}
+          autoFocus
+          data-cy='confirm-delete-button'
+        >
           Delete
         </Button>
       </DialogActions>
