@@ -3,6 +3,7 @@ import { useFormik } from 'formik'
 import * as Yup from 'yup'
 import { generateId, Product } from '../../data'
 import { useProducts } from '../contexts/ProductsContext'
+import ScrollToTop from '../hooks/ScrollToTop'
 
 /* ----------------------
       YUP VALIDATION

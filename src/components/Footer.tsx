@@ -41,6 +41,11 @@ function Footer() {
     },
   })
 
+  const handleOpen = () => {
+    setOpenSnack(true)
+    formik.handleReset
+  }
+
   const handleClose = () => {
     setOpenSnack(false)
   }
@@ -83,7 +88,7 @@ function Footer() {
                 helperText={formik.touched.email && formik.errors.email}
                 autoComplete='email'
               />
-              <Button sx={joinButton} variant='contained' type='reset'>
+              <Button sx={joinButton} variant='contained' onClick={handleOpen} type='button'>
                 Join
               </Button>
             </Box>
