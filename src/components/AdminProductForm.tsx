@@ -20,9 +20,11 @@ const adminFormSchema = Yup.object().shape({
   price: Yup.number()
     .required('Please enter a price for your product.')
     .min(2, 'The price you have given is to low. We need to go profit.'),
-  size: Yup.string().required('Please enter a size for your product.'),
+  size: Yup.string()
+    // .required('Please enter a size for your product.')
+    ,
   color: Yup.string()
-    .required('Please enter a color for your product.')
+    // .required('Please enter a color for your product.')
     .min(
       1,
       'The name of the color you have given us it too short. Please give us a name of minimum 5 characters.'
@@ -31,7 +33,7 @@ const adminFormSchema = Yup.object().shape({
     .required('Please enter an image-URL for your product.')
     .min(1, 'The URL you have given us is not valid. Please give us a valid URL.'),
   shortDescription: Yup.string()
-    .required('Please write a short card description.')
+    // .required('Please write a short card description.')
     .max(
       30,
       'The description you have given us it too long. Please give us a description of maximum 30 characters.'
@@ -95,7 +97,7 @@ function AdminProductForm({ onSave, product }: Props) {
           id: product.id,
           image: values.image,
           title: values.title,
-          shortDescription: values.shortDescription,
+          shortDescription: values.shortDescription as string,
           description: values.description,
           price: values.price,
           details: [
@@ -103,8 +105,8 @@ function AdminProductForm({ onSave, product }: Props) {
             { id: 2, detail: values.productDetail2 as string },
             { id: 3, detail: values.productDetail3 as string },
           ],
-          size: values.size,
-          color: values.size,
+          size: values.size as string,
+          color: values.size as string,
           inStock: true,
         }
 
@@ -128,7 +130,7 @@ function AdminProductForm({ onSave, product }: Props) {
           id: newId,
           image: values.image,
           title: values.title,
-          shortDescription: values.shortDescription,
+          shortDescription: values.shortDescription as string,
           description: values.description,
           price: values.price,
           details: [
@@ -136,8 +138,8 @@ function AdminProductForm({ onSave, product }: Props) {
             { id: 2, detail: values.productDetail2 as string },
             { id: 3, detail: values.productDetail3 as string },
           ],
-          size: values.size,
-          color: values.size,
+          size: values.size as string,
+          color: values.size as string,
           inStock: true,
         }
   
