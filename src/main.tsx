@@ -9,10 +9,12 @@ import {
   RouterProvider,
 } from 'react-router-dom'
 import App from './App'
-import Admin from './pages/Admin'
+import AdminDialog from './components/AdminDialog'
 import { CartProvider } from './contexts/CartContext'
 import { FormProvider } from './contexts/FormContext'
+import { ProductsProvider } from './contexts/ProductsContext'
 import './index.css'
+import Admin from './pages/Admin'
 import Checkout from './pages/Checkout'
 import Home from './pages/Home'
 import OrderConfirmation from './pages/OrderConfirmation'
@@ -87,7 +89,9 @@ const router = createBrowserRouter(
       <Route index element={<Home />} />
       <Route path='/product/:id' element={<ProductDescription />} />
       <Route path='checkout' element={<Checkout />} />
-      <Route path='admin' element={<Admin />} />
+      <Route path='admin' element={<Admin />}>
+        <Route path='product/:id' element={<AdminDialog />} />
+      </Route>
       <Route path='confirmation' element={<OrderConfirmation />} />
       <Route path='*' element={<h2>404 not found</h2>} />
     </Route>
@@ -96,13 +100,15 @@ const router = createBrowserRouter(
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
-      <FormProvider>
-        <CartProvider>
-          <SnackbarProvider maxSnack={3}>
-            <RouterProvider router={router} />
-          </SnackbarProvider>
-        </CartProvider>
-      </FormProvider>
+      <ProductsProvider>
+        <FormProvider>
+          <CartProvider>
+            <SnackbarProvider maxSnack={3}>
+              <RouterProvider router={router} />
+            </SnackbarProvider>
+          </CartProvider>
+        </FormProvider>
+      </ProductsProvider>
     </ThemeProvider>
   </React.StrictMode>
 )

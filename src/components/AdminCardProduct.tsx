@@ -3,14 +3,25 @@ import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
 import CardMedia from '@mui/material/CardMedia'
 import Typography from '@mui/material/Typography'
-import { Link } from 'react-router-dom'
+import React from 'react'
+import { Link, NavLink } from 'react-router-dom'
 import { Product } from '../../data'
+import AdminDeleteDialog from './AdminDeleteDialog'
 
 interface Props {
   dataProduct: Product
 }
 
 export default function ProductCard({ dataProduct }: Props) {
+  const [openDeleteDialog, setOpenDeleteDialog] = React.useState(false)
+
+  const handleDeleteClick = () => {
+    setOpenDeleteDialog(true)
+  }
+
+  const handleDeleteClose = () => {
+    setOpenDeleteDialog(false)
+  }
 
   return (
     <Card sx={cardStyle} data-cy='product'>
@@ -31,8 +42,13 @@ export default function ProductCard({ dataProduct }: Props) {
             <Typography sx={priceTagStyle} variant='body2' data-cy='product-price'>
               ${dataProduct.price}
             </Typography>
-            <Typography data-cy='product-id' variant='body2' component='div'>
-              {dataProduct.id}
+            <Typography variant='body2' component='div'>
+              <span style={{ paddingRight: '0.3rem', fontSize: '0.8rem', fontWeight: '900' }}>
+                ID:
+              </span>
+              <span style={{ fontSize: '0.8rem' }} data-cy='product-id'>
+                {dataProduct.id}
+              </span>
             </Typography>
             <Typography gutterBottom variant='h5' component='div' data-cy='product-title'>
               {dataProduct.title}
@@ -43,14 +59,24 @@ export default function ProductCard({ dataProduct }: Props) {
           </CardContent>
         </StyledCardActionArea>
       </Link>
-      <Box sx={{display:"flex", alignItems: 'center', flexDirection:"column"}}>
-        <Button data-cy="admin-edit-product" sx={{mb: 2, width: '86%'}} variant='contained'>
-          <Typography variant='body2'>Edit Product</Typography>
-        </Button>
-        <Button data-cy="admin-remove-product" sx={{mb: 2, width: '86%'}} variant='contained' color='error'>
+      <Box sx={{ display: 'flex', alignItems: 'center', flexDirection: 'column' }}>
+        <NavLink to={`/admin/product/${dataProduct.id}`}>
+          <Button data-cy='admin-edit-product' sx={{ mb: 2, width: '13rem' }} variant='contained'>
+            <Typography variant='body2'>Edit Product</Typography>
+          </Button>
+        </NavLink>
+
+        <Button
+          data-cy='admin-remove-product'
+          sx={{ mb: 2, width: '13rem' }}
+          variant='contained'
+          color='error'
+          onClick={handleDeleteClick}
+        >
           <Typography variant='body2'>Delete Product</Typography>
         </Button>
       </Box>
+      <AdminDeleteDialog open={openDeleteDialog} handleClose={handleDeleteClose} />
     </Card>
   )
 }
@@ -58,6 +84,7 @@ export default function ProductCard({ dataProduct }: Props) {
 const imageStyle: SxProps<Theme> = theme => ({
   objectFit: 'contain',
 })
+
 const cardStyle: SxProps<Theme> = theme => ({
   minWidth: 240,
   borderRadius: 2,

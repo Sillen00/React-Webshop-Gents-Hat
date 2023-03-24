@@ -5,7 +5,9 @@ export interface Product {
   shortDescription: string
   description: string
   price: number
-  details: { id: number; detail: string }[]
+  details?: {
+    id: number; detail?: string
+  }[]
   size: string
   color: string
   inStock: boolean
@@ -26,6 +28,7 @@ export const generateId = () => {
 
 export const products: Product[] = [
   {
+    id: 'EL1477',
     image: '../images/aberdeen.png',
     title: 'Aberdeen',
     shortDescription: 'Aberdeen. description',
@@ -36,14 +39,13 @@ export const products: Product[] = [
       { id: 1, detail: 'Lorem ipsum' },
       { id: 2, detail: 'Lorem ipsum' },
       { id: 3, detail: 'Lorem ipsum' },
-      { id: 4, detail: 'Lorem ipsum' },
     ],
     size: 'L',
     color: 'Dark brown',
     inStock: true,
-    id: 'e1',
   },
   {
+    id: 'FD9263',
     image: '../images/bowler.png',
     title: 'Bowler Hat',
     shortDescription: 'Bowler Hat, description',
@@ -53,13 +55,15 @@ export const products: Product[] = [
     details: [
       { id: 1, detail: 'Lorem ipsum' },
       { id: 2, detail: 'Lorem ipsum' },
+      { id: 3, detail: 'Lorem ipsum' },
     ],
     size: 'M',
     color: 'Black',
     inStock: true,
-    id: 'd2',
+
   },
   {
+    id: 'XA9333',
     image: '../images/panama.png',
     title: 'Panama',
     shortDescription: 'Panama. description',
@@ -70,15 +74,13 @@ export const products: Product[] = [
       { id: 1, detail: 'Lorem ipsum' },
       { id: 2, detail: 'Lorem ipsum' },
       { id: 3, detail: 'Lorem ipsum' },
-      { id: 4, detail: 'Lorem ipsum' },
-      { id: 5, detail: 'Lorem ipsum' },
     ],
     size: 'M',
     color: 'Beige',
     inStock: false,
-    id: 'f4',
   },
   {
+    id: 'QF8822',
     image: '../images/outback.png',
     title: 'Outback',
     shortDescription: 'Outback, description',
@@ -93,9 +95,9 @@ export const products: Product[] = [
     size: 'M',
     color: 'Black',
     inStock: true,
-    id: 'c1',
   },
   {
+    id: 'PP2226',
     image: '../images/stockman.png',
     title: 'Stockman',
     shortDescription: 'Stockman. description',
@@ -105,13 +107,14 @@ export const products: Product[] = [
     details: [
       { id: 1, detail: 'Lorem ipsum' },
       { id: 2, detail: 'Lorem ipsum' },
+      { id: 3, detail: 'Lorem ipsum' },
     ],
     size: 'S',
     color: 'Brown',
     inStock: true,
-    id: 'e6',
   },
   {
+    id: 'ZK6932',
     image: '../images/straw.png',
     title: 'Straw Hat',
     shortDescription: 'Straw hat. description',
@@ -126,9 +129,9 @@ export const products: Product[] = [
     size: 'M',
     color: 'Straw hat colored',
     inStock: true,
-    id: 'a3',
   },
   {
+    id: 'YG1824',
     image: '../images/western.png',
     title: 'Western Hat',
     shortDescription: 'Western hat. description',
@@ -138,13 +141,14 @@ export const products: Product[] = [
     details: [
       { id: 1, detail: 'Lorem ipsum' },
       { id: 2, detail: 'Lorem ipsum' },
+      { id: 3, detail: 'Lorem ipsum' },
     ],
     size: 'L',
     color: 'Brown',
     inStock: true,
-    id: 'a2',
   },
   {
+    id: 'OW5885',
     image: '../images/tophat.png',
     title: 'Top Hat',
     shortDescription: 'Top hat. description',
@@ -155,14 +159,13 @@ export const products: Product[] = [
       { id: 1, detail: 'Lorem ipsum' },
       { id: 2, detail: 'Lorem ipsum' },
       { id: 3, detail: 'Lorem ipsum' },
-      { id: 4, detail: 'Lorem ipsum' },
     ],
     size: 'L',
     color: 'Black',
     inStock: false,
-    id: 'a1',
   },
   {
+    id: 'RS2937',
     image: '../images/trilby.png',
     title: 'Trilby Hat',
     shortDescription: 'Trilby hat. description',
@@ -173,15 +176,13 @@ export const products: Product[] = [
       { id: 1, detail: 'Lorem ipsum' },
       { id: 2, detail: 'Lorem ipsum' },
       { id: 3, detail: 'Lorem ipsum' },
-      { id: 4, detail: 'Lorem ipsum' },
-      { id: 5, detail: 'Lorem ipsum' },
     ],
     size: 'S',
     color: 'Black',
     inStock: true,
-    id: 'a8',
   },
   {
+    id: 'UF1283',
     image: '../images/woolfelt.png',
     title: 'Woolfelt Hat',
     shortDescription: 'Woolfelt hat. description',
@@ -196,9 +197,9 @@ export const products: Product[] = [
     size: 'M',
     color: 'Dark gray',
     inStock: true,
-    id: 'a4',
   },
   {
+    id: 'IP9642',
     image: '../images/fedora.png',
     title: 'Fedora Hat',
     shortDescription: 'Fedora hat. description',
@@ -213,9 +214,9 @@ export const products: Product[] = [
     size: 'M',
     color: 'Red',
     inStock: true,
-    id: 'a7',
   },
   {
+    id: 'KZ0032',
     image: '../images/stoutmoss.png',
     title: 'Stout Hat',
     shortDescription: 'Stout hat. description',
@@ -226,12 +227,10 @@ export const products: Product[] = [
       { id: 1, detail: 'Lorem ipsum' },
       { id: 2, detail: 'Lorem ipsum' },
       { id: 3, detail: 'Lorem ipsum' },
-      { id: 4, detail: 'Lorem ipsum' },
     ],
     size: 'L',
     color: 'Gray',
     inStock: true,
-    id: 'a6',
   },
 ]
 
