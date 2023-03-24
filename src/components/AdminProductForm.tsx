@@ -64,7 +64,7 @@ const adminFormSchema = Yup.object().shape({
     3,
     'The detail you have given us it too short. Please give us a detail of minimum 3 characters.'
   ),
-  inStock: Yup.boolean()
+  inStock: Yup.boolean(),
 })
 
 /* ----------------------
@@ -115,7 +115,7 @@ function AdminProductForm({ onSave, product }: Props) {
           ],
           size: values.size,
           color: values.size,
-          inStock: values.inStock,
+          inStock: values.inStock || true,
         }
 
         const productIndex = databaseProducts.findIndex(p => p.id === product?.id)
@@ -278,9 +278,13 @@ function AdminProductForm({ onSave, product }: Props) {
               aria-labelledby='demo-radio-buttons-group-label'
               defaultValue='yes'
               name='radio-buttons-group'
+              value={formik.values.inStock}
+              onChange={formik.handleChange}
+              
+
             >
-              <FormControlLabel value={formik.values.inStock} control={<Radio />} label='Yes' />
-              <FormControlLabel value={formik.values.inStock} control={<Radio />} label='No' />
+              <FormControlLabel value={true} control={<Radio />} label='Yes' />
+              <FormControlLabel value={false} control={<Radio />} label='No' />
             </RadioGroup>
           </FormControl>
         </Box>
@@ -291,8 +295,7 @@ function AdminProductForm({ onSave, product }: Props) {
           </Button>
           <Button variant='contained' onClick={onSave} color='error'>
             Close
-          </Button>
-        </Box>
+          </Button>        </Box>
       </form>
     </>
   )
