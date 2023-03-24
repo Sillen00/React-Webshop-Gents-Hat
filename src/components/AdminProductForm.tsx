@@ -291,6 +291,10 @@ function AdminProductForm({ onSave, product }: Props) {
   )
 }
 
+/* ----------------------
+       CSS STYLING
+---------------------- */
+
 const formContainer: SxProps<Theme> = theme => ({
   width: '70%',
   paddingTop: '5rem',

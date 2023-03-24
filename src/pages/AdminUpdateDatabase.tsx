@@ -4,6 +4,9 @@ import { useProducts } from '../contexts/ProductsContext'
 
 function AdminUpdateDatabase() {
   const navigate = useNavigate()
+
+  // Makes sure correct product is given the form when editing a product
+
   const params = useParams()
   const { databaseProducts } = useProducts()
   const product = databaseProducts.find(p => p.id === params.id)
