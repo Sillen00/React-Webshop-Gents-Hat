@@ -14,19 +14,7 @@ function AdminDialog() {
   }
 
   return (
-    <Dialog disableScrollLock fullWidth open>
-      <DialogTitle>
-        {product? `Editing "${product.title}"` : "Add new product"}
-
-      </DialogTitle>
-      <DialogContent>
-        <DialogContentText gutterBottom>
-          {product? `Id: "${product.id}"` : ""}
-        </DialogContentText>
         <AdminProductForm product={product} onSave={handleSave} />
-      </DialogContent>
-      <DialogActions></DialogActions>
-    </Dialog>
   )
 }
 
