@@ -3,15 +3,26 @@ import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
 import CardMedia from '@mui/material/CardMedia'
 import Typography from '@mui/material/Typography'
-import { CSSProperties } from 'react'
+import React from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import { Product } from '../../data'
+import AdminDeleteDialog from './AdminDeleteDialog'
 
 interface Props {
   dataProduct: Product
 }
 
 export default function ProductCard({ dataProduct }: Props) {
+  const [openDeleteDialog, setOpenDeleteDialog] = React.useState(false)
+
+  const handleDeleteClick = () => {
+    setOpenDeleteDialog(true)
+  }
+
+  const handleDeleteClose = () => {
+    setOpenDeleteDialog(false)
+  }
+
   return (
     <Card sx={cardStyle} data-cy='product'>
       <Link style={{ textDecoration: 'none' }} to={`/product/${dataProduct.id}`}>
@@ -32,10 +43,10 @@ export default function ProductCard({ dataProduct }: Props) {
               ${dataProduct.price}
             </Typography>
             <Typography variant='body2' component='div'>
-              <span style={{paddingRight: '0.3rem', fontSize: '0.8rem', fontWeight: '900'}}>
-                ID: 
+              <span style={{ paddingRight: '0.3rem', fontSize: '0.8rem', fontWeight: '900' }}>
+                ID:
               </span>
-              <span style={{ fontSize: '0.8rem'}}data-cy='product-id'>
+              <span style={{ fontSize: '0.8rem' }} data-cy='product-id'>
                 {dataProduct.id}
               </span>
             </Typography>
@@ -49,22 +60,23 @@ export default function ProductCard({ dataProduct }: Props) {
         </StyledCardActionArea>
       </Link>
       <Box sx={{ display: 'flex', alignItems: 'center', flexDirection: 'column' }}>
-        
         <NavLink to={`/admin/product/${dataProduct.id}`}>
           <Button data-cy='admin-edit-product' sx={{ mb: 2, width: '13rem' }} variant='contained'>
             <Typography variant='body2'>Edit Product</Typography>
           </Button>
         </NavLink>
-        
+
         <Button
           data-cy='admin-remove-product'
           sx={{ mb: 2, width: '13rem' }}
           variant='contained'
           color='error'
+          onClick={handleDeleteClick}
         >
           <Typography variant='body2'>Delete Product</Typography>
         </Button>
       </Box>
+      <AdminDeleteDialog open={openDeleteDialog} handleClose={handleDeleteClose} />
     </Card>
   )
 }
