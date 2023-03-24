@@ -10,7 +10,7 @@ import { Product } from '../../data'
 interface Props {
   open: boolean
   handleClose: () => void
-  handleDelete: () => void
+  handleDelete: (product: Product) => void
   dataProduct: Product
 }
 
@@ -18,8 +18,7 @@ export default function AdminDeleteDialog(props: Props) {
   const { open, handleClose, handleDelete, dataProduct } = props
 
   const handleConfirmDelete = () => {
-    console.log('Product deleted: ' + dataProduct.title)
-    handleDelete()
+    handleDelete(dataProduct)
     handleClose()
   }
 
@@ -38,7 +37,7 @@ export default function AdminDeleteDialog(props: Props) {
       </DialogContent>
       <DialogActions>
         <Button onClick={handleClose}>Cancel</Button>
-        <Button onClick={handleConfirmDelete} autoFocus>
+        <Button onClick={handleConfirmDelete} autoFocus data-cy='confirm-delete-button'>
           Delete
         </Button>
       </DialogActions>
