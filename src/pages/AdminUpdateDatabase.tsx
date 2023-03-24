@@ -2,7 +2,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 import AdminProductForm from '../components/AdminProductForm'
 import { useProducts } from '../contexts/ProductsContext'
 
-function AdminDialog() {
+function AdminUpdateDatabase() {
   const navigate = useNavigate()
   const params = useParams()
   const { databaseProducts } = useProducts()
@@ -17,4 +17,4 @@ function AdminDialog() {
   )
 }
 
-export default AdminDialog
+export default AdminUpdateDatabase

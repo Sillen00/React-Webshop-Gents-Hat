@@ -14,7 +14,7 @@ import { FormProvider } from './contexts/FormContext'
 import { ProductsProvider } from './contexts/ProductsContext'
 import './index.css'
 import Admin from './pages/Admin'
-import AdminDialog from './pages/AdminUpdateDatabase'
+import AdminUpdateDatabase from './pages/AdminUpdateDatabase'
 import Checkout from './pages/Checkout'
 import Home from './pages/Home'
 import OrderConfirmation from './pages/OrderConfirmation'
@@ -90,7 +90,7 @@ const router = createBrowserRouter(
       <Route path='/product/:id' element={<ProductDescription />} />
       <Route path='checkout' element={<Checkout />} />
       <Route path='admin' element={<Admin />} />
-      <Route path='admin/product/:id' element={<AdminDialog />} />
+      <Route path='admin/product/:id' element={<AdminUpdateDatabase />} />
       <Route path='confirmation' element={<OrderConfirmation />} />
       <Route path='*' element={<h2>404 not found</h2>} />
     </Route>
