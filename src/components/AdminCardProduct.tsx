@@ -10,16 +10,17 @@ import AdminDeleteDialog from './AdminDeleteDialog'
 
 interface Props {
   dataProduct: Product
+  handleDelete: () => void
 }
 
 export default function ProductCard({ dataProduct }: Props) {
   const [openDeleteDialog, setOpenDeleteDialog] = React.useState(false)
 
-  const handleDeleteClick = () => {
+  const handleDelete = () => {
     setOpenDeleteDialog(true)
   }
 
-  const handleDeleteClose = () => {
+  const handleCloseDeleteDialog = () => {
     setOpenDeleteDialog(false)
   }
 
@@ -71,12 +72,17 @@ export default function ProductCard({ dataProduct }: Props) {
           sx={{ mb: 2, width: '13rem' }}
           variant='contained'
           color='error'
-          onClick={handleDeleteClick}
+          onClick={handleDelete}
         >
           <Typography variant='body2'>Delete Product</Typography>
         </Button>
       </Box>
-      <AdminDeleteDialog open={openDeleteDialog} handleClose={handleDeleteClose} />
+      <AdminDeleteDialog
+        open={openDeleteDialog}
+        handleClose={handleCloseDeleteDialog}
+        handleDelete={handleDelete}
+        dataProduct={dataProduct}
+      />
     </Card>
   )
 }

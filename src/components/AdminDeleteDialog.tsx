@@ -5,14 +5,23 @@ import DialogContent from '@mui/material/DialogContent'
 import DialogContentText from '@mui/material/DialogContentText'
 import DialogTitle from '@mui/material/DialogTitle'
 import * as React from 'react'
+import { Product } from '../../data'
 
-interface AdminDeleteDialogProps {
+interface Props {
   open: boolean
   handleClose: () => void
+  handleDelete: () => void
+  dataProduct: Product
 }
 
-export default function AdminDeleteDialog(props: AdminDeleteDialogProps) {
-  const { open, handleClose } = props
+export default function AdminDeleteDialog(props: Props) {
+  const { open, handleClose, handleDelete, dataProduct } = props
+
+  const handleConfirmDelete = () => {
+    console.log('Product deleted: ' + dataProduct.title)
+    handleClose()
+    handleDelete()
+  }
 
   return (
     <Dialog
@@ -29,7 +38,7 @@ export default function AdminDeleteDialog(props: AdminDeleteDialogProps) {
       </DialogContent>
       <DialogActions>
         <Button onClick={handleClose}>Cancel</Button>
-        <Button onClick={handleClose} autoFocus>
+        <Button onClick={handleConfirmDelete} autoFocus>
           Delete
         </Button>
       </DialogActions>
