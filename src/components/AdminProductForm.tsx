@@ -166,6 +166,7 @@ function AdminProductForm({ onSave, product }: Props) {
           error={formik.touched.title && Boolean(formik.errors.title)}
           helperText={formik.touched.title && formik.errors.title}
           margin='normal'
+          inputProps={{ 'data-cy': 'product-title', style: { fontFamily: 'Lora' } }}
           FormHelperTextProps={{ 'data-cy': 'product-title-error' } as any}
         />
         <TextField
@@ -177,6 +178,7 @@ function AdminProductForm({ onSave, product }: Props) {
           error={formik.touched.price && Boolean(formik.errors.price)}
           helperText={formik.touched.price && formik.errors.price}
           margin='normal'
+          inputProps={{ 'data-cy': 'product-price', style: { fontFamily: 'Lora' } }}
           FormHelperTextProps={{ 'data-cy': 'product-price-error' } as any}
         />
         <TextField
@@ -208,6 +210,7 @@ function AdminProductForm({ onSave, product }: Props) {
           error={formik.touched.image && Boolean(formik.errors.image)}
           helperText={formik.touched.image && formik.errors.image}
           margin='normal'
+          inputProps={{ 'data-cy': 'product-image', style: { fontFamily: 'Lora' } }}
           FormHelperTextProps={{ 'data-cy': 'product-image-error' } as any}
         />
         <TextField
@@ -229,6 +232,7 @@ function AdminProductForm({ onSave, product }: Props) {
           error={formik.touched.description && Boolean(formik.errors.description)}
           helperText={formik.touched.description && formik.errors.description}
           margin='normal'
+          inputProps={{ 'data-cy': 'product-description', style: { fontFamily: 'Lora' } }}
           FormHelperTextProps={{ 'data-cy': 'product-description-error' } as any}
         />
         <TextField
