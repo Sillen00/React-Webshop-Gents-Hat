@@ -19,8 +19,8 @@ export default function AdminDeleteDialog(props: Props) {
 
   const handleConfirmDelete = () => {
     console.log('Product deleted: ' + dataProduct.title)
-    handleClose()
     handleDelete()
+    handleClose()
   }
 
   return (
