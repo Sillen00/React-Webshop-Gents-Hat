@@ -83,7 +83,7 @@ function Footer() {
                 helperText={formik.touched.email && formik.errors.email}
                 autoComplete='email'
               />
-              <Button sx={joinButton} variant='contained' type='submit'>
+              <Button sx={joinButton} variant='contained' type='reset'>
                 Join
               </Button>
             </Box>
