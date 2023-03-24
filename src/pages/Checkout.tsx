@@ -81,7 +81,7 @@ function Checkout() {
 
         {cartItems.length > 0 && isMediumScreen && <CheckoutCardSubheaders />}
 
-        <Stack spacing={{ xs: 1, sm: 2, md: 4 }}>
+        <Stack spacing={{ xs: 1, sm: 2, md: 3 }}>
           {cartItems.map(cartItem => (
             <CheckoutCard cartItem={cartItem} key={cartItem.id} />
           ))}

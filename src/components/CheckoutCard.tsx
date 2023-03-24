@@ -140,16 +140,19 @@ const mediaTopStyleSx: SxProps<Theme> = theme => ({
   [theme.breakpoints.up('md')]: { top: '39px' },
 })
 export const mediaFontSizeStyleSx: SxProps<Theme> = theme => ({
-  fontSize: '1.4rem',
+  fontSize: '1.8rem',
   [theme.breakpoints.up('md')]: { fontSize: '2rem' },
 })
 export const cartCardRightBoxStyleSx: SxProps<Theme> = theme => ({
   width: '100%',
   display: 'flex',
   flexDirection: 'column',
-  py: 1,
+  py: 3,
   pr: 2,
   pl: 1,
+  [theme.breakpoints.down('md')]: {
+    py: 1
+  }
 })
 export const descriptionTextStyleSx: SxProps<Theme> = theme => ({
   fontWeight: '700',
@@ -160,8 +163,13 @@ export const quantityBoxStyleSx: SxProps<Theme> = theme => ({
   display: 'flex',
   alignItems: 'center',
   gap: '5px',
+  pt: 1,
   position: 'relative',
+  bottom: '5px',
   [theme.breakpoints.up('md')]: { bottom: '40px', right: '245px', gap: '10px' },
+  [theme.breakpoints.down('md')]: {
+    pt: 0,
+  }
 })
 export const quantityStyleSx: SxProps<Theme> = theme => ({
   fontWeight: '800',
@@ -189,6 +197,7 @@ const changeQuantityBtnStyleSx: SxProps<Theme> = theme => ({
 const productTotalStyleSx: SxProps<Theme> = theme => ({
   fontSize: '1rem',
   fontWeight: '800',
+  
   [theme.breakpoints.up('md')]: { fontSize: '1.2rem' },
 })
 export const imageBoxStyleSx: SxProps<Theme> = theme => ({
