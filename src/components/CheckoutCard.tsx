@@ -206,7 +206,9 @@ const skeletonSx: SxProps<Theme> = theme => ({
 })
 
 export const imageBoxStyleSx: SxProps<Theme> = theme => ({
-  border: '1px solid black',
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
   minWidth: '7rem',
   minHeight: '7rem',
   maxWidth: '7rem',

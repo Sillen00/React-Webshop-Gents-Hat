@@ -118,7 +118,6 @@ const displayOrderItem: SxProps<Theme> = theme => ({
 })
 
 const imageBoxStyleSx: SxProps<Theme> = theme => ({
-  border: '1px solid black',
   maxWidth: '120px',
   minWidth: '120px',
   maxHeight: '120px',
