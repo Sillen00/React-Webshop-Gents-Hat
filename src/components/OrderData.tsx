@@ -9,7 +9,7 @@ import {
   quantityBoxStyleSx,
   quantityStyleSx,
   mediaFontSizeStyleSx,
-  productTotalStyleSx
+  productTotalStyleSx,
 } from './CheckoutCard'
 
 interface Props {
@@ -22,10 +22,10 @@ interface Props {
 }
 
 export default function OrderData(props: Props) {
-  const theme = useTheme()
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(false)
-  
+
+  // Activates skeleton while image is loading or does not load
   const handleLoad = () => {
     setLoading(false)
     setError(false)
@@ -40,20 +40,20 @@ export default function OrderData(props: Props) {
     <Box sx={{ pt: 1, borderBottom: 'solid black 1px', display: 'flex' }}>
       <Box data-cy='cart-item' sx={displayOrderItem}>
         <Box sx={imageBoxStyleSx}>
-        <Skeleton
-              variant='rounded'
-              animation='wave'
-              sx={loading || error ? skeletonSx : { display: 'none' }}
-            />
-            <CardMedia
-              sx={loading || error ? { display: 'none' } : cardImgStyle}
-              component='img'
-              height='150'
-              image={props.image}
-              alt={props.title}
-              onLoad={handleLoad}
-              onError={handleError}
-            />
+          <Skeleton
+            variant='rounded'
+            animation='wave'
+            sx={loading || error ? skeletonSx : { display: 'none' }}
+          />
+          <CardMedia
+            sx={loading || error ? { display: 'none' } : cardImgStyle}
+            component='img'
+            height='150'
+            image={props.image}
+            alt={props.title}
+            onLoad={handleLoad}
+            onError={handleError}
+          />
         </Box>
         <Box sx={leftContainerSx}>
           <Box
@@ -62,9 +62,8 @@ export default function OrderData(props: Props) {
               justifyContent: 'space-between',
               paddingRight: '1rem',
             }}
-          >
-          </Box>
-          <Box sx={{ml: 1}}>
+          ></Box>
+          <Box sx={{ ml: 1 }}>
             <Typography data-cy='product-title' variant='h3' sx={mediaFontSizeStyleSx}>
               {props.title}
             </Typography>
@@ -74,8 +73,7 @@ export default function OrderData(props: Props) {
               data-cy='product-price'
               sx={descriptionTextStyleSx}
             >
-              ${props.price} &nbsp; {'|'} &nbsp; {props.color} &nbsp; {'|'} &nbsp;{' '}
-              {props.size}
+              ${props.price} &nbsp; {'|'} &nbsp; {props.color} &nbsp; {'|'} &nbsp; {props.size}
             </Typography>
             <Typography data-cy='product-price' variant='body2' sx={productTotalStyleSx}>
               Total: ${props.price * props.quantity}
@@ -84,20 +82,24 @@ export default function OrderData(props: Props) {
         </Box>
       </Box>
       <Box
-          sx={{
-            ...quantityBoxStyleSx,
-            alignItems: 'center',
-            justifyContent: 'flex-end',
-            display: 'flex',
-          }}
-        >
-          <Typography data-cy='product-quantity' variant='body2' sx={quantityStyleSx}>
-            {props.quantity}
-          </Typography>
-        </Box>
+        sx={{
+          ...quantityBoxStyleSx,
+          alignItems: 'center',
+          justifyContent: 'flex-end',
+          display: 'flex',
+        }}
+      >
+        <Typography data-cy='product-quantity' variant='body2' sx={quantityStyleSx}>
+          {props.quantity}
+        </Typography>
+      </Box>
     </Box>
   )
 }
+
+/* ----------------------
+       CSS STYLING
+---------------------- */
 
 const displayOrderItem: SxProps<Theme> = theme => ({
   display: 'flex',
@@ -112,7 +114,6 @@ const displayOrderItem: SxProps<Theme> = theme => ({
     paddingRight: '0.5rem',
     pl: 0.5,
     flexDirection: 'column',
-
   },
 })
 
