@@ -1,15 +1,40 @@
-import { Box, Grid, SxProps, Theme, Typography } from '@mui/material'
-import { products } from '../../data'
+import { Box, CardMedia, Grid, Skeleton, SxProps, Theme, Typography } from '@mui/material'
+import { useState } from 'react'
+import { cardImgStyle } from '../components/CheckoutCard'
 import ProductCard from '../components/ProductCard'
 import { useProducts } from '../contexts/ProductsContext'
 
 function Home() {
-  const {databaseProducts, setDatabaseProducts} = useProducts()
+  const { databaseProducts, setDatabaseProducts } = useProducts()
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState(false)
+
+  const handleLoad = () => {
+    setLoading(false)
+    setError(false)
+  }
+
+  const handleError = () => {
+    setLoading(false)
+    setError(true)
+  }
 
   return (
     <Box sx={homeContainerSx}>
       <Box sx={logoStyleSx}>
-        <img style={{ width: '100%', maxWidth: '50rem' }} src='../images/Logo.png' alt='Logotype' />
+        <Skeleton
+          variant='rectangular'
+          animation='wave'
+          sx={loading || error ? skeletonSx : { display: 'none' }}
+        />
+        <CardMedia
+          sx={loading || error ? { display: 'none' } : { pb: 4, px: 10, width: '100%', maxWidth: '50rem' }}
+          component='img'
+          image={'../images/Logo.png'}
+          alt={"Gent's Hat logotype"}
+          onLoad={handleLoad}
+          onError={handleError}
+        />
       </Box>
       <Box sx={productContainerSx}>
         <Typography sx={h3StyleSx} variant='h3' gutterBottom>
@@ -68,9 +93,24 @@ const logoStyleSx: SxProps<Theme> = theme => ({
 
 const h3StyleSx: SxProps<Theme> = theme => ({
   display: 'none',
-  
+
   [theme.breakpoints.up('sm')]: {
     display: 'flex',
+  },
+})
+
+const skeletonSx: SxProps<Theme> = theme => ({
+  width: '40rem',
+  height: '20rem',
+  mb: 10,
+  my: 5,
+  [theme.breakpoints.down('md')]: {
+    width: '30rem',
+    height: '14rem',
+  },
+  [theme.breakpoints.down('sm')]: {
+    width: '17rem',
+    height: '9rem',
   },
 })
 

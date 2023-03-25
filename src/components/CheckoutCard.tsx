@@ -1,5 +1,15 @@
 import * as Icon from '@mui/icons-material'
-import { Box, Button, CardMedia, Input, Paper, Skeleton, SxProps, Theme, Typography } from '@mui/material'
+import {
+  Box,
+  Button,
+  CardMedia,
+  Input,
+  Paper,
+  Skeleton,
+  SxProps,
+  Theme,
+  Typography,
+} from '@mui/material'
 import { CSSProperties, useEffect, useState } from 'react'
 import { CartItem } from '../../data'
 import { useCart } from '../contexts/CartContext'
@@ -48,24 +58,25 @@ function CheckoutCard({ cartItem }: Props) {
     setLoading(false)
     setError(true)
   }
+  
   return (
     <Paper elevation={3} sx={{ borderRadius: '0.8rem' }}>
       <Box data-cy='cart-item' sx={productCardStyleSx}>
         <Box sx={imageBoxStyleSx}>
-        <Skeleton
-              variant='rectangular'
-              animation='wave'
-              sx={loading || error ? skeletonSx : { display: 'none' }}
-            />
-            <CardMedia
-              sx={loading || error ? { display: 'none' } : cardImgStyle}
-              component='img'
-              height='150'
-              image={cartItem.image}
-              alt={cartItem.title}
-              onLoad={handleLoad}
-              onError={handleError}
-            />
+          <Skeleton
+            variant='rectangular'
+            animation='wave'
+            sx={loading || error ? skeletonSx : { display: 'none' }}
+          />
+          <CardMedia
+            sx={loading || error ? { display: 'none' } : cardImgStyle}
+            component='img'
+            height='150'
+            image={cartItem.image}
+            alt={cartItem.title}
+            onLoad={handleLoad}
+            onError={handleError}
+          />
         </Box>
         <Box sx={cartCardRightBoxStyleSx}>
           <Box
@@ -156,8 +167,7 @@ function CheckoutCard({ cartItem }: Props) {
 const skeletonSx: SxProps<Theme> = theme => ({
   width: '100%',
   height: '100%',
-  [theme.breakpoints.down('md')]: {
-  },
+  [theme.breakpoints.down('md')]: {},
 })
 
 export const productCardStyleSx: SxProps<Theme> = theme => ({
