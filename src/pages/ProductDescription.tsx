@@ -1,5 +1,15 @@
 import * as Icon from '@mui/icons-material'
-import { Box, Container, Paper, SxProps, Theme, Typography } from '@mui/material'
+import {
+  Box,
+  CardMedia,
+  Container,
+  Paper,
+  Skeleton,
+  SxProps,
+  Theme,
+  Typography,
+} from '@mui/material'
+import { useState } from 'react'
 import { NavLink, useParams } from 'react-router-dom'
 import { Product } from '../../data'
 import ProductBtnSection from '../components/ProductBtnSection'
@@ -9,6 +19,18 @@ function ProductDescription() {
   const { id } = useParams<{ id: string }>()
   const { databaseProducts } = useProducts()
   const product: Product | undefined = databaseProducts.find(p => p.id === id)
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState(false)
+
+  const handleLoad = () => {
+    setLoading(false)
+    setError(false)
+  }
+
+  const handleError = () => {
+    setLoading(false)
+    setError(true)
+  }
 
   if (!product) {
     return (
@@ -38,7 +60,19 @@ function ProductDescription() {
         </NavLink>
         <Box sx={contentStyle}>
           <Box sx={imgWrapperStyle}>
-            <img src={product.image} alt={product.title} />
+            <Skeleton
+              variant='rounded'
+              animation='wave'
+              sx={loading || error ? skeletonSx : { display: 'none' }}
+            />
+            <CardMedia
+              sx={loading || error ? { display: 'none' } : {}}
+              component='img'
+              image={product.image}
+              alt={product.title}
+              onLoad={handleLoad}
+              onError={handleError}
+            />
           </Box>
           <Box sx={textAndBtnWrapperStyle}>
             <Typography variant='h4' data-cy='product-title'>
@@ -123,6 +157,22 @@ const imgWrapperStyle: SxProps<Theme> = theme => ({
     '& img': {
       maxWidth: '80%',
     },
+  },
+})
+
+const skeletonSx: SxProps<Theme> = theme => ({
+  width: '100%',
+  height: '100%',
+  mx: 3,
+  [theme.breakpoints.down('md')]: {
+    width: '100%',
+    height: '20rem',
+    mx: 2,
+    my: 2,
+  },
+  [theme.breakpoints.down('sm')]: {
+    width: '100%',
+    height: '15rem',
   },
 })
 
