@@ -23,7 +23,7 @@ function Home() {
     <Box sx={homeContainerSx}>
       <Box sx={logoStyleSx}>
         <Skeleton
-          variant='rectangular'
+          variant='rounded'
           animation='wave'
           sx={loading || error ? skeletonSx : { display: 'none' }}
         />
