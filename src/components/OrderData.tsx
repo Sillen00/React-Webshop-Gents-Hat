@@ -1,12 +1,13 @@
-import { Box, SxProps, Theme, Typography } from '@mui/material'
+import { Box, CardMedia, Skeleton, SxProps, Theme, Typography } from '@mui/material'
 import { useTheme } from '@mui/material/styles'
 import useMediaQuery from '@mui/material/useMediaQuery'
+import { useState } from 'react'
 import {
   cardImgStyle,
   cartCardRightBoxStyleSx,
   descriptionTextStyleSx,
   quantityBoxStyleSx,
-  quantityStyleSx,
+  quantityStyleSx
 } from './CheckoutCard'
 
 interface Props {
@@ -20,13 +21,37 @@ interface Props {
 
 export default function OrderData(props: Props) {
   const theme = useTheme()
-  const isUpMd = useMediaQuery(theme.breakpoints.up('md'))
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState(false)
+  
+  const handleLoad = () => {
+    setLoading(false)
+    setError(false)
+  }
+
+  const handleError = () => {
+    setLoading(false)
+    setError(true)
+  }
 
   return (
     <Box sx={{ pt: 2, pb: 2, borderBottom: 'solid black 1px', display: 'flex' }}>
       <Box data-cy='cart-item' sx={displayOrderItem}>
         <Box sx={imageBoxStyleSx}>
-          <img style={cardImgStyle} src={props.image} />
+        <Skeleton
+              variant='rounded'
+              animation='wave'
+              sx={loading || error ? skeletonSx : { display: 'none' }}
+            />
+            <CardMedia
+              sx={loading || error ? { display: 'none' } : cardImgStyle}
+              component='img'
+              height='150'
+              image={props.image}
+              alt={props.title}
+              onLoad={handleLoad}
+              onError={handleError}
+            />
         </Box>
         <Box sx={cartCardRightBoxStyleSx}>
           <Box
@@ -94,5 +119,24 @@ const imageBoxStyleSx: SxProps<Theme> = theme => ({
   [theme.breakpoints.down('sm')]: {
     maxWidth: '50px',
     minWidth: '50px',
+  },
+})
+
+const skeletonSx: SxProps<Theme> = theme => ({
+  maxWidth: '100px',
+  minWidth: '100px',
+  maxHeight: '100px',
+  minHeight: '100px',
+  [theme.breakpoints.down('md')]: {
+    maxWidth: '80px',
+    minWidth: '80px',
+    maxHeight: '80px',
+    minHeight: '80px',
+  },
+  [theme.breakpoints.down('sm')]: {
+    maxWidth: '50px',
+    minWidth: '50px',
+    maxHeight: '50px',
+    minHeight: '50px',
   },
 })

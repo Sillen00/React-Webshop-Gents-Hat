@@ -35,7 +35,7 @@ export default function ProductCard({ product }: Props) {
           <Box sx={{ position: 'relative' }}>
             <Box sx={hatHoverStyle}>View Product</Box>
             <Skeleton
-              variant='rectangular'
+              variant='rounded'
               width={240}
               height={150}
               animation='wave'
