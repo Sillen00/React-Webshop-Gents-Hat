@@ -1,5 +1,5 @@
 import * as Icon from '@mui/icons-material'
-import { Box, Button, Input, Paper, SxProps, Theme, Typography } from '@mui/material'
+import { Box, Button, CardMedia, Input, Paper, Skeleton, SxProps, Theme, Typography } from '@mui/material'
 import { CSSProperties, useEffect, useState } from 'react'
 import { CartItem } from '../../data'
 import { useCart } from '../contexts/CartContext'
@@ -36,11 +36,36 @@ function CheckoutCard({ cartItem }: Props) {
     }
   }
 
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState(false)
+
+  const handleLoad = () => {
+    setLoading(false)
+    setError(false)
+  }
+
+  const handleError = () => {
+    setLoading(false)
+    setError(true)
+  }
   return (
     <Paper elevation={3} sx={{ borderRadius: '0.8rem' }}>
       <Box data-cy='cart-item' sx={productCardStyleSx}>
         <Box sx={imageBoxStyleSx}>
-          <img style={cardImgStyle} src={cartItem.image} alt={cartItem.shortDescription} />
+        <Skeleton
+              variant='rectangular'
+              animation='wave'
+              sx={loading || error ? skeletonSx : { display: 'none' }}
+            />
+            <CardMedia
+              sx={loading || error ? { display: 'none' } : cardImgStyle}
+              component='img'
+              height='150'
+              image={cartItem.image}
+              alt={cartItem.title}
+              onLoad={handleLoad}
+              onError={handleError}
+            />
         </Box>
         <Box sx={cartCardRightBoxStyleSx}>
           <Box
@@ -128,6 +153,13 @@ function CheckoutCard({ cartItem }: Props) {
   )
 }
 
+const skeletonSx: SxProps<Theme> = theme => ({
+  width: '100%',
+  height: '100%',
+  [theme.breakpoints.down('md')]: {
+  },
+})
+
 export const productCardStyleSx: SxProps<Theme> = theme => ({
   display: 'flex',
   maxHeight: '100px',
@@ -151,8 +183,8 @@ export const cartCardRightBoxStyleSx: SxProps<Theme> = theme => ({
   pr: 2,
   pl: 1,
   [theme.breakpoints.down('md')]: {
-    py: 1
-  }
+    py: 1,
+  },
 })
 export const descriptionTextStyleSx: SxProps<Theme> = theme => ({
   fontWeight: '700',
@@ -169,7 +201,7 @@ export const quantityBoxStyleSx: SxProps<Theme> = theme => ({
   [theme.breakpoints.up('md')]: { bottom: '40px', right: '245px', gap: '10px' },
   [theme.breakpoints.down('md')]: {
     pt: 0,
-  }
+  },
 })
 export const quantityStyleSx: SxProps<Theme> = theme => ({
   fontWeight: '800',
@@ -197,7 +229,7 @@ const changeQuantityBtnStyleSx: SxProps<Theme> = theme => ({
 const productTotalStyleSx: SxProps<Theme> = theme => ({
   fontSize: '1rem',
   fontWeight: '800',
-  
+
   [theme.breakpoints.up('md')]: { fontSize: '1.2rem' },
 })
 export const imageBoxStyleSx: SxProps<Theme> = theme => ({
