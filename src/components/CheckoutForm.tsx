@@ -238,7 +238,7 @@ export default function CheckoutForm() {
                 FormHelperTextProps={
                   { 'data-cy': 'customer-city-error' } as CustomFormHelperTextProps
                 }
-                autoComplete='city'
+                autoComplete='address-level2'
               />
             </Grid>
           </Grid>

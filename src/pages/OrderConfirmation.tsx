@@ -79,7 +79,7 @@ function OrderConfirmation() {
           </Typography>
           <Link to='../'>
             <Button sx={buttonStyleSX} variant='contained'>
-              Continue Shopping
+              Continue shopping
             </Button>
           </Link>
         </Box>
@@ -88,7 +88,7 @@ function OrderConfirmation() {
 
         <Box sx={{ display: 'flex', justifyContent: 'space-between', paddingBottom: '1rem' }}>
           <Typography variant='h3' color='secondary.dark' sx={subHeaderStyleSX}>
-            Product
+            Products
           </Typography>
           <Box sx={{ display: 'flex' }}>
             <Typography variant='h3' color='secondary.dark' sx={subHeaderStyleSX}>
@@ -107,7 +107,7 @@ function OrderConfirmation() {
         <Box sx={shippingDetailsStyleSX}>
           <Box sx={{ marginRight: '4rem' }}>
             <Typography gutterBottom variant='h3' color='secondary.dark' sx={subHeaderStyleSX}>
-              User Details
+              User details
             </Typography>
             <Typography sx={formDataStyleSX}>{fullName}</Typography>
             <Typography sx={formDataStyleSX}>{email}</Typography>
@@ -115,7 +115,7 @@ function OrderConfirmation() {
           </Box>
           <Box>
             <Typography gutterBottom variant='h3' color='secondary.dark' sx={subHeaderStyleSX}>
-              Shipping Details
+              Shipping details
             </Typography>
             <Typography sx={formDataStyleSX}>{address}</Typography>
             <Typography sx={formDataStyleSX}>{city}</Typography>

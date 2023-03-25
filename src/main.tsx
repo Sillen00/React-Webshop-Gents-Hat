@@ -6,15 +6,15 @@ import {
   createBrowserRouter,
   createRoutesFromElements,
   Route,
-  RouterProvider,
+  RouterProvider
 } from 'react-router-dom'
 import App from './App'
-import AdminDialog from './components/AdminDialog'
 import { CartProvider } from './contexts/CartContext'
 import { FormProvider } from './contexts/FormContext'
 import { ProductsProvider } from './contexts/ProductsContext'
 import './index.css'
 import Admin from './pages/Admin'
+import AdminUpdateDatabase from './pages/AdminUpdateDatabase'
 import Checkout from './pages/Checkout'
 import Home from './pages/Home'
 import OrderConfirmation from './pages/OrderConfirmation'
@@ -89,9 +89,8 @@ const router = createBrowserRouter(
       <Route index element={<Home />} />
       <Route path='/product/:id' element={<ProductDescription />} />
       <Route path='checkout' element={<Checkout />} />
-      <Route path='admin' element={<Admin />}>
-        <Route path='product/:id' element={<AdminDialog />} />
-      </Route>
+      <Route path='admin' element={<Admin />} />
+      <Route path='admin/product/:id' element={<AdminUpdateDatabase />} />
       <Route path='confirmation' element={<OrderConfirmation />} />
       <Route path='*' element={<h2>404 not found</h2>} />
     </Route>
