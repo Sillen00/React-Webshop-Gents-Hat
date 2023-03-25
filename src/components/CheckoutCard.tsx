@@ -213,7 +213,7 @@ export const imageBoxStyleSx: SxProps<Theme> = theme => ({
   minHeight: '7rem',
   maxWidth: '7rem',
   maxHeight: '7rem',
-  mx: 2,
+  mx: 4,
   my: 2,
   [theme.breakpoints.down('md')]: {
     minWidth: '5rem',
