@@ -4,10 +4,12 @@ import useMediaQuery from '@mui/material/useMediaQuery'
 import { useState } from 'react'
 import {
   cardImgStyle,
-  cartCardRightBoxStyleSx,
+  leftContainerSx,
   descriptionTextStyleSx,
   quantityBoxStyleSx,
-  quantityStyleSx
+  quantityStyleSx,
+  mediaFontSizeStyleSx,
+  productTotalStyleSx
 } from './CheckoutCard'
 
 interface Props {
@@ -35,7 +37,7 @@ export default function OrderData(props: Props) {
   }
 
   return (
-    <Box sx={{ pt: 2, pb: 2, borderBottom: 'solid black 1px', display: 'flex' }}>
+    <Box sx={{ pt: 1, borderBottom: 'solid black 1px', display: 'flex' }}>
       <Box data-cy='cart-item' sx={displayOrderItem}>
         <Box sx={imageBoxStyleSx}>
         <Skeleton
@@ -53,7 +55,7 @@ export default function OrderData(props: Props) {
               onError={handleError}
             />
         </Box>
-        <Box sx={cartCardRightBoxStyleSx}>
+        <Box sx={leftContainerSx}>
           <Box
             sx={{
               display: 'flex',
@@ -61,19 +63,27 @@ export default function OrderData(props: Props) {
               paddingRight: '1rem',
             }}
           >
-            <Typography variant='h3' sx={headingStyleSx}>
+          </Box>
+          <Box sx={{ml: 1}}>
+            <Typography data-cy='product-title' variant='h3' sx={mediaFontSizeStyleSx}>
               {props.title}
             </Typography>
-          </Box>
-          <Box sx={{ flexGrow: '4', display: 'flex', justifyContent: 'space-between' }}>
-            <Typography variant='body2' color='secondary.dark' sx={descriptionTextStyleSx}>
-              {'$' + props.price} &nbsp;&nbsp; {'|'} &nbsp;&nbsp; {props.color} &nbsp;&nbsp; {'|'}{' '}
-              &nbsp;&nbsp;
+            <Typography
+              variant='body2'
+              color='secondary.dark'
+              data-cy='product-price'
+              sx={descriptionTextStyleSx}
+            >
+              ${props.price} &nbsp; {'|'} &nbsp; {props.color} &nbsp; {'|'} &nbsp;{' '}
               {props.size}
+            </Typography>
+            <Typography data-cy='product-price' variant='body2' sx={productTotalStyleSx}>
+              Total: ${props.price * props.quantity}
             </Typography>
           </Box>
         </Box>
-        <Box
+      </Box>
+      <Box
           sx={{
             ...quantityBoxStyleSx,
             alignItems: 'center',
@@ -85,48 +95,35 @@ export default function OrderData(props: Props) {
             {props.quantity}
           </Typography>
         </Box>
-      </Box>
     </Box>
   )
 }
 
 const displayOrderItem: SxProps<Theme> = theme => ({
   display: 'flex',
-  maxHeight: '200px',
-  alignItems: 'center',
   width: '100%',
   paddingRight: '2rem',
-  [theme.breakpoints.down('sm')]: {
-    paddingRight: '0rem',
+  mb: 2,
+  mt: 1,
+  [theme.breakpoints.down('md')]: {
+    mb: 1,
   },
-})
-
-const headingStyleSx: SxProps<Theme> = theme => ({
-  fontSize: '1.6rem',
   [theme.breakpoints.down('sm')]: {
-    fontSize: '1.4rem',
+    paddingRight: '0.5rem',
+    pl: 0.5,
+    flexDirection: 'column',
+
   },
 })
 
 const imageBoxStyleSx: SxProps<Theme> = theme => ({
-  maxWidth: '100px',
-  minWidth: '100px',
+  border: '1px solid black',
+  maxWidth: '120px',
+  minWidth: '120px',
+  maxHeight: '120px',
+  minHeight: '120px',
   mx: '10px',
-  [theme.breakpoints.down('md')]: {
-    maxWidth: '80px',
-    minWidth: '80px',
-  },
-  [theme.breakpoints.down('sm')]: {
-    maxWidth: '50px',
-    minWidth: '50px',
-  },
-})
-
-const skeletonSx: SxProps<Theme> = theme => ({
-  maxWidth: '100px',
-  minWidth: '100px',
-  maxHeight: '100px',
-  minHeight: '100px',
+  mt: '0.8rem',
   [theme.breakpoints.down('md')]: {
     maxWidth: '80px',
     minWidth: '80px',
@@ -134,9 +131,28 @@ const skeletonSx: SxProps<Theme> = theme => ({
     minHeight: '80px',
   },
   [theme.breakpoints.down('sm')]: {
-    maxWidth: '50px',
-    minWidth: '50px',
-    maxHeight: '50px',
-    minHeight: '50px',
+    maxWidth: '100px',
+    minWidth: '100px',
+    maxHeight: '100px',
+    minHeight: '100px',
+  },
+})
+
+const skeletonSx: SxProps<Theme> = theme => ({
+  maxWidth: '120px',
+  minWidth: '120px',
+  maxHeight: '120px',
+  minHeight: '120px',
+  [theme.breakpoints.down('md')]: {
+    maxWidth: '80px',
+    minWidth: '80px',
+    maxHeight: '80px',
+    minHeight: '80px',
+  },
+  [theme.breakpoints.down('sm')]: {
+    maxWidth: '100px',
+    minWidth: '100px',
+    maxHeight: '100px',
+    minHeight: '100px',
   },
 })

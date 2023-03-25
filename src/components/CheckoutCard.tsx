@@ -65,7 +65,7 @@ function CheckoutCard({ cartItem }: Props) {
       {/* Right side container */}
       <Box sx={{ display: 'flex', justifyContent: 'space-between' }} data-cy='cart-item'>
         {/* Image */}
-        <Box sx={cartCardRightBoxStyleSx}>
+        <Box sx={leftContainerSx}>
           <Box sx={imageBoxStyleSx}>
             <Skeleton
               variant='rounded'
@@ -102,9 +102,9 @@ function CheckoutCard({ cartItem }: Props) {
           </Box>
         </Box>
 
-        {/* Left side container */}
+        {/* Right side container */}
 
-        <Box sx={leftContainerSx}>
+        <Box sx={rightContainerSx}>
 
           {/* Quantity container */}
           <Box sx={quantityBoxStyleSx}>
@@ -176,17 +176,16 @@ function CheckoutCard({ cartItem }: Props) {
 
 // Containers
 
-const leftContainerSx: SxProps<Theme> = theme => ({
+export const rightContainerSx: SxProps<Theme> = theme => ({
   display: 'flex',
   mr: 3,
   height: '100&',
   [theme.breakpoints.down('md')]: {
     flexDirection: 'column-reverse',
-    
   },
 })
 
-export const cartCardRightBoxStyleSx: SxProps<Theme> = theme => ({
+export const leftContainerSx: SxProps<Theme> = theme => ({
   display: 'flex',
   [theme.breakpoints.down('sm')]: {
     flexDirection: 'column',
@@ -312,9 +311,10 @@ export const descriptionTextStyleSx: SxProps<Theme> = theme => ({
   [theme.breakpoints.down('sm')]: { mb: 0.6 },
 })
 
-const productTotalStyleSx: SxProps<Theme> = theme => ({
+export const productTotalStyleSx: SxProps<Theme> = theme => ({
   fontSize: '1rem',
   fontWeight: '800',
+  pb: 2,
   [theme.breakpoints.up('md')]: { fontSize: '1.2rem' },
   [theme.breakpoints.down('sm')]: { py: 2 },
 })
