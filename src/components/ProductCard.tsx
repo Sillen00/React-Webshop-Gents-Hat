@@ -101,6 +101,7 @@ const hatHoverStyle: SxProps<Theme> = theme => ({
   justifyContent: 'center',
   alignItems: 'center',
   fontFamily: theme.typography.body2.fontFamily,
+  zIndex: 1,
 
   '&:hover': {
     background: '#d9d9d977',

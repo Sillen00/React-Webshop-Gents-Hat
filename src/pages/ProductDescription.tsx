@@ -75,7 +75,7 @@ function ProductDescription() {
             />
           </Box>
           <Box sx={textAndBtnWrapperStyle}>
-            <Typography variant='h4' data-cy='product-title'>
+            <Typography sx={{overflowWrap: 'break-word'}} variant='h4' data-cy='product-title'>
               {product.title}
             </Typography>
             <Typography variant='h6' data-cy='product-price'>
@@ -145,6 +145,10 @@ const contentStyle: SxProps<Theme> = theme => ({
 
 const imgStyle: SxProps<Theme> = theme => ({
   maxWidth: '100%',
+  p: 4,
+  [theme.breakpoints.down('md')]: {
+      maxWidth: '70%',
+  },
 })
 
 const imgWrapperStyle: SxProps<Theme> = theme => ({
