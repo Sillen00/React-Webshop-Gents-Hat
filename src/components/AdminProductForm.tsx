@@ -127,6 +127,7 @@ function AdminProductForm({ onSave, product }: Props) {
           ...databaseProducts.slice(productIndex + 1),
         ]
 
+        // Updates product
         setDatabaseProducts(updatedDatabaseProducts)
       } else {
         // Generates new ID
@@ -269,7 +270,7 @@ function AdminProductForm({ onSave, product }: Props) {
           helperText={formik.touched.productDetail3 && formik.errors.productDetail3}
           margin='normal'
         />
-
+        
         <Box sx={{ mb: '1rem' }}>
           <FormControl>
             <FormLabel id='demo-radio-buttons-group-label'>In stock</FormLabel>
