@@ -232,7 +232,8 @@ export const imageBoxStyleSx: SxProps<Theme> = theme => ({
     minHeight: '7rem',
     maxWidth: '7rem',
     maxHeight: '7rem',
-    mb: 1
+    mb: 1,
+    mx: 2,
   },
 })
 
