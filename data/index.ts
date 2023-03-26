@@ -10,7 +10,7 @@ export interface Product {
   }[]
   size: string
   color: string
-  inStock: boolean
+  inStock: string
 }
 
 export interface CartItem extends Product {
@@ -42,7 +42,7 @@ export const products: Product[] = [
     ],
     size: 'L',
     color: 'Dark brown',
-    inStock: true,
+    inStock: 'true',
   },
   {
     id: 'FD9263',
@@ -59,7 +59,7 @@ export const products: Product[] = [
     ],
     size: 'M',
     color: 'Black',
-    inStock: true,
+    inStock: 'true',
 
   },
   {
@@ -77,7 +77,7 @@ export const products: Product[] = [
     ],
     size: 'M',
     color: 'Beige',
-    inStock: false,
+    inStock: 'false',
   },
   {
     id: 'QF8822',
@@ -94,7 +94,7 @@ export const products: Product[] = [
     ],
     size: 'M',
     color: 'Black',
-    inStock: true,
+    inStock: 'true',
   },
   {
     id: 'PP2226',
@@ -111,7 +111,7 @@ export const products: Product[] = [
     ],
     size: 'S',
     color: 'Brown',
-    inStock: true,
+    inStock: 'true',
   },
   {
     id: 'ZK6932',
@@ -128,7 +128,7 @@ export const products: Product[] = [
     ],
     size: 'M',
     color: 'Straw hat colored',
-    inStock: true,
+    inStock: 'true',
   },
   {
     id: 'YG1824',
@@ -145,7 +145,7 @@ export const products: Product[] = [
     ],
     size: 'L',
     color: 'Brown',
-    inStock: true,
+    inStock: 'true',
   },
   {
     id: 'OW5885',
@@ -162,7 +162,7 @@ export const products: Product[] = [
     ],
     size: 'L',
     color: 'Black',
-    inStock: false,
+    inStock: 'false',
   },
   {
     id: 'RS2937',
@@ -179,7 +179,7 @@ export const products: Product[] = [
     ],
     size: 'S',
     color: 'Black',
-    inStock: true,
+    inStock: 'true',
   },
   {
     id: 'UF1283',
@@ -196,7 +196,7 @@ export const products: Product[] = [
     ],
     size: 'M',
     color: 'Dark gray',
-    inStock: true,
+    inStock: 'true',
   },
   {
     id: 'IP9642',
@@ -213,7 +213,7 @@ export const products: Product[] = [
     ],
     size: 'M',
     color: 'Red',
-    inStock: true,
+    inStock: 'true',
   },
   {
     id: 'KZ0032',
@@ -230,7 +230,7 @@ export const products: Product[] = [
     ],
     size: 'L',
     color: 'Gray',
-    inStock: true,
+    inStock: 'true',
   },
 ]
 
