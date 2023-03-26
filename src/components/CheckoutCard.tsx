@@ -37,6 +37,7 @@ function CheckoutCard({ cartItem }: Props) {
 
   // inputValue state stores the value of the input field.
   const [inputValue, setInputValue] = useState<string>(cartItem.quantity.toString())
+  const [deletedInputValue, setDeletedInputValue] = useState<string>(''.toString())
 
   // useEffect syncs inputValue with cartItem.quantity.
   useEffect(() => {
@@ -46,6 +47,10 @@ function CheckoutCard({ cartItem }: Props) {
   // Added handleQuantityChange to update inputValue when the user types in the input field
   const handleQuantityChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const newInputValue = event.target.value
+    const thisInputValue = parseInt(newInputValue)
+    if (isNaN(thisInputValue) || thisInputValue < 1) {
+      setDeletedInputValue(inputValue)
+      }
     setInputValue(newInputValue)
   }
 
@@ -53,8 +58,9 @@ function CheckoutCard({ cartItem }: Props) {
   const handleQuantityBlur = () => {
     const newQuantity = parseInt(inputValue)
     if (isNaN(newQuantity) || newQuantity < 1) {
-      setInputValue('1')
-      increaseProductToCart(cartItem, 1 - cartItem.quantity)
+      setInputValue(deletedInputValue)
+      const oldQuantity = parseInt(deletedInputValue)
+      increaseProductToCart(cartItem, oldQuantity - cartItem.quantity)
     } else {
       increaseProductToCart(cartItem, newQuantity - cartItem.quantity)
     }
@@ -248,14 +254,24 @@ export const quantityBoxStyleSx: SxProps<Theme> = theme => ({
   [theme.breakpoints.down('md')]: { mr: 0, mb: '1rem' },
   [theme.breakpoints.down('sm')]: { flexGrow: 1, maxHeight: '3rem' },
 })
+
 export const quantityStyleSx: SxProps<Theme> = theme => ({
   fontWeight: '800',
   fontSize: '1.2rem',
   width: '2.8rem',
   px: 0,
-  '& input::-webkit-outer-spin-button, & input::-webkit-inner-spin-button': {
-    '-webkit-appearance': 'none',
+  '& input': {
+    '&::-webkit-outer-spin-button, &::-webkit-inner-spin-button': {
+      '-webkit-appearance': 'none',
+    },
+    '&::-moz-inner-spin-button, &::-moz-outer-spin-button': {
+      '-moz-appearance': 'none',
+    },
+    '&[type=number]': {
+      '-moz-appearance': 'textfield',
+    },
   },
+
   [theme.breakpoints.up('md')]: { fontSize: '1.4rem' },
 })
 
