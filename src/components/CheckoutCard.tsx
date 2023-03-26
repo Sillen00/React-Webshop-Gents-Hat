@@ -250,7 +250,7 @@ export const quantityBoxStyleSx: SxProps<Theme> = theme => ({
   display: 'flex',
   alignItems: 'center',
   position: 'relative',
-  mr: '11rem',
+  mr: '11.95rem',
   pl: 1,
   [theme.breakpoints.down('md')]: { mr: 0, mb: '1rem' },
   [theme.breakpoints.down('sm')]: { flexGrow: 1, maxHeight: '3rem' },
@@ -284,9 +284,9 @@ const changeQuantityBtnStyleSx: SxProps<Theme> = theme => ({
   minWidth: 0,
   position: 'relative',
   [theme.breakpoints.up('md')]: {
-    width: '2rem',
-    height: '2rem',
-    m: 2,
+    width: '1.6rem',
+    height: '1.6rem',
+    m: 1.4,
   },
 })
 
