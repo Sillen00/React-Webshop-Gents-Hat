@@ -81,7 +81,7 @@ function ProductDescription() {
             <Typography variant='h6' data-cy='product-price'>
               ${product.price}
             </Typography>
-            <Typography variant='h6' sx={{ fontSize: '1rem' }}>
+            <Typography variant='h6' sx={{ mt: 2, mb: 1, fontSize: '1rem' }}>
               Product Description
             </Typography>
 
@@ -89,7 +89,7 @@ function ProductDescription() {
               {product.description}
             </Typography>
 
-            <Typography variant='h6' sx={{ fontSize: '1rem' }}>
+            <Typography variant='h6' sx={{ mt: 2, mb: 1, fontSize: '1rem' }}>
               Product Details
             </Typography>
             <Box>
@@ -98,7 +98,7 @@ function ProductDescription() {
                   <li style={{ listStyleType: 'none' }} key={id}>
                     <Typography
                       component='span'
-                      sx={{ '::before': { content: "'- '" } }}
+                      sx={{ '::before': { pl: 1, pr: 1, content: "'• '" } }}
                       variant='body2'
                     >
                       {detail}
@@ -108,15 +108,15 @@ function ProductDescription() {
               </ul>
             </Box>
             <Typography sx={flexAlignStyle} variant='body1'>
-              {product.inStock ? (
+              {(product.inStock as unknown) == 'false' ? (
                 <>
-                  <Icon.CheckCircleOutline sx={{ color: 'green' }} />
-                  In stock
+                  <Icon.HighlightOff sx={{ color: 'red' }} />
+                  <p style={{ paddingLeft: '0.5rem' }}>Out of stock</p>
                 </>
               ) : (
                 <>
-                  <Icon.HighlightOff sx={{ color: 'red' }} />
-                  Out of stock
+                  <Icon.CheckCircleOutline sx={{ color: 'green' }} />
+                  <p style={{ paddingLeft: '0.5rem' }}>In stock</p>
                 </>
               )}
             </Typography>
