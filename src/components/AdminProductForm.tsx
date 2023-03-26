@@ -31,12 +31,6 @@ const adminFormSchema = Yup.object().shape({
   image: Yup.string()
     .required('Please enter an image-URL for your product.')
     .min(1, 'The URL you have given us is not valid. Please give us a valid URL.'),
-  shortDescription: Yup.string()
-    // .required('Please write a short card description.')
-    .max(
-      30,
-      'The description you have given us it too long. Please give us a description of maximum 30 characters.'
-    ),
   description: Yup.string()
     .required('Please write a long product description.')
     .min(
@@ -219,16 +213,6 @@ function AdminProductForm({ onSave, product }: Props) {
                 margin='normal'
                 inputProps={{ 'data-cy': 'product-image', style: { fontFamily: 'Lora' } }}
                 FormHelperTextProps={{ 'data-cy': 'product-image-error' } as any}
-              />
-              <TextField
-                fullWidth
-                id='shortDescription'
-                label='Card description'
-                value={formik.values.shortDescription}
-                onChange={formik.handleChange}
-                error={formik.touched.shortDescription && Boolean(formik.errors.shortDescription)}
-                helperText={formik.touched.shortDescription && formik.errors.shortDescription}
-                margin='normal'
               />
               <TextField
                 fullWidth
