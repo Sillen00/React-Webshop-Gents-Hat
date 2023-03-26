@@ -1,8 +1,9 @@
-import { Box, CardActionArea, styled, SxProps, Theme } from '@mui/material'
+import { Box, CardActionArea, Skeleton, styled, SxProps, Theme } from '@mui/material'
 import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
 import CardMedia from '@mui/material/CardMedia'
 import Typography from '@mui/material/Typography'
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Product } from '../../data'
 import AddToCartButton from './Snackbar'
@@ -14,21 +15,42 @@ interface Props {
 export default function ProductCard({ product }: Props) {
   const defaultQuantity = 1
 
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState(false)
+
+  const handleLoad = () => {
+    setLoading(false)
+    setError(false)
+  }
+
+  const handleError = () => {
+    setLoading(false)
+    setError(true)
+  }
+
   return (
     <Card sx={cardStyle} data-cy='product'>
       <Link style={{ textDecoration: 'none' }} to={`/product/${product.id}`}>
         <StyledCardActionArea>
           <Box sx={{ position: 'relative' }}>
             <Box sx={hatHoverStyle}>View Product</Box>
+            <Skeleton
+              variant='rounded'
+              width={240}
+              height={150}
+              animation='wave'
+              sx={loading || error ? {} : { display: 'none' }}
+            />
             <CardMedia
-              sx={imageStyle}
+              sx={loading || error ? { display: 'none' } : imageStyle}
               component='img'
               height='150'
               image={product.image}
               alt={product.title}
+              onLoad={handleLoad}
+              onError={handleError}
             />
           </Box>
-
           <CardContent>
             <Typography sx={priceTagStyle} variant='body2' data-cy='product-price'>
               ${product.price}
@@ -79,6 +101,7 @@ const hatHoverStyle: SxProps<Theme> = theme => ({
   justifyContent: 'center',
   alignItems: 'center',
   fontFamily: theme.typography.body2.fontFamily,
+  zIndex: 1,
 
   '&:hover': {
     background: '#d9d9d977',
