@@ -28,7 +28,7 @@ function Home() {
           sx={loading || error ? skeletonSx : { display: 'none' }}
         />
         <CardMedia
-          sx={loading || error ? { display: 'none' } : { pb: 4, px: 10, width: '100%', maxWidth: '50rem' }}
+          sx={loading || error ? { display: 'none' } : { pb: 4, px: 10, width: '100%' }}
           component='img'
           image={'../images/Logo.png'}
           alt={"Gent's Hat logotype"}
@@ -86,8 +86,13 @@ const logoStyleSx: SxProps<Theme> = theme => ({
   display: 'flex',
   justifyContent: 'center',
   margin: '2rem 0rem',
+  maxWidth: '50rem',
   [theme.breakpoints.up('md')]: {
     margin: ' 0rem 0rem',
+  },
+  [theme.breakpoints.down('md')]: {
+    maxWidth: '40rem',
+    minWidth: '25rem',
   },
 })
 
