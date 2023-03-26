@@ -39,6 +39,10 @@ function Footer() {
       setOpenSnack(true)
       values.email = ''
     },
+    onReset: values => {
+      setOpenSnack(true)
+      values.email = ''
+    },
   })
 
   const handleClose = () => {
@@ -68,7 +72,7 @@ function Footer() {
           <Typography align='center' gutterBottom={true} variant='h4'>
             Join our newsletter
           </Typography>
-          <form onSubmit={formik.handleSubmit}>
+          <form onSubmit={formik.handleSubmit} onReset={formik.handleReset} >
             <Box sx={inputContainer}>
               <TextField
                 sx={inputField}
@@ -83,7 +87,7 @@ function Footer() {
                 helperText={formik.touched.email && formik.errors.email}
                 autoComplete='email'
               />
-              <Button sx={joinButton} variant='contained' type='submit'>
+              <Button sx={joinButton} variant='contained' type='reset'>
                 Join
               </Button>
             </Box>

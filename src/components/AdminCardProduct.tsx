@@ -6,6 +6,7 @@ import Typography from '@mui/material/Typography'
 import React from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import { Product } from '../../data'
+import { useProducts } from '../contexts/ProductsContext'
 import AdminDeleteDialog from './AdminDeleteDialog'
 
 interface Props {
@@ -14,13 +15,19 @@ interface Props {
 
 export default function ProductCard({ dataProduct }: Props) {
   const [openDeleteDialog, setOpenDeleteDialog] = React.useState(false)
+  const { databaseProducts, setDatabaseProducts } = useProducts()
 
-  const handleDeleteClick = () => {
+  const handleDelete = () => {
     setOpenDeleteDialog(true)
   }
 
-  const handleDeleteClose = () => {
+  const handleCloseDeleteDialog = () => {
     setOpenDeleteDialog(false)
+  }
+
+  const handleDeleteProduct = (product: Product) => {
+    const updatedProducts = databaseProducts.filter(p => p.id !== product.id)
+    setDatabaseProducts(updatedProducts)
   }
 
   return (
@@ -71,12 +78,17 @@ export default function ProductCard({ dataProduct }: Props) {
           sx={{ mb: 2, width: '13rem' }}
           variant='contained'
           color='error'
-          onClick={handleDeleteClick}
+          onClick={handleDelete}
         >
           <Typography variant='body2'>Delete Product</Typography>
         </Button>
       </Box>
-      <AdminDeleteDialog open={openDeleteDialog} handleClose={handleDeleteClose} />
+      <AdminDeleteDialog
+        open={openDeleteDialog}
+        handleClose={handleCloseDeleteDialog}
+        handleDelete={handleDeleteProduct}
+        dataProduct={dataProduct}
+      />
     </Card>
   )
 }
