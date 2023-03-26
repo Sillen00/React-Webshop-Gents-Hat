@@ -1,10 +1,9 @@
 import { Box, Grid, SxProps, Theme, Typography } from '@mui/material'
-import { products } from '../../data'
 import ProductCard from '../components/ProductCard'
 import { useProducts } from '../contexts/ProductsContext'
 
 function Home() {
-  const {databaseProducts, setDatabaseProducts} = useProducts()
+  const { databaseProducts, setDatabaseProducts } = useProducts()
 
   return (
     <Box sx={homeContainerSx}>
@@ -68,7 +67,7 @@ const logoStyleSx: SxProps<Theme> = theme => ({
 
 const h3StyleSx: SxProps<Theme> = theme => ({
   display: 'none',
-  
+
   [theme.breakpoints.up('sm')]: {
     display: 'flex',
   },

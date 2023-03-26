@@ -29,15 +29,18 @@ export default function ProductCard({ product }: Props) {
             />
           </Box>
 
-          <CardContent>
+          <CardContent sx={{ maxWidth: '13rem' }}>
             <Typography sx={priceTagStyle} variant='body2' data-cy='product-price'>
               ${product.price}
             </Typography>
-            <Typography gutterBottom variant='h5' component='div' data-cy='product-title'>
+            <Typography
+              sx={{ marginBottom: '0' }}
+              gutterBottom
+              variant='h5'
+              component='div'
+              data-cy='product-title'
+            >
               {product.title}
-            </Typography>
-            <Typography variant='body2' data-cy='product-description'>
-              {product.shortDescription}
             </Typography>
           </CardContent>
         </StyledCardActionArea>

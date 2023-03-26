@@ -77,7 +77,6 @@ function AdminProductForm({ onSave, product }: Props) {
       id: '',
       image: '',
       title: '',
-      shortDescription: '',
       description: '',
       price: 0,
       details: [
@@ -95,7 +94,6 @@ function AdminProductForm({ onSave, product }: Props) {
           id: product.id,
           image: values.image,
           title: values.title,
-          shortDescription: values.shortDescription as string,
           description: values.description,
           price: values.price,
           details: [
@@ -126,7 +124,6 @@ function AdminProductForm({ onSave, product }: Props) {
           id: newId,
           image: values.image,
           title: values.title,
-          shortDescription: values.shortDescription as string,
           description: values.description,
           price: values.price,
           details: [

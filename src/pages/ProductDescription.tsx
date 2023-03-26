@@ -51,7 +51,11 @@ function ProductDescription() {
               Product Description
             </Typography>
 
-            <Typography variant='body2' data-cy='product-description'>
+            <Typography
+              sx={{ marginBottom: '0.5rem' }}
+              variant='body2'
+              data-cy='product-description'
+            >
               {product.description}
             </Typography>
 
