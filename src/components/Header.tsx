@@ -1,5 +1,6 @@
 import * as Icon from '@mui/icons-material'
 import { AppBar, Badge, Box, SxProps, Theme, Typography } from '@mui/material'
+import { CSSProperties } from 'react'
 import { NavLink } from 'react-router-dom'
 import { useCart } from '../contexts/CartContext'
 import adminIcon from '../icons/adminIcon.png'
@@ -27,6 +28,14 @@ function Header() {
             data-cy='cart-items-count-badge'
           >
             <Box sx={badgeBoxStylesSX}>
+              <img
+                style={{
+                  ...imageMustaschStyle,
+                  ...(totalProductsInCart > 0 ? imageMustaschCart1Style : {}),
+                }}
+                src='../../public/images/Mustasch.png'
+                alt='Mustasch'
+              />
               <Icon.ShoppingBagOutlined sx={iconStylesSX} data-cy='cart-link' />
             </Box>
           </Badge>
@@ -36,20 +45,35 @@ function Header() {
   )
 }
 
+const imageMustaschStyle: CSSProperties = {
+  width: '65px',
+  height: '12px',
+  // height: '20px',
+  position: 'absolute',
+  transform: 'translate(-50%, -50%) rotate(180deg)',
+  top: '69%',
+  left: '50%',
+}
+
+const imageMustaschCart1Style: CSSProperties = {
+  transform: 'translate(-50%, -50%) rotate(360deg)',
+}
+
+
 const badgeBoxStylesSX: SxProps<Theme> = theme => ({
   '::before': {
     content: "''",
     position: 'absolute',
-    top: "42%",
-    left: "30%",
+    top: '42%',
+    left: '30%',
     border: '0.35em solid white',
     borderRadius: '9999rem',
   },
   '::after': {
     content: "''",
     position: 'absolute',
-    top: "42%",
-    left: "55%",
+    top: '42%',
+    left: '55%',
     border: '0.35em solid white',
     borderRadius: '9999rem',
   },
@@ -59,7 +83,6 @@ const badgeBoxStylesSX: SxProps<Theme> = theme => ({
   [theme.breakpoints.down('sm')]: {
     fontSize: '10px',
   },
-  
 })
 
 const typographyStylesSX: SxProps<Theme> = theme => ({
@@ -97,7 +120,7 @@ const iconWrapperStylesSX: SxProps<Theme> = theme => ({
   mr: '1rem',
   alignItems: 'center',
   gap: '10px',
-  "& img": {
+  '& img': {
     width: '70px',
   },
   [theme.breakpoints.down('md')]: {
