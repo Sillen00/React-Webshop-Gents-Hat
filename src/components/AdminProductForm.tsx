@@ -39,15 +39,15 @@ const adminFormSchema = Yup.object().shape({
       5,
       'The description you have given us it too short. Please give us a name of minimum 5 characters.'
     ),
-  productDetail1: Yup.string().min(
+  details1: Yup.string().min(
     3,
     'The detail you have given us it too short. Please give us a detail of minimum 3 characters.'
   ),
-  productDetail2: Yup.string().min(
+  details2: Yup.string().min(
     3,
     'The detail you have given us it too short. Please give us a detail of minimum 3 characters.'
   ),
-  productDetail3: Yup.string().min(
+  details3: Yup.string().min(
     3,
     'The detail you have given us it too short. Please give us a detail of minimum 3 characters.'
   ),
@@ -76,11 +76,9 @@ function AdminProductForm({ onSave, product }: Props) {
       title: '',
       description: '',
       price: 0,
-      details: [
-        { id: 1, detail: '' },
-        { id: 2, detail: '' },
-        { id: 3, detail: '' },
-      ],
+      details1: '',
+      details2: '',
+      details3: '',
       size: '',
       color: '',
       inStock: 'true',
@@ -93,11 +91,9 @@ function AdminProductForm({ onSave, product }: Props) {
           title: values.title,
           description: values.description,
           price: values.price,
-          details: [
-            { id: 1, detail: values.productDetail1 as string },
-            { id: 2, detail: values.productDetail2 as string },
-            { id: 3, detail: values.productDetail3 as string },
-          ],
+          details1: values.details1 as string,
+          details2: values.details2 as string,
+          details3: values.details3 as string,
           size: values.size as string,
           color: values.color as string,
           inStock: values.inStock as string,
@@ -124,16 +120,13 @@ function AdminProductForm({ onSave, product }: Props) {
           title: values.title,
           description: values.description,
           price: values.price,
-          details: [
-            { id: 1, detail: values.productDetail1 as string },
-            { id: 2, detail: values.productDetail2 as string },
-            { id: 3, detail: values.productDetail3 as string },
-          ],
+          details1: values.details1 as string,
+          details2: values.details2 as string,
+          details3: values.details3 as string,
           size: values.size as string,
           color: values.color as string,
           inStock: values.inStock as string,
         }
-
         setDatabaseProducts([...databaseProducts, newProduct])
       }
 
@@ -232,32 +225,32 @@ function AdminProductForm({ onSave, product }: Props) {
               />
               <TextField
                 fullWidth
-                id='productDetail1'
+                id='details1'
                 label='Product detail #1 (optional)'
-                value={formik.values.productDetail1}
+                value={formik.values.details1}
                 onChange={formik.handleChange}
-                error={formik.touched.productDetail1 && Boolean(formik.errors.productDetail1)}
-                helperText={formik.touched.productDetail1 && formik.errors.productDetail1}
+                error={formik.touched.details1 && Boolean(formik.errors.details1)}
+                helperText={formik.touched.details1 && formik.errors.details1}
                 margin='normal'
               />
               <TextField
                 fullWidth
-                id='productDetail2'
+                id='details2'
                 label='Product detail #2 (optional)'
-                value={formik.values.productDetail2}
+                value={formik.values.details2}
                 onChange={formik.handleChange}
-                error={formik.touched.productDetail2 && Boolean(formik.errors.productDetail2)}
-                helperText={formik.touched.productDetail2 && formik.errors.productDetail2}
+                error={formik.touched.details2 && Boolean(formik.errors.details2)}
+                helperText={formik.touched.details2 && formik.errors.details2}
                 margin='normal'
               />
               <TextField
                 fullWidth
-                id='productDetail3'
+                id='details3'
                 label='Product detail #3 (optional)'
-                value={formik.values.productDetail3}
+                value={formik.values.details3}
                 onChange={formik.handleChange}
-                error={formik.touched.productDetail3 && Boolean(formik.errors.productDetail3)}
-                helperText={formik.touched.productDetail3 && formik.errors.productDetail3}
+                error={formik.touched.details3 && Boolean(formik.errors.details3)}
+                helperText={formik.touched.details3 && formik.errors.details3}
                 margin='normal'
               />
               <Box sx={{ mt: 1, ml: 1.7, mb: '1rem' }}>

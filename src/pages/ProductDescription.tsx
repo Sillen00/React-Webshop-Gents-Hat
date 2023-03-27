@@ -22,6 +22,8 @@ function ProductDescription() {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(false)
 
+  console.log(product)
+
   const handleLoad = () => {
     setLoading(false)
     setError(false)
@@ -97,18 +99,31 @@ function ProductDescription() {
               Product Details
             </Typography>
             <Box>
-              <ul>
-                {product.details?.map(({ detail, id }) => (
-                  <li style={{ listStyleType: 'none' }} key={id}>
+              <ul style={{marginLeft: '1.5rem'}}>
+                  <li>
                     <Typography
                       component='span'
-                      sx={{ '::before': { pl: 1, pr: 1, content: "'• '" } }}
                       variant='body2'
                     >
-                      {detail}
+                      {product.details1}
                     </Typography>
                   </li>
-                ))}
+                  <li>
+                    <Typography
+                      component='span'
+                      variant='body2'
+                    >
+                      {product.details2}
+                    </Typography>
+                    </li>
+                    <li>
+                    <Typography
+                      component='span'
+                      variant='body2'
+                    >
+                      {product.details3}
+                    </Typography>
+                    </li>
               </ul>
             </Box>
             <Typography sx={flexAlignStyle} variant='body1'>
