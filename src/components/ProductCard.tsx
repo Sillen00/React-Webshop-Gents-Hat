@@ -78,7 +78,8 @@ export default function ProductCard({ product }: Props) {
 
 const imageStyle: SxProps<Theme> = theme => ({
   objectFit: 'contain',
-  paddingTop: '1rem',
+  pt: 2,
+  pb: 2,
 })
 const cardStyle: SxProps<Theme> = theme => ({
   display: 'flex',
