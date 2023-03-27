@@ -77,7 +77,11 @@ function ProductDescription() {
             />
           </Box>
           <Box sx={textAndBtnWrapperStyle}>
-            <Typography sx={{ overflowWrap: 'break-word', maxWidth: '30rem' }} variant='h4' data-cy='product-title'>
+            <Typography
+              sx={{ overflowWrap: 'break-word', maxWidth: '30rem' }}
+              variant='h4'
+              data-cy='product-title'
+            >
               {product.title}
             </Typography>
             <Typography variant='h6' data-cy='product-price'>
@@ -126,16 +130,26 @@ function ProductDescription() {
               </ul>
             </Box>
 
-            <Typography sx={flexAlignStyle} variant='body1'>
+            <Typography sx={{ display: 'flex', margin: '1.4rem 0rem 1rem 0rem' }} variant='body1'>
               {(product.inStock as unknown) == 'false' ? (
                 <>
-                  <Icon.HighlightOff sx={{ color: 'red' }} />
-                  <p style={{ paddingLeft: '0.5rem' }}>Out of stock</p>
+                  <Icon.HighlightOff sx={{ mr: 1, mt: 0.15, color: 'red' }} />
+                  <Box>
+                    <Typography variant='body1'>Out of stock — awaiting next shipment</Typography>
+                    <Typography sx={{ fontSize: '0.7rem' }}>
+                      Back in store within 10 working days
+                    </Typography>
+                  </Box>
                 </>
               ) : (
                 <>
-                  <Icon.CheckCircleOutline sx={{ color: 'green' }} />
-                  <p style={{ paddingLeft: '0.5rem' }}>In stock</p>
+                  <Icon.CheckCircleOutline sx={{ mr: 1, mt: 0.15, color: 'green' }} />
+                  <Box>
+                    <Typography variant='body1'>In stock</Typography>
+                    <Typography sx={{ fontSize: '0.7rem' }}>
+                      Expected delivery: 2—4 working days
+                    </Typography>
+                  </Box>
                 </>
               )}
             </Typography>
@@ -210,7 +224,7 @@ const textAndBtnWrapperStyle: SxProps<Theme> = theme => ({
 const flexAlignStyle: SxProps<Theme> = theme => ({
   display: 'flex',
   alignItems: 'center',
-  margin: '1rem 0',
+  margin: '1rem 0rem 3rem 1.4rem',
 })
 
 export default ProductDescription
