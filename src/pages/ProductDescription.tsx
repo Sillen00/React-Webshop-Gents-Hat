@@ -77,7 +77,7 @@ function ProductDescription() {
             />
           </Box>
           <Box sx={textAndBtnWrapperStyle}>
-            <Typography sx={{ overflowWrap: 'break-word' }} variant='h4' data-cy='product-title'>
+            <Typography sx={{ overflowWrap: 'break-word', maxWidth: '30rem' }} variant='h4' data-cy='product-title'>
               {product.title}
             </Typography>
             <Typography variant='h6' data-cy='product-price'>
