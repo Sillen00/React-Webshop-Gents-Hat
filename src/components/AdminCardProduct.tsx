@@ -1,9 +1,9 @@
-import { Box, Button, CardActionArea, styled, SxProps, Theme } from '@mui/material'
+import { Box, Button, CardActionArea, Skeleton, styled, SxProps, Theme } from '@mui/material'
 import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
 import CardMedia from '@mui/material/CardMedia'
 import Typography from '@mui/material/Typography'
-import React from 'react'
+import React, { useState } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import { Product } from '../../data'
 import { useProducts } from '../contexts/ProductsContext'
@@ -16,6 +16,18 @@ interface Props {
 export default function ProductCard({ dataProduct }: Props) {
   const [openDeleteDialog, setOpenDeleteDialog] = React.useState(false)
   const { databaseProducts, setDatabaseProducts } = useProducts()
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState(false)
+
+  const handleLoad = () => {
+    setLoading(false)
+    setError(false)
+  }
+
+  const handleError = () => {
+    setLoading(false)
+    setError(true)
+  }
 
   const handleDelete = () => {
     setOpenDeleteDialog(true)
@@ -36,12 +48,21 @@ export default function ProductCard({ dataProduct }: Props) {
         <StyledCardActionArea>
           <Box sx={{ position: 'relative' }}>
             <Box sx={hatHoverStyle}>View Product</Box>
+            <Skeleton
+              variant='rounded'
+              width={240}
+              height={150}
+              animation='wave'
+              sx={loading || error ? {} : { display: 'none' }}
+            />
             <CardMedia
-              sx={imageStyle}
+              sx={loading || error ? { display: 'none' } : imageStyle}
               component='img'
               height='150'
               image={dataProduct.image}
               alt={dataProduct.title}
+              onLoad={handleLoad}
+              onError={handleError}
             />
           </Box>
 

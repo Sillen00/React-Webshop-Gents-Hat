@@ -1,7 +1,9 @@
+import { FormControl, FormControlLabel, FormLabel, Radio, RadioGroup } from '@mui/material'
 import { Box, Button, Container, Paper, SxProps, TextField, Theme, Typography } from '@mui/material'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
 import { generateId, Product } from '../../data'
+
 import { useProducts } from '../contexts/ProductsContext'
 
 /* ----------------------
@@ -49,6 +51,7 @@ const adminFormSchema = Yup.object().shape({
     3,
     'The detail you have given us it too short. Please give us a detail of minimum 3 characters.'
   ),
+  inStock: Yup.string(),
 })
 
 /* ----------------------
@@ -80,7 +83,7 @@ function AdminProductForm({ onSave, product }: Props) {
       ],
       size: '',
       color: '',
-      inStock: false,
+      inStock: 'true',
     },
     onSubmit: values => {
       if (product) {
@@ -96,8 +99,8 @@ function AdminProductForm({ onSave, product }: Props) {
             { id: 3, detail: values.productDetail3 as string },
           ],
           size: values.size as string,
-          color: values.size as string,
-          inStock: true,
+          color: values.color as string,
+          inStock: values.inStock as string,
         }
 
         const productIndex = databaseProducts.findIndex(p => p.id === product?.id)
@@ -108,6 +111,7 @@ function AdminProductForm({ onSave, product }: Props) {
           ...databaseProducts.slice(productIndex + 1),
         ]
 
+        // Updates product
         setDatabaseProducts(updatedDatabaseProducts)
       } else {
         // Generates new ID
@@ -126,8 +130,8 @@ function AdminProductForm({ onSave, product }: Props) {
             { id: 3, detail: values.productDetail3 as string },
           ],
           size: values.size as string,
-          color: values.size as string,
-          inStock: true,
+          color: values.color as string,
+          inStock: values.inStock as string,
         }
 
         setDatabaseProducts([...databaseProducts, newProduct])
@@ -256,6 +260,22 @@ function AdminProductForm({ onSave, product }: Props) {
                 helperText={formik.touched.productDetail3 && formik.errors.productDetail3}
                 margin='normal'
               />
+              <Box sx={{ mt: 1, ml: 1.7, mb: '1rem' }}>
+                <FormControl>
+                  <FormLabel id='demo-radio-buttons-group-label'>In stock</FormLabel>
+                  <RadioGroup
+                    id='inStock'
+                    row
+                    aria-labelledby='demo-radio-buttons-group-label'
+                    name='inStock'
+                    value={formik.values.inStock}
+                    onChange={formik.handleChange}
+                  >
+                    <FormControlLabel name='inStock' value={'true'} control={<Radio />} label='Yes' />
+                    <FormControlLabel name='inStock' value={'false'} control={<Radio />} label='No' />
+                  </RadioGroup>
+                </FormControl>
+              </Box>
               <Box sx={buttonContainer}>
                 <Button sx={buttonSx} color='primary' variant='contained' type='submit'>
                   {product ? `Edit "${product.title}"` : 'Add product'}

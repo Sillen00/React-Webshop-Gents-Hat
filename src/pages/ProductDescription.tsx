@@ -1,5 +1,15 @@
 import * as Icon from '@mui/icons-material'
-import { Box, Container, Paper, SxProps, Theme, Typography } from '@mui/material'
+import {
+  Box,
+  CardMedia,
+  Container,
+  Paper,
+  Skeleton,
+  SxProps,
+  Theme,
+  Typography,
+} from '@mui/material'
+import { useState } from 'react'
 import { NavLink, useParams } from 'react-router-dom'
 import { Product } from '../../data'
 import ProductBtnSection from '../components/ProductBtnSection'
@@ -9,6 +19,18 @@ function ProductDescription() {
   const { id } = useParams<{ id: string }>()
   const { databaseProducts } = useProducts()
   const product: Product | undefined = databaseProducts.find(p => p.id === id)
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState(false)
+
+  const handleLoad = () => {
+    setLoading(false)
+    setError(false)
+  }
+
+  const handleError = () => {
+    setLoading(false)
+    setError(true)
+  }
 
   if (!product) {
     return (
@@ -38,16 +60,28 @@ function ProductDescription() {
         </NavLink>
         <Box sx={contentStyle}>
           <Box sx={imgWrapperStyle}>
-            <img src={product.image} alt={product.title} />
+            <Skeleton
+              variant='rounded'
+              animation='wave'
+              sx={loading || error ? skeletonSx : { display: 'none' }}
+            />
+            <CardMedia
+              sx={loading || error ? { display: 'none' } : {}}
+              component='img'
+              image={product.image}
+              alt={product.title}
+              onLoad={handleLoad}
+              onError={handleError}
+            />
           </Box>
           <Box sx={textAndBtnWrapperStyle}>
-            <Typography variant='h4' data-cy='product-title'>
+            <Typography sx={{overflowWrap: 'break-word'}} variant='h4' data-cy='product-title'>
               {product.title}
             </Typography>
             <Typography variant='h6' data-cy='product-price'>
               ${product.price}
             </Typography>
-            <Typography variant='h6' sx={{ fontSize: '1rem' }}>
+            <Typography variant='h6' sx={{ mt: 2, mb: 1, fontSize: '1rem' }}>
               Product Description
             </Typography>
 
@@ -59,7 +93,7 @@ function ProductDescription() {
               {product.description}
             </Typography>
 
-            <Typography variant='h6' sx={{ fontSize: '1rem' }}>
+            <Typography variant='h6' sx={{ mt: 2, mb: 1, fontSize: '1rem' }}>
               Product Details
             </Typography>
             <Box>
@@ -68,7 +102,7 @@ function ProductDescription() {
                   <li style={{ listStyleType: 'none' }} key={id}>
                     <Typography
                       component='span'
-                      sx={{ '::before': { content: "'- '" } }}
+                      sx={{ '::before': { pl: 1, pr: 1, content: "'• '" } }}
                       variant='body2'
                     >
                       {detail}
@@ -78,15 +112,15 @@ function ProductDescription() {
               </ul>
             </Box>
             <Typography sx={flexAlignStyle} variant='body1'>
-              {product.inStock ? (
+              {(product.inStock as unknown) == 'false' ? (
                 <>
-                  <Icon.CheckCircleOutline sx={{ color: 'green' }} />
-                  In stock
+                  <Icon.HighlightOff sx={{ color: 'red' }} />
+                  <p style={{ paddingLeft: '0.5rem' }}>Out of stock</p>
                 </>
               ) : (
                 <>
-                  <Icon.HighlightOff sx={{ color: 'red' }} />
-                  Out of stock
+                  <Icon.CheckCircleOutline sx={{ color: 'green' }} />
+                  <p style={{ paddingLeft: '0.5rem' }}>In stock</p>
                 </>
               )}
             </Typography>
@@ -115,6 +149,10 @@ const contentStyle: SxProps<Theme> = theme => ({
 
 const imgStyle: SxProps<Theme> = theme => ({
   maxWidth: '100%',
+  p: 4,
+  [theme.breakpoints.down('md')]: {
+      maxWidth: '70%',
+  },
 })
 
 const imgWrapperStyle: SxProps<Theme> = theme => ({
@@ -127,6 +165,22 @@ const imgWrapperStyle: SxProps<Theme> = theme => ({
     '& img': {
       maxWidth: '80%',
     },
+  },
+})
+
+const skeletonSx: SxProps<Theme> = theme => ({
+  width: '100%',
+  height: '100%',
+  mx: 3,
+  [theme.breakpoints.down('md')]: {
+    width: '100%',
+    height: '20rem',
+    mx: 2,
+    my: 2,
+  },
+  [theme.breakpoints.down('sm')]: {
+    width: '100%',
+    height: '15rem',
   },
 })
 
