@@ -16,11 +16,13 @@ import ProductBtnSection from '../components/ProductBtnSection'
 import { useProducts } from '../contexts/ProductsContext'
 
 function ProductDescription() {
-  const { id } = useParams<{ id: string }>()
+  const { page, id } = useParams<{ page: string; id: string }>()
   const { databaseProducts } = useProducts()
   const product: Product | undefined = databaseProducts.find(p => p.id === id)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(false)
+
+  console.log(page)
 
   const handleLoad = () => {
     setLoading(false)
@@ -32,31 +34,34 @@ function ProductDescription() {
     setError(true)
   }
 
-  if (!product) {
-    return (
-      <Box>
-        <NavLink to='/'>
-          <Typography sx={flexAlignStyle} variant='h6'>
-            <Icon.ArrowBack />
-            Back To Products
-          </Typography>
-        </NavLink>
-
-        <Typography variant='h3' sx={{ ml: 3, marginBottom: '10rem' }}>
-          Product not found
-        </Typography>
-      </Box>
-    )
-  }
-
+if (!product) {
+  return (
+    <Typography variant='h3' sx={{ ml: 3, marginBottom: '10rem' }}>
+    Product not found
+  </Typography>
+  );
+} else {
   return (
     <Container>
       <Paper elevation={3} sx={mainBoxStyle}>
         <NavLink to='/'>
-          <Typography sx={flexAlignStyle} variant='h6'>
-            <Icon.ArrowBack />
-            Back To Products
-          </Typography>
+          <Box>
+            {page === 'product' ? (
+              <NavLink to='/'>
+                <Typography sx={flexAlignStyle} variant='h6'>
+                  <Icon.ArrowBack />
+                  Back To Products
+                </Typography>
+              </NavLink>
+            ) : (
+              <NavLink to='/admin'>
+                <Typography sx={flexAlignStyle} variant='h6'>
+                  <Icon.ArrowBack />
+                  Back To Admin
+                </Typography>
+              </NavLink>
+            )}
+          </Box>
         </NavLink>
         <Box sx={contentStyle}>
           <Box sx={imgWrapperStyle}>
@@ -75,7 +80,7 @@ function ProductDescription() {
             />
           </Box>
           <Box sx={textAndBtnWrapperStyle}>
-            <Typography sx={{overflowWrap: 'break-word'}} variant='h4' data-cy='product-title'>
+            <Typography sx={{ overflowWrap: 'break-word' }} variant='h4' data-cy='product-title'>
               {product.title}
             </Typography>
             <Typography variant='h6' data-cy='product-price'>
@@ -130,7 +135,7 @@ function ProductDescription() {
       </Paper>
     </Container>
   )
-}
+}}
 
 const mainBoxStyle: SxProps<Theme> = theme => ({
   background: 'white',
@@ -151,7 +156,7 @@ const imgStyle: SxProps<Theme> = theme => ({
   maxWidth: '100%',
   p: 4,
   [theme.breakpoints.down('md')]: {
-      maxWidth: '70%',
+    maxWidth: '70%',
   },
 })
 

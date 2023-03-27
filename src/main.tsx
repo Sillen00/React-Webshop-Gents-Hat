@@ -87,7 +87,7 @@ const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path='/' element={<App />}>
       <Route index element={<Home />} />
-      <Route path='/product/:id' element={<ProductDescription />} />
+      <Route path='/:page/:id' element={<ProductDescription />} />
       <Route path='checkout' element={<Checkout />} />
       <Route path='admin' element={<Admin />} />
       <Route path='admin/product/:id' element={<AdminUpdateDatabase />} />
