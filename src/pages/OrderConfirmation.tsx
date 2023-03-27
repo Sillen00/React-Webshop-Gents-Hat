@@ -71,11 +71,11 @@ function OrderConfirmation() {
           <Typography variant='body2' sx={typographyStylesSX}>
             Thank you for your purchase!
           </Typography>
-          <Typography variant='body2' sx={typographyStylesSX}>
-            Your order number is:
+          <Typography variant='body1'>
+            A receipt for order <span>#{Math.floor(Math.random() * 100000) + 100000}</span> has been sent to your e-mail.
           </Typography>
-          <Typography gutterBottom sx={typographyStylesSX}>
-            <b>#{Math.floor(Math.random() * 100000) + 100000}</b>
+          <Typography variant='body1' sx={{mx: 2, textAlign: 'center'}}>
+            Your order is expected to be delivered within 2—4 working days.
           </Typography>
           <Link to='../'>
             <Button sx={buttonStyleSX} variant='contained'>
@@ -178,6 +178,7 @@ const iconStylesSX: SxProps<Theme> = theme => ({
 
 const buttonStyleSX: SxProps<Theme> = theme => ({
   fontWeight: '600',
+  mt: 4,
   [theme.breakpoints.between('sm', 'md')]: {
     scale: '1.2',
   },
