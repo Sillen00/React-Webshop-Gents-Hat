@@ -1,3 +1,4 @@
+
 import { Box, CardMedia, Grid, Skeleton, SxProps, Theme, Typography } from '@mui/material'
 import { useState } from 'react'
 import { cardImgStyle } from '../components/CheckoutCard'
@@ -8,7 +9,6 @@ function Home() {
   const { databaseProducts, setDatabaseProducts } = useProducts()
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(false)
-
   const handleLoad = () => {
     setLoading(false)
     setError(false)
@@ -18,6 +18,7 @@ function Home() {
     setLoading(false)
     setError(true)
   }
+
 
   return (
     <Box sx={homeContainerSx}>

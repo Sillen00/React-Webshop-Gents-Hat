@@ -81,9 +81,6 @@ export default function ProductCard({ dataProduct }: Props) {
             <Typography gutterBottom variant='h5' component='div' data-cy='product-title'>
               {dataProduct.title}
             </Typography>
-            <Typography variant='body2' data-cy='product-description'>
-              {dataProduct.shortDescription}
-            </Typography>
           </CardContent>
         </StyledCardActionArea>
       </Link>
