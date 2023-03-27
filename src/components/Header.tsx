@@ -1,5 +1,6 @@
 import * as Icon from '@mui/icons-material'
 import { AppBar, Badge, Box, SxProps, Theme, Typography } from '@mui/material'
+import { CSSProperties } from 'react'
 import { NavLink } from 'react-router-dom'
 import { useCart } from '../contexts/CartContext'
 import adminIcon from '../icons/adminIcon.png'
@@ -26,13 +27,59 @@ function Header() {
             color='success'
             data-cy='cart-items-count-badge'
           >
-            <Icon.ShoppingCart sx={iconStylesSX} data-cy='cart-link' />
+            <Box sx={badgeBoxStylesSX}>
+              <img
+                src='../../public/images/gold-musch.png'
+                alt='Mustasch'
+                className='mustasch-image'
+                style={{
+                  ...imageMustaschStyleSx,
+                  visibility: totalProductsInCart > 0 ? 'visible' : 'hidden',
+                }}
+              />
+              <Icon.ShoppingBagOutlined sx={iconStylesSX} data-cy='cart-link' />
+            </Box>
           </Badge>
         </NavLink>
       </Box>
     </AppBar>
   )
 }
+
+const imageMustaschStyleSx: CSSProperties = {
+  width: '5em',
+  position: 'absolute',
+  zIndex: 10,
+  top: '69%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+}
+
+const badgeBoxStylesSX: SxProps<Theme> = theme => ({
+  position: 'relative',
+  '::before': {
+    content: "''",
+    position: 'absolute',
+    top: '42%',
+    left: '30%',
+    border: '0.35em solid white',
+    borderRadius: '9999rem',
+  },
+  '::after': {
+    content: "''",
+    position: 'absolute',
+    top: '42%',
+    left: '55%',
+    border: '0.35em solid white',
+    borderRadius: '9999rem',
+  },
+  [theme.breakpoints.down('md')]: {
+    fontSize: '12px',
+  },
+  [theme.breakpoints.down('sm')]: {
+    fontSize: '10px',
+  },
+})
 
 const typographyStylesSX: SxProps<Theme> = theme => ({
   fontSize: '40px',
@@ -66,9 +113,12 @@ const headerStyleSx: SxProps<Theme> = theme => ({
 // Todo, länka till home när man klickar på Loggan
 const iconWrapperStylesSX: SxProps<Theme> = theme => ({
   display: 'flex',
-  margin: '1rem',
+  mr: '1rem',
   alignItems: 'center',
   gap: '10px',
+  '& img': {
+    width: '70px',
+  },
   [theme.breakpoints.down('md')]: {
     '& img': {
       width: '46px',
@@ -84,28 +134,32 @@ const iconWrapperStylesSX: SxProps<Theme> = theme => ({
 })
 
 const iconStylesSX: SxProps<Theme> = theme => ({
-  fontSize: '46px',
+  fontSize: '66px',
   color: 'white',
   position: 'relative',
-  top: '2px',
+  top: '3px',
   [theme.breakpoints.down('md')]: {
-    fontSize: '40px',
+    fontSize: '44px',
     top: '3px',
   },
   [theme.breakpoints.down('sm')]: {
     fontSize: '35px',
-    top: '3px',
+    top: '4px',
   },
 })
 
 const badgeStylesSX: SxProps<Theme> = theme => ({
   '& .MuiBadge-badge': {
     color: 'white',
-    right: '10px',
-    top: '10px',
+    right: '8px',
+    top: '17px',
     [theme.breakpoints.down('md')]: {
       scale: '0.8',
-      right: '5px',
+      right: '4px',
+      top: '11px',
+    },
+    [theme.breakpoints.down('sm')]: {
+      right: '2px',
     },
   },
 })
