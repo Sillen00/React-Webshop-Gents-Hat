@@ -78,12 +78,13 @@ export default function ProductCard({ dataProduct }: Props) {
                 {dataProduct.id}
               </span>
             </Typography>
-            <Typography gutterBottom variant='h5' component='div' data-cy='product-title'>
+            <Typography sx={{maxWidth: '200px', overflowWrap: 'break-word'}} gutterBottom variant='h5' component='div' data-cy='product-title'>
               {dataProduct.title}
             </Typography>
           </CardContent>
         </StyledCardActionArea>
       </Link>
+      <Box sx={{marginTop: 'auto'}}> 
       <Box sx={{ display: 'flex', alignItems: 'center', flexDirection: 'column' }}>
         <NavLink to={`/admin/product/${dataProduct.id}`}>
           <Button data-cy='admin-edit-product' sx={{ mb: 2, width: '13rem' }} variant='contained'>
@@ -101,6 +102,7 @@ export default function ProductCard({ dataProduct }: Props) {
           <Typography variant='body2'>Delete Product</Typography>
         </Button>
       </Box>
+      </Box>
       <AdminDeleteDialog
         open={openDeleteDialog}
         handleClose={handleCloseDeleteDialog}
@@ -116,7 +118,10 @@ const imageStyle: SxProps<Theme> = theme => ({
 })
 
 const cardStyle: SxProps<Theme> = theme => ({
-  minWidth: 240,
+  display: 'flex',
+  flexDirection: 'column',
+  minWidth: '240px',
+  maxWidth: '240px',
   borderRadius: 2,
   '&:hover': {
     backgroundColor: 'transparent',
