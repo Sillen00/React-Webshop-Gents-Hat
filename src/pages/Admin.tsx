@@ -8,6 +8,7 @@ function Admin() {
   const [open, setOpen] = useState(false)
   const { consoleLog, databaseProducts, setDatabaseProducts } = useProducts()
 
+  ////Behövs den, då vi har en egen knapp för att lägga till produkter?
   const handleClickOpen = () => {
     setOpen(true)
   }
@@ -57,18 +58,8 @@ function Admin() {
   )
 }
 
-const ModalBoxStyleSx: SxProps<Theme> = theme => ({
-  position: 'absolute' as 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  width: '20em',
-  bgcolor: 'background.paper',
-  border: '2px solid #000',
-  boxShadow: 24,
-  p: 4,
-})
 
+// Styling
 const headerSx: SxProps<Theme> = theme => ({
   display: 'flex',
   justifyContent: 'space-between',

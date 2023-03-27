@@ -1,5 +1,5 @@
 import { createContext, PropsWithChildren, useState } from 'react'
-
+// formdata interface that is used in the context
 interface FormData {
   address: string
   fullName: string
@@ -8,13 +8,13 @@ interface FormData {
   zipcode: string
   city: string
 }
-
+// Set the default values for the formdata and clearForm function
 interface FormContextTypes {
   formValues: FormData
   setFormValues: (values: FormData) => void
   clearForm: () => void
 }
-
+// formtype interface that is used in the context
 const defaultFormData: FormContextTypes = {
   formValues: {
     address: '',
