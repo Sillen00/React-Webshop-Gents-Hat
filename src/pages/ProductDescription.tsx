@@ -17,12 +17,12 @@ import { useProducts } from '../contexts/ProductsContext'
 
 // get the product id from the url and find the product to display
 function ProductDescription() {
-  const { id } = useParams<{ id: string }>()
+  const { page, id } = useParams<{ page: string; id: string }>()
   const { databaseProducts } = useProducts()
   const product: Product | undefined = databaseProducts.find(p => p.id === id)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(false)
-
+  
   const handleLoad = () => {
     setLoading(false)
     setError(false)
@@ -33,32 +33,35 @@ function ProductDescription() {
     setError(true)
   }
 
-  if (!product) {
-    return (
-      <Box>
-        <NavLink to='/'>
-          <Typography sx={flexAlignStyle} variant='h6'>
-            <Icon.ArrowBack />
-            Back To Products
-          </Typography>
-        </NavLink>
-
-        <Typography variant='h3' sx={{ ml: 3, marginBottom: '10rem' }}>
-          Product not found
-        </Typography>
-      </Box>
-    )
-  }
-
+if (!product) {
+  return (
+    <Typography variant='h3' sx={{ ml: 3, marginBottom: '10rem' }}>
+    Product not found
+  </Typography>
+  );
+} else {
   return (
     // Show all the product details
     <Container>
       <Paper elevation={3} sx={mainBoxStyle}>
         <NavLink to='/'>
-          <Typography sx={flexAlignStyle} variant='h6'>
-            <Icon.ArrowBack />
-            Back To Products
-          </Typography>
+          <Box>
+            {page === 'product' ? (
+              <NavLink to='/'>
+                <Typography sx={flexAlignStyle} variant='h6'>
+                  <Icon.ArrowBack />
+                  Back To Products
+                </Typography>
+              </NavLink>
+            ) : (
+              <NavLink to='/admin'>
+                <Typography sx={flexAlignStyle} variant='h6'>
+                  <Icon.ArrowBack />
+                  Back To Admin
+                </Typography>
+              </NavLink>
+            )}
+          </Box>
         </NavLink>
         <Box sx={contentStyle}>
           <Box sx={imgWrapperStyle}>
@@ -77,7 +80,11 @@ function ProductDescription() {
             />
           </Box>
           <Box sx={textAndBtnWrapperStyle}>
-            <Typography sx={{ overflowWrap: 'break-word' }} variant='h4' data-cy='product-title'>
+            <Typography
+              sx={{ overflowWrap: 'break-word', maxWidth: '30rem' }}
+              variant='h4'
+              data-cy='product-title'
+            >
               {product.title}
             </Typography>
             <Typography variant='h6' data-cy='product-price'>
@@ -95,34 +102,57 @@ function ProductDescription() {
               {product.description}
             </Typography>
 
-            <Typography variant='h6' sx={{ mt: 2, mb: 1, fontSize: '1rem' }}>
-              Product Details
-            </Typography>
+            {product.details1 || product.details2 || product.details3 ? (
+              <Typography variant='h6' sx={{ mt: 2, mb: 1, fontSize: '1rem' }}>
+                Product Details
+              </Typography>
+            ) : null}
             <Box>
-              <ul>
-                {product.details?.map(({ detail, id }) => (
-                  <li style={{ listStyleType: 'none' }} key={id}>
-                    <Typography
-                      component='span'
-                      sx={{ '::before': { pl: 1, pr: 1, content: "'• '" } }}
-                      variant='body2'
-                    >
-                      {detail}
+              <ul style={{ marginLeft: '1.5rem' }}>
+                {product.details1 && (
+                  <li>
+                    <Typography component='span' variant='body2'>
+                      {product.details1}
                     </Typography>
                   </li>
-                ))}
+                )}
+                {product.details2 && (
+                  <li>
+                    <Typography component='span' variant='body2'>
+                      {product.details2}
+                    </Typography>
+                  </li>
+                )}
+                {product.details3 && (
+                  <li>
+                    <Typography component='span' variant='body2'>
+                      {product.details3}
+                    </Typography>
+                  </li>
+                )}
               </ul>
             </Box>
-            <Typography sx={flexAlignStyle} variant='body1'>
+
+            <Typography sx={{ display: 'flex', margin: '1.4rem 0rem 1rem 0rem' }} variant='body1'>
               {(product.inStock as unknown) == 'false' ? (
                 <>
-                  <Icon.HighlightOff sx={{ color: 'red' }} />
-                  <p style={{ paddingLeft: '0.5rem' }}>Out of stock</p>
+                  <Icon.HighlightOff sx={{ mr: 1, mt: 0.15, color: 'red' }} />
+                  <Box>
+                    <Typography variant='body1'>Out of stock — awaiting next shipment</Typography>
+                    <Typography sx={{ fontSize: '0.7rem' }}>
+                      Back in store within 10 working days
+                    </Typography>
+                  </Box>
                 </>
               ) : (
                 <>
-                  <Icon.CheckCircleOutline sx={{ color: 'green' }} />
-                  <p style={{ paddingLeft: '0.5rem' }}>In stock</p>
+                  <Icon.CheckCircleOutline sx={{ mr: 1, mt: 0.15, color: 'green' }} />
+                  <Box>
+                    <Typography variant='body1'>In stock</Typography>
+                    <Typography sx={{ fontSize: '0.7rem' }}>
+                      Expected delivery: 2—4 working days
+                    </Typography>
+                  </Box>
                 </>
               )}
             </Typography>
@@ -132,7 +162,7 @@ function ProductDescription() {
       </Paper>
     </Container>
   )
-}
+}}
 
 // Styles
 const mainBoxStyle: SxProps<Theme> = theme => ({
@@ -198,7 +228,7 @@ const textAndBtnWrapperStyle: SxProps<Theme> = theme => ({
 const flexAlignStyle: SxProps<Theme> = theme => ({
   display: 'flex',
   alignItems: 'center',
-  margin: '1rem 0',
+  margin: '1rem 0rem 3rem 1.4rem',
 })
 
 export default ProductDescription
