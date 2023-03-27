@@ -71,11 +71,11 @@ function OrderConfirmation() {
           <Typography variant='body2' sx={typographyStylesSX}>
             Thank you for your purchase!
           </Typography>
-          <Typography variant='body2' sx={typographyStylesSX}>
-            Your order number is:
+          <Typography variant='body1'>
+            A receipt for order <span>#{Math.floor(Math.random() * 100000) + 100000}</span> has been sent to your e-mail.
           </Typography>
-          <Typography gutterBottom sx={typographyStylesSX}>
-            <b>#{Math.floor(Math.random() * 100000) + 100000}</b>
+          <Typography variant='body1' sx={{mx: 2, textAlign: 'center'}}>
+            Your order is expected to be delivered within 2—4 working days.
           </Typography>
           <Link to='../'>
             <Button sx={buttonStyleSX} variant='contained'>
@@ -83,24 +83,6 @@ function OrderConfirmation() {
             </Button>
           </Link>
         </Box>
-
-        {/* LIST OF ORDERED PRODUCTS */}
-
-        <Box sx={{ display: 'flex', justifyContent: 'space-between', paddingBottom: '1rem' }}>
-          <Typography variant='h3' color='secondary.dark' sx={subHeaderStyleSX}>
-            Products
-          </Typography>
-          <Box sx={{ display: 'flex' }}>
-            <Typography variant='h3' color='secondary.dark' sx={subHeaderStyleSX}>
-              Quantity
-            </Typography>
-          </Box>
-        </Box>
-
-        <Box>
-          <Typography sx={ItemStyleSX}>{newOrderItems}</Typography>
-        </Box>
-        <Typography sx={priceStyleSX}>Total: ${newTotalPrice}</Typography>
 
         {/* USER AND SHIPPING DETAILS */}   
 
@@ -122,6 +104,24 @@ function OrderConfirmation() {
             <Typography sx={formDataStyleSX}>{zipcode}</Typography>
           </Box>
         </Box>
+
+        {/* LIST OF ORDERED PRODUCTS */}
+
+        <Box sx={{ display: 'flex', justifyContent: 'space-between', paddingBottom: '1rem' }}>
+          <Typography variant='h3' color='secondary.dark' sx={subHeaderStyleSX}>
+            Products
+          </Typography>
+          <Box sx={{ display: 'flex' }}>
+            <Typography variant='h3' color='secondary.dark' sx={subHeaderStyleSX}>
+              Quantity
+            </Typography>
+          </Box>
+        </Box>
+
+        <Box>
+          <Typography sx={ItemStyleSX}>{newOrderItems}</Typography>
+        </Box>
+        <Typography sx={priceStyleSX}>Total: ${newTotalPrice}</Typography>
       </Paper>
     </Container>
   )
@@ -178,6 +178,7 @@ const iconStylesSX: SxProps<Theme> = theme => ({
 
 const buttonStyleSX: SxProps<Theme> = theme => ({
   fontWeight: '600',
+  mt: 4,
   [theme.breakpoints.between('sm', 'md')]: {
     scale: '1.2',
   },
@@ -190,6 +191,7 @@ const priceStyleSX: SxProps<Theme> = theme => ({
   textAlign: 'end',
   pt: '1rem',
   mr: '1.2rem',
+  pb: 3,
   fontWeight: '600',
   [theme.breakpoints.between('sm', 'md')]: {
     fontSize: '1.2rem',

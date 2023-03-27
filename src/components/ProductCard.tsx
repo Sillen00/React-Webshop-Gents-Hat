@@ -58,7 +58,7 @@ export default function ProductCard({ product }: Props) {
               ${product.price}
             </Typography>
             <Typography
-              sx={{ marginBottom: '0' }}
+              sx={{maxWidth: '200px', overflowWrap: 'break-word'}}
               gutterBottom
               variant='h5'
               component='div'
@@ -69,7 +69,7 @@ export default function ProductCard({ product }: Props) {
           </CardContent>
         </StyledCardActionArea>
       </Link>
-      <Box>
+      <Box sx={{marginTop: 'auto'}}> 
         <AddToCartButton product={product} quantity={defaultQuantity} onAddToCart={() => {}} />
       </Box>
     </Card>
@@ -81,7 +81,10 @@ const imageStyle: SxProps<Theme> = theme => ({
   paddingTop: '1rem',
 })
 const cardStyle: SxProps<Theme> = theme => ({
-  minWidth: 240,
+  display: 'flex',
+  flexDirection: 'column',
+  minWidth: '240px',
+  maxWidth: '240px',
   borderRadius: 2,
   '&:hover': {
     backgroundColor: 'transparent',
