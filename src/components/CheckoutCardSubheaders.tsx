@@ -3,7 +3,7 @@ import { Box } from '@mui/system'
 
 function CartCardSubheaders() {
   return (
-    <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
+    <Box sx={{ display: 'flex', justifyContent: 'space-between', pb: 2}}>
       <Typography variant='h3' color='secondary.dark' sx={{ fontSize: '1.4rem' }}>
         Product
       </Typography>

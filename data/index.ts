@@ -2,228 +2,222 @@ export interface Product {
   id: string
   image: string
   title: string
-  shortDescription: string
   description: string
   price: number
-  details: { id: number; detail: string }[]
+  details?: {
+    id: number
+    detail?: string
+  }[]
   size: string
   color: string
-  inStock: boolean
+  inStock: string
 }
 
 export interface CartItem extends Product {
   quantity: number
 }
 
-export const test = 22
+export const generateId = () => {
+  const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+  const letter = letters.charAt(Math.floor(Math.random() * letters.length))
+  const secondLetter = letters.charAt(Math.floor(Math.random() * letters.length))
+  const numbers = Math.floor(10 + Math.random() * 10000)
+  const newId = letter + secondLetter + numbers.toString()
+  return newId
+}
 
 export const products: Product[] = [
   {
+    id: 'EL1477',
     image: '../images/aberdeen.png',
     title: 'Aberdeen',
-    shortDescription: 'Aberdeen. description',
     description:
-      'suspendisse ultrices gravida dictum fusce ut placerat orci nulla pellentesque dignissim enim sit amet venenatis urna cursus eget nunc scelerisque viverra mauris in aliquam sem fringilla ut morbi tincidunt augue interdum velit euismod in pellentesque massa placerat duis ultricies lacus sed turpis tincidunt id aliquet risus feugiat in ante metus dictum at tempor commodo ullamcorper a lacus vestibulum sed arcu non odio euismod lacinia at quis risus sed vulputate odio ut enim blandit volutpat maecenas volutpat blandit aliquam etiam erat velit scelerisque in dictum non consectetur a erat nam at lectus urna duis convallis convallis tellus id interdum velit laoreet',
+      "In Gårda - in Gothenburg's old textile worker and factory quarter - the idea was born to resume the proud hat production that once characterized the area, when Scots, Dutch and English businessmen and skilled craftsmen came to characterize manufacturing and production a little over a century ago, in this part of town. It is no longer possible to produce the hats in central Gothenburg, as it was a couple of centuries ago, but we can and allow ourselves to be inspired, fascinated and enthralled by the design and innovation of the vibrant craftsmanship that marked the area back then. And take it with us when today, 200 years later, we visit our friends and producers of genuine Panama hats far to the west - in South American Ecuador - or to the boundless artistic Japan in the far east.",
     price: 69,
     details: [
-      { id: 1, detail: 'Lorem ipsum' },
-      { id: 2, detail: 'Lorem ipsum' },
-      { id: 3, detail: 'Lorem ipsum' },
-      { id: 4, detail: 'Lorem ipsum' },
+      { id: 1, detail: '12 centimeter crown.' },
+      { id: 2, detail: '6.5 centimeter brim' },
+      { id: 3, detail: 'Made of 100 percent wool.' },
     ],
     size: 'L',
     color: 'Dark brown',
-    inStock: true,
-    id: 'e1',
+    inStock: 'true',
   },
   {
+    id: 'FD9263',
     image: '../images/bowler.png',
-    title: 'Bowler Hat',
-    shortDescription: 'Bowler Hat, description',
+    title: 'Bowler',
     description:
-      'suspendisse ultrices gravida dictum fusce ut placerat orci nulla pellentesque dignissim enim sit amet venenatis urna cursus eget nunc scelerisque viverra mauris in aliquam sem fringilla ut morbi tincidunt augue interdum velit euismod in pellentesque massa placerat duis ultricies lacus sed turpis tincidunt id aliquet risus feugiat in ante metus dictum at tempor commodo ullamcorper a lacus vestibulum sed arcu non odio euismod lacinia at quis risus sed vulputate odio ut enim blandit volutpat maecenas volutpat blandit aliquam etiam erat velit scelerisque in dictum non consectetur a erat nam at lectus urna duis convallis convallis tellus id interdum velit laoreet',
+      'British Jaxon supplies hats with premium craftmanship and we can only state that they succeed in this. When you buy a hat from Jaxon, you get quality, fashion and an unbeatable price. Are you looking for one or more hats? Then you have to try a Jaxon!',
     price: 129,
     details: [
-      { id: 1, detail: 'Lorem ipsum' },
-      { id: 2, detail: 'Lorem ipsum' },
+      { id: 1, detail: '11,5 centimeters krona.' },
+      { id: 2, detail: '5 centimeters wide.' },
+      { id: 3, detail: 'Made from 100 percent wool felt.' },
     ],
     size: 'M',
     color: 'Black',
-    inStock: true,
-    id: 'd2',
+    inStock: 'true',
+
   },
   {
+    id: 'XA9333',
     image: '../images/panama.png',
     title: 'Panama',
-    shortDescription: 'Panama. description',
     description:
-      'suspendisse ultrices gravida dictum fusce ut placerat orci nulla pellentesque dignissim enim sit amet venenatis urna cursus eget nunc scelerisque viverra mauris in aliquam sem fringilla ut morbi tincidunt augue interdum velit euismod in pellentesque massa placerat duis ultricies lacus sed turpis tincidunt id aliquet risus feugiat in ante metus dictum at tempor commodo ullamcorper a lacus vestibulum sed arcu non odio euismod lacinia at quis risus sed vulputate odio ut enim blandit volutpat maecenas volutpat blandit aliquam etiam erat velit scelerisque in dictum non consectetur a erat nam at lectus urna duis convallis convallis tellus id interdum velit laoreet',
+      "From Bavaria in southern Germany, near the border with Switzerland and Lichtenstein, comes the German hat brand. We dare not promise that a hat from Faustmann is for life, but what we can promise is that with a Faustmann you get an extremely affordable hat. Hats from Faustmann are of high quality and the price is extremely low in relation to the high quality. The design of Faustmann's hats is characterized by both creativity and the classic look. A very popular hat for all ages.",
     price: 119,
     details: [
-      { id: 1, detail: 'Lorem ipsum' },
-      { id: 2, detail: 'Lorem ipsum' },
-      { id: 3, detail: 'Lorem ipsum' },
-      { id: 4, detail: 'Lorem ipsum' },
-      { id: 5, detail: 'Lorem ipsum' },
+      { id: 1, detail: '12.5 centimeter crown.' },
+      { id: 2, detail: '6 centimeter brim' },
+      { id: 3, detail: 'Made from 100 percent Panama straw.' },
     ],
     size: 'M',
     color: 'Beige',
-    inStock: false,
-    id: 'f4',
+    inStock: 'false',
   },
   {
+    id: 'QF8822',
     image: '../images/outback.png',
     title: 'Outback',
-    shortDescription: 'Outback, description',
     description:
-      'suspendisse ultrices gravida dictum fusce ut placerat orci nulla pellentesque dignissim enim sit amet venenatis urna cursus eget nunc scelerisque viverra mauris in aliquam sem fringilla ut morbi tincidunt augue interdum velit euismod in pellentesque massa placerat duis ultricies lacus sed turpis tincidunt id aliquet risus feugiat in ante metus dictum at tempor commodo ullamcorper a lacus vestibulum sed arcu non odio euismod lacinia at quis risus sed vulputate odio ut enim blandit volutpat maecenas volutpat blandit aliquam etiam erat velit scelerisque in dictum non consectetur a erat nam at lectus urna duis convallis convallis tellus id interdum velit laoreet',
+      "MJM - M.J. Michaelsen - is Denmark's most classic, exclusive hat brand, founded in 1829. MJM captures the city, the sea, the countryside, the wilderness and with classic Danish craftsmanship, Danish tradition and design, MJM creates Denmark's most popular hat - year after year.",
     price: 139,
     details: [
-      { id: 1, detail: 'Lorem ipsum' },
-      { id: 2, detail: 'Lorem ipsum' },
-      { id: 3, detail: 'Lorem ipsum' },
+      { id: 1, detail: '11 centimeter crown.' },
+      { id: 2, detail: '6 centimeter brim' },
+      { id: 3, detail: 'Made from 100 percent cotton.' },
     ],
     size: 'M',
     color: 'Black',
-    inStock: true,
-    id: 'c1',
+    inStock: 'true',
   },
   {
+    id: 'PP2226',
     image: '../images/stockman.png',
     title: 'Stockman',
-    shortDescription: 'Stockman. description',
     description:
-      'suspendisse ultrices gravida dictum fusce ut placerat orci nulla pellentesque dignissim enim sit amet venenatis urna cursus eget nunc scelerisque viverra mauris in aliquam sem fringilla ut morbi tincidunt augue interdum velit euismod in pellentesque massa placerat duis ultricies lacus sed turpis tincidunt id aliquet risus feugiat in ante metus dictum at tempor commodo ullamcorper a lacus vestibulum sed arcu non odio euismod lacinia at quis risus sed vulputate odio ut enim blandit volutpat maecenas volutpat blandit aliquam etiam erat velit scelerisque in dictum non consectetur a erat nam at lectus urna duis convallis convallis tellus id interdum velit laoreet',
+      "Australia is a country like no other. Welcome to the land where dreams begin, where the call of white cockatoos sets the tone for the morning and the kangaroo's leap towards an orange-yellow sunset dresses the evening. Endless horizons, dense tropical rainforest, red, dry, earth, sun drenched coastlines that stretch as far as the eye can see. Founded in 1969, Jacarus hats reflect the soul that is Australia - wild, untamed, strong and brave!",
     price: 95,
     details: [
-      { id: 1, detail: 'Lorem ipsum' },
-      { id: 2, detail: 'Lorem ipsum' },
+      { id: 1, detail: '10 centimeter crown.' },
+      { id: 2, detail: '7 centimeter brim' },
+      { id: 3, detail: 'Made from 100 percent buffalo leather.' },
     ],
     size: 'S',
     color: 'Brown',
-    inStock: true,
-    id: 'e6',
+    inStock: 'true',
   },
   {
+    id: 'ZK6932',
     image: '../images/straw.png',
-    title: 'Straw Hat',
-    shortDescription: 'Straw hat. description',
+    title: 'Straw',
     description:
-      'suspendisse ultrices gravida dictum fusce ut placerat orci nulla pellentesque dignissim enim sit amet venenatis urna cursus eget nunc scelerisque viverra mauris in aliquam sem fringilla ut morbi tincidunt augue interdum velit euismod in pellentesque massa placerat duis ultricies lacus sed turpis tincidunt id aliquet risus feugiat in ante metus dictum at tempor commodo ullamcorper a lacus vestibulum sed arcu non odio euismod lacinia at quis risus sed vulputate odio ut enim blandit volutpat maecenas volutpat blandit aliquam etiam erat velit scelerisque in dictum non consectetur a erat nam at lectus urna duis convallis convallis tellus id interdum velit laoreet',
+      'British Jaxon supplies hats quality hats and we can only state that they succeed in this. When you buy a hat from Jaxon, you get quality, fashion and an unbeatable price. Are you looking for one or more hats? Then you have to try a Jaxon!',
     price: 79,
     details: [
-      { id: 1, detail: 'Lorem ipsum' },
-      { id: 2, detail: 'Lorem ipsum' },
-      { id: 3, detail: 'Lorem ipsum' },
+      { id: 1, detail: '11.5 centimeter crown.' },
+      { id: 2, detail: '7.5 centimeter brim.' },
+      { id: 3, detail: 'Made from 100 percent raffia straw.' },
     ],
     size: 'M',
     color: 'Straw hat colored',
-    inStock: true,
-    id: 'a3',
+    inStock: 'true',
   },
   {
+    id: 'YG1824',
     image: '../images/western.png',
-    title: 'Western Hat',
-    shortDescription: 'Western hat. description',
+    title: 'Western',
     description:
-      'suspendisse ultrices gravida dictum fusce ut placerat orci nulla pellentesque dignissim enim sit amet venenatis urna cursus eget nunc scelerisque viverra mauris in aliquam sem fringilla ut morbi tincidunt augue interdum velit euismod in pellentesque massa placerat duis ultricies lacus sed turpis tincidunt id aliquet risus feugiat in ante metus dictum at tempor commodo ullamcorper a lacus vestibulum sed arcu non odio euismod lacinia at quis risus sed vulputate odio ut enim blandit volutpat maecenas volutpat blandit aliquam etiam erat velit scelerisque in dictum non consectetur a erat nam at lectus urna duis convallis convallis tellus id interdum velit laoreet',
+      "Elegant Western hat in Stetsons Woolfelt with Asahi Guard® which makes the hat extremely water-repellent and resistant to both dirt and rain. The material is durable and keeps its shape even if you pack the hat in your bag when you're on the move. Since its inception in 1865, Stetson Hats has been the number 1 premium brand on the American market. For over 150 years, no manufacturer has created finer hats at a better price than Stetson. Quality and class right through.",
     price: 119,
     details: [
-      { id: 1, detail: 'Lorem ipsum' },
-      { id: 2, detail: 'Lorem ipsum' },
+      { id: 1, detail: '7 centimeter crown.' },
+      { id: 2, detail: '12 centimeter brim' },
+      { id: 3, detail: 'Made from 100 percent wool felt (Asahi Guard).' },
     ],
     size: 'L',
     color: 'Brown',
-    inStock: true,
-    id: 'a2',
+    inStock: 'true',
   },
   {
+    id: 'OW5885',
     image: '../images/tophat.png',
     title: 'Top Hat',
-    shortDescription: 'Top hat. description',
     description:
-      'suspendisse ultrices gravida dictum fusce ut placerat orci nulla pellentesque dignissim enim sit amet venenatis urna cursus eget nunc scelerisque viverra mauris in aliquam sem fringilla ut morbi tincidunt augue interdum velit euismod in pellentesque massa placerat duis ultricies lacus sed turpis tincidunt id aliquet risus feugiat in ante metus dictum at tempor commodo ullamcorper a lacus vestibulum sed arcu non odio euismod lacinia at quis risus sed vulputate odio ut enim blandit volutpat maecenas volutpat blandit aliquam etiam erat velit scelerisque in dictum non consectetur a erat nam at lectus urna duis convallis convallis tellus id interdum velit laoreet',
+      'British Jaxon supplies hats quality hats and we can only state that they succeed in this. When you buy a hat from Jaxon, you get quality, fashion and an unbeatable price. Are you looking for one or more hats? Then you have to try a Jaxon!',
     price: 129,
     details: [
-      { id: 1, detail: 'Lorem ipsum' },
-      { id: 2, detail: 'Lorem ipsum' },
-      { id: 3, detail: 'Lorem ipsum' },
-      { id: 4, detail: 'Lorem ipsum' },
+      { id: 1, detail: '15 centimeter crown.' },
+      { id: 2, detail: '5 centimeters wide.' },
+      { id: 3, detail: 'Made from 100 percent wool felt.' },
     ],
     size: 'L',
     color: 'Black',
-    inStock: false,
-    id: 'a1',
+    inStock: 'false',
   },
   {
+    id: 'RS2937',
     image: '../images/trilby.png',
-    title: 'Trilby Hat',
-    shortDescription: 'Trilby hat. description',
+    title: 'Trilby',
     description:
-      'suspendisse ultrices gravida dictum fusce ut placerat orci nulla pellentesque dignissim enim sit amet venenatis urna cursus eget nunc scelerisque viverra mauris in aliquam sem fringilla ut morbi tincidunt augue interdum velit euismod in pellentesque massa placerat duis ultricies lacus sed turpis tincidunt id aliquet risus feugiat in ante metus dictum at tempor commodo ullamcorper a lacus vestibulum sed arcu non odio euismod lacinia at quis risus sed vulputate odio ut enim blandit volutpat maecenas volutpat blandit aliquam etiam erat velit scelerisque in dictum non consectetur a erat nam at lectus urna duis convallis convallis tellus id interdum velit laoreet',
+      'Since its inception in 1865, Stetson Hats has been the number 1 premium brand on the American market. For over 150 years, no manufacturer has created finer hats at a better price than Stetson. Quality and class right through.',
     price: 109,
     details: [
-      { id: 1, detail: 'Lorem ipsum' },
-      { id: 2, detail: 'Lorem ipsum' },
-      { id: 3, detail: 'Lorem ipsum' },
-      { id: 4, detail: 'Lorem ipsum' },
-      { id: 5, detail: 'Lorem ipsum' },
+      { id: 1, detail: '9.5 centimeter crown.' },
+      { id: 2, detail: '4.5 centimeter brim.' },
+      { id: 3, detail: 'Made of 75 percent wool and 25 percent polyamide.' },
     ],
     size: 'S',
     color: 'Black',
-    inStock: true,
-    id: 'a8',
+    inStock: 'true',
   },
   {
+    id: 'UF1283',
     image: '../images/woolfelt.png',
-    title: 'Woolfelt Hat',
-    shortDescription: 'Woolfelt hat. description',
+    title: 'Woolfelt',
     description:
-      'suspendisse ultrices gravida dictum fusce ut placerat orci nulla pellentesque dignissim enim sit amet venenatis urna cursus eget nunc scelerisque viverra mauris in aliquam sem fringilla ut morbi tincidunt augue interdum velit euismod in pellentesque massa placerat duis ultricies lacus sed turpis tincidunt id aliquet risus feugiat in ante metus dictum at tempor commodo ullamcorper a lacus vestibulum sed arcu non odio euismod lacinia at quis risus sed vulputate odio ut enim blandit volutpat maecenas volutpat blandit aliquam etiam erat velit scelerisque in dictum non consectetur a erat nam at lectus urna duis convallis convallis tellus id interdum velit laoreet',
+      'The Stetson Player is a variation on the trilby and the pork pie hat with a narrow straight brim with a slightly turned up brim. The hat is made of a luxurious felted wool with very high water repellency that withstands both rain and snowfall.',
     price: 109,
     details: [
-      { id: 1, detail: 'Lorem ipsum' },
-      { id: 2, detail: 'Lorem ipsum' },
-      { id: 3, detail: 'Lorem ipsum' },
+      { id: 1, detail: '11 centimeter crown.' },
+      { id: 2, detail: '4.5 centimeter brim.' },
+      { id: 3, detail: 'Made from 100 percent wool felt (Asahi Guard).' },
     ],
     size: 'M',
     color: 'Dark gray',
-    inStock: true,
-    id: 'a4',
+    inStock: 'true',
   },
   {
+    id: 'IP9642',
     image: '../images/fedora.png',
-    title: 'Fedora Hat',
-    shortDescription: 'Fedora hat. description',
+    title: 'Fedora',
     description:
-      'suspendisse ultrices gravida dictum fusce ut placerat orci nulla pellentesque dignissim enim sit amet venenatis urna cursus eget nunc scelerisque viverra mauris in aliquam sem fringilla ut morbi tincidunt augue interdum velit euismod in pellentesque massa placerat duis ultricies lacus sed turpis tincidunt id aliquet risus feugiat in ante metus dictum at tempor commodo ullamcorper a lacus vestibulum sed arcu non odio euismod lacinia at quis risus sed vulputate odio ut enim blandit volutpat maecenas volutpat blandit aliquam etiam erat velit scelerisque in dictum non consectetur a erat nam at lectus urna duis convallis convallis tellus id interdum velit laoreet',
+      'British Jaxon supplies hats quality hats and we can only state that they succeed in this. When you buy a hat from Jaxon, you get quality, fashion and an unbeatable price. Are you looking for one or more hats? Then you have to try a Jaxon!',
     price: 59,
     details: [
-      { id: 1, detail: 'Lorem ipsum' },
-      { id: 2, detail: 'Lorem ipsum' },
-      { id: 3, detail: 'Lorem ipsum' },
+      { id: 1, detail: '10 centimeter crown.' },
+      { id: 2, detail: '6.5 centimeter brim.' },
+      { id: 3, detail: 'Made from 100 percent wool felt.' },
     ],
     size: 'M',
     color: 'Red',
-    inStock: true,
-    id: 'a7',
+    inStock: 'true',
   },
   {
+    id: 'KZ0032',
     image: '../images/stoutmoss.png',
-    title: 'Stout Hat',
-    shortDescription: 'Stout hat. description',
+    title: 'Stout',
     description:
-      'suspendisse ultrices gravida dictum fusce ut placerat orci nulla pellentesque dignissim enim sit amet venenatis urna cursus eget nunc scelerisque viverra mauris in aliquam sem fringilla ut morbi tincidunt augue interdum velit euismod in pellentesque massa placerat duis ultricies lacus sed turpis tincidunt id aliquet risus feugiat in ante metus dictum at tempor commodo ullamcorper a lacus vestibulum sed arcu non odio euismod lacinia at quis risus sed vulputate odio ut enim blandit volutpat maecenas volutpat blandit aliquam etiam erat velit scelerisque in dictum non consectetur a erat nam at lectus urna duis convallis convallis tellus id interdum velit laoreet',
+      "Brixton is the young company that has quickly become one of the coolest and most sought-after hat brands in the world. The design and purity of each model is impossible to copy. And the unique way that Brixton takes on the classic styles of a hat means that with a Brixton on your head, you're guaranteed to stand out from the crowd!",
     price: 69,
     details: [
-      { id: 1, detail: 'Lorem ipsum' },
-      { id: 2, detail: 'Lorem ipsum' },
-      { id: 3, detail: 'Lorem ipsum' },
-      { id: 4, detail: 'Lorem ipsum' },
+      { id: 1, detail: '4 centimeter crown.' },
+      { id: 2, detail: '10 centimeter brim.' },
+      { id: 3, detail: 'Made from 100 percent wool felt.' },
     ],
     size: 'L',
     color: 'Gray',
-    inStock: true,
-    id: 'a6',
+    inStock: 'true',
   },
 ]

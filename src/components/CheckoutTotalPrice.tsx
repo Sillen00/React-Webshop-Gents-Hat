@@ -25,16 +25,16 @@ function CheckoutTotalPrice({ totalPrice }: Props) {
 const totalPriceTextStyleSx: SxProps<Theme> = theme => ({
   fontWeight: '800',
   background: 'white',
-  p: 1,
+  p: 2,
   fontSize: '1.1rem',
-  borderRadius: '0.2rem',
+  borderRadius: '0.8rem',
   [theme.breakpoints.up('md')]: { px: 4, fontSize: '1.4rem' },
 })
 const totalPriceBoxStyleSx: SxProps<Theme> = theme => ({
   display: 'flex',
   justifyContent: 'flex-end',
   width: '100%',
-  mt: 1,
+  mt: 2,
   // [theme.breakpoints.up('md')]: {},
 })
 

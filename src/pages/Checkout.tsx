@@ -45,12 +45,12 @@ function Checkout() {
         <Typography variant='h3' gutterBottom>
           Cart
         </Typography>
-        <Box sx={{ display: 'flex', justifyContent: 'space-between', py: 2, pb: 8 }}>
+        <Box sx={buttonContainer}>
           
           {/* CONTINUE SHOPPING BUTTON */}
 
           <Link to='../'>
-            <Button variant='contained' sx={continueButton}>
+            <Button variant='contained' sx={buttonSx}>
               <KeyboardDoubleArrowLeft /> Continue shopping
             </Button>
           </Link>
@@ -60,16 +60,7 @@ function Checkout() {
           {cartItems.length > 0 && (
             <Button
               variant='contained'
-              sx={{
-                fontWeight: '800',
-                minWidth: '9rem',
-                color: 'common.black',
-                mx: '2',
-                '&:hover': {
-                  background: 'green',
-                  color: 'white',
-                },
-              }}
+              sx={buttonSx}
               onClick={scrollToForm}
             >
               Checkout <KeyboardDoubleArrowDownIcon />
@@ -81,7 +72,7 @@ function Checkout() {
 
         {cartItems.length > 0 && isMediumScreen && <CheckoutCardSubheaders />}
 
-        <Stack spacing={{ xs: 1, sm: 2, md: 4 }}>
+        <Stack spacing={{ xs: 1, sm: 2, md: 3 }}>
           {cartItems.map(cartItem => (
             <CheckoutCard cartItem={cartItem} key={cartItem.id} />
           ))}
@@ -115,7 +106,7 @@ const formMediaQueries: SxProps<Theme> = theme => ({
   },
 })
 
-const continueButton: SxProps<Theme> = theme => ({
+const buttonSx: SxProps<Theme> = theme => ({
   fontWeight: '800',
   minHeight: '3rem',
   color: 'common.black',
@@ -124,7 +115,19 @@ const continueButton: SxProps<Theme> = theme => ({
     color: 'white',
   },
   [theme.breakpoints.down('sm')]: {
-    width: '11rem',
+    width: '18rem',
+    m: 1.5,
+  },
+})
+
+const buttonContainer: SxProps<Theme> = theme => ({
+  display: 'flex',
+  justifyContent: 'space-between',
+  py: 2,
+  pb: 8,
+  [theme.breakpoints.down('sm')]: {
+    flexDirection: 'column',
+    alignItems: 'center',
   },
 })
 

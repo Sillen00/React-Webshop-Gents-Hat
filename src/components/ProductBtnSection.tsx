@@ -51,6 +51,14 @@ function ProductBtnSection({ product }: Props) {
               textAlign: 'center',
             },
             min: 1,
+            '-moz-appearance': 'textfield',
+            '&::-webkit-outer-spin-button, &::-webkit-inner-spin-button': {
+              '-webkit-appearance': 'inner-spin-button',
+            },
+            '&::-moz-inner-spin-button, &::-moz-outer-spin-button': {
+              '-moz-appearance': 'inner-spin-button',
+              'appearance': 'auto',
+            },
           }}
         />
         <Box sx={{ flexGrow: 1 }}>
@@ -74,7 +82,9 @@ function ProductBtnSection({ product }: Props) {
 
 const quantityBoxStyle: SxProps<Theme> = theme => ({
   width: '3.5rem',
+  height: '2.3rem',
   border: '1px solid black',
+  mt: 0.2,
   padding: '0.3rem',
   marginRight: '1rem',
   display: 'flex',

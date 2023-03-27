@@ -1,12 +1,15 @@
-import { Box, SxProps, Theme, Typography } from '@mui/material'
+import { Box, CardMedia, Skeleton, SxProps, Theme, Typography } from '@mui/material'
 import { useTheme } from '@mui/material/styles'
 import useMediaQuery from '@mui/material/useMediaQuery'
+import { useState } from 'react'
 import {
   cardImgStyle,
-  cartCardRightBoxStyleSx,
+  leftContainerSx,
   descriptionTextStyleSx,
   quantityBoxStyleSx,
   quantityStyleSx,
+  mediaFontSizeStyleSx,
+  productTotalStyleSx,
 } from './CheckoutCard'
 
 interface Props {
@@ -19,80 +22,137 @@ interface Props {
 }
 
 export default function OrderData(props: Props) {
-  const theme = useTheme()
-  const isUpMd = useMediaQuery(theme.breakpoints.up('md'))
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState(false)
+
+  // Activates skeleton while image is loading or does not load
+  const handleLoad = () => {
+    setLoading(false)
+    setError(false)
+  }
+
+  const handleError = () => {
+    setLoading(false)
+    setError(true)
+  }
 
   return (
-    <Box sx={{ pt: 2, pb: 2, borderBottom: 'solid black 1px', display: 'flex' }}>
+    <Box sx={{ pt: 1, borderBottom: 'solid black 1px', display: 'flex' }}>
       <Box data-cy='cart-item' sx={displayOrderItem}>
         <Box sx={imageBoxStyleSx}>
-          <img style={cardImgStyle} src={props.image} />
+          <Skeleton
+            variant='rounded'
+            animation='wave'
+            sx={loading || error ? skeletonSx : { display: 'none' }}
+          />
+          <CardMedia
+            sx={loading || error ? { display: 'none' } : cardImgStyle}
+            component='img'
+            height='150'
+            image={props.image}
+            alt={props.title}
+            onLoad={handleLoad}
+            onError={handleError}
+          />
         </Box>
-        <Box sx={cartCardRightBoxStyleSx}>
+        <Box sx={leftContainerSx}>
           <Box
             sx={{
               display: 'flex',
               justifyContent: 'space-between',
               paddingRight: '1rem',
             }}
-          >
-            <Typography variant='h3' sx={headingStyleSx}>
+          ></Box>
+          <Box sx={{ ml: 1 }}>
+            <Typography data-cy='product-title' variant='h3' sx={mediaFontSizeStyleSx}>
               {props.title}
             </Typography>
-          </Box>
-          <Box sx={{ flexGrow: '4', display: 'flex', justifyContent: 'space-between' }}>
-            <Typography variant='body2' color='secondary.dark' sx={descriptionTextStyleSx}>
-              {'$' + props.price} &nbsp;&nbsp; {'|'} &nbsp;&nbsp; {props.color} &nbsp;&nbsp; {'|'}{' '}
-              &nbsp;&nbsp;
-              {props.size}
+            <Typography
+              variant='body2'
+              color='secondary.dark'
+              data-cy='product-price'
+              sx={descriptionTextStyleSx}
+            >
+              ${props.price} &nbsp; {'|'} &nbsp; {props.color} &nbsp; {'|'} &nbsp; {props.size}
+            </Typography>
+            <Typography data-cy='product-price' variant='body2' sx={productTotalStyleSx}>
+              Total: ${props.price * props.quantity}
             </Typography>
           </Box>
         </Box>
-        <Box
-          sx={{
-            ...quantityBoxStyleSx,
-            alignItems: 'center',
-            justifyContent: 'flex-end',
-            display: 'flex',
-          }}
-        >
-          <Typography data-cy='product-quantity' variant='body2' sx={quantityStyleSx}>
-            {props.quantity}
-          </Typography>
-        </Box>
+      </Box>
+      <Box
+        sx={{
+          ...quantityBoxStyleSx,
+          alignItems: 'center',
+          justifyContent: 'flex-end',
+          display: 'flex',
+        }}
+      >
+        <Typography data-cy='product-quantity' variant='body2' sx={quantityStyleSx}>
+          {props.quantity}
+        </Typography>
       </Box>
     </Box>
   )
 }
 
+/* ----------------------
+       CSS STYLING
+---------------------- */
+
 const displayOrderItem: SxProps<Theme> = theme => ({
   display: 'flex',
-  maxHeight: '200px',
-  alignItems: 'center',
   width: '100%',
   paddingRight: '2rem',
-  [theme.breakpoints.down('sm')]: {
-    paddingRight: '0rem',
+  mb: 2,
+  mt: 1,
+  [theme.breakpoints.down('md')]: {
+    mb: 1,
   },
-})
-
-const headingStyleSx: SxProps<Theme> = theme => ({
-  fontSize: '1.6rem',
   [theme.breakpoints.down('sm')]: {
-    fontSize: '1.4rem',
+    paddingRight: '0.5rem',
+    pl: 0.5,
+    flexDirection: 'column',
   },
 })
 
 const imageBoxStyleSx: SxProps<Theme> = theme => ({
-  maxWidth: '100px',
-  minWidth: '100px',
+  maxWidth: '120px',
+  minWidth: '120px',
+  maxHeight: '120px',
+  minHeight: '120px',
   mx: '10px',
+  mt: '0.8rem',
   [theme.breakpoints.down('md')]: {
     maxWidth: '80px',
     minWidth: '80px',
+    maxHeight: '80px',
+    minHeight: '80px',
   },
   [theme.breakpoints.down('sm')]: {
-    maxWidth: '50px',
-    minWidth: '50px',
+    maxWidth: '100px',
+    minWidth: '100px',
+    maxHeight: '100px',
+    minHeight: '100px',
+  },
+})
+
+const skeletonSx: SxProps<Theme> = theme => ({
+  maxWidth: '120px',
+  minWidth: '120px',
+  maxHeight: '120px',
+  minHeight: '120px',
+  [theme.breakpoints.down('md')]: {
+    maxWidth: '80px',
+    minWidth: '80px',
+    maxHeight: '80px',
+    minHeight: '80px',
+  },
+  [theme.breakpoints.down('sm')]: {
+    maxWidth: '100px',
+    minWidth: '100px',
+    maxHeight: '100px',
+    minHeight: '100px',
   },
 })

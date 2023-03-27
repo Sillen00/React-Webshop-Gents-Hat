@@ -1,8 +1,8 @@
 import * as Icon from '@mui/icons-material'
 import { AppBar, Badge, Box, SxProps, Theme, Typography } from '@mui/material'
 import { NavLink } from 'react-router-dom'
-import adminIcon from '../../public/icons/adminIcon.png'
 import { useCart } from '../contexts/CartContext'
+import adminIcon from '../icons/adminIcon.png'
 import '../index.css'
 
 function Header() {
@@ -15,7 +15,7 @@ function Header() {
         </Typography>
       </NavLink>
       <Box sx={iconWrapperStylesSX}>
-        <NavLink to='/confirmation'>
+        <NavLink data-cy='admin-link' to='/admin'>
           <img src={adminIcon} />
         </NavLink>
         <NavLink to='/checkout'>
