@@ -31,8 +31,8 @@ const adminFormSchema = Yup.object().shape({
       'The name of the color you have given us it too short. Please give us a name of minimum 5 characters.'
     ),
   image: Yup.string()
-    .required('Please enter an image-URL for your product.')
-    .min(1, 'The URL you have given us is not valid. Please give us a valid URL.'),
+    .matches(/\.(png|jpg|jpeg)$/, 'The URL you have given us is not valid. Valid image formats are ".png", ".jpg", or "jpeg".')
+    .required('Please enter an image-URL for your product.'),
   description: Yup.string()
     .required('Please write a long product description.')
     .min(
