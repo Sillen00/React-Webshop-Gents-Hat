@@ -84,24 +84,6 @@ function OrderConfirmation() {
           </Link>
         </Box>
 
-        {/* LIST OF ORDERED PRODUCTS */}
-
-        <Box sx={{ display: 'flex', justifyContent: 'space-between', paddingBottom: '1rem' }}>
-          <Typography variant='h3' color='secondary.dark' sx={subHeaderStyleSX}>
-            Products
-          </Typography>
-          <Box sx={{ display: 'flex' }}>
-            <Typography variant='h3' color='secondary.dark' sx={subHeaderStyleSX}>
-              Quantity
-            </Typography>
-          </Box>
-        </Box>
-
-        <Box>
-          <Typography sx={ItemStyleSX}>{newOrderItems}</Typography>
-        </Box>
-        <Typography sx={priceStyleSX}>Total: ${newTotalPrice}</Typography>
-
         {/* USER AND SHIPPING DETAILS */}   
 
         <Box sx={shippingDetailsStyleSX}>
@@ -122,6 +104,24 @@ function OrderConfirmation() {
             <Typography sx={formDataStyleSX}>{zipcode}</Typography>
           </Box>
         </Box>
+
+        {/* LIST OF ORDERED PRODUCTS */}
+
+        <Box sx={{ display: 'flex', justifyContent: 'space-between', paddingBottom: '1rem' }}>
+          <Typography variant='h3' color='secondary.dark' sx={subHeaderStyleSX}>
+            Products
+          </Typography>
+          <Box sx={{ display: 'flex' }}>
+            <Typography variant='h3' color='secondary.dark' sx={subHeaderStyleSX}>
+              Quantity
+            </Typography>
+          </Box>
+        </Box>
+
+        <Box>
+          <Typography sx={ItemStyleSX}>{newOrderItems}</Typography>
+        </Box>
+        <Typography sx={priceStyleSX}>Total: ${newTotalPrice}</Typography>
       </Paper>
     </Container>
   )
@@ -191,6 +191,7 @@ const priceStyleSX: SxProps<Theme> = theme => ({
   textAlign: 'end',
   pt: '1rem',
   mr: '1.2rem',
+  pb: 3,
   fontWeight: '600',
   [theme.breakpoints.between('sm', 'md')]: {
     fontSize: '1.2rem',
