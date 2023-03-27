@@ -29,12 +29,13 @@ function Header() {
           >
             <Box sx={badgeBoxStylesSX}>
               <img
-                style={{
-                  ...imageMustaschStyle,
-                  ...(totalProductsInCart > 0 ? imageMustaschCart1Style : {}),
-                }}
-                src='../../public/images/Mustasch.png'
+                src='../../public/images/gold-musch.png'
                 alt='Mustasch'
+                className='mustasch-image'
+                style={{
+                  ...imageMustaschStyleSx,
+                  visibility: totalProductsInCart > 0 ? 'visible' : 'hidden',
+                }}
               />
               <Icon.ShoppingBagOutlined sx={iconStylesSX} data-cy='cart-link' />
             </Box>
@@ -45,22 +46,17 @@ function Header() {
   )
 }
 
-const imageMustaschStyle: CSSProperties = {
-  width: '65px',
-  height: '12px',
-  // height: '20px',
+const imageMustaschStyleSx: CSSProperties = {
+  width: '5em',
   position: 'absolute',
-  transform: 'translate(-50%, -50%) rotate(180deg)',
+  zIndex: 10,
   top: '69%',
   left: '50%',
+  transform: 'translate(-50%, -50%)',
 }
-
-const imageMustaschCart1Style: CSSProperties = {
-  transform: 'translate(-50%, -50%) rotate(360deg)',
-}
-
 
 const badgeBoxStylesSX: SxProps<Theme> = theme => ({
+  position: 'relative',
   '::before': {
     content: "''",
     position: 'absolute',
