@@ -44,7 +44,7 @@ export default function ProductCard({ dataProduct }: Props) {
 
   return (
     <Card sx={cardStyle} data-cy='product'>
-      <Link style={{ textDecoration: 'none' }} to={`/product/${dataProduct.id}`}>
+      <Link style={{ textDecoration: 'none' }} to={`/database/${dataProduct.id}`}>
         <StyledCardActionArea>
           <Box sx={{ position: 'relative' }}>
             <Box sx={hatHoverStyle}>View Product</Box>
