@@ -77,7 +77,7 @@ function ProductDescription() {
             />
           </Box>
           <Box sx={textAndBtnWrapperStyle}>
-            <Typography sx={{overflowWrap: 'break-word'}} variant='h4' data-cy='product-title'>
+            <Typography sx={{ overflowWrap: 'break-word' }} variant='h4' data-cy='product-title'>
               {product.title}
             </Typography>
             <Typography variant='h6' data-cy='product-price'>
@@ -95,37 +95,37 @@ function ProductDescription() {
               {product.description}
             </Typography>
 
-            <Typography variant='h6' sx={{ mt: 2, mb: 1, fontSize: '1rem' }}>
-              Product Details
-            </Typography>
+            {product.details1 || product.details2 || product.details3 ? (
+              <Typography variant='h6' sx={{ mt: 2, mb: 1, fontSize: '1rem' }}>
+                Product Details
+              </Typography>
+            ) : null}
             <Box>
-              <ul style={{marginLeft: '1.5rem'}}>
+              <ul style={{ marginLeft: '1.5rem' }}>
+                {product.details1 && (
                   <li>
-                    <Typography
-                      component='span'
-                      variant='body2'
-                    >
+                    <Typography component='span' variant='body2'>
                       {product.details1}
                     </Typography>
                   </li>
+                )}
+                {product.details2 && (
                   <li>
-                    <Typography
-                      component='span'
-                      variant='body2'
-                    >
+                    <Typography component='span' variant='body2'>
                       {product.details2}
                     </Typography>
-                    </li>
-                    <li>
-                    <Typography
-                      component='span'
-                      variant='body2'
-                    >
+                  </li>
+                )}
+                {product.details3 && (
+                  <li>
+                    <Typography component='span' variant='body2'>
                       {product.details3}
                     </Typography>
-                    </li>
+                  </li>
+                )}
               </ul>
             </Box>
+
             <Typography sx={flexAlignStyle} variant='body1'>
               {(product.inStock as unknown) == 'false' ? (
                 <>
@@ -166,7 +166,7 @@ const imgStyle: SxProps<Theme> = theme => ({
   maxWidth: '100%',
   p: 4,
   [theme.breakpoints.down('md')]: {
-      maxWidth: '70%',
+    maxWidth: '70%',
   },
 })
 
