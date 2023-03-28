@@ -78,30 +78,36 @@ export default function ProductCard({ dataProduct }: Props) {
                 {dataProduct.id}
               </span>
             </Typography>
-            <Typography sx={{maxWidth: '200px', overflowWrap: 'break-word'}} gutterBottom variant='h5' component='div' data-cy='product-title'>
+            <Typography
+              sx={{ maxWidth: '200px', overflowWrap: 'break-word' }}
+              gutterBottom
+              variant='h5'
+              component='div'
+              data-cy='product-title'
+            >
               {dataProduct.title}
             </Typography>
           </CardContent>
         </StyledCardActionArea>
       </Link>
-      <Box sx={{marginTop: 'auto'}}> 
-      <Box sx={{ display: 'flex', alignItems: 'center', flexDirection: 'column' }}>
-        <NavLink to={`/admin/product/${dataProduct.id}`}>
-          <Button data-cy='admin-edit-product' sx={{ mb: 2, width: '13rem' }} variant='contained'>
-            <Typography variant='body2'>Edit Product</Typography>
-          </Button>
-        </NavLink>
+      <Box sx={{ marginTop: 'auto' }}>
+        <Box sx={{ display: 'flex', alignItems: 'center', flexDirection: 'column' }}>
+          <NavLink to={`/admin/product/${dataProduct.id}`}>
+            <Button data-cy='admin-edit-product' sx={editBtnStyle} variant='contained'>
+              <Typography variant='body2'>Edit Product</Typography>
+            </Button>
+          </NavLink>
 
-        <Button
-          data-cy='admin-remove-product'
-          sx={{ mb: 2, width: '13rem' }}
-          variant='contained'
-          color='error'
-          onClick={handleDelete}
-        >
-          <Typography variant='body2'>Delete Product</Typography>
-        </Button>
-      </Box>
+          <Button
+            data-cy='admin-remove-product'
+            sx={deleteBtnSX}
+            variant='contained'
+            color='error'
+            onClick={handleDelete}
+          >
+            <Typography variant='body2'>Delete Product</Typography>
+          </Button>
+        </Box>
       </Box>
       <AdminDeleteDialog
         open={openDeleteDialog}
@@ -161,4 +167,21 @@ const priceTagStyle: SxProps<Theme> = theme => ({
   position: 'absolute',
   right: '1.5rem',
   top: '8.5rem',
+})
+
+const editBtnStyle: SxProps<Theme> = theme => ({
+  mb: 2,
+  width: '13rem',
+  '&:hover': {
+    color: 'white',
+  },
+})
+
+const deleteBtnSX: SxProps<Theme> = theme => ({
+  mb: 2,
+  width: '13rem',
+  '&:hover': {
+    backgroundColor: 'white',
+    color: 'red',
+  },
 })
