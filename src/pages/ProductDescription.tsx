@@ -42,7 +42,6 @@ function ProductDescription() {
     return (
       <Container>
         <Paper elevation={3} sx={mainBoxStyle}>
-          <NavLink to='/'>
             <Box>
               {page === 'product' ? (
                 <NavLink to='/'>
@@ -60,7 +59,6 @@ function ProductDescription() {
                 </NavLink>
               )}
             </Box>
-          </NavLink>
           <Box sx={contentStyle}>
             <Box sx={imgWrapperStyle}>
               <Skeleton
@@ -132,7 +130,7 @@ function ProductDescription() {
                 </ul>
               </Box>
   
-              <Typography sx={{ display: 'flex', margin: '1.4rem 0rem 1rem 0rem' }} variant='body1'>
+              <Box sx={{ display: 'flex', margin: '1.4rem 0rem 1rem 0rem' }}>
                 {(product.inStock as unknown) == 'false' ? (
                   <>
                     <Icon.HighlightOff sx={{ mr: 1, mt: 0.15, color: 'red' }} />
@@ -154,7 +152,7 @@ function ProductDescription() {
                     </Box>
                   </>
                 )}
-              </Typography>
+                </Box>
               <ProductBtnSection product={product} />
             </Box>
           </Box>
