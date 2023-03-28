@@ -5,17 +5,17 @@ import AdminCardProduct from '../components/AdminCardProduct'
 import { useProducts } from '../contexts/ProductsContext'
 
 function Admin() {
-  const [open, setOpen] = useState(false)
-  const { consoleLog, databaseProducts, setDatabaseProducts } = useProducts()
+  // const [setOpen] = useState(false)
+  const {databaseProducts} = useProducts()
 
   ////Behövs den, då vi har en egen knapp för att lägga till produkter?
-  const handleClickOpen = () => {
-    setOpen(true)
-  }
+  // const handleClickOpen = () => {
+  //   setOpen(true)
+  // }
 
-  const handleClose = () => {
-    setOpen(false)
-  }
+  // const handleClose = () => {
+  //   setOpen(false)
+  // }
 
   return (
     <>
@@ -29,7 +29,7 @@ function Admin() {
               <Button
                 data-cy='admin-add-product'
                 sx={{ height: '40px' }}
-                onClick={handleClickOpen}
+                // onClick={handleClickOpen}
                 variant='contained'
               >
                 <Typography variant={'body2'}>Add New Product</Typography>
