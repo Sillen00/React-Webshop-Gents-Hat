@@ -179,16 +179,25 @@ function AdminProductForm({ onSave, product }: Props) {
                 inputProps={{ 'data-cy': 'product-price', style: { fontFamily: 'Lora' } }}
                 FormHelperTextProps={{ 'data-cy': 'product-price-error' } as any}
               />
-              <TextField
-                fullWidth
-                id='size'
-                label='Product size'
-                value={formik.values.size}
-                onChange={formik.handleChange}
-                error={formik.touched.size && Boolean(formik.errors.size)}
-                helperText={formik.touched.size && formik.errors.size}
-                margin='normal'
-              />
+              <Box sx={{ mt: 1, ml: 1.7, mb: '1rem' }}>
+                <FormControl>
+                  <FormLabel id='demo-radio-buttons-group-label'>Size</FormLabel>
+                  <RadioGroup
+                    id='size'
+                    row
+                    aria-labelledby='demo-radio-buttons-group-label'
+                    name='inStock'
+                    value={formik.values.size}
+                    onChange={formik.handleChange}
+                  >
+                    <FormControlLabel name='size' value={'XS'} control={<Radio />} label='XS' />
+                    <FormControlLabel name='size' value={'S'} control={<Radio />} label='S' />
+                    <FormControlLabel name='size' value={'M'} control={<Radio />} label='M' />
+                    <FormControlLabel name='size' value={'L'} control={<Radio />} label='L' />
+                    <FormControlLabel name='size' value={'XL'} control={<Radio />} label='XL' />
+                  </RadioGroup>
+                </FormControl>
+              </Box>
               <TextField
                 fullWidth
                 id='color'
