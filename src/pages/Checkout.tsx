@@ -46,7 +46,6 @@ function Checkout() {
           Cart
         </Typography>
         <Box sx={buttonContainer}>
-          
           {/* CONTINUE SHOPPING BUTTON */}
 
           <Link to='../'>
@@ -58,11 +57,7 @@ function Checkout() {
           {/* CHECKOUT BUTTON */}
 
           {cartItems.length > 0 && (
-            <Button
-              variant='contained'
-              sx={buttonSx}
-              onClick={scrollToForm}
-            >
+            <Button variant='contained' sx={buttonSx} onClick={scrollToForm}>
               Checkout <KeyboardDoubleArrowDownIcon />
             </Button>
           )}
@@ -111,7 +106,6 @@ const buttonSx: SxProps<Theme> = theme => ({
   minHeight: '3rem',
   color: 'common.black',
   '&:hover': {
-    background: 'green',
     color: 'white',
   },
   [theme.breakpoints.down('sm')]: {

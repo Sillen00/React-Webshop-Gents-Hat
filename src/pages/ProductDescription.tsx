@@ -21,7 +21,7 @@ function ProductDescription() {
   const product: Product | undefined = databaseProducts.find(p => p.id === id)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(false)
-  
+
   const handleLoad = () => {
     setLoading(false)
     setError(false)
@@ -32,135 +32,136 @@ function ProductDescription() {
     setError(true)
   }
 
-if (!product) {
-  return (
-    <Typography variant='h3' sx={{ ml: 3, marginBottom: '10rem' }}>
-    Product not found
-  </Typography>
-  );
-} else {
-  return (
-    <Container>
-      <Paper elevation={3} sx={mainBoxStyle}>
-        <NavLink to='/'>
-          <Box>
-            {page === 'product' ? (
-              <NavLink to='/'>
-                <Typography sx={flexAlignStyle} variant='h6'>
-                  <Icon.ArrowBack />
-                  Back To Products
-                </Typography>
-              </NavLink>
-            ) : (
-              <NavLink to='/admin'>
-                <Typography sx={flexAlignStyle} variant='h6'>
-                  <Icon.ArrowBack />
-                  Back To Admin
-                </Typography>
-              </NavLink>
-            )}
-          </Box>
-        </NavLink>
-        <Box sx={contentStyle}>
-          <Box sx={imgWrapperStyle}>
-            <Skeleton
-              variant='rounded'
-              animation='wave'
-              sx={loading || error ? skeletonSx : { display: 'none' }}
-            />
-            <CardMedia
-              sx={loading || error ? { display: 'none' } : {}}
-              component='img'
-              image={product.image}
-              alt={product.title}
-              onLoad={handleLoad}
-              onError={handleError}
-            />
-          </Box>
-          <Box sx={textAndBtnWrapperStyle}>
-            <Typography
-              sx={{ overflowWrap: 'break-word', maxWidth: '30rem' }}
-              variant='h4'
-              data-cy='product-title'
-            >
-              {product.title}
-            </Typography>
-            <Typography variant='h6' data-cy='product-price'>
-              ${product.price}
-            </Typography>
-            <Typography variant='h6' sx={{ mt: 2, mb: 1, fontSize: '1rem' }}>
-              Product Description
-            </Typography>
-
-            <Typography
-              sx={{ marginBottom: '0.5rem' }}
-              variant='body2'
-              data-cy='product-description'
-            >
-              {product.description}
-            </Typography>
-
-            {product.details1 || product.details2 || product.details3 ? (
-              <Typography variant='h6' sx={{ mt: 2, mb: 1, fontSize: '1rem' }}>
-                Product Details
-              </Typography>
-            ) : null}
+  if (!product) {
+    return (
+      <Typography variant='h3' sx={{ ml: 3, marginBottom: '10rem' }}>
+        Product not found
+      </Typography>
+    )
+  } else {
+    return (
+      <Container>
+        <Paper elevation={3} sx={mainBoxStyle}>
+          <NavLink to='/'>
             <Box>
-              <ul style={{ marginLeft: '1.5rem' }}>
-                {product.details1 && (
-                  <li>
-                    <Typography component='span' variant='body2'>
-                      {product.details1}
-                    </Typography>
-                  </li>
-                )}
-                {product.details2 && (
-                  <li>
-                    <Typography component='span' variant='body2'>
-                      {product.details2}
-                    </Typography>
-                  </li>
-                )}
-                {product.details3 && (
-                  <li>
-                    <Typography component='span' variant='body2'>
-                      {product.details3}
-                    </Typography>
-                  </li>
-                )}
-              </ul>
-            </Box>
-
-            <Typography sx={{ display: 'flex', margin: '1.4rem 0rem 1rem 0rem' }} variant='body1'>
-              {(product.inStock as unknown) == 'false' ? (
-                <>
-                  <Icon.HighlightOff sx={{ mr: 1, mt: 0.15, color: 'red' }} />
-                  <Box>
-                    <Typography variant='body1'>Out of stock — awaiting next shipment</Typography>
-                    <Typography sx={{ fontSize: '0.7rem' }}>
-                      Back in store within 10 working days
-                    </Typography>
-                  </Box>
-                </>
+              {page === 'product' ? (
+                <NavLink to='/'>
+                  <Typography sx={flexAlignStyle} variant='h6'>
+                    <Icon.ArrowBack />
+                    Back To Products
+                  </Typography>
+                </NavLink>
               ) : (
-                <>
-                  <Icon.CheckCircleOutline sx={{ mr: 1, mt: 0.15, color: 'green' }} />
-                  <Box>
-                    <Typography variant='body1'>In stock</Typography>
-                    <Typography sx={{ fontSize: '0.7rem' }}>
-                      Expected delivery: 2—4 working days
-                    </Typography>
-                  </Box>
-                </>
+                <NavLink to='/admin'>
+                  <Typography sx={flexAlignStyle} variant='h6'>
+                    <Icon.ArrowBack />
+                    Back To Admin
+                  </Typography>
+                </NavLink>
               )}
-            </Typography>
-            <ProductBtnSection product={product} />
+            </Box>
+          </NavLink>
+          <Box sx={contentStyle}>
+            <Box sx={imgWrapperStyle}>
+              <Skeleton
+                variant='rounded'
+                animation='wave'
+                sx={loading || error ? skeletonSx : { display: 'none' }}
+              />
+              <CardMedia
+                sx={loading || error ? { display: 'none' } : {}}
+                component='img'
+                image={product.image}
+                alt={product.title}
+                onLoad={handleLoad}
+                onError={handleError}
+              />
+            </Box>
+            <Box sx={textAndBtnWrapperStyle}>
+              <Typography
+                sx={{ overflowWrap: 'break-word', maxWidth: '30rem' }}
+                variant='h4'
+                data-cy='product-title'
+              >
+                {product.title}
+              </Typography>
+              <Typography variant='h6' data-cy='product-price'>
+                ${product.price}
+              </Typography>
+              <Typography variant='h6' sx={{ mt: 2, mb: 1, fontSize: '1rem' }}>
+                Product Description
+              </Typography>
+
+              <Typography
+                sx={{ marginBottom: '0.5rem' }}
+                variant='body2'
+                data-cy='product-description'
+              >
+                {product.description}
+              </Typography>
+
+              {product.details1 || product.details2 || product.details3 ? (
+                <Typography variant='h6' sx={{ mt: 2, mb: 1, fontSize: '1rem' }}>
+                  Product Details
+                </Typography>
+              ) : null}
+              <Box>
+                <ul style={{ marginLeft: '1.5rem' }}>
+                  {product.details1 && (
+                    <li>
+                      <Typography component='span' variant='body2'>
+                        {product.details1}
+                      </Typography>
+                    </li>
+                  )}
+                  {product.details2 && (
+                    <li>
+                      <Typography component='span' variant='body2'>
+                        {product.details2}
+                      </Typography>
+                    </li>
+                  )}
+                  {product.details3 && (
+                    <li>
+                      <Typography component='span' variant='body2'>
+                        {product.details3}
+                      </Typography>
+                    </li>
+                  )}
+                </ul>
+              </Box>
+
+              <Typography sx={{ display: 'flex', margin: '1.4rem 0rem 1rem 0rem' }} variant='body1'>
+                {(product.inStock as unknown) == 'false' ? (
+                  <>
+                    <Icon.HighlightOff sx={{ mr: 1, mt: 0.15 }} color='error' />
+                    <Box>
+                      <Typography variant='body1'>Out of stock — awaiting next shipment</Typography>
+                      <Typography sx={{ fontSize: '0.7rem' }}>
+                        Back in store within 10 working days
+                      </Typography>
+                    </Box>
+                  </>
+                ) : (
+                  <>
+                    <Icon.CheckCircleOutline sx={{ mr: 1, mt: 0.15 }} color='success' />
+                    <Box>
+                      <Typography variant='body1'>In stock</Typography>
+                      <Typography sx={{ fontSize: '0.7rem' }}>
+                        Expected delivery: 2—4 working days
+                      </Typography>
+                    </Box>
+                  </>
+                )}
+              </Typography>
+              <ProductBtnSection product={product} />
+            </Box>
           </Box>
-        </Box>
-      </Paper>
-    </Container>
-  )
-}}
+        </Paper>
+      </Container>
+    )
+  }
+}
 
 const mainBoxStyle: SxProps<Theme> = theme => ({
   background: 'white',

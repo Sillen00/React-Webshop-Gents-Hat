@@ -72,7 +72,7 @@ function Footer() {
           <Typography align='center' gutterBottom={true} variant='h4'>
             Join our newsletter
           </Typography>
-          <form onSubmit={formik.handleSubmit} onReset={formik.handleReset} >
+          <form onSubmit={formik.handleSubmit} onReset={formik.handleReset}>
             <Box sx={inputContainer}>
               <TextField
                 sx={inputField}
@@ -239,7 +239,6 @@ const joinButton: SxProps<Theme> = theme => ({
   fontWeight: 'bold',
   fontSize: '1.3rem',
   '&:hover': {
-    background: 'green',
     color: 'white',
   },
   [theme.breakpoints.down('sm')]: {

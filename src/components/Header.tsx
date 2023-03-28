@@ -27,7 +27,8 @@ function Header() {
             color='success'
             data-cy='cart-items-count-badge'
           >
-            <Box sx={badgeBoxStylesSX}>
+            <Box sx={badgeBoxStylesSX} data-cy='cart-link'>
+              <Icon.ShoppingBagOutlined sx={iconStylesSX} />
               <img
                 src='../../public/images/gold-musch.png'
                 alt='Mustasch'
@@ -37,7 +38,6 @@ function Header() {
                   visibility: totalProductsInCart > 0 ? 'visible' : 'hidden',
                 }}
               />
-              <Icon.ShoppingBagOutlined sx={iconStylesSX} data-cy='cart-link' />
             </Box>
           </Badge>
         </NavLink>
