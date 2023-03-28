@@ -179,7 +179,7 @@ function AdminProductForm({ onSave, product }: Props) {
                 inputProps={{ 'data-cy': 'product-price', style: { fontFamily: 'Lora' } }}
                 FormHelperTextProps={{ 'data-cy': 'product-price-error' } as any}
               />
-              <Box sx={{ mt: 1, ml: 1.7, mb: '1rem' }}>
+              <Box sx={{ mt: 2, ml: 1.7, mb: '0.6rem' }}>
                 <FormControl>
                   <FormLabel id='demo-radio-buttons-group-label'>Size</FormLabel>
                   <RadioGroup
