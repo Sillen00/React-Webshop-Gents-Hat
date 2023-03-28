@@ -6,7 +6,7 @@ import {
   createBrowserRouter,
   createRoutesFromElements,
   Route,
-  RouterProvider
+  RouterProvider,
 } from 'react-router-dom'
 import App from './App'
 import { CartProvider } from './contexts/CartContext'
@@ -44,6 +44,7 @@ const theme = createTheme({
   palette: {
     primary: {
       main: '#DAB90C',
+      dark: '#217230',
     },
     secondary: {
       main: '#DCDCDC',
