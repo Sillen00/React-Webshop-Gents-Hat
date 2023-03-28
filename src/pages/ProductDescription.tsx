@@ -86,7 +86,8 @@ if (!product) {
               {product.title}
             </Typography>
             <Typography variant='h6' data-cy='product-price'>
-              ${product.price}
+            ${product.price} &nbsp; {'|'} &nbsp; {product.color} &nbsp; {'|'} &nbsp;{' '}
+              {product.size}
             </Typography>
             <Typography variant='h6' sx={{ mt: 2, mb: 1, fontSize: '1rem' }}>
               Product Description
