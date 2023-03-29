@@ -5,17 +5,16 @@ import AdminCardProduct from '../components/AdminCardProduct'
 import { useProducts } from '../contexts/ProductsContext'
 
 function Admin() {
-  // const [setOpen] = useState(false)
+  const [open, setOpen] = useState(false)
   const {databaseProducts} = useProducts()
 
-  ////Behövs den, då vi har en egen knapp för att lägga till produkter?
-  // const handleClickOpen = () => {
-  //   setOpen(true)
-  // }
+  const handleClickOpen = () => {
+     setOpen(true)
+  }
 
-  // const handleClose = () => {
-  //   setOpen(false)
-  // }
+  const handleClose = () => {
+    setOpen(false)
+  }
 
   return (
     <>
