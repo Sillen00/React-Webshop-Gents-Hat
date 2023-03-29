@@ -12,7 +12,7 @@ import AdminDeleteDialog from './AdminDeleteDialog'
 interface Props {
   dataProduct: Product
 }
-
+// Function for the cards to delete and edit inc. skeleton.
 export default function ProductCard({ dataProduct }: Props) {
   const [openDeleteDialog, setOpenDeleteDialog] = React.useState(false)
   const { databaseProducts, setDatabaseProducts } = useProducts()

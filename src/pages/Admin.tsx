@@ -6,7 +6,7 @@ import { useProducts } from '../contexts/ProductsContext'
 
 function Admin() {
   const [open, setOpen] = useState(false)
-  const { consoleLog, databaseProducts, setDatabaseProducts } = useProducts()
+  const { databaseProducts } = useProducts()
 
   const handleClickOpen = () => {
     setOpen(true)
@@ -57,17 +57,7 @@ function Admin() {
   )
 }
 
-const ModalBoxStyleSx: SxProps<Theme> = theme => ({
-  position: 'absolute' as 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  width: '20em',
-  bgcolor: 'background.paper',
-  border: '2px solid #000',
-  boxShadow: 24,
-  p: 4,
-})
+
 
 const headerSx: SxProps<Theme> = theme => ({
   display: 'flex',

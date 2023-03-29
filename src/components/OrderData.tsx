@@ -22,15 +22,15 @@ interface Props {
 }
 
 export default function OrderData(props: Props) {
+  // Activates skeleton while image is loading or does not load
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(false)
-
-  // Activates skeleton while image is loading or does not load
+  
   const handleLoad = () => {
     setLoading(false)
     setError(false)
   }
-
+  
   const handleError = () => {
     setLoading(false)
     setError(true)

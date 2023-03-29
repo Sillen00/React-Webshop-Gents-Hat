@@ -1,5 +1,5 @@
 import { Box, SxProps, Theme, Typography } from '@mui/material'
-
+// Shows empty cart
 function CheckoutEmpty() {
   return (
     <Box
