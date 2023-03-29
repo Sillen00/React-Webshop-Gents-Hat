@@ -6,10 +6,10 @@ import { useProducts } from '../contexts/ProductsContext'
 
 function Admin() {
   const [open, setOpen] = useState(false)
-  const { databaseProducts } = useProducts()
+  const {databaseProducts} = useProducts()
 
   const handleClickOpen = () => {
-    setOpen(true)
+     setOpen(true)
   }
 
   const handleClose = () => {
@@ -57,8 +57,7 @@ function Admin() {
   )
 }
 
-
-
+// Styling
 const headerSx: SxProps<Theme> = theme => ({
   display: 'flex',
   justifyContent: 'space-between',

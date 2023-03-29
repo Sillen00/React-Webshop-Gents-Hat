@@ -19,7 +19,7 @@ function Home() {
     setError(true)
   }
 
-
+// Gridstyle on the main page
   return (
     <Box sx={homeContainerSx}>
       <Box sx={logoStyleSx}>

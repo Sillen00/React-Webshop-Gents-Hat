@@ -15,6 +15,7 @@ import { Product } from '../../data'
 import ProductBtnSection from '../components/ProductBtnSection'
 import { useProducts } from '../contexts/ProductsContext'
 
+// get the product id from the url and find the product to display
 function ProductDescription() {
   const { page, id } = useParams<{ page: string; id: string }>()
   const { databaseProducts } = useProducts()
@@ -40,6 +41,7 @@ function ProductDescription() {
     );
   } else {
     return (
+      // Show all the product details, and if statement for backbutton to admin or home from product.
       <Container>
         <Paper elevation={3} sx={mainBoxStyle}>
             <Box>
@@ -90,7 +92,6 @@ function ProductDescription() {
               <Typography variant='h6' sx={{ mt: 2, mb: 1, fontSize: '1rem' }}>
                 Product Description
               </Typography>
-  
               <Typography
                 sx={{ marginBottom: '0.5rem' }}
                 variant='body2'
@@ -98,7 +99,6 @@ function ProductDescription() {
               >
                 {product.description}
               </Typography>
-  
               {product.details1 || product.details2 || product.details3 ? (
                 <Typography variant='h6' sx={{ mt: 2, mb: 1, fontSize: '1rem' }}>
                   Product Details
@@ -161,6 +161,7 @@ function ProductDescription() {
     )
   }}
 
+// Styles
 const mainBoxStyle: SxProps<Theme> = theme => ({
   background: 'white',
   margin: '0 1rem',

@@ -32,7 +32,6 @@ function OrderConfirmation() {
 
   const [newOrderItems, setNewOrderItems] = useState(orderItems)
   const [newTotalPrice, setNewTotalPrice] = useState(totalPrice)
-  // const [newFormValues, setNewFormValues] = useState(formValues)
 
   useEffect(() => {
     setNewOrderItems(orderItems)

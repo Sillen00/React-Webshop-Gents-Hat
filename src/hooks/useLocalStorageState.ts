@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react'
 
-// Laddar in data från Local Storage om nyckeln finns, annars skapas nyckeln med initialData
-
+// Loads data from Local Storage if key exists, otherwise creates key with initialData
 export function useLocalStorageState<State>(initialState: State, key: string) {
 
   const [state, setState] = useState<State>(() => {
