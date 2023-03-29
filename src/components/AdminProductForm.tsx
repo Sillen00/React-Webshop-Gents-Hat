@@ -1,9 +1,21 @@
-import { FormControl, FormControlLabel, FormLabel, Radio, RadioGroup } from '@mui/material'
-import { Box, Button, Container, Paper, SxProps, TextField, Theme, Typography } from '@mui/material'
+import {
+  Box,
+  Button,
+  Container,
+  FormControl,
+  FormControlLabel,
+  FormLabel,
+  Paper,
+  Radio,
+  RadioGroup,
+  SxProps,
+  TextField,
+  Theme,
+  Typography,
+} from '@mui/material'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
 import { generateId, Product } from '../../data'
-
 import { useProducts } from '../contexts/ProductsContext'
 
 /* ----------------------
@@ -31,7 +43,10 @@ const adminFormSchema = Yup.object().shape({
       'The name of the color you have given us it too short. Please give us a name of minimum 5 characters.'
     ),
   image: Yup.string()
-    .matches(/\.(png|jpg|jpeg)$/, 'The URL you have given us is not valid. Valid image formats are ".png", ".jpg", or "jpeg".')
+    .matches(
+      /\.(png|jpg|jpeg)$/,
+      'The URL you have given us is not valid. Valid image formats are ".png", ".jpg", or "jpeg".'
+    )
     .required('Please enter an image-URL for your product.'),
   description: Yup.string()
     .required('Please write a long product description.')
@@ -264,16 +279,26 @@ function AdminProductForm({ onSave, product }: Props) {
                     value={formik.values.inStock}
                     onChange={formik.handleChange}
                   >
-                    <FormControlLabel name='inStock' value={'true'} control={<Radio />} label='Yes' />
-                    <FormControlLabel name='inStock' value={'false'} control={<Radio />} label='No' />
+                    <FormControlLabel
+                      name='inStock'
+                      value={'true'}
+                      control={<Radio />}
+                      label='Yes'
+                    />
+                    <FormControlLabel
+                      name='inStock'
+                      value={'false'}
+                      control={<Radio />}
+                      label='No'
+                    />
                   </RadioGroup>
                 </FormControl>
               </Box>
               <Box sx={buttonContainer}>
-                <Button sx={buttonSx} color='primary' variant='contained' type='submit'>
+                <Button sx={editBtnSx} color='primary' variant='contained' type='submit'>
                   {product ? `Edit "${product.title}"` : 'Add product'}
                 </Button>
-                <Button sx={buttonSx} variant='contained' onClick={onSave} color='error'>
+                <Button sx={closeBtnSx} variant='contained' onClick={onSave} color='error'>
                   Close
                 </Button>
               </Box>
@@ -305,8 +330,22 @@ const buttonContainer: SxProps<Theme> = theme => ({
   },
 })
 
-const buttonSx: SxProps<Theme> = theme => ({
+const editBtnSx: SxProps<Theme> = theme => ({
   ml: 3,
+  '&:hover': {
+    color: 'white',
+  },
+  [theme.breakpoints.down('sm')]: {
+    ml: 0,
+    mb: 2,
+  },
+})
+const closeBtnSx: SxProps<Theme> = theme => ({
+  ml: 3,
+  '&:hover': {
+    backgroundColor: 'white',
+    color: 'red',
+  },
   [theme.breakpoints.down('sm')]: {
     ml: 0,
     mb: 2,

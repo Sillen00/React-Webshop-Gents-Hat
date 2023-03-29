@@ -286,7 +286,6 @@ const buttonStyle: SxProps<Theme> = theme => ({
   fontFamily: 'Lora',
   fontWeight: 900,
   '&:hover': {
-    background: 'green',
     color: 'white',
   },
 })

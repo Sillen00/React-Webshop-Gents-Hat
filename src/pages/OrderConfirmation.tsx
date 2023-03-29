@@ -2,13 +2,12 @@ import * as Icon from '@mui/icons-material'
 import { Box, Button, Paper, SxProps, Theme, Typography } from '@mui/material'
 import { Container } from '@mui/system'
 import { useContext, useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 import OrderData from '../components/OrderData'
 import { useCart } from '../contexts/CartContext'
 import { FormContext } from '../contexts/FormContext'
-import { Link } from 'react-router-dom'
 
 function OrderConfirmation() {
-
   /* ---------------------------
         PROPS AND STATES
   --------------------------- */
@@ -48,7 +47,6 @@ function OrderConfirmation() {
 
   return (
     <Container>
-
       {/* CONTENT CONTAINER */}
 
       <Paper
@@ -59,8 +57,7 @@ function OrderConfirmation() {
           paddingBottom: '2rem',
         }}
       >
-
-       {/* CONFIRMATION MESSAGE */}
+        {/* CONFIRMATION MESSAGE */}
 
         <Box sx={confirmStyleBoxSX}>
           <Typography variant='h6' sx={typographyStylesSX}>
@@ -71,9 +68,10 @@ function OrderConfirmation() {
             Thank you for your purchase!
           </Typography>
           <Typography variant='body1'>
-            A receipt for order <span>#{Math.floor(Math.random() * 100000) + 100000}</span> has been sent to your e-mail.
+            A receipt for order <span>#{Math.floor(Math.random() * 100000) + 100000}</span> has been
+            sent to your e-mail.
           </Typography>
-          <Typography variant='body1' sx={{mx: 2, textAlign: 'center'}}>
+          <Typography variant='body1' sx={{ mx: 2, textAlign: 'center' }}>
             Your order is expected to be delivered within 2—4 working days.
           </Typography>
           <Link to='../'>
@@ -83,7 +81,7 @@ function OrderConfirmation() {
           </Link>
         </Box>
 
-        {/* USER AND SHIPPING DETAILS */}   
+        {/* USER AND SHIPPING DETAILS */}
 
         <Box sx={shippingDetailsStyleSX}>
           <Box sx={{ marginRight: '4rem' }}>
@@ -178,6 +176,9 @@ const iconStylesSX: SxProps<Theme> = theme => ({
 const buttonStyleSX: SxProps<Theme> = theme => ({
   fontWeight: '600',
   mt: 4,
+  '&:hover': {
+    color: 'white',
+  },
   [theme.breakpoints.between('sm', 'md')]: {
     scale: '1.2',
   },

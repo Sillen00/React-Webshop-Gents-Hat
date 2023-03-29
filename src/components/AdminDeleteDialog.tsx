@@ -1,3 +1,5 @@
+import { Theme } from '@emotion/react'
+import { SxProps } from '@mui/material'
 import Button from '@mui/material/Button'
 import Dialog from '@mui/material/Dialog'
 import DialogActions from '@mui/material/DialogActions'
@@ -36,10 +38,11 @@ export default function AdminDeleteDialog(props: Props) {
         </DialogContentText>
       </DialogContent>
       <DialogActions>
-        <Button variant='contained' onClick={handleClose}>
+        <Button sx={cancelBtnSX} variant='contained' onClick={handleClose}>
           Cancel
         </Button>
         <Button
+          sx={deleteBtnSX}
           variant='contained'
           color='error'
           onClick={handleConfirmDelete}
@@ -52,3 +55,16 @@ export default function AdminDeleteDialog(props: Props) {
     </Dialog>
   )
 }
+
+const cancelBtnSX: SxProps<Theme> = theme => ({
+  '&:hover': {
+    color: 'white',
+  },
+})
+
+const deleteBtnSX: SxProps<Theme> = theme => ({
+  '&:hover': {
+    backgroundColor: 'white',
+    color: 'red',
+  },
+})

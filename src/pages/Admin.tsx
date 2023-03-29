@@ -28,8 +28,8 @@ function Admin() {
             <Link to='/admin/product/new-product'>
               <Button
                 data-cy='admin-add-product'
-                sx={{ height: '40px' }}
-                // onClick={handleClickOpen}
+                sx={addProductBtnSx}
+                onClick={handleClickOpen}
                 variant='contained'
               >
                 <Typography variant={'body2'}>Add New Product</Typography>
@@ -58,7 +58,6 @@ function Admin() {
   )
 }
 
-
 // Styling
 const headerSx: SxProps<Theme> = theme => ({
   display: 'flex',
@@ -80,6 +79,12 @@ const headerSx: SxProps<Theme> = theme => ({
   },
 })
 
+const addProductBtnSx: SxProps<Theme> = theme => ({
+  height: '40px',
+  '&:hover': {
+    color: 'white',
+  },
+})
 const AdminCardListSx: SxProps<Theme> = theme => ({
   display: 'flex',
 })
