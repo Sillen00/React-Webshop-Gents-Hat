@@ -51,14 +51,6 @@ function ProductBtnSection({ product }: Props) {
               textAlign: 'center',
             },
             min: 1,
-            '-moz-appearance': 'textfield',
-            '&::-webkit-outer-spin-button, &::-webkit-inner-spin-button': {
-              '-webkit-appearance': 'inner-spin-button',
-            },
-            '&::-moz-inner-spin-button, &::-moz-outer-spin-button': {
-              '-moz-appearance': 'inner-spin-button',
-              'appearance': 'auto',
-            },
           }}
         />
         <Box sx={{ flexGrow: 1 }}>
@@ -90,6 +82,14 @@ const quantityBoxStyle: SxProps<Theme> = theme => ({
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',
+  '-moz-appearance': 'textfield',
+  '&::-webkit-outer-spin-button, &::-webkit-inner-spin-button': {
+    '-webkit-appearance': 'inner-spin-button',
+  },
+  '&::-moz-inner-spin-button, &::-moz-outer-spin-button': {
+    '-moz-appearance': 'inner-spin-button',
+    'appearance': 'auto',
+  },
 })
 
 const checkOutBtnStyle: SxProps<Theme> = theme => ({

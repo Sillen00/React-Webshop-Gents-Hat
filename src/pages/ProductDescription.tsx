@@ -36,15 +36,14 @@ function ProductDescription() {
   if (!product) {
     return (
       <Typography variant='h3' sx={{ ml: 3, marginBottom: '10rem' }}>
-        Product not found
-      </Typography>
-    )
+      Product not found
+    </Typography>
+    );
   } else {
     return (
       // Show all the product details, and if statement for backbutton to admin or home from product.
       <Container>
         <Paper elevation={3} sx={mainBoxStyle}>
-          <NavLink to='/'>
             <Box>
               {page === 'product' ? (
                 <NavLink to='/'>
@@ -62,7 +61,6 @@ function ProductDescription() {
                 </NavLink>
               )}
             </Box>
-          </NavLink>
           <Box sx={contentStyle}>
             <Box sx={imgWrapperStyle}>
               <Skeleton
@@ -88,7 +86,8 @@ function ProductDescription() {
                 {product.title}
               </Typography>
               <Typography variant='h6' data-cy='product-price'>
-                ${product.price}
+              ${product.price} &nbsp; {'|'} &nbsp; {product.color} &nbsp; {'|'} &nbsp;{' '}
+                {product.size}
               </Typography>
               <Typography variant='h6' sx={{ mt: 2, mb: 1, fontSize: '1rem' }}>
                 Product Description
@@ -130,10 +129,11 @@ function ProductDescription() {
                   )}
                 </ul>
               </Box>
-              <Typography sx={{ display: 'flex', margin: '1.4rem 0rem 1rem 0rem' }} variant='body1'>
+  
+              <Box sx={{ display: 'flex', margin: '1.4rem 0rem 1rem 0rem' }}>
                 {(product.inStock as unknown) == 'false' ? (
                   <>
-                    <Icon.HighlightOff sx={{ mr: 1, mt: 0.15 }} color='error' />
+                    <Icon.HighlightOff sx={{ mr: 1, mt: 0.15, color: 'red' }} />
                     <Box>
                       <Typography variant='body1'>Out of stock — awaiting next shipment</Typography>
                       <Typography sx={{ fontSize: '0.7rem' }}>
@@ -143,7 +143,7 @@ function ProductDescription() {
                   </>
                 ) : (
                   <>
-                    <Icon.CheckCircleOutline sx={{ mr: 1, mt: 0.15 }} color='success' />
+                    <Icon.CheckCircleOutline sx={{ mr: 1, mt: 0.15, color: 'green' }} />
                     <Box>
                       <Typography variant='body1'>In stock</Typography>
                       <Typography sx={{ fontSize: '0.7rem' }}>
@@ -152,15 +152,14 @@ function ProductDescription() {
                     </Box>
                   </>
                 )}
-              </Typography>
+                </Box>
               <ProductBtnSection product={product} />
             </Box>
           </Box>
         </Paper>
       </Container>
     )
-  }
-}
+  }}
 
 // Styles
 const mainBoxStyle: SxProps<Theme> = theme => ({

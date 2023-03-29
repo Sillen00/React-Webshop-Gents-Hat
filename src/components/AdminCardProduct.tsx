@@ -121,6 +121,8 @@ export default function ProductCard({ dataProduct }: Props) {
 
 const imageStyle: SxProps<Theme> = theme => ({
   objectFit: 'contain',
+  pt: 2,
+  pb: 2,
 })
 
 const cardStyle: SxProps<Theme> = theme => ({
