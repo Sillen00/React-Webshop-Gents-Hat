@@ -2,7 +2,6 @@ import { useNavigate, useParams } from 'react-router-dom'
 import AdminProductForm from '../components/AdminProductForm'
 import { useProducts } from '../contexts/ProductsContext'
 
-
 // Makes sure correct product is given the form when editing a product
 function AdminUpdateDatabase() {
   const navigate = useNavigate()
@@ -14,9 +13,7 @@ function AdminUpdateDatabase() {
     navigate('/admin')
   }
 
-  return (
-        <AdminProductForm product={product} onSave={handleSave} />
-  )
+  return <AdminProductForm product={product} onSave={handleSave} />
 }
 
 export default AdminUpdateDatabase

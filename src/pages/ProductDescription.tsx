@@ -36,31 +36,31 @@ function ProductDescription() {
   if (!product) {
     return (
       <Typography variant='h3' sx={{ ml: 3, marginBottom: '10rem' }}>
-      Product not found
-    </Typography>
-    );
+        Product not found
+      </Typography>
+    )
   } else {
     return (
       // Show all the product details, and if statement for backbutton to admin or home from product.
       <Container>
         <Paper elevation={3} sx={mainBoxStyle}>
-            <Box>
-              {page === 'product' ? (
-                <NavLink to='/'>
-                  <Typography sx={flexAlignStyle} variant='h6'>
-                    <Icon.ArrowBack />
-                    Back To Products
-                  </Typography>
-                </NavLink>
-              ) : (
-                <NavLink to='/admin'>
-                  <Typography sx={flexAlignStyle} variant='h6'>
-                    <Icon.ArrowBack />
-                    Back To Admin
-                  </Typography>
-                </NavLink>
-              )}
-            </Box>
+          <Box>
+            {page === 'product' ? (
+              <NavLink to='/'>
+                <Typography sx={flexAlignStyle} variant='h6'>
+                  <Icon.ArrowBack />
+                  Back To Products
+                </Typography>
+              </NavLink>
+            ) : (
+              <NavLink to='/admin'>
+                <Typography sx={flexAlignStyle} variant='h6'>
+                  <Icon.ArrowBack />
+                  Back To Admin
+                </Typography>
+              </NavLink>
+            )}
+          </Box>
           <Box sx={contentStyle}>
             <Box sx={imgWrapperStyle}>
               <Skeleton
@@ -86,7 +86,7 @@ function ProductDescription() {
                 {product.title}
               </Typography>
               <Typography variant='h6' data-cy='product-price'>
-              ${product.price} &nbsp; {'|'} &nbsp; {product.color} &nbsp; {'|'} &nbsp;{' '}
+                ${product.price} &nbsp; {'|'} &nbsp; {product.color} &nbsp; {'|'} &nbsp;{' '}
                 {product.size}
               </Typography>
               <Typography variant='h6' sx={{ mt: 2, mb: 1, fontSize: '1rem' }}>
@@ -129,7 +129,7 @@ function ProductDescription() {
                   )}
                 </ul>
               </Box>
-  
+
               <Box sx={{ display: 'flex', margin: '1.4rem 0rem 1rem 0rem' }}>
                 {(product.inStock as unknown) == 'false' ? (
                   <>
@@ -152,16 +152,20 @@ function ProductDescription() {
                     </Box>
                   </>
                 )}
-                </Box>
+              </Box>
               <ProductBtnSection product={product} />
             </Box>
           </Box>
         </Paper>
       </Container>
     )
-  }}
+  }
+}
 
-// Styles
+/* ----------------------
+       CSS STYLING
+---------------------- */
+
 const mainBoxStyle: SxProps<Theme> = theme => ({
   background: 'white',
   margin: '0 1rem',

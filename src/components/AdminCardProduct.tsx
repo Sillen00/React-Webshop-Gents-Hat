@@ -119,6 +119,10 @@ export default function ProductCard({ dataProduct }: Props) {
   )
 }
 
+/* ----------------------
+       CSS STYLING
+---------------------- */
+
 const imageStyle: SxProps<Theme> = theme => ({
   objectFit: 'contain',
   pt: 2,

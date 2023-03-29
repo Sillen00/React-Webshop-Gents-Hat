@@ -72,6 +72,10 @@ function ProductBtnSection({ product }: Props) {
   )
 }
 
+/* ----------------------
+       CSS STYLING
+---------------------- */
+
 const quantityBoxStyle: SxProps<Theme> = theme => ({
   width: '3.5rem',
   height: '2.3rem',
@@ -88,7 +92,7 @@ const quantityBoxStyle: SxProps<Theme> = theme => ({
   },
   '&::-moz-inner-spin-button, &::-moz-outer-spin-button': {
     '-moz-appearance': 'inner-spin-button',
-    'appearance': 'auto',
+    appearance: 'auto',
   },
 })
 

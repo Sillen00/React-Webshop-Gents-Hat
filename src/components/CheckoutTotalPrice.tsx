@@ -22,6 +22,10 @@ function CheckoutTotalPrice({ totalPrice }: Props) {
   )
 }
 
+/* ----------------------
+       CSS STYLING
+---------------------- */
+
 const totalPriceTextStyleSx: SxProps<Theme> = theme => ({
   fontWeight: '800',
   background: 'white',

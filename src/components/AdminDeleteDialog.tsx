@@ -56,6 +56,10 @@ export default function AdminDeleteDialog(props: Props) {
   )
 }
 
+/* ----------------------
+       CSS STYLING
+---------------------- */
+
 const cancelBtnSX: SxProps<Theme> = theme => ({
   '&:hover': {
     color: 'white',

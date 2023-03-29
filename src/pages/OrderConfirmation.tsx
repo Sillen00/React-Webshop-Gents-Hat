@@ -14,7 +14,7 @@ function OrderConfirmation() {
 
   // PROPS //
 
-  const { formValues, clearForm } = useContext(FormContext)
+  const { formValues } = useContext(FormContext)
   const { fullName, email, phoneNumber, address, city, zipcode } = formValues
   const { cartItems, totalPrice, clearProductsFromCart } = useCart()
   const orderItems = cartItems.map(item => (
@@ -36,8 +36,6 @@ function OrderConfirmation() {
   useEffect(() => {
     setNewOrderItems(orderItems)
     setNewTotalPrice(totalPrice)
-    // setNewFormValues(formValues)
-    // clearForm()
     clearProductsFromCart()
   }, [])
 

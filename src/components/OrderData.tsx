@@ -1,15 +1,13 @@
 import { Box, CardMedia, Skeleton, SxProps, Theme, Typography } from '@mui/material'
-import { useTheme } from '@mui/material/styles'
-import useMediaQuery from '@mui/material/useMediaQuery'
 import { useState } from 'react'
 import {
   cardImgStyle,
-  leftContainerSx,
   descriptionTextStyleSx,
-  quantityBoxStyleSx,
-  quantityStyleSx,
+  leftContainerSx,
   mediaFontSizeStyleSx,
   productTotalStyleSx,
+  quantityBoxStyleSx,
+  quantityStyleSx,
 } from './CheckoutCard'
 
 interface Props {
@@ -25,12 +23,12 @@ export default function OrderData(props: Props) {
   // Activates skeleton while image is loading or does not load
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(false)
-  
+
   const handleLoad = () => {
     setLoading(false)
     setError(false)
   }
-  
+
   const handleError = () => {
     setLoading(false)
     setError(true)

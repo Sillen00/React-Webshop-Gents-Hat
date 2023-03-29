@@ -1,7 +1,5 @@
-
 import { Box, CardMedia, Grid, Skeleton, SxProps, Theme, Typography } from '@mui/material'
 import { useState } from 'react'
-import { cardImgStyle } from '../components/CheckoutCard'
 import ProductCard from '../components/ProductCard'
 import { useProducts } from '../contexts/ProductsContext'
 
@@ -19,7 +17,7 @@ function Home() {
     setError(true)
   }
 
-// Gridstyle on the main page
+  // Gridstyle on the main page
   return (
     <Box sx={homeContainerSx}>
       <Box sx={logoStyleSx}>
@@ -29,7 +27,7 @@ function Home() {
           sx={loading || error ? skeletonSx : { display: 'none' }}
         />
         <CardMedia
-          sx={loading || error ? { display: 'none' } : { }}
+          sx={loading || error ? { display: 'none' } : {}}
           component='img'
           image={'../images/Logo.png'}
           alt={"Gent's Hat logotype"}
@@ -52,6 +50,10 @@ function Home() {
     </Box>
   )
 }
+
+/* ----------------------
+       CSS STYLING
+---------------------- */
 
 const homeContainerSx: SxProps<Theme> = theme => ({
   display: 'flex',

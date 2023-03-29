@@ -1,11 +1,10 @@
 import { Box, Button, Grid, SxProps, Theme, Typography } from '@mui/material'
-import { useState } from 'react'
 import { Link, Outlet } from 'react-router-dom'
 import AdminCardProduct from '../components/AdminCardProduct'
 import { useProducts } from '../contexts/ProductsContext'
 
 function Admin() {
-  const {databaseProducts} = useProducts()
+  const { databaseProducts } = useProducts()
 
   return (
     <>
@@ -15,11 +14,7 @@ function Admin() {
           <Box sx={headerSx}>
             <Typography variant={'h3'}>Admin</Typography>
             <Link to='/admin/product/new-product'>
-              <Button
-                data-cy='admin-add-product'
-                sx={addProductBtnSx}
-                variant='contained'
-              >
+              <Button data-cy='admin-add-product' sx={addProductBtnSx} variant='contained'>
                 <Typography variant={'body2'}>Add New Product</Typography>
               </Button>
             </Link>
@@ -46,7 +41,10 @@ function Admin() {
   )
 }
 
-// Styling
+/* ----------------------
+       CSS STYLING
+---------------------- */
+
 const headerSx: SxProps<Theme> = theme => ({
   display: 'flex',
   justifyContent: 'space-between',
