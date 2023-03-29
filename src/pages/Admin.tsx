@@ -5,21 +5,11 @@ import AdminCardProduct from '../components/AdminCardProduct'
 import { useProducts } from '../contexts/ProductsContext'
 
 function Admin() {
-  const [open, setOpen] = useState(false)
   const {databaseProducts} = useProducts()
-
-  const handleClickOpen = () => {
-     setOpen(true)
-  }
-
-  const handleClose = () => {
-    setOpen(false)
-  }
 
   return (
     <>
       <Outlet />
-
       <Box sx={adminPageContainerSx}>
         <Box sx={productContainerSx}>
           <Box sx={headerSx}>
@@ -28,7 +18,6 @@ function Admin() {
               <Button
                 data-cy='admin-add-product'
                 sx={addProductBtnSx}
-                onClick={handleClickOpen}
                 variant='contained'
               >
                 <Typography variant={'body2'}>Add New Product</Typography>
