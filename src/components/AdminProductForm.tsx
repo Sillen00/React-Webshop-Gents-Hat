@@ -5,13 +5,14 @@ import {
   FormControl,
   FormControlLabel,
   FormLabel,
+  InputAdornment,
   Paper,
   Radio,
   RadioGroup,
   SxProps,
   TextField,
   Theme,
-  Typography,
+  Typography
 } from '@mui/material'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
@@ -160,6 +161,8 @@ function AdminProductForm({ onSave, product }: Props) {
         <Paper elevation={3}>
           <form data-cy='product-form' onSubmit={formik.handleSubmit}>
             <Container sx={formContainer}>
+
+              {/* Header */}
               <Typography sx={fontStyle} variant='h3'>
                 {product ? `Editing "${product.title}"` : 'Add new product'}
               </Typography>
@@ -170,6 +173,8 @@ function AdminProductForm({ onSave, product }: Props) {
               >
                 {product ? `ID: "${product.id}"` : ''}
               </Typography>
+
+              {/* Title */}
               <TextField
                 fullWidth
                 id='title'
@@ -182,6 +187,8 @@ function AdminProductForm({ onSave, product }: Props) {
                 inputProps={{ 'data-cy': 'product-title', style: { fontFamily: 'Lora' } }}
                 FormHelperTextProps={{ 'data-cy': 'product-title-error' } as any}
               />
+
+              {/* Price */}
               <TextField
                 fullWidth
                 id='price'
@@ -192,18 +199,34 @@ function AdminProductForm({ onSave, product }: Props) {
                 helperText={formik.touched.price && formik.errors.price}
                 margin='normal'
                 inputProps={{ 'data-cy': 'product-price', style: { fontFamily: 'Lora' } }}
+                InputProps={{
+                  startAdornment: <InputAdornment position="start">$</InputAdornment>,
+                }}
                 FormHelperTextProps={{ 'data-cy': 'product-price-error' } as any}
               />
-              <TextField
-                fullWidth
-                id='size'
-                label='Product size'
-                value={formik.values.size}
-                onChange={formik.handleChange}
-                error={formik.touched.size && Boolean(formik.errors.size)}
-                helperText={formik.touched.size && formik.errors.size}
-                margin='normal'
-              />
+
+              {/* Size */}
+              <Box sx={{ mt: 2, ml: 1.7, mb: '0.6rem' }}>
+                <FormControl>
+                  <FormLabel id='demo-radio-buttons-group-label'>Size</FormLabel>
+                  <RadioGroup
+                    id='size'
+                    row
+                    aria-labelledby='demo-radio-buttons-group-label'
+                    name='inStock'
+                    value={formik.values.size}
+                    onChange={formik.handleChange}
+                  >
+                    <FormControlLabel name='size' value={'XS'} control={<Radio />} label='XS' />
+                    <FormControlLabel name='size' value={'S'} control={<Radio />} label='S' />
+                    <FormControlLabel name='size' value={'M'} control={<Radio />} label='M' />
+                    <FormControlLabel name='size' value={'L'} control={<Radio />} label='L' />
+                    <FormControlLabel name='size' value={'XL'} control={<Radio />} label='XL' />
+                  </RadioGroup>
+                </FormControl>
+              </Box>
+
+              {/* Color */}
               <TextField
                 fullWidth
                 id='color'
@@ -214,6 +237,8 @@ function AdminProductForm({ onSave, product }: Props) {
                 helperText={formik.touched.color && formik.errors.color}
                 margin='normal'
               />
+
+              {/* Image */}
               <TextField
                 fullWidth
                 id='image'
@@ -226,6 +251,8 @@ function AdminProductForm({ onSave, product }: Props) {
                 inputProps={{ 'data-cy': 'product-image', style: { fontFamily: 'Lora' } }}
                 FormHelperTextProps={{ 'data-cy': 'product-image-error' } as any}
               />
+
+              {/* Description */}
               <TextField
                 fullWidth
                 id='description'
@@ -238,6 +265,8 @@ function AdminProductForm({ onSave, product }: Props) {
                 inputProps={{ 'data-cy': 'product-description', style: { fontFamily: 'Lora' } }}
                 FormHelperTextProps={{ 'data-cy': 'product-description-error' } as any}
               />
+
+              {/* Detail 1 */}
               <TextField
                 fullWidth
                 id='details1'
@@ -248,6 +277,8 @@ function AdminProductForm({ onSave, product }: Props) {
                 helperText={formik.touched.details1 && formik.errors.details1}
                 margin='normal'
               />
+
+              {/* Detail 2 */}
               <TextField
                 fullWidth
                 id='details2'
@@ -258,6 +289,8 @@ function AdminProductForm({ onSave, product }: Props) {
                 helperText={formik.touched.details2 && formik.errors.details2}
                 margin='normal'
               />
+
+              {/* Detail 3 */}
               <TextField
                 fullWidth
                 id='details3'
@@ -268,6 +301,8 @@ function AdminProductForm({ onSave, product }: Props) {
                 helperText={formik.touched.details3 && formik.errors.details3}
                 margin='normal'
               />
+
+              {/* In stock */}
               <Box sx={{ mt: 1, ml: 1.7, mb: '1rem' }}>
                 <FormControl>
                   <FormLabel id='demo-radio-buttons-group-label'>In stock</FormLabel>
@@ -294,6 +329,8 @@ function AdminProductForm({ onSave, product }: Props) {
                   </RadioGroup>
                 </FormControl>
               </Box>
+
+              {/* Buttons */}
               <Box sx={buttonContainer}>
                 <Button sx={editBtnSx} color='primary' variant='contained' type='submit'>
                   {product ? `Edit "${product.title}"` : 'Add product'}
