@@ -134,6 +134,10 @@ function Footer() {
   )
 }
 
+/* ----------------------
+       CSS STYLING
+---------------------- */
+
 const footerStyle: SxProps<Theme> = theme => ({
   display: 'flex',
   justifyContent: 'center',

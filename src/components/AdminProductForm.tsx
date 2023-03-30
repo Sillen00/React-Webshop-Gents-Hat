@@ -12,7 +12,7 @@ import {
   SxProps,
   TextField,
   Theme,
-  Typography
+  Typography,
 } from '@mui/material'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
@@ -161,7 +161,6 @@ function AdminProductForm({ onSave, product }: Props) {
         <Paper elevation={3}>
           <form data-cy='product-form' onSubmit={formik.handleSubmit}>
             <Container sx={formContainer}>
-
               {/* Header */}
               <Typography sx={fontStyle} variant='h3'>
                 {product ? `Editing "${product.title}"` : 'Add new product'}
@@ -200,7 +199,7 @@ function AdminProductForm({ onSave, product }: Props) {
                 margin='normal'
                 inputProps={{ 'data-cy': 'product-price', style: { fontFamily: 'Lora' } }}
                 InputProps={{
-                  startAdornment: <InputAdornment position="start">$</InputAdornment>,
+                  startAdornment: <InputAdornment position='start'>$</InputAdornment>,
                 }}
                 FormHelperTextProps={{ 'data-cy': 'product-price-error' } as any}
               />

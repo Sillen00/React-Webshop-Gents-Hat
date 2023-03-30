@@ -15,6 +15,10 @@ function CheckoutEmpty() {
   )
 }
 
+/* ----------------------
+       CSS STYLING
+---------------------- */
+
 const EmptyCheckoutStyleSx: SxProps<Theme> = theme => ({
   textAlign: 'center',
   py: '12rem',

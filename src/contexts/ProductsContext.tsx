@@ -7,7 +7,6 @@ interface ProductsContextValue {
   databaseProducts: Product[]
   setDatabaseProducts: React.Dispatch<React.SetStateAction<Product[]>>
   products: Product[]
-  
 }
 
 // Context setup
@@ -17,11 +16,11 @@ export const useProducts = () => useContext(ProductsContext)
 
 // Context provider
 export function ProductsProvider(props: PropsWithChildren) {
-
   // Local storage hook
-  const [databaseProducts, setDatabaseProducts] = useLocalStorageState<Product[]>(products, 'products')
-
-
+  const [databaseProducts, setDatabaseProducts] = useLocalStorageState<Product[]>(
+    products,
+    'products'
+  )
 
   // Variables and functions that the context shares
   return (
@@ -36,4 +35,3 @@ export function ProductsProvider(props: PropsWithChildren) {
     </ProductsContext.Provider>
   )
 }
-

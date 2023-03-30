@@ -69,12 +69,12 @@ export function CartProvider(props: PropsWithChildren) {
   const clearProductsFromCart = () => {
     setCartItems([])
   }
-// totalProductsInCart is the total number of products in the cart and reduce is used to calculate the total
+  // totalProductsInCart is the total number of products in the cart and reduce is used to calculate the total
   const totalProductsInCart = cartItems.reduce(
     (accumulator, cartItem) => accumulator + cartItem.quantity,
     0
   )
-// The total price of the products in the cart is calculated using reduce
+  // The total price of the products in the cart is calculated using reduce
   const totalPrice = cartItems.reduce(
     (accumulator, cartItem) => accumulator + cartItem.price * cartItem.quantity,
     0

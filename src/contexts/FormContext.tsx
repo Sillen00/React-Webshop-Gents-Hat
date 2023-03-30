@@ -12,7 +12,6 @@ interface FormData {
 interface FormContextTypes {
   formValues: FormData
   setFormValues: (values: FormData) => void
-  clearForm: () => void
 }
 // formtype interface that is used in the context
 const defaultFormData: FormContextTypes = {
@@ -25,7 +24,6 @@ const defaultFormData: FormContextTypes = {
     city: '',
   },
   setFormValues: () => {},
-  clearForm: () => {},
 }
 
 // Context to share form data between components
@@ -34,9 +32,9 @@ export const FormContext = createContext<FormContextTypes>(defaultFormData)
 export const FormProvider = (props: PropsWithChildren) => {
   const [formValues, setFormValues] = useState(defaultFormData.formValues)
 
-  const clearForm = () => {
-    setFormValues(defaultFormData.formValues)
-  }
-
-  return <FormContext.Provider value={{formValues, setFormValues, clearForm}}>{props.children}</FormContext.Provider>
+  return (
+    <FormContext.Provider value={{ formValues, setFormValues }}>
+      {props.children}
+    </FormContext.Provider>
+  )
 }

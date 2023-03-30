@@ -46,6 +46,10 @@ function Header() {
   )
 }
 
+/* ----------------------
+       CSS STYLING
+---------------------- */
+
 const imageMustaschStyleSx: CSSProperties = {
   width: '5em',
   position: 'absolute',

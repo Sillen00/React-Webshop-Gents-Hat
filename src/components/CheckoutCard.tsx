@@ -34,7 +34,6 @@ function CheckoutCard({ cartItem }: Props) {
     setError(true)
   }
 
-
   // inputValue state stores the value of the input field.
   const [inputValue, setInputValue] = useState<string>(cartItem.quantity.toString())
   const [deletedInputValue, setDeletedInputValue] = useState<string>(''.toString())
@@ -50,7 +49,7 @@ function CheckoutCard({ cartItem }: Props) {
     const thisInputValue = parseInt(newInputValue)
     if (isNaN(thisInputValue) || thisInputValue < 1) {
       setDeletedInputValue(inputValue)
-      }
+    }
     setInputValue(newInputValue)
   }
 
@@ -89,7 +88,7 @@ function CheckoutCard({ cartItem }: Props) {
           </Box>
 
           {/* Info box */}
-          <Box sx={{ml: 2}}>
+          <Box sx={{ ml: 2 }}>
             <Typography data-cy='product-title' variant='h3' sx={mediaFontSizeStyleSx}>
               {cartItem.title}
             </Typography>
@@ -111,7 +110,6 @@ function CheckoutCard({ cartItem }: Props) {
         {/* Right side container */}
 
         <Box sx={rightContainerSx}>
-
           {/* Quantity container */}
           <Box sx={quantityBoxStyleSx}>
             <Button
@@ -301,7 +299,7 @@ const deleteButtonSx: SxProps<Theme> = theme => ({
   },
   [theme.breakpoints.down('sm')]: {
     alignItems: 'flex-start',
-    mt: 3
+    mt: 3,
   },
 })
 
@@ -314,10 +312,10 @@ export const mediaFontSizeStyleSx: SxProps<Theme> = theme => ({
   overflowWrap: 'break-word',
   [theme.breakpoints.down('md')]: { fontSize: '1.4rem', mt: 1.7 },
   [theme.breakpoints.down('sm')]: { maxWidth: '15rem', mt: 1 },
-  "@media (max-width: 450px)": {
+  '@media (max-width: 450px)': {
     maxWidth: '12rem',
   },
-  "@media (max-width: 400px)": {
+  '@media (max-width: 400px)': {
     maxWidth: '8rem',
   },
 })
