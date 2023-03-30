@@ -39,7 +39,7 @@ declare module '@mui/material/styles' {
     }
   }
 }
-//  Using primary.dark as a form of hover effect for all the default buttons. This might not be optimal in the long run, but it works fine at the moment.
+// Using primary.dark as a form of hover effect for all the default buttons. This might not be optimal in the long run, but it works fine at the moment.
 const theme = createTheme({
   palette: {
     primary: {
@@ -51,6 +51,7 @@ const theme = createTheme({
       dark: '#505050',
     },
   },
+  // --------Another sulution for styling only buttons in the project------
   // components: {
   //   MuiButton: (palette) => ({
   //     styleOverrides: {
