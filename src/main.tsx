@@ -51,6 +51,20 @@ const theme = createTheme({
       dark: '#505050',
     },
   },
+  // components: {
+  //   MuiButton: (palette) => ({
+  //     styleOverrides: {
+  //       root: {
+  //         textTransform: 'none',
+  //         borderRadius: '0px',
+  //         '&:hover': {
+  //           backgroundColor: palette.secondary.main,
+  //         },
+  //       },
+  //       text: { }
+  //     }
+  //   })
+  // },
   typography: {
     fontFamily: 'cinzel',
     h1: {
