@@ -11,12 +11,12 @@ interface Props {
   quantity: number
   onAddToCart: () => void
 }
-// using add to cart button and snackbar to show the user that the product has been added to the cart
+// Using add to cart button and snackbar to show the user that the product has been added to the cart.
 export default function AddToCartButton({ product, quantity, onAddToCart }: Props) {
   const { increaseProductToCart } = useCart()
   const { enqueueSnackbar } = useSnackbar()
 
-  // Here is the code that adds the product to the cart and shows the snackbar
+  // Here is the code that adds the product to the cart and shows the snackbar.
   const handleClickVariant = () => {
     increaseProductToCart(product, quantity)
     enqueueSnackbar(`${product.title} has been added!`, {
