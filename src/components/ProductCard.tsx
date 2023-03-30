@@ -6,7 +6,7 @@ import Typography from '@mui/material/Typography'
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Product } from '../../data'
-import AddToCartButton from './Snackbar'
+import AddToCartButton from './AddToCartButton'
 
 interface Props {
   product: Product

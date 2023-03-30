@@ -3,7 +3,7 @@ import { Box, SxProps } from '@mui/system'
 import { useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import { Product } from '../../data'
-import AddToCartButton from '../components/Snackbar'
+import AddToCartButton from './AddToCartButton'
 
 interface Props {
   product: Product
