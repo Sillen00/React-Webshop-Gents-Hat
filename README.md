@@ -11,8 +11,6 @@ In this assignment, we have used the Material UI design system to import and sty
 
 Website link [here](https://gentshats.netlify.app/)
 
-![screencapture-gentshats-netlify-app-2024-04-29-15_24_59](https://github.com/Sillen00/React-Webshop-Gents-Hat/assets/114336470/320a74dc-f15b-4917-bf5a-a533ee38d478)
-
 <br>
 
 ## <span style="color:dodgerblue">  Setup Project </span>
